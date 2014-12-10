@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <% include inc/head.tpl %>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
+</head>
+<body>
+    <% include inc/bar.tpl %>
+
+    <div class="wrap">
+        <div class="w clear">
+            <div class="ui-crumbs">
+                <a href="/">首页</a> > <a href="<%=list_uri%>"><%=list_name%></a> > <%=data.title%>
+            </div>
+
+            <div class="main">
+                <div class="main-inner">
+                    <div class="article-detail">
+                        <h1 class="article-detail-title text-overflow">
+                            <%=data.title%>
+                        </h1>
+                        <div class="article-detail-content">
+                            <div class="markdown-body">
+                                <%-data.markdown_content%>
+                            </div>
+                        </div>
+                        <div class="article-list-tool clear">
+                            <ul class="fr">
+                                <li>
+                                    <a href="<%=data.user_uri%>"><%=data.nickname%></a>
+                                </li>
+                                <li>
+                                    <i class="article-list-tool-hit"></i><%=data.hit%>
+                                </li>
+                                <li>
+                                    <i class="article-list-tool-time"></i><%=data.update_date%>
+                                </li>
+                                <li>
+                                    <i class="article-list-tool-class"></i>
+                                    <a href="<%=list_uri%>">
+                                        <%=list_name%>
+                                    </a>
+                                </li>
+                                <% if(tags_data && tags_data.length){ %>
+                                    <li>
+                                        <i class="article-list-tool-tag"></i>
+                                        <% tags_data.forEach(function(val){ %>
+                                            <a href="<%=val.uri%>"><%=val.name%></a>
+                                        <% }); %>
+                                    </li>
+                                <% } %>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="article-detail-nav mt20">
+                        <p>
+                            上一篇：<a href="#">谢亮</a>
+                        </p>
+                        <p>
+                            下一篇：<a href="#">谢亮</a>
+                        </p>
+                    </div>
+
+                    <div class="article-detail-comment mt20">
+                        <!-- 评论 -->
+                        <!-- Duoshuo Comment BEGIN -->
+                        <div class="ds-thread"></div>
+                        <script type="text/javascript">
+                        var duoshuoQuery = {short_name:"xuexb"};
+                            (function() {
+                                var ds = document.createElement('script');
+                                ds.type = 'text/javascript';ds.async = true;
+                                ds.src = 'http://static.duoshuo.com/embed.js';
+                                ds.charset = 'UTF-8';
+                                (document.getElementsByTagName('head')[0] 
+                                || document.getElementsByTagName('body')[0]).appendChild(ds);
+                            })();
+                            </script>
+                        <!-- Duoshuo Comment END -->
+
+                    </div>
+
+
+                </div>
+            </div>
+            
+            <% include inc/sidebar.tpl %>
+        </div>
+    </div>
+
+    <% include inc/footer.tpl %>
+
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

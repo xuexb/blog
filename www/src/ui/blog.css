@@ -367,3 +367,18 @@ body.auto .bar .w{
 .ui-crumbs a{
     text-decoration:underline;
 }
+
+
+
+/*出错页面*/
+.mod-error,
+.mod-success{
+    border:1px solid  #ddd;
+    background-color:#fff;
+    padding:20px;
+    color:#f00;
+    font-size:16px;
+}
+.mod-success{
+    color:#333;
+}

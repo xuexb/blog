@@ -17,7 +17,6 @@
   "readmeFilename": "README.md",
   "devDependencies": {
     "thinkjs": "*",
-    "marked": "*",
-    "html-minifier": "*"
+    "marked": "*"
   }
 }

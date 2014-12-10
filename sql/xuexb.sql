@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2014-12-09 16:45:21
+Date: 2014-12-10 23:58:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,12 +33,20 @@ CREATE TABLE `article` (
   `url` varchar(255) DEFAULT NULL COMMENT '链接',
   `create_uid` int(2) DEFAULT NULL COMMENT '创建人ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='文章表';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='文章表';
 
 -- ----------------------------
 -- Records of article
 -- ----------------------------
 INSERT INTO `article` VALUES ('1', '#测试', '#测试#测试#测试#测试', '1', '1417968861488', '1417968861488', '1', '0', '0', '这是测试', null, '1');
+INSERT INTO `article` VALUES ('2', '<p>fdsfsdf</p>\n', 'fdsfsdf', '1', '1418223697716', '1418223697716', '4', '0', '0', 'test', null, '8');
+INSERT INTO `article` VALUES ('3', '<p>fdsfsdf</p>\n', 'fdsfsdf', '1', '1418223753439', '1418223753439', '4', '0', '0', 'test', 'zaixianliuyan', '8');
+INSERT INTO `article` VALUES ('4', '<h1 id=\"-\">去就测试日</h1>\n<pre><code class=\"lang-js\">alert(1);\n</code></pre>\n<pre><code class=\"lang-html\">&lt;a herf=&quot;#&quot;&gt;a&lt;/a&gt;\n</code></pre>\n<blockquote>\n<p>fdsfdsf\nfsdfds</p>\n<p>fdfsdf</p>\n</blockquote>\n<ul>\n<li>1</li>\n<li>2</li>\n<li><p>3</p>\n</li>\n<li><p>1</p>\n</li>\n<li>2</li>\n<li>3</li>\n</ul>\n<table>\n<thead>\n<tr>\n<th>fdfd</th>\n<th>fdsfd</th>\n<th>fdf</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>fsdf</td>\n<td>ffdfd</td>\n<td>fdfdf</td>\n</tr>\n</tbody>\n</table>\n', '# 去就测试日\r\n```js\r\nalert(1);\r\n```\r\n\r\n``` html\r\n<a herf=\"#\">a</a>\r\n```\r\n\r\n> fdsfdsf\r\n> fsdfds\r\n>\r\n> fdfsdf\r\n\r\n* 1\r\n* 2\r\n* 3\r\n\r\n1. 1\r\n2. 2\r\n3. 3\r\n\r\nfdfd | fdsfd | fdf\r\n--- | --- | ---\r\nfsdf | ffdfd | fdfdf', '1', '1418223833855', '1418223833855', '3', '0', '0', 'jshint配置', null, '8');
+INSERT INTO `article` VALUES ('5', '<p>//临时添加标签\n            res.splice(2, 0 , []);</p>\n<p><b>324234</b></p>\n<p><hr>fdsfsdf\nfsdfsdfds\nfdsfds</p>\n', '//临时添加标签\r\n            res.splice(2, 0 , []);\r\n\r\n<b>324234</b>\r\n<hr>fdsfsdf\r\nfsdfsdfds\r\nfdsfds', '0', '1418226558987', '1418226558987', '1', '0', '0', '标签', null, '8');
+INSERT INTO `article` VALUES ('6', '<p>//临时添加标签\n            res.splice(2, 0 , []);</p>\n<p><b>324234</b></p>\n<p><hr>fdsfsdf\nfsdfsdfds\nfdsfds</p>\n', '//临时添加标签\r\n            res.splice(2, 0 , []);\r\n\r\n<b>324234</b>\r\n<hr>fdsfsdf\r\nfsdfsdfds\r\nfdsfds', '0', '1418226561872', '1418226561872', '1', '0', '0', '标签', null, '8');
+INSERT INTO `article` VALUES ('7', '<p>//临时添加标签\n            res.splice(2, 0 , []);</p>\n<p>324234\nfdsfsdf\nfsdfsdfds\nfdsfds</p>\n', '//临时添加标签\r\n            res.splice(2, 0 , []);\r\n\r\n<b>324234</b>\r\n<hr>fdsfsdf\r\nfsdfsdfds\r\nfdsfds', '0', '1418226626356', '1418226626356', '1', '0', '0', '标签', null, '8');
+INSERT INTO `article` VALUES ('8', '<p>//临时添加标签\n            res.splice(2, 0 , []);</p>\n<p>324234\nfdsfsdf\nfsdfsdfds\nfdsfds</p>\n', '//临时添加标签\r\n            res.splice(2, 0 , []);\r\n\r\n<b>324234</b>\r\n<hr>fdsfsdf\r\nfsdfsdfds\r\nfdsfds', '0', '1418226628904', '1418226628904', '1', '0', '0', '标签', null, '8');
+INSERT INTO `article` VALUES ('9', '<p>//临时添加标签\n            res.splice(2, 0 , []);</p>\n<p>324234\nfdsfsdf\nfsdfsdfds\nfdsfds</p>\n', '//临时添加标签\r\n            res.splice(2, 0 , []);\r\n\r\n<b>324234</b>\r\n<hr>fdsfsdf\r\nfsdfsdfds\r\nfdsfds', '0', '1418226631277', '1418226631277', '1', '0', '0', '标签', null, '8');
 
 -- ----------------------------
 -- Table structure for `list`
@@ -130,10 +138,21 @@ CREATE TABLE `user` (
   `update_date` bigint(20) DEFAULT NULL,
   `hit` bigint(20) DEFAULT NULL,
   `login_hit` bigint(20) DEFAULT NULL,
+  `user_name` varchar(255) DEFAULT NULL COMMENT '用户名',
+  `user_pass` varchar(255) DEFAULT NULL COMMENT '密码',
+  `status` int(1) DEFAULT '0' COMMENT '用户状态，1为禁用，0为启用',
+  `update_ip` varchar(255) DEFAULT NULL COMMENT '最后登录IP',
+  `create_ip` varchar(255) DEFAULT NULL COMMENT '创建时IP',
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 MIN_ROWS=1000;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 MIN_ROWS=1000;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', '谢亮', null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `user` VALUES ('1', '谢亮', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `user` VALUES ('3', 'fdfdfdff', null, null, null, null, null, null, '1418221390217', '1418221390217', '0', '1', 'fdfdfdff', '51ba2fcc34ee04e9d68f0a370fb9783a', '0', '127.0.0.1', '127.0.0.1');
+INSERT INTO `user` VALUES ('4', 'f发射点犯得上', null, null, null, null, null, null, '1418221428104', '1418221428104', '0', '1', 'f发射点犯得上', '2ecaec197671bb4e60da0dbc2a39c129', '0', '127.0.0.1', '127.0.0.1');
+INSERT INTO `user` VALUES ('5', 'fsdfds', null, null, null, null, null, null, '1418221435336', '1418221435336', '0', '1', 'fsdfds', 'b6ce03635a3c48f97caeaa9384824a46', '0', '127.0.0.1', '127.0.0.1');
+INSERT INTO `user` VALUES ('6', 'fsdfsd', null, null, null, null, null, null, '1418221459529', '1418221459529', '0', '1', 'fsdfsd', 'd58e3582afa99040e27b92b13c8f2280', '0', '127.0.0.1', '127.0.0.1');
+INSERT INTO `user` VALUES ('7', 'fsdfsdf', null, null, null, null, null, null, '1418221513880', '1418221513880', '0', '1', 'fsdfsdf', '8cd8ed164b91837bc13004e9b1de2405', '0', '127.0.0.1', '127.0.0.1');
+INSERT INTO `user` VALUES ('8', 'xuexb', null, null, null, null, null, null, '1418221527424', '1418221840209', '0', '4', 'xuexb', 'ac05168d4d9ebade9221878440e8885d', '0', '127.0.0.1', '127.0.0.1');

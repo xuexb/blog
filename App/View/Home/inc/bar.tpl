@@ -14,7 +14,7 @@
                 <span<% if(nav_type === 'article'){ %> class="current"<% } %>>文章</span>
                 <div class="bar-nav-dropdown">
                     <% (LIST || []).forEach(function(val){ %>
-                        <a href="<%=val.uri%>"><%=val.name%></a>
+                        <a href="<%=val.uri%>" <%if(nav_list_id && nav_list_id === val.id){ %> class="current"<% } %>><%=val.name%></a>
                     <% }); %>
                 </div>
             </li>

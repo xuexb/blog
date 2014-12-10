@@ -13,7 +13,7 @@ module.exports = Model(function() {
             options = extend({
                 page: 1,
                 limit: 10,
-                order: 'id DESC',
+                order: 'article_id DESC',
                 isPage: false,
                 cache: false,
                 where: null,

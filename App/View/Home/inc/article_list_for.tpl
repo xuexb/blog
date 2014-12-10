@@ -16,6 +16,9 @@
             <div class="article-list-tool clear">
                 <ul class="fr">
                     <li>
+                        <a href="<%=val.user_uri%>"><%=val.nickname%></a>
+                    </li>
+                    <li>
                         <i class="article-list-tool-hit"></i><%=val.hit%>
                     </li>
                     <li>

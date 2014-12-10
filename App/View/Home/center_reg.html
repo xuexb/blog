@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <% include inc/center_head.tpl %>
+</head>
+<body>
+    <% include inc/bar.tpl %>
+
+    <div class="wrap">
+        <div class="w clear">
+
+            <h2 class="ui-crumbs">
+                注册
+            </h2>
+
+
+            <div class="main">
+                <div class="main-inner">
+                    <div class="center">
+                        <form action="?<%=token%>" method="POST">
+                            <input type="hidden" name="token" value="<%=token%>">
+                            <ul class="mod-form">
+                                <li>
+                                    <label class="mod-form-label" for="J-user_name">用户名：</label>
+                                    <div class="mod-form-box">
+                                        <input type="text" id="J-user_name" name="user_name">
+                                    </div>
+                                </li>
+                                <li>
+                                    <label class="mod-form-label" for="J-user_pass">密码：</label>
+                                    <div class="mod-form-box">
+                                        <input type="password" id="J-user_pass" name="user_pass">
+                                    </div>
+                                </li>
+                                <li>
+                                    <input type="submit" value="注册">
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <% include inc/sidebar.tpl %>
+        </div>
+    </div>
+
+    <% include inc/footer.tpl %>
+</body>
+</html>

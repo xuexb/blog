@@ -6,6 +6,27 @@
 
 var App = {};
 
+/**
+ * 出错提示
+ * @param  {string} str 错误的内容
+ */
+App.error_msg = function(str){
+    this.assign('errmsg', str);
+    return this.display('Home:index:error');
+}
+
+
+
+
+/**
+ * 成功提示
+ * @param  {string} str 成功的内容
+ */
+App.success_msg = function(str){
+    this.assign('errmsg', str);
+    return this.display('Home:index:success');
+}
+
 
 /**
  * 初始化并调用父类初始化
@@ -45,10 +66,14 @@ App.init = function(http) {
 
 /**
  * 设置导航
- * @param  {string=home} type 导航类型
+ * @param  {string=home} type 导航类型有 home,article,demo,tags,about,message
+ * @param {int} list_id 高亮的分类
  */
-App.__set_nav = function(type) {
-    return this.assign("nav_type", type || 'home'), this;
+App.__set_nav = function(type, list_id) {
+    var self = this;
+    self.assign('nav_list_id', list_id);
+    self.assign("nav_type", type || 'home');
+    return self;
 }
 
 
@@ -143,7 +168,7 @@ App.__get_list = function(options) {
     var self = this;
 
     options = options || {};
-    options.isUser = 1; //现在不查用户信息
+    // options.isUser = 1; //现在不查用户信息
 
     return D('Article').get(options).then(function(data) { //查分类名 + 修改url + 发布时间 + 列表图 + 内容
         var content_data = options.isPage ? data.data : data;
@@ -198,6 +223,7 @@ App.__get_list = function(options) {
 
         content_data.forEach(function(val) {
             arr.push(User.get({
+                field: 'nickname',
                 where: {
                     uid: val.create_uid
                 },
