@@ -16,6 +16,20 @@ App.error_msg = function(str){
 }
 
 
+// /**
+//  * 前置操作
+//  */
+// App.__before = function() {
+//     var self = this;
+
+//     // 获取用户数据
+//     return self.action('Home:Common:user_check').then(function(user_name){
+//         self.user_name = user_name || null;//用户数据,如果为空则说明没有登录
+//         self.assign('user_info', self.user_name);//给模板赋值
+//         return self;
+//     });
+// }
+
 
 
 /**
@@ -59,6 +73,9 @@ App.init = function(http) {
         self.LIST = data[0];
         self.assign("new_article", data[1]);
         self.assign("hot_search", data[2]);
+        self.assign('Url', Url);
+
+        self.assign('user_name', 'xuexb');
         return data;
     });
 }
@@ -113,27 +130,13 @@ App.__hot_search = function(top) {
 
 
 /**
- * 获取分类名
- * @return {[type]} [description]
- */
-App.__get_list_name = function(id){
-    var name = null;
-    each(this.LIST || [], function(){
-        if(this.id === id){
-            name = this.name;
-            return false;
-        }
-    });
-
-    return name;
-}
-
-/**
  * 获取分类数据
  * @return {array}
  */
 App.__get_list_data = function() {
-    return F('LIST') || [];
+    return D('List').get({
+        cache: true
+    });
 }
 
 
@@ -158,17 +161,17 @@ App.__404Action = function(http) {
 
 /**
  * 内部调用列表
- * @description 处理分类名, 作者, 发表时间等内容, 查标签， 支持列表分页查询，不支持单个查询
+ * @description 处理分类名, 发表时间等内容, 查标签， 支持列表分页查询，不支持单个查询
  * @param {object} options 配置
  * @param {boolean} options.isPage 是否为分页列表
- * @param {boolean} options.isUser 是否为用户调用,如果是则不追加用户信息
  * @return {Promise}
  */
 App.__get_list = function(options) {
     var self = this;
 
     options = options || {};
-    // options.isUser = 1; //现在不查用户信息
+
+    options.field = options.field || 'id, title, list_id, url, update_date, hit, markdown_content_list';
 
     return D('Article').get(options).then(function(data) { //查分类名 + 修改url + 发布时间 + 列表图 + 内容
         var content_data = options.isPage ? data.data : data;
@@ -203,39 +206,6 @@ App.__get_list = function(options) {
                 if (list_data[index]) {
                     val.list_name = list_data[index].name;
                     val.list_uri = Url.article.list(list_data[index].id, list_data[index].url);
-                }
-            });
-            return data;
-        });
-    }).then(function(data) { //查作者
-        var content_data = options.isPage ? data.data : data;
-        var arr = [];
-        var User;
-
-
-        //如果没有数据, 或者为当前用户查的, 则不追加用户信息
-        if(content_data.length === 0 || options.isUser){
-            return data;
-        }
-
-
-        User  = D("User");
-
-        content_data.forEach(function(val) {
-            arr.push(User.get({
-                field: 'nickname',
-                where: {
-                    uid: val.create_uid
-                },
-                one: 1
-            }));
-        });
-
-        return Promise.all(arr).then(function(list_data) {
-            content_data.forEach(function(val, index) {
-                if (list_data[index]) {
-                    val.nickname = list_data[index].nickname;
-                    val.user_uri = Url.user.view(list_data[index].uid);
                 }
             });
             return data;

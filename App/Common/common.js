@@ -29,30 +29,10 @@ Url.article = {
 }
 
 
-/**
- * 用户链接
- * @type {Object}
- */
-Url.user = {
-    list: function(id, url, page) {
-        if (url) {
-            id = url;
-        }
-
-        return '/user/' + id + '/' + (page ? page + '/' : '');
-    },
-    view: function(id){
-        return '/user'+ id;
-    }
-}
-
 
 Url.center = {
     login: function(){
         return '/center/login/';
-    },
-    reg: function(){
-        return '/center/reg/';
     }
 }
 
@@ -67,7 +47,7 @@ Url.tags = {
             id = url;
         }
 
-        return '/user/' + id + '/';
+        return '/tags/' + id + '/';
     },
 }
 

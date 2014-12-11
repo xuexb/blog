@@ -14,7 +14,9 @@ var App = {};
 App.indexAction = function() {
     var self = this;
 
-    return self.__get_list().then(function(data) {
+    return self.__get_list({
+        limit: 10
+    }).then(function(data) {
         self.assign({
             list: data,
             title: '学习吧 - 专注计算机基础知识和WEB前端开发'
@@ -52,7 +54,7 @@ App.viewAction = function() {
 
     return D('Article').get({
         one: 1,
-        field: 'id, markdown_content, hit, update_date, list_id, title, url, create_uid',
+        field: 'id, markdown_content, hit, update_date, list_id, title, url',
         where: sql
     }).then(function(data) {
         var sql;
@@ -69,18 +71,13 @@ App.viewAction = function() {
                     id: data.list_id
                 }
             }),
-            D('User').get({ //查作者
-                one: 1,
-                field: 'nickname',
+            D('TagsIndex').get({ //查标签
+                cache: true,
+                field: 'tags_id',
                 where: {
-                    uid: data.create_uid
+                    article_id: data.id
                 }
             }),
-            // D('TagsIndex').get({ //查标签
-            //     where: {
-            //         article_id: data.id
-            //     }
-            // }),
             D('Article').get({ //查相关文章
                 field: 'id, title, url',
                 limit: 6,
@@ -92,32 +89,49 @@ App.viewAction = function() {
             })
         ];
 
-        return Promise.all(sql).then(function(res) {
-            var list_data,
-                user_data;
+        return Promise.all(sql).then(function(res){//拿标签索引来查标签内容
+            var arr;
 
-
-            if (isEmpty(res) || isEmpty(res[0]) /*|| isEmpty(res[1])*/ ) { //没有分类
-                return self.__404Action();
+            if(isEmpty(res[1])){
+                return res;
             }
 
+            arr = [];
+            res[1].forEach(function(val){
+                arr.push(D('Tags').get({
+                    field: 'id, name, url',
+                    where: {
+                        id: val.tags_id
+                    },
+                    one: true
+                }));
+            });
+
+            return Promise.all(arr).then(function(tags){
+                tags.forEach(function(val){
+                    val.uri = Url.tags.list(val.id, val.url);
+                });
+                res[1] = tags;
+                return res;
+            });
+        }).then(function(res) {
+            var list_data;
+
+            if (isEmpty(res) || isEmpty(res[0]) ) { //没有分类
+                return self.__404Action();
+            }
             
 
             list_data = res[0];
-            user_data = res[1];
 
-            //标签
-            ////临时添加标签
-            res.splice(2, 0 , []);
-            self.assign('tags_data', res[2]);
+            self.assign('tags_data', res[1]);
 
 
             //喜欢变量
-            res[3].forEach(function(val) {
+            res[2].forEach(function(val) {
                 val.uri = Url.article.view(val.id, val.url);
             });
-            self.assign('like_list', res[3]);
-
+            self.assign('like_list', res[2]);
 
             //列表变量
             self.assign('list_name', list_data.name);
@@ -125,11 +139,6 @@ App.viewAction = function() {
             self.assign('list_uri', Url.article.list(list_data.id, list_data.url));
 
             // 详情页变量
-            // 用户变量
-            data.nickname = user_data.nickname;
-            if (data.nickname) {
-                data.user_uri = Url.user.view(user_data.id);
-            }
             //发布时间
             data.update_date = Date.elapsedDate(data.update_date, 'yyyy-M-d h:m');
 

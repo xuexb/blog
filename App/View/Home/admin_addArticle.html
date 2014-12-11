@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <% include inc/center_head.tpl %>
+    <% include inc/admin_head.tpl %>
 </head>
 <body>
     <% include inc/bar.tpl %>
@@ -11,14 +11,14 @@
         <div class="w clear">
 
             <h2 class="ui-crumbs">
-                发表博文
+                发表文章
             </h2>
 
 
             <div class="main">
                 <div class="main-inner">
                     <div class="center">
-                        <form action="/center/saveArticle" method="POST">
+                        <form action="/admin/saveArticle" method="POST">
                             <ul class="mod-form">
                                 <li>
                                     <label class="mod-form-label" for="J-title">标题：</label>

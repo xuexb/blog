@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <% include inc/head.tpl %>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
 </head>
 <body>
     <% include inc/bar.tpl %>
@@ -20,5 +21,7 @@
     </div>
 
     <% include inc/footer.tpl %>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>

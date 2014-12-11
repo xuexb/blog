@@ -7,7 +7,7 @@
             </h2>
             <div class="article-list-content">
                 <div class="markdown-body">
-                    <%=val.content%>
+                    <%-val.markdown_content_list%>
                 </div>
             </div>
             <div class="article-list-more">
@@ -15,9 +15,6 @@
             </div>
             <div class="article-list-tool clear">
                 <ul class="fr">
-                    <li>
-                        <a href="<%=val.user_uri%>"><%=val.nickname%></a>
-                    </li>
                     <li>
                         <i class="article-list-tool-hit"></i><%=val.hit%>
                     </li>

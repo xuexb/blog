@@ -169,17 +169,21 @@
 .markdown-body pre{border: 1px solid  #ccc;padding: 5px;border-radius:3px;background-color:rgba(0, 0, 0, 0.07);}
 */
 
-.markdown-body pre > code{
-    background-color:#232412;
-    display:block;
-}
-
-.markdown-body code{
-    dding:0 2px;
-    padding-top:0.2em;
-    padding-bottom:0.2em;
+/*fix*/
+code{
+    padding:0.2em 0.5em;
     margin:0;
     font-size:85%;
     background-color:rgba(0, 0, 0, 0.1);
-    border-radius:3px
+    border-radius:3px;
+}
+
+pre > code{
+    padding:0.5em;
+    background:none;
+    display:block;
+}
+pre{
+    color:#fff;
+    background-color:#000;
 }

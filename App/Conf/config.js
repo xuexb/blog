@@ -1,4 +1,5 @@
 module.exports = {
+    list_mark: '{__list__}',//列表内容标识
     port: 88, //监听端口
     // host: '', //监听的host
     // use_proxy: false, //是否使用代理访问，如：nginx。开启后不能通过ip+端口直接访问

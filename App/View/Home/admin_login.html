@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <% include inc/center_head.tpl %>
+    <% include inc/admin_head.tpl %>
 </head>
 <body>
     <% include inc/bar.tpl %>
@@ -11,15 +11,14 @@
         <div class="w clear">
 
             <h2 class="ui-crumbs">
-                注册
+                登录
             </h2>
 
 
             <div class="main">
                 <div class="main-inner">
                     <div class="center">
-                        <form action="?<%=token%>" method="POST">
-                            <input type="hidden" name="token" value="<%=token%>">
+                        <form action="?" method="POST">
                             <ul class="mod-form">
                                 <li>
                                     <label class="mod-form-label" for="J-user_name">用户名：</label>
@@ -34,7 +33,13 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <input type="submit" value="注册">
+                                    <label class="mod-form-label" for="J-user_auto">记住密码：</label>
+                                    <div class="mod-form-box">
+                                        <input type="checkbox" id="J-user_auto" checked name="auto">
+                                    </div>
+                                </li>
+                                <li>
+                                    <input type="submit" value="登录">
                                 </li>
                             </ul>
                         </form>
