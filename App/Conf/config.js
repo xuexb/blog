@@ -13,7 +13,7 @@ module.exports = {
     },
 
 
-    port: 8360, //监听端口
+    port: 8899, //监听端口
     // host: '', //监听的host
     // use_proxy: false, //是否使用代理访问，如：nginx。开启后不能通过ip+端口直接访问
     // encoding: 'utf-8', //输出数据的编码
