@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <% include inc/head.tpl %>
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
+    <link rel="stylesheet" href="<%=C('res')('hljs/hljs.css')%>">
 </head>
-<body>
+<body<%if(auto){%> class="auto"<% } %>>
     <% include inc/bar.tpl %>
 
     <div class="wrap">
@@ -21,7 +21,7 @@
     </div>
 
     <% include inc/footer.tpl %>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script src="<%=C('res')('hljs/hljs.js')%>"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>

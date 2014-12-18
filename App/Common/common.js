@@ -1,6 +1,4 @@
 //这里定义一些全局通用的函数，该文件会被自动加载
-
-
 /**
  * Url解析对象
  * @type {object}
@@ -25,14 +23,26 @@ Url.article = {
         }
 
         return '/list/' + id + '/' + (page ? page + '/' : '');
+    },
+    search: function(val, page){
+        return '/search/'+ val + '/' + (page ? page + '/' : '');
+    },
+    create: function(){
+        return '/admin/article/create';
+    },
+    edit: function(id){
+        return '/admin/article/edit?id='+ id;
+    },
+    del: function(id){
+        return '/admin/article/del?id='+ id;
     }
 }
 
 
 
-Url.center = {
+Url.admin = {
     login: function(){
-        return '/center/login/';
+        return '/admin/login';
     }
 }
 
@@ -42,13 +52,16 @@ Url.center = {
  * @type {Object}
  */
 Url.tags = {
-    list: function(id, url) {
+    list: function(id, url, page) {
         if (url) {
             id = url;
         }
 
-        return '/tags/' + id + '/';
+        return '/tags/' + id + '/' + (page ? page + '/' : '');
     },
+    index: function(){
+        return '/tags/';
+    }
 }
 
 
@@ -160,7 +173,7 @@ global.get_page = function(opt, url) {
         if (pageCount < 7) {
             for (i; i <= pageCount; i++) {
                 if (page === i) {
-                    str += '<span class="on">' + i + '</span>';
+                    str += '<span class="current">' + i + '</span>';
                 } else {
                     str += '<a href="' + render(i) + '">' + i + '</a>';
                 }
@@ -168,7 +181,7 @@ global.get_page = function(opt, url) {
         } else {
             var start, end;
             if (page === 1) {
-                str += '<span class="on">1</span>';
+                str += '<span class="current">1</span>';
             } else {
                 str += '<a href="' + render(1) + '">1</a>';
             };
@@ -189,7 +202,7 @@ global.get_page = function(opt, url) {
             for (var i2 = start; i2 < end; i2++) {
                 if (i2 !== 1 && i2 !== pageCount) { //避免重复输出1和最后一页
                     if (i2 === page) {
-                        str += '<span class="on">' + i2 + '</span>';
+                        str += '<span class="current">' + i2 + '</span>';
                     } else {
                         str += '<a href="' + render(i2) + '">' + i2 + '</a>';
                     };
@@ -213,7 +226,7 @@ global.get_page = function(opt, url) {
         }
 
 
-        str = '<div class="page">' + str + '</div>';
+        str = '<div class="ui-page mt20">' + str + '</div>';
     }
 
     return str;

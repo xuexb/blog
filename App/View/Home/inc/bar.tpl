@@ -8,13 +8,13 @@
 
         <ul class="bar-nav fr clear">
             <li>
-                <a href="#"<% if(nav_type === 'home'){ %> class="current"<% } %>>首页</a>
+                <a href="/"<% if(nav_type === 'home'){ %> class="current"<% } %>>首页</a>
             </li>
             <li>
                 <span<% if(nav_type === 'article'){ %> class="current"<% } %>>文章</span>
                 <div class="bar-nav-dropdown">
                     <% (LIST || []).forEach(function(val){ %>
-                        <a href="<%=val.uri%>" <%if(nav_list_id && nav_list_id === val.id){ %> class="current"<% } %>><%=val.name%></a>
+                        <a href="<%=Url.article.list(val.id, val.url)%>" <%if(nav_list_id && nav_list_id === val.id){ %> class="current"<% } %>><%=val.name%></a>
                     <% }); %>
                 </div>
             </li>
@@ -22,10 +22,10 @@
                 <a href="#">Demo</a>
             </li>
             <li>
-                <a href="#"<% if(nav_type === 'tags'){ %> class="current"<% } %>>标签</a>
+                <a href="<%=Url.tags.index()%>"<% if(nav_type === 'tags'){ %> class="current"<% } %>>标签</a>
             </li>
             <li>
-                <a href="#"<% if(nav_type === 'about'){ %> class="current"<% } %>>关于我</a>
+                <a href="<%=Url.article.view(0, 'xieliang')%>"<% if(nav_type === 'about'){ %> class="current"<% } %>>关于我</a>
             </li>
             <li>
                 <a href="#"<% if(nav_type === 'message'){ %> class="current"<% } %>>留言</a>

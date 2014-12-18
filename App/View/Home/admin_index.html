@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <% include inc/admin_head.tpl %>
 </head>
-<body>
+<body<%if(auto){%> class="auto"<% } %>>
     <% include inc/bar.tpl %>
 
     <div class="wrap">
         <div class="w clear">
+            <h2 class="ui-crumbs">
+                我的首页
+            </h2>
             <div class="main">
                 <div class="main-inner">
                     <div class="center">
-                        我的主页
+                        <a href="<%=Url.article.create()%>">发表文章</a>
                     </div>
                 </div>
             </div>

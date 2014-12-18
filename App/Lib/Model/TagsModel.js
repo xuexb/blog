@@ -17,7 +17,7 @@ module.exports = Model(function() {
                 isPage: false,
                 cache: false,
                 where: null,
-                field: 'id, name, create_uid, create_date, update_date, hit, url',
+                field: 'id, name, create_date, update_date, hit, url',
                 one: false
             }, options || {});
 

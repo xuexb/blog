@@ -12,23 +12,23 @@ var App = {};
  */
 App.error_msg = function(str){
     this.assign('errmsg', str);
+    this.assign('back_url', this.referer());
     return this.display('Home:index:error');
 }
 
 
-// /**
-//  * 前置操作
-//  */
-// App.__before = function() {
-//     var self = this;
+/**
+ * 前置操作 ,临时的判断是否登录
+ */
+App.__before = function() {
+    var self = this;
 
-//     // 获取用户数据
-//     return self.action('Home:Common:user_check').then(function(user_name){
-//         self.user_name = user_name || null;//用户数据,如果为空则说明没有登录
-//         self.assign('user_info', self.user_name);//给模板赋值
-//         return self;
-//     });
-// }
+    return self.session('user_name').then(function(data) {
+        self.user_name = data;
+        self.assign('user_name', data);
+        return self;
+    });
+}
 
 
 
@@ -38,6 +38,7 @@ App.error_msg = function(str){
  */
 App.success_msg = function(str){
     this.assign('errmsg', str);
+    this.assign('back_url', this.referer());
     return this.display('Home:index:success');
 }
 
@@ -66,16 +67,20 @@ App.init = function(http) {
     arr.push(self.__hot_search());
 
     return Promise.all(arr).then(function(data) {
-        (data[0] || []).forEach(function(val){
-            val.uri = Url.article.list(val.id, val.url);
-        });
+        //处理宽屏
+        var auto = parseInt(self.get('auto') || self.cookie('auto'), 10) || 0;;
+        self.assign('auto', auto);
+        self.cookie('auto', auto);
+
         self.assign("LIST", data[0]);
         self.LIST = data[0];
-        self.assign("new_article", data[1]);
-        self.assign("hot_search", data[2]);
+        self.assign('new_article', data[1]);
+        self.assign('hot_search', data[2]);
+        self.assign('view_search', '');
+        self.assign('links', false);
+        self.assign('key', '');
         self.assign('Url', Url);
-
-        self.assign('user_name', 'xuexb');
+        self.assign('ui-auto', self.cookie('ui-auto'));
         return data;
     });
 }
@@ -103,16 +108,7 @@ App.__get_new_article = function(top) {
     return D('article').order('id DESC').limit(top || 10)
         .cache(true)
         .field('title, url, id')
-        .select()
-        .then(function(data) {
-
-            //修正文章链接
-            data.forEach(function(val) {
-                val.uri = Url.article.view(val.id, val.url);
-            });
-
-            return data;
-        });
+        .select();
 }
 
 
@@ -194,70 +190,15 @@ App.__get_list = function(options) {
                 }
             }));
 
-            //修正链接
-            val.uri = Url.article.view(val.id, val.url);
-
             //发布时间
             val.create_date = Date.elapsedDate(val.create_date, 'yyyy-M-d');
         });
 
         return Promise.all(arr).then(function(list_data) {
             content_data.forEach(function(val, index) { //把分类的数据叠加到主数据上
-                if (list_data[index]) {
-                    val.list_name = list_data[index].name;
-                    val.list_uri = Url.article.list(list_data[index].id, list_data[index].url);
-                }
+                val.list_data = list_data[index];
             });
             return data;
-        });
-    }).then(function(data){//查标签
-        var content_data = options.isPage ? data.data : data;
-        var arr = [];
-        var TagsIndex;
-
-        if(content_data.length === 0){
-            return data;
-        }
-
-        TagsIndex = D('TagsIndex');
-
-        content_data.forEach(function(val){
-            arr.push(TagsIndex.get({
-                where: {
-                    article_id: val.list_id
-                },
-                field: 'tags_id',
-                one: 1
-            }));
-        });
-
-        return Promise.all(arr).then(function(temp) {
-            var Tags = D('Tags');
-            var arr = [];
-
-            temp.forEach(function(val){
-                if(val.tags_id){
-                    arr.push(Tags.get({
-                        one: 1,
-                        field: 'name, id, url',
-                        where: {
-                            id: val.tags_id
-                        }
-                    }));
-                }
-            });
-
-            return Promise.all(arr).then(function(tags_data) {
-
-                tags_data.forEach(function(val){
-                    val.uri = Url.tags.list(val.id, val.url);
-                });
-
-                // 附加到主对象上
-                data.tags_data = tags_data;
-// console.log(data)
-                return data;
-            });
         });
     });
 }

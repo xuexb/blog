@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <% include inc/admin_head.tpl %>
 </head>
-<body>
+<body<%if(auto){%> class="auto"<% } %>>
     <% include inc/bar.tpl %>
 
     <div class="wrap">
@@ -18,7 +18,7 @@
             <div class="main">
                 <div class="main-inner">
                     <div class="center">
-                        <form action="?" method="POST">
+                        <form action="?" method="POST" autocomplete="off">
                             <ul class="mod-form">
                                 <li>
                                     <label class="mod-form-label" for="J-user_name">用户名：</label>

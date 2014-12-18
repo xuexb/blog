@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <% include inc/head.tpl %>
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
+    <link rel="stylesheet" href="<%=C('res')('hljs/hljs.css')%>">
 </head>
-<body>
+<body<%if(auto){%> class="auto"<% } %>>
     <% include inc/bar.tpl %>
 
     <div class="wrap">
@@ -51,15 +51,20 @@
                         </div>
                     </div>
 
-
+                    <% if(prev_article || next_article){ %>
                     <div class="article-detail-nav mt20">
+                        <% if(prev_article){ %>
                         <p>
-                            上一篇：<a href="#">谢亮</a>
+                            上一篇：<a href="<%=Url.article.view(prev_article.id, prev_article.val)%>"><%=prev_article.title%></a>
                         </p>
+                        <% } %>
+                        <% if(next_article){ %>
                         <p>
-                            下一篇：<a href="#">谢亮</a>
+                            下一篇：<a href="<%=Url.article.view(next_article.id, next_article.val)%>"><%=next_article.title%></a>
                         </p>
+                        <% } %>
                     </div>
+                    <% } %>
 
                     <div class="article-detail-comment mt20">
                         <!-- 评论 -->
@@ -91,7 +96,7 @@
     <% include inc/footer.tpl %>
 
 
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script src="<%=C('res')('hljs/hljs.js')%>"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
