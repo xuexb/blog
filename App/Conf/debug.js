@@ -13,7 +13,7 @@ module.exports = {
     },
 
 
-    port: 8360, //监听端口
+    port: 88, //监听端口
     // host: '', //监听的host
     // use_proxy: false, //是否使用代理访问，如：nginx。开启后不能通过ip+端口直接访问
     // encoding: 'utf-8', //输出数据的编码
@@ -82,7 +82,7 @@ module.exports = {
     db_port: '3306', // 端口
     db_name: 'xuexb', // 数据库名
     db_user: 'root', // 用户名
-    db_pwd: 'XIELIANG918', // 密码
+    db_pwd: 'xieliang', // 密码
     db_prefix: '', // 数据库表前缀
     db_charset: 'utf8', // 数据库编码默认采用utf8
     // db_ext_config: {}, //数据库连接时候额外的参数
