@@ -331,9 +331,10 @@ App.viewAction = function() {
                 return self.__404Action();
             }
 
-
+            // 列表数据
             list_data = res[0];
 
+            //标签数据
             self.assign('tags_data', res[1]);
 
 
@@ -353,13 +354,27 @@ App.viewAction = function() {
             //发布时间
             data.update_date = Date.elapsedDate(data.update_date, 'yyyy-M-d h:m');
 
+            //处理内容分页
+            //# 4
+            var page = parseInt(self.get('page'), 10) || 1;
+            var page_data = data.markdown_content.split(C('view_page'));
+            var page_size = page_data.length;
+            if(page_size !== 1){
+                if(page < 1){
+                    page = 1;
+                } else if(page > page_size){
+                    page = page_size;
+                }
+
+                data.markdown_content = page_data[page];
+            }
+
 
             self.assign("data", data);
 
             //初始导航
             //单独处理
             var nav_type;
-
             if (url === 'xieliang') {
                 nav_type = 'about';
             } else if (url === 'zaixianliuyan') {
