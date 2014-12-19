@@ -19,7 +19,7 @@
                 </div>
             </li>
             <li>
-                <a href="#">Demo</a>
+                <a href="http://github.xuexb.com/">Demo</a>
             </li>
             <li>
                 <a href="<%=Url.tags.index()%>"<% if(nav_type === 'tags'){ %> class="current"<% } %>>标签</a>
@@ -28,7 +28,7 @@
                 <a href="<%=Url.article.view(0, 'xieliang')%>"<% if(nav_type === 'about'){ %> class="current"<% } %>>关于我</a>
             </li>
             <li>
-                <a href="#"<% if(nav_type === 'message'){ %> class="current"<% } %>>留言</a>
+                <a href="<%=Url.article.view(0, 'zaixianliuyan')%>"<% if(nav_type === 'message'){ %> class="current"<% } %>>留言</a>
             </li>
             <li>
                 <div class="bar-nav-rss">

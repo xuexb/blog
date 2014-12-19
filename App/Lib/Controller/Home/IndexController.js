@@ -70,6 +70,7 @@ App.tagsAction = function() {
     }).then(function(tags_data) {
         self.assign('tags_data', tags_data);
         self.assign('title', '标签_学习吧');
+        self.__set_nav('tags');
         return self.display();
     });
 }
@@ -374,7 +375,7 @@ App.viewAction = function() {
                 page: page
             }, Url.article.view(data.id, data.url, '{$page}')));
 
-            
+
             self.assign("data", data);
 
             //初始导航

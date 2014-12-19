@@ -3,7 +3,7 @@ module.exports = {
     view_page: '{{view_page}}',//文章分页标识
 
 
-    static_type: 'src',
+    static_type: 'dist',
     static_url: '/',
     static_version: new Date() - 0,
     dist: function(url, version){
@@ -22,7 +22,7 @@ module.exports = {
     // url_pathname_suffix: '.html', //不解析的pathname后缀，这样利于seo
     // app_tag_on: true, //是否支持标签功能
     // url_resource_on: true, //是否监听静态资源类请求
-    url_resource_reg: /^(src\/|res\/|static\/|favicon\.ico|robot\.txt)/, //判断是否是静态资源的正则
+    url_resource_reg: /^(src\/|dist\/|res\/|static\/|favicon\.ico|robot\.txt)/, //判断是否是静态资源的正则
     // url_route_on: true, //是否开启自定义路由功能
 
     // post_json_content_type: ['application/json'], //post数据为json时的content-type
