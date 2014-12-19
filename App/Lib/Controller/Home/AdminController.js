@@ -320,10 +320,10 @@ App.createArticleAction = function() {
 App.loginAction = function() {
     var self = this;
 
-    F('user_info', {
-        user_name: 'xuexb',
-        user_pass: 'xieliang'
-    })
+    // F('user_info', {
+    //     user_name: 'xuexb',
+    //     user_pass: 'xieliang'
+    // })
 
     if (self.isPost()) {
         return self.loginPost();
