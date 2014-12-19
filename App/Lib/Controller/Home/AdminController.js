@@ -310,7 +310,7 @@ App.createArticleAction = function() {
     var self = this;
     self.assign('data', {});
     self.assign('type', 'create');
-    return self.display('Home:Admin:editArticle');
+    return self.display('Home:admin:editArticle');
 }
 
 
