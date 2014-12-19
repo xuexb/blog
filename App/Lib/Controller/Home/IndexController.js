@@ -96,17 +96,18 @@ App.searchAction = function() {
         isPage: true,
         page: page
     }).then(function(data) {
+        var key_reg = new RegExp(key, 'gi');
 
         //关键词高亮
         data.data.forEach(function(val) {
             if (val.title) {
-                val.title = val.title.replace(key, function($0) {
+                val.title = val.title.replace(key_reg, function($0) {
                     return '<mark>' + $0 + '</mark>';
                 });
             }
 
             if (val.markdown_content_list) {
-                val.markdown_content_list = val.markdown_content_list.replace(key, function($0) {
+                val.markdown_content_list = val.markdown_content_list.replace(key_reg, function($0) {
                     return '<mark>' + $0 + '</mark>';
                 });
             }
