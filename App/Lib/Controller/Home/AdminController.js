@@ -226,11 +226,11 @@ App.updateArticleAction = function() {
 
     // 转成md
     marked = require('marked');
-    temp = data.content.replace(new RegExp(C('list_mark', 'g')), ''); //替换列表标识为空
+    temp = data.content.replace(new RegExp(C('list_mark'), 'g'), ''); //替换列表标识为空
     data.markdown_content = marked(xss_html(temp)); //去标签
 
     // 列表用内容字段
-    data.markdown_content_list = App.get_list_content(data.content);
+    data.markdown_content_list = App.get_list_content(data.content.replace(new RegExp(C('view_page'), 'g'), ''));
 
     // 更新时间
     data.update_date = new Date() - 0;
@@ -239,24 +239,29 @@ App.updateArticleAction = function() {
     if (type === 'create') {
         data.create_date = data.update_date;
 
-        return D('Article').thenAdd(data, {
+        temp = {
             title: data.title,
-            url: data.url,
             _logic: 'OR'
-        }, true).then(function() {
+        }
+
+        if(data.url){
+            temp.url = data.url;
+        }
+
+        return D('Article').thenAdd(data, temp, true).then(function(res) {
             if(res.type !== 'add'){
                 return self.error_msg('文章标题或者链接已存在');
             }
             return self.success_msg('创建成功');
         }).catch(function() {
-            return self.error_msg('创建失败')；
+            return self.error_msg('创建失败');
         });
     }
 
     // 这里只能是编辑了
     return D('Article').where({
         id: id
-    }).update(data).then(function(res) {
+    }).update(data).then(function() {
         return self.success_msg('保存成功');
     }).catch(function() {
         return self.error_msg('保存失败');
@@ -305,7 +310,7 @@ App.createArticleAction = function() {
     var self = this;
     self.assign('data', {});
     self.assign('type', 'create');
-    return self.display();
+    return self.display('Home:Admin:editArticle');
 }
 
 

@@ -10,12 +10,12 @@ var Url = global.Url = {};
  * @type {Object}
  */
 Url.article = {
-    view: function(id, url) {
+    view: function(id, url, page) {
         if (url) {
             id = url;
         }
 
-        return '/html/' + id + '.html';
+        return '/html/' + id + '.html' + (page ? '?page='+ page : '');
     },
     list: function(id, url, page) {
         if (url) {

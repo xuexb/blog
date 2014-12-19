@@ -144,6 +144,14 @@ background-color:#e8e8e8;}
     padding:10px;
 }
 
+/*详情分页*/
+.article-detail .ui-page{
+    border:none;
+    padding:0;
+    padding-bottom:10px;
+    text-align:center;
+}
+
 /*详情页的上,下一个*/
 .article-detail-nav{
     border:1px solid  #ddd;

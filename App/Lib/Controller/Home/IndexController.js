@@ -366,10 +366,15 @@ App.viewAction = function() {
                     page = page_size;
                 }
 
-                data.markdown_content = page_data[page];
+                data.markdown_content = page_data[page - 1];
             }
+            // 内容分页
+            self.assign('view_page', get_page({
+                total: page_size,
+                page: page
+            }, Url.article.view(data.id, data.url, '{$page}')));
 
-
+            
             self.assign("data", data);
 
             //初始导航
