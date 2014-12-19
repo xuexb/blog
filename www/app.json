@@ -1,0 +1,38 @@
+{
+    "task":{
+        "dist": [
+            "dist-copy:all",
+            "dist-css:global"
+        ]
+    },
+    "css": {
+        "global": {
+            "src": [
+                "ui/reset.css",
+                "ui/bar.css",
+                "ui/page.css",
+                "ui/footer.css",
+                "ui/markdown.css"
+            ],
+            "sprite": {
+                "src": "ui/blog.css",
+                "options": {
+                    "imgName": "sprite0.png",
+                    "imagepath": "ui/sprite/",
+                    "spritedest": "ui/",
+                    "spritepath": "./"
+                }
+            },
+            "dest": "ui/global.css"
+        }
+    },
+    "js": {
+    },
+    "copy": {
+        "all": {
+            "src": [
+                "ui/**/*.{jpg,gif,png}"
+            ]
+        }
+    }
+}
