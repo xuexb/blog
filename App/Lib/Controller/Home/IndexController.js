@@ -30,9 +30,18 @@ App.indexAction = function() {
 
 /**
  * 标签列表
+ * @param {int} page 页码
+ * @param {string} url 标签url
  */
 App.tag_listAction = function() {
 
+    var self = this,
+        page = parseInt(self.get('page'), 10) || 1,
+        url = self.get('url');
+
+
+
+    return self.display();
 }
 
 
@@ -78,6 +87,8 @@ App.tagsAction = function() {
 
 /**
  * 搜索列表页
+ * @param {string} key 关键字
+ * @param {int} page 页码
  */
 App.searchAction = function() {
     var self = this,
@@ -115,23 +126,23 @@ App.searchAction = function() {
 
         //如果有这个词，则存库里
         //且必须有数据，第一页
-        if(data.count > 0 && page === 1){
+        if (data.count > 0 && page === 1) {
             return D('Search').thenAdd({
                 name: key,
                 hit: 0
             }, {
                 name: key
-            }, true).then(function(update_data){
+            }, true).then(function(update_data) {
                 return D('Search').where({
                     id: update_data.id
-                }).updateInc('hit').then(function(){
+                }).updateInc('hit').then(function() {
                     return data;
                 });
             });
         }
 
         return data;
-    }).then(function(data){
+    }).then(function(data) {
         self.assign({
             list: data.data,
             key: key,
@@ -146,7 +157,8 @@ App.searchAction = function() {
 
 /**
  * 列表
- * @return {[type]} [description]
+ * @param {string} url 分类的url
+ * @param {int} page 页码
  */
 App.listAction = function() {
     var self = this,
@@ -195,6 +207,7 @@ App.listAction = function() {
 
 /**
  * 查看文章页
+ * @param {string|int} url 文章url或者文章id
  */
 App.viewAction = function() {
     var self = this,
@@ -220,7 +233,7 @@ App.viewAction = function() {
 
     //判断来路是否从搜索过来
     referer = self.referer();
-    if(referer && referer.indexOf("search/") > 0){
+    if (referer && referer.indexOf("search/") > 0) {
         referer = referer.match(/search\/(.*?)\//) || ['', ''];
         referer = decodeURIComponent(referer[1]);
     } else {
@@ -257,7 +270,7 @@ App.viewAction = function() {
         ];
 
         //如果是搜索过来的
-        if(referer){
+        if (referer) {
             sql.push(D('Article').get({ //查相关文章 2
                 field: 'id, title, url',
                 limit: 6,
@@ -279,21 +292,21 @@ App.viewAction = function() {
         }
 
         sql.push(D('Article').get({ //上一个 3
-            field: 'id, title, url',
-            one: 1,
-            limit: 1,
-            where: {
-                id: data.id - 1
-            }
-        }),
-        D('Article').get({ //下一个 4
-            field: 'id, title, url',
-            one: 1,
-            limit: 1,
-            where: {
-                id: data.id + 1
-            }
-        }));
+                field: 'id, title, url',
+                one: 1,
+                limit: 1,
+                where: {
+                    id: data.id - 1
+                }
+            }),
+            D('Article').get({ //下一个 4
+                field: 'id, title, url',
+                one: 1,
+                limit: 1,
+                where: {
+                    id: data.id + 1
+                }
+            }));
 
 
         //更新点击数
@@ -343,7 +356,7 @@ App.viewAction = function() {
             //喜欢变量
             self.assign('view_search', res[2]);
             self.assign('view_search_type', referer ? 'search' : 'like');
-            if(referer){
+            if (referer) {
                 self.assign('key', referer);
             }
 
@@ -361,10 +374,10 @@ App.viewAction = function() {
             var page = parseInt(self.get('page'), 10) || 1;
             var page_data = data.markdown_content.split(C('view_page'));
             var page_size = page_data.length;
-            if(page_size !== 1){
-                if(page < 1){
+            if (page_size !== 1) {
+                if (page < 1) {
                     page = 1;
-                } else if(page > page_size){
+                } else if (page > page_size) {
                     page = page_size;
                 }
 

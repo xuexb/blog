@@ -157,6 +157,7 @@ App.get_list_content = function(str) {
 
 /**
  * 发布文章
+ * @param {int} id 文章id
  */
 App.editArticleAction = function() {
     var self = this;
@@ -183,6 +184,8 @@ App.editArticleAction = function() {
         self.assign('data', data);
         self.assign('type', 'edit');
 
+        self.assign('title', '修改文章_学习吧');
+
         return self.display();
     });
 }
@@ -190,6 +193,15 @@ App.editArticleAction = function() {
 
 /**
  * 通用保存文章
+ * @type GET
+ * @param {int} id 文章id
+ *
+ * @type POST
+ * @param {int} hit 文章点击数
+ * @param {int} list_id 文章分类id
+ * @param {string} url 文章url
+ * @param {string} title 文章标题
+ * @param {string} content 文章内容
  */
 App.updateArticleAction = function() {
     var self = this,
@@ -271,6 +283,7 @@ App.updateArticleAction = function() {
 
 /**
  * 删除文章
+ * @param {int} id 文章id
  */
 App.delArticleAction = function() {
     var self = this,
@@ -336,6 +349,8 @@ App.loginAction = function() {
 
 /**
  * 登录提交
+ * @param {string} user_name 用户名
+ * @param {string} user_pass 用户密码
  */
 App.loginPost = function() {
     var self = this;
@@ -374,7 +389,6 @@ App.loginPost = function() {
 
 /**
  * 后台主页
- * @return {[type]} [description]
  */
 App.indexAction = function() {
     var self = this;
