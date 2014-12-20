@@ -184,7 +184,7 @@ App.listAction = function() {
                 list: data.data,
                 page: data.count > 0 ?
                     get_page(data, Url.article.list(list_data.id, list_data.url, '{$page}')) : '',
-                title: '学习吧 - 专注计算机基础知识和WEB前端开发'
+                title: list_data.name + '_学习吧'
             });
 
             return self.display();
