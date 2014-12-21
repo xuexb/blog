@@ -3,4 +3,5 @@ App/Runtime/Cache
 node_modules/
 output/
 output.tar.gz
+.DS_Store
 sftp-config.json
