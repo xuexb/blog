@@ -1,0 +1,1034 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+<title>学习吧</title>
+<link>http://www.xuexb.com</link>
+<description>专注计算机基础知识，web前端发展</description>
+<language>zh-cn</language>
+<generator>谢亮</generator>
+<pubDate>2011-09-11</pubDate>
+<lastBuildDate>2014-12-21</lastBuildDate>
+<item>
+<link>http://www.xuexb.com/html/242.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>在IE里json格式提示下载</title>
+<author>谢亮</author>
+<description><![CDATA[<p>就在去年的冬天，在&quot;美食天下&quot;的时候做ajax异步的时候遇到个问题，因为异步是采用Json格式的进行交互，感觉挺好用，但发现在IE里这个返回值会让提示你下载。。。当时是使用<code>header(&#39;Content-type: application/x-javascript&#39;);</code>解决的，不过今天发现在使用<code>iframe</code>的时候（比如上传）还是会提示下载，且这个链接在IE里打不开，一打就提示下载，于是被坑了。。。其实iframe的方式就好比是在新窗口里打开，最好的解决办法就是设置为<code>text/html</code>，这样浏览器就会认为这是一段html代码，而在前端则使用<code>$.parseJSON</code>解析，当然<code>$.ajax.dataType=json</code>则自带这个解析了。。。</p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/241.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>北京地铁刷卡三代</title>
+<author>谢亮</author>
+<description><![CDATA[<p>2013.10.10来的北京，记得当时做地铁的时候很迷茫，由于上下班高峰期人很多，刷卡成了我到北京比较头疼的事了。。。看下图，其实我只是下车的时候慢了1.37秒。。。</p>
+<p><img src="http://www.xuexb.com/upload/image/20141209/20141209111743_85095.png" alt=""></p>
+<h2 id="-">刷卡第一代</h2>
+<p>当轮到我的时候，我就刷我的卡，并&quot;仔细&quot;的听是否有滴的响声，如果有，则直接过去，但是出了个问题，就是有的刷卡机&quot;喇叭&quot;可能坏了，她不响。。。我就得等，很多时候都得找地换的工作人员解决。由于我就在某站死认准哪个刷卡机是有&quot;喇叭&quot;的。。。</p>
+<h2 id="-">刷</h2>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/240.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>我想写个md文档在线编辑器类</title>
+<author>谢亮</author>
+<description><![CDATA[<p>最近工作中使用的md文档(markdown文档)写API接口啥的，感觉吊炸天，使用的Git做版本控制，但由于多人协作开发有些硬伤不可避免，比如：</p>
+<ul>
+<li>没有在线预览，必须通过路径找到真正的“她”才能查看。。。</li>
+<li>必须使用编辑器的插件才可预览，然后得来回拖啊拖的看。。。</li>
+<li>目录功能不是很强悍，得依赖本地的编辑器来做目录树。。。</li>
+</ul>
+<p>然后就着这些问题，我想着写个node版的md文档在线编写啥的，具备以下功能。。</p>
+<ul>
+<li>通过url可直接进入该md预览，分享的利器了</li>
+<li>在url中添加action=del则删除该文件</li>
+<li>在url中添加action=update且POST数据可更</li>
+</ul>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/239.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>win8.1卸载IIS失败</title>
+<author>谢亮</author>
+<description><![CDATA[<p>windows8.1卸载IIS失败补丁。。。</p>
+<p>妈蛋的，今天卸载老是失败，于是google了下，原来你妹得装个补丁。。。于是，记下来了。。。</p>
+<p><a href="http://www.microsoft.com/zh-CN/download/details.aspx?id=42364">http://www.microsoft.com/zh-CN/download/details.aspx?id=42364</a></p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/238.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>按钮的研究</title>
+<author>谢亮</author>
+<description><![CDATA[<p><a href="http://www.html-js.com/article/Study-on-the-front-end-of-the-button-style-my-way">http://www.html-js.com/article/Study-on-the-front-end-of-the-button-style-my-way</a></p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/237.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>nodejs下request中文gb2312乱码问题</title>
+<author>谢亮</author>
+<description><![CDATA[<p>使用nodejs的request包请求中文gb2312网页时会乱码，默认：</p>
+<pre><code class="lang-js">var request = require(&#39;request&#39;);
+
+request(&#39;http://www.qq.com&#39;, function(error, response, body) {
+    if (!error &amp;&amp; response.statusCode == 200) {
+        console.log(body);
+    }
+});
+</code></pre>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/236.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>用jQuery创建iframe中name的坑</title>
+<author>谢亮</author>
+<description><![CDATA[<p>尼玛上次做Upload.js的时候就发现了，由于没有记笔记导致今天还在这个问题上辗转了15分钟。。。妈蛋。。。</p>
+<p>起因是用iframe+form来做上传功能，创建一个form&gt;input来插入到body里，（ps：最好别插在你上传按钮dom的旁边，因为可能会出现form里套form，然后。。。），让input[type=file]的元素超大点，然后让form的width,heigth于你上传按钮的一致，然后定位吧少年。。。</p>
+<p>再创建个iframe。。。</p>
+<p>那么坑来了。。。</p>
+<p>因为页面可能有多个这样的实例，你需要用guid来给每个实例打个标识，因为现在需要在提交form的时候提交</p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/235.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>jquery绑定文本框变化</title>
+<author>谢亮</author>
+<description><![CDATA[<pre><code class="lang-js">$(&#39;textarea&#39;).on(&#39;input propertychange&#39;, function() {
+    $(&#39;.msg&#39;).html($(this).val().length + &#39; characters&#39;);
+});
+</code></pre>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/234.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>计算分页的东东</title>
+<author>谢亮</author>
+<description><![CDATA[<p>感谢乱码</p>
+<pre><code class="lang-js">/*var page = 3; // config.data.page, // 当前页
+    page_cout = 4; // self.__page_count, // 总页
+    start = page - 2, // 起始页码
+    page_size = 5, // 最多出现5个页码
+    len = 1, // 计数器
+    end = 0; // 结束页码
+
+var ret = []; // 测试结果数据
+
+if (page_size &gt;= page_cout) { // 页码不足，全部显示
+    for(var i
+</code></pre>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/233.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>Event.js</title>
+<author>谢亮</author>
+<description><![CDATA[<p><a href="https://github.com/xuexb/my.js/tree/master/src/module/event">https://github.com/xuexb/my.js/tree/master/src/module/event</a></p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/232.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>360浏览器文档模式</title>
+<author>谢亮</author>
+<description><![CDATA[<p>转自@贤心</p>
+<p>ie模式，分为浏览器模式和文档模式。</p>
+<p>1、在360下的ie，浏览器模式默认是你电脑上最高版本的ie、文档模式默认是ie7</p>
+<p>2、在搜狗下的ie，就是ie7 </p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/231.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>html5桌面通知</title>
+<author>谢亮</author>
+<description><![CDATA[<p>/**</p>
+<ul>
+<li>桌面提醒</li>
+<li>@description 只支持 谷歌,火狐,360Chrome模式, 在不支持的浏览器不做任何处理, 如果是cmd/amd请根据自己的需求打包, 会在页面加载时会请求用户授权, 如果已授权或者拒绝的跳过</li>
+<li>@author guoliang &amp;&amp; xieliang
+*</li>
+<li>@example</li>
+<li>1, new notification(&quot;我是标题&quot;);</li>
+<li>2, notification(&quot;我是标题&quot;);//new不new都一样, 但我希望你new</li>
+<li>3, new notification(&quot;我是标题&quot;, &quot;我</li>
+</ul>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/230.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>常用的sublime2插件</title>
+<author>谢亮</author>
+<description><![CDATA[<p>convertToUTF8 编码支持</p>
+<p>docBlockr 注释</p>
+<p>Emmet 你懂的 tag</p>
+<p>jsFormat js格式化 ctrl+alt+f</p>
+<p>OmniMarkupPreviewer md文件预览</p>
+<p>css Format   css格式化</p>
+<p>open_browser 自定义插件,来自ququ</p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/229.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>sublime2里css属性后面去空格</title>
+<author>谢亮</author>
+<description><![CDATA[<p>配置包里的CSS</p>
+<pre><code>Packages\CSS\css_completions.py 行190 
+l.append((p, p + &quot;: &quot;)) 
+
+//替换成
+
+l.append((p, p + &quot;:&quot;))
+</code></pre><p>配置Emmet</p>
+<pre><code>{
+    &quot;preferences&quot;: {
+        &quot;css.valueSeparator&quot;: &quot;:&quot;,
+        &quot;css.propertyEnd&quot;: &quot;;&quot;
+    }
+}
+</code></pre>]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/228.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>sublime2打开浏览器配置</title>
+<author>谢亮</author>
+<description><![CDATA[<p>转自ququ</p>
+<pre><code>import sublime, sublime_plugin
+import webbrowser
+
+url_map = {
+    &#39;C:\\web\\html\\&#39; : &#39;http://127.0.0.1/&#39;,
+}
+
+class OpenBrowserCommand(sublime_plugin.TextCommand):
+    def run(self,edit):
+        window = sublime.active_window()
+        window.run_command(&#39;save&#39;)
+        url = self.view.file_name()
+        flag = False
+        for path, domain in url_map.items():
+            if url.startswith(path):
+                print path
+                print url
+                print domain
+                url = url.replace(path, domain).replace(&#39;\\&#39;, &#39;\/&#39;)
+                flag = True
+                break
+        if not flag:
+            url = &#39;file://&#39; + url
+        webbrowser.open_new(url)
+</code></pre><p>快捷快设置:</p>
+<pre><code>[
+    {
+        &quot;keys&quot;: [&quot;f12&quot;],
+        &quot;command&quot;: &quot;open_browser&quot;
+    }
+]
+</code></pre>]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/227.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>jshint配置</title>
+<author>谢亮</author>
+<description><![CDATA[<p>以后的js代码必须通过jshint检查</p>
+<pre><code class="lang-json">{
+    &quot;bitwise&quot;: true,//禁止使用位移
+    &quot;asi&quot;: true,//行尾;号
+    &quot;eqeqeq&quot;: true,//===
+    &quot;curly&quot;: true,//必须使用 if(){} 中的{}
+    //&quot;forin&quot;: true,//
+    &quot;freeze&quot;: true,//禁止扩展原型
+    &quot;immed&quot;: true,//立即执行代码必须有 () 
+    &quot;indent&quot;: 4,
+    &quot;latedef&quot;: true,//禁止在变量没定义前使用
+    &quot;newcap&quot;: true,//构造函数必须大写开头
+    &quot;noarg&quot;: true,//不能使用arguments.caller与arguments.callee.
+    &quot;noempty&quot;: true,//禁止使用空方法
+    &quot;plusplus&quot;: false,//++
+    &quot;quotmark&quot;: true,//引号
+    &quot;undef&quot;: true,//未定义的变量
+    &quot;unused&quot;: &quot;strict&quot;,//形参
+    &quot;strict&quot;: true,//严格模式
+    &quot;maxlen&quot;: 115,
+    &quot;boss&quot;: false,//()中赋值
+    &quot;debug&quot;: false,
+    &quot;eqnull&quot;: false,// a == null
+    &quot;evil&quot;: false,//eval
+    &quot;expr&quot;: false,//? :
+    &quot;funcscope&quot;: false,//块内变量在外部使用
+    &quot;globalstrict&quot;: false,
+    &quot;lastsemic&quot;: true,//允许最后一个不是;
+    &quot;laxbreak&quot;: false,//不安全的换行?
+    &quot;laxcomma&quot;: false,//允许,在行首
+    &quot;loopfunc&quot;: false,//块内定义方法
+    &quot;multistr&quot;: true,//\号换行
+    &quot;notypeof&quot;: true,//不能比较无效的值
+    &quot;sub&quot;: true,// a[&#39;a&#39;] =&gt; a.a
+    &quot;browser&quot;: true,
+    &quot;predef&quot;: [
+        &quot;seajs&quot;,
+        &quot;define&quot;
+    ]
+}
+</code></pre>
+<p>网址: <a href="http://jshint.com/">http://jshint.com/</a></p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/226.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>20140829分享正则大纲</title>
+<author>谢亮</author>
+<description><![CDATA[<p>time: 2014-08-29 12:30 hit: 606 comments: 0 author: 谢亮
+1, 正则符号
+^ 开头,  [^]非
+$字符结尾(每行)
+\转义
+.匹配除\n外其他词
+?前面0次或者1次
+*前面的0+次
+{n} n次
+{n,} n+次
+{n,m} n-m次
+| 或
+[123][0,3]集合 , [123]匹配123是不成立
+[1-3][a-z][A-Z]集合范围
+[^123][^a-z]集合非
+\d 0-9
+\D 非数字
+\n\r
+\s 空,包含\f\n\r\t\v
+\S 非空
+()分组
+2, 正则的组成
+/正则/修饰</p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/225.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>从表单模块看用户体验</title>
+<author>谢亮</author>
+<description><![CDATA[<p><a href="http://www.html-js.com/article/2226">http://www.html-js.com/article/2226</a></p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/224.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>博客改版计划</title>
+<author>谢亮</author>
+<description><![CDATA[<p>博客要改版, 后端使用 nodejs的一个mvc框架 thinkjs + mysql, 前端使用 seajs+jquery,使用grunt部署代码, 以下是部分计划. (这次主要完成后端代码, 等后端ok后前端重新切图)</p>
+<p><a href="https://github.com/xuexb/blog">https://github.com/xuexb/blog</a></p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/223.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>易结网包配置说明</title>
+<author>谢亮</author>
+<description><![CDATA[<p><a href="https://github.com/xuexb/grunt-app">https://github.com/xuexb/grunt-app</a></p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/222.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>grunt项目总结</title>
+<author>谢亮</author>
+<description><![CDATA[<p><a href="http://www.w3ctech.com/topic/130">http://www.w3ctech.com/topic/130</a></p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/221.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>前端资源合并</title>
+<author>谢亮</author>
+<description><![CDATA[<h2 id="-">连接数的概念</h2>
+<p>连接数也是所谓的请求数, 每个资源都会从客服端独立发一个请求到服务端(当然重复的不算, 这些资源包括css,js,img等)</p>
+<h2 id="-">连接数多带来的问题</h2>
+<p>因为每一个连接数都要经历一个&quot;漫长的过程&quot;, 要发送TCP请求, 然后什么DNS解析成IP, 各种连, 各种多, 然而人要知道每个连接都(可能)有cookie, Header请求头, Respose响应头等信息, 而即使这些数据再小, 也吃不住量大吧? 比如你的静态资源cookie有100个字, 你的页面有10个css, 50个图, 10个JS, 那么你累加下看看cookie有多大, 当然现实中我们的连接数</p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/220.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>我们项目grunt管理</title>
+<author>谢亮</author>
+<description><![CDATA[<p>安装, 安装node环境 + grunt, 在静态项目根目录执行cmd npm install安装所有模块, 并把 自定义的sprite.js覆盖到模块文件夹里... 然后就ok了</p>
+<h2 id="1-">1, 传统开发模式的缺点:</h2>
+<ol>
+<li>依赖合并 -&gt; 手动合并,不利于调试,js更明显</li>
+<li>压缩问题 -&gt; 手动/半自动压缩, 每次一修改就得压缩, 常见于 .min.*</li>
+<li>调试问题, 由于线上域名/目录的限制, 不宜本地环境调试</li>
+<li>sprite合并问题, 需要手动拼接,或者工具半自动化, 如果再加上文件合并就更难了, 会添加很大的开发成本</li>
+<li>seajs(cmd)合并问题, 需要</li>
+</ol>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/219.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>20140718分享会大纲</title>
+<author>谢亮</author>
+<description><![CDATA[<p>1, jquery的事件系统和缓存系统</p>
+<p>事件的起因, 不能解除匿名函数</p>
+<p>绑定:</p>
+<p>给dom元素打上一个以版本随机号的标识, 比如1, 然后在 $.cache 上建立1的缓存对象, 如 $.cache.1.events, data; 从而引入缓存系统, 好处是只是在dom上标识下, 数据全在 $.cache 上, 而删除的时候会根据标识来删除cache,</p>
+<p>会生成 cache[id] = {</p>
+<p>handle: 统一一个句柄,</p>
+<p>events: 事件集,</p>
+<p>data: 数据</p>
+<p>}</p>
+<p>事件空间,触发</p>
+<p>由于有缓存对象的存在, jquery可使用 trigg</p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/218.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>网站越来越好是不是这样?</title>
+<author>谢亮</author>
+<description><![CDATA[<p>大家好, 我是新来的...</p>
+<p>好久没写博文了, 最近工作繁忙, 且事多, 我上学习吧的次数都有限, 最近几晚回首&quot;美食天下&quot;的网站, 看了看其alexa,排名啥的发现天空顿时晴朗... 什么? 你是不是在想, 这不是哥以前的厂长吗? 是的, 但你有没有发现, 微风轻轻的吹过我的&quot;秀发&quot;, 你闻到了什么? 对, 是飘柔的味道... 只要9块9...</p>
+<p>网站越来越好是不是这样?</p>
+<h2 id="-">用户群</h2>
+<p>定位自己的用户群体, 分析这些人的&quot;嗜好&quot;, 添加有意义, 比较贴合民心的东东, 让用户粘度提升, 这也是为何TB要屏蔽某度收录...</p>
+<p>针对用户群定制出相关的策略, 比如习惯, 主题</p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/217.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>自动登录解决方案</title>
+<author>谢亮</author>
+<description><![CDATA[<p>在网站上登录的地方有没有看到过类似&quot;记住登录&quot;这样的复选框? 如图:</p>
+<p><img src="http://www.xuexb.com/upload/image/20140625/20140625191015_30638.png" alt=""></p>
+<p>你会发现, 只要登录的时候勾选上这个框框(ps: 你的提示文字最好使用label+for), 即使你关闭浏览器再重新打开还是&quot;已经登录的状态&quot;, 可能你也知道, 大多网站都是用session记录标识, 因为使用cookie记录不太安全, 可以被伪造, 那么session关闭浏览器会清空, 那还乍的记录标识呢? 嘎嘎, 接着往下看</p>
+<h2 id="session-cookie">session+cookie</h2>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/216.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>我的grunt前端自动编译</title>
+<author>谢亮</author>
+<description><![CDATA[<p>这周末在家就没出门, 一直在研究 grunt, 感觉太帅气了, 让我们前端各种好用, 各种自动, 目前只用了 合并, 压缩, 调试, 未来还要加: 性能优化, 代码质量, 跨域, md5版本号等</p>
+<p>起初一直感觉grunt,nodejs啥的都是高大上, 后来经@心姐点拨, 心里顿时明朗, 于是这周末就潜心修炼, 最终小有成就感...</p>
+<p><a href="https://github.com/xuexb/grunt-app">https://github.com/xuexb/grunt-app</a></p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/215.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>从网速慢看用户体验</title>
+<author>谢亮</author>
+<description><![CDATA[<p>在FEer开发过程中我们大多数都是在内网环境, 或者&quot;快速&quot;的外网环境, 什么是快速的? 200Kb/s 以上都算快的, 但你试过在50Kb/s的网络里看自己的项目吗? 是不是在说哪还有这么慢的网速, 我明确地说, 我现在就是... 甚至于有时候还达不到50Kb, 当然这种情况常见于某些不良邻居在用 Qvod p2p加速看大片呢...</p>
+<p>从网速慢的时候看用户体验, 你是否注意到有这些问题存在呢?</p>
+<h2 id="-">页面加载时间</h2>
+<p>你是否考虑到减少页面中的iframe数量, js代码后置, css前置, 图片延迟加载, 片段按需加载呢? 要知道在低网速的时候你的一个100Kb的文件(img,c</p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/214.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>我的前端笔记</title>
+<author>谢亮</author>
+<description><![CDATA[<h2 id="string-">string相关</h2>
+<pre><code class="lang-text">charAt 找索引的字符
+charCodeAt 找索引的字符的字符编码
+replace 替换
+split 字符分隔
+search 用正则搜匹配值的索引
+match 用正则搜匹配结果
+substr 截取字符, 为 (起, 字符长), 起支持负数, 但ie8--有问题
+substring 截取字符, 为 (起, 止), 不支持负数
+slice 截取字符, 为 (起, 止), 支持负数
+indexOf 字符出现位置 (字符, 起的位置?)
+lastIndexOf 字符出现位置, 从后算 (字符, 起的位置?)
+toUpperCa
+</code></pre>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/213.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>总结前端面试知识点</title>
+<author>谢亮</author>
+<description><![CDATA[<p>&quot;abasfasfaa3333aabdgfsdafsdafsaxxxdfsdfsasdfsdfds3424234f&quot; 找出重复最多的字符和重复次数(实现 方法越多加分)</p>
+<p>富文本框的原理,</p>
+<p>selection,range 对象</p>
+<p>跨域的方法</p>
+<p>css哪些属性可以继承</p>
+<p>css hack</p>
+<p>on,delegate,live的区别</p>
+<p>dom节点的操作, 文档碎片</p>
+<p>事件的兼容性(冒泡,默认行为,事件源等)</p>
+<p>seajs的原理...</p>
+<p>Date类的兼容问题</p>
+<p>function map(obj){} 用一个map实现{}跟[]的map功能</p>
+<p>int, </p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/212.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>只贴代码不解释</title>
+<author>谢亮</author>
+<description><![CDATA[<pre><code class="lang-js">(function(){
+    /**
+     * 构架函数
+     * @param {string} name 标识名, 如: user, info等
+     */
+    function Class(name){
+        var self = this;
+        self._name = name;
+    }
+
+    /**
+     * 获取数据
+     * @param {string|undefined} key 要获取数据的键名,如果没有该键名则为空对象
+     * @return {object} 最终对象
+     */
+    Class.prototype.get = function(key){
+
+        var json = this._get_data(),
+            i,
+            arr,
+            len;
+
+        if(key){
+            arr = key.split(&quot;.&quot;);
+            len = arr.length;
+
+            for(i = 0; i&lt;len; i++){//遍历出 user.name.value的空间, 然后让这个空间的属性xl=数据
+                json = json[arr[i]] = json[arr[i]] || {};
+            }
+        }
+
+        return json;
+    }
+
+
+    /**
+     * 写入数据
+     * @param {string} key  要写入的键名, 支持用 . 分隔, 如果没有则会创建为对象
+     * @param {data} data 数据包
+     * @return {object}     当前实例
+     */
+    Class.prototype.set = function(key, data){
+        var self = this,
+            json = self._get_data() || {},//获取最新的, 以保证每次更新
+
+            i,
+            arr = key.split(&quot;.&quot;),
+            len = arr.length,
+            temp;
+
+        if(len === 1){// set(&quot;user&quot;, value)
+            json[key] = data;
+        } else if(len === 2){//set(&quot;user.name&quot;, value)
+            json[arr[0]] = json[arr[0]] || {};//注册第一个空间
+            json[arr[0]][arr[1]] = data;
+        } else {//深度空间 set(&quot;user.name.value.xl&quot;, value)
+            temp = json;//临时来一个吧, 用原的遍历会挂
+            for(i = 0; i&lt;len-1; i++){//遍历出 user.name.value的空间, 然后让这个空间的属性xl=数据
+                temp = temp[arr[i]] = temp[arr[i]] || {};
+            }
+            temp[arr[i]] = data;
+        }
+
+
+        self._set_data(stringify(json));//写入到本地
+
+        return self;
+    }
+
+
+    /**
+     * 移除数据
+     * @param  {string} key 键名
+     * @return {object}     当前实例
+     */
+    Class.prototype.remove = function(key){
+        return this.set(key, undefined);
+    }
+
+
+    Class.prototype._set_data = function(value){
+        localStorage.setItem(this._name, value);
+    }
+
+    Class.prototype._get_data = function(){
+        return parse(localStorage.getItem(this._name));
+    }
+
+    Class.prototype._remove_data = function(){
+        localStorage.removeItem(this._name);
+    }
+
+
+    /**
+     * 解析string-&gt;json
+     * @param  {string} str 要解析的字符串,必须为 &#39;{&quot;xl&quot;:1}&#39;
+     * @return {object}     解析后的对象
+     */
+    function parse(str){
+        return JSON.parse(str);
+    }
+
+
+    /**
+     * 解析json=&gt;string
+     * @param  {object} json 要解析的对象
+     * @return {string}      解析后的字符串
+     */
+    function stringify(json){
+        return JSON.stringify(json);
+    }
+
+
+
+    var demo1 = new Class(&quot;demo1&quot;);
+    demo1.set(&quot;msc.user.data.userId&quot;, 1).set(&quot;msc.xl&quot;, &quot;xieliang&quot;);
+    console.log(demo1.get());
+    console.log(demo1.get(&quot;msc.user&quot;));
+    console.log(demo1.get(&quot;xxx.xxx&quot;));//由于没有xxx空间则为空{}
+    console.log(demo1.get());
+    console.log(demo1.remove(&quot;msc.user&quot;).get(&quot;msc&quot;));
+    console.log(demo1.remove(&quot;xl.xl.x&quot;).get());//其实这里这样感觉不太帅, 由于没有xl.xl却选用了set创建了...
+}());
+</code></pre>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/211.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>我的前端之路</title>
+<author>谢亮</author>
+<description><![CDATA[<p>早在西元前, 对电脑热爱有佳的我就一直有个梦想, 就是想做个程序员, 于是我为了我的梦想一直在努力...</p>
+<h2 id="-">曾经回忆</h2>
+<p>在初一的时候经常去书店去看蓝色皮那么厚的书, 现在已经不知道是什么名称了, 但她把我的梦想扬帆起航, 她教我认识了BIOS, 是我的启蒙书.</p>
+<p>自从不上学后出去打工, 从一个报亭里见到了《黑客X档案》, 于是省吃俭用买了, 里面介绍了电脑各方面的小技巧, 虽说很多都看不懂, 但感觉很厉害的样子.</p>
+<p>通过我的努力从方远学校里学了table,dw, 但我发现毕业后不是那么回事. 貌似不知道什么兼容性, 什么div,css... 顿时感觉人生如何的黑暗, 于是</p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/210.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>今天遇到的面试题</title>
+<author>谢亮</author>
+<description><![CDATA[<p>今天在五道口某公司面试的5个笔试题, 记录下来以纪念我那执着的青春.(ps:题目是以记忆形式想的, 但大概意思是对的, 答案在这里也是只写的思路)</p>
+<p>1, 使用2种以上的方式请求js</p>
+<p>用createElement创建一个script,然后appendChild到head标签里</p>
+<p>2, 直接使用write转义后输出</p>
+<p>2, 判断一个字符是否以字母开头, 然后后面是 字母+数字+_, 总长度为5-20</p>
+<p>正则 /^[a-z][0-9a-z_]{4,19}$/i</p>
+<p>3, 判断一个字符串里重复最终的那个是啥,重复次数是多少</p>
+<p>1, 使用split分隔, 然后遍历, 如果临</p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/209.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>构建前端用户系统之登录退出</title>
+<author>谢亮</author>
+<description><![CDATA[<p>前端页面中难免会有一些静态HTML文件, 这时就会遇到用户状态的判断问题, 于是想到使用js的ajax请求来处理整个前端用户相关的东东...</p>
+<h2 id="-">版本一</h2>
+<p>思路是在页面中指定位置预留一个js钩子, 然后在页面加载完成后向后端发送ajax请求, 判断用户是否登录, 并写到钩子里相应文本. 于是版本一产生了...</p>
+<pre><code class="lang-js">(function($){
+    var user = window.user = {};
+
+    // 用户数据
+    user.data = {};
+
+    // 用户状态, 0未登录, 非0则视为已登录, 可扩展为用户等级
+    user.status = 0;
+
+    /**
+     * 初始化
+     * @return {object} user对象
+     */
+    user.init = function(){
+        //负责从后端ajax请求用户是否登录, 如果已登录则返回用户相关信息, 否则视为未登录
+        //请求完成后改变用户的status状态, 并把用户信息写入到user.data上
+
+        $.get(&quot;后端url&quot;, function(res){
+            if(res.error === 0){//返回值同后端协定
+                user.status = 1;
+                user.data.userName = res.data.userName;//模拟用户名
+            } else {
+                user.status = 0;
+                user.data = {};
+            }
+
+            //渲染状态到页面
+            user._renderHTML();
+        }, &#39;json&#39;);
+
+        //模拟惰性方法以防止页面多次使用
+        user.init = function(){
+            return user;
+        }
+
+        return user;
+    }
+
+    /**
+     * 用户登录
+     * @param  {Function} callback 回调
+     * @return {object}            user对象
+     */
+    user.login = function(callback){
+        if(&quot;function&quot; === typeof callback){
+            if(user.status !== 0){//如果用户已登录则直接运行回调, 参数为用户数据
+                callback.call(user, user.data);
+            } else {
+                //未登录时弹出用户登录层,让其登录, 登录完成后刷新当前页面, 当然也可以像 youku 一样不刷新页面, 但要做的工作非常多, 这里不解释
+            }
+        }
+
+        return user;
+    }
+
+
+    /**
+     * 渲染用户状态到页面, 当前为模拟用
+     */
+    user._renderHTML = function(){
+        var html;
+
+        if(user.status !== 0){//已登录
+            html = &#39;您好 &#39;+ user.data.userName +&#39; , &lt;a href=&quot;#&quot;&gt;退出&lt;/a&gt;&#39;;
+        } else {
+            html = &#39;请先登录&lt;a href=&quot;#&quot;&gt;登录&lt;/a&gt;&#39;;
+        }
+
+        $(&quot;#J_bar_html&quot;).html(html);
+    }
+}(jQuery));
+</code></pre>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/208.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>快速提升百度权重的“神技”</title>
+<author>谢亮</author>
+<description><![CDATA[<p>声明: 转自 武汉SEO - 自来水 </p>
+<p>刷百度权重其实并不是什么很稀奇的事，传统的做法就是通过刷百度指数来达到“提高”百度权重的目的。</p>
+<p>前几天发现在“seo”的百度搜索下拉框中出现了一个诡异的新词“50+seo”，正常人看见第一反应都会说：指数这么高，绝对是刷的，没有人会这么去搜的。没错，我也这么认为，当时也没多想。</p>
+<p>今天突然在群里有人发给出一个链接，说是免费提升百度权重，只要在百度口碑给博客好评就行。我打开链接，3秒钟立马关掉，就是简单的在刷百度指数嘛。但是5秒钟过后我又犹豫了，不对啊，刷百度指数多少也是一项“技术服务”（淘宝上有卖的），而且肯定会有成本，怎么说免费提高百度</p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/qijiechuanshuo_zhuxian.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>七界传说+诛仙_读后感</title>
+<author>谢亮</author>
+<description><![CDATA[<p>记得我是从 2005 年看的 《七界传说》+《诛仙》, 其中的主人公 陆云和张小凡 让不少读者由衷的佩服, 也感谢作者给广大书迷带来了如此出色的书...</p>
+<p>这两本书是我最爱的书, 当然还有一些唐家三少的书...</p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/links.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>友情链接</title>
+<author>谢亮</author>
+<description><![CDATA[<h2 id="-web-">分享我在WEB前端认识的一些牛人, 或者常看网站的链接...</h2>
+<p><a href="http://sentsin.com/daohang/">前端圈</a> - 前端贤心组织的前端导航, 有很多影响前端界的大神的博客链接</p>
+<p><a href="http://caibaojian.com/">前端博客</a> - 记录web前端开发的那些事</p>
+<p><a href="http://say.sentsin.com/">say技术论坛</a> - 码农的异想世界</p>
+<p><a href="http://www.itbbb.com/">IT-北北报</a> - 传播互联网意识形态，经常混迹在IT圈~</p>
+<p><a href="http://www.myfreax.com/">myfreax</a></p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/205.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>我的前端工作流程</title>
+<author>谢亮</author>
+<description><![CDATA[<p>当一个项目/产品需要我负责/制作时, 我大概流程是这样的, 当然可能跟实际的某方面有偏差, 因为很多地方因 地,人,天 而异...</p>
+<h2 id="-">需求分析期</h2>
+<p>项目在产品确定功能后希望在设计前开一次需求会, 比如跟 前端,后端, 产品设计都大概看下功能简介, 然后都各自评估下, 有什么问题/难点都提出来讨论</p>
+<p>比如: 某功能会涉及到 类似淘宝那样的配送地址, 要求可以做为搜索条件的, 这个就会涉及到前端的展示,储存(编辑时初始化)效果,和数据结构, 而后端可能会涉及到数据在库里的储存方式, 查询方式, 从这个功能都可以提出自己的方案, 最终合并为最终方案,要求能解决前/后端问题, 且要达</p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/204.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>为什么我不要加班</title>
+<author>谢亮</author>
+<description><![CDATA[<p>敢问为啥要加班呢?</p>
+<p>我加班的原则同 知乎 上的某同学一致, 为: 救急不救穷, 如果是项目真急, 放心, 既然我做这个工作, 就会尽最大努力把她做好, 加班就成水到渠成了, 要明白怎么码字都是一天, 效率跟质量是不同的, 当然我能在工作时间内把安排的工作很好的做完, 试问为何要加班?</p>
+<p>我把青春给了工作, 却冷落了家人, 为何不早点回家给老婆一个拥抱, 抱着孩子溜溜, 吃上老婆做的热腾腾的饭呢? 你说不是吗?</p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/203.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>【拉勾专场】抛弃简历！让代码说话！ - 答题</title>
+<author>谢亮</author>
+<description><![CDATA[<p>闲时上网不轻易间看了个有意思的东东, (链接: <a href="https://www.jinshuju.net/f/EGQL3D">https://www.jinshuju.net/f/EGQL3D</a>), 题目是:</p>
+<blockquote>
+<p>FizzBuzzWhizz</p>
+<p>你是一名体育老师，在某次课距离下课还有五分钟时，你决定搞一个游戏。此时有100名学生在上课。游戏的规则是：</p>
+<ol>
+<li><p>你首先说出三个不同的特殊数，要求必须是个位数，比如3、5、7。</p>
+</li>
+<li><p>让所有学生拍成一队，然后按顺序报数。</p>
+</li>
+<li><p>学生报数时，如果所报数字是第一个特殊数（3）的倍数，那么不能说该数字，而要说Fizz；如果所报数字是第二个特殊数（5）的倍数，那么要说Buzz；如果</p>
+</li>
+</ol>
+</blockquote>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/202.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>浅谈 == 与 === 的性能问题 [转自乱码]</title>
+<author>谢亮</author>
+<description><![CDATA[<p>大家都知道 == 是不区分类型是否相同，只要结果一致即可，而 === 则是连类型也必须相同才行。</p>
+<p>比如  &quot;1&quot; == 1  是 true, 而  &quot;1&quot; === 1  是 false ，这个理所当然都知道的。</p>
+<p>但很少有人用 === 因为很多新手对 js 不熟，为了保证不出错所以全用 ==或者是因为 == 方便，不必考虑结果类型，等等，反正 == 比 === 方便，而且不容易出错。确实 == 比较方便而且兼容性好，但是他的性能问题也不容小嘘的。</p>
+<p>翻阅 V8 源码（查看 == 源码， 查看 === 源码）可以很明显发现 == 源码里各种比较各种转换。</p>
+<p>而 === 源码里只</p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/201.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>jQuery技巧之移除元素</title>
+<author>谢亮</author>
+<description><![CDATA[<p>上次某深夜跟 @乱码 研究怎么快速高效使用jQuery移除页面中元素呢? 起因是因为看到某度的一小代码片段, 如:</p>
+<pre><code class="lang-js">$li.off().find(&#39;.file-panel&#39;).off().end().remove();
+</code></pre>
+<blockquote>
+<p>都感觉不是很好, 于是果断翻起jQuery的源码, 如下:</p>
+</blockquote>
+<pre><code class="lang-js">// keepData is for internal use only--do not document
+remove: function(selector, keepData) { // selector 为选择器, keepData为是否保留数据
+</code></pre>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/200.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>研究的几个美食站的结构</title>
+<author>谢亮</author>
+<description><![CDATA[<p>经查看, 发现几个不错的美食站, 发现都是功力深厚, 技术强大, 不论从优化,前端,后端等出发都做的不错, 值的学习...</p>
+<h2 id="-">豆果结构:</h2>
+<p>各种分类:  /shicai/名称, /caipu/名称, 日记相关以 /diet/ 开头, 如果是详情页 则为 detail/id, 列表则为 showlist/page, 而菜谱详情页用的是 /cookbook/id.html, 而菜谱主页面居然用的ajax瀑布流, 真是细到家了, 搜索更能体现细心, 如: /search/分类/关键词/页码, 结构分明, 赞个</p>
+<p>前端资源使用的concat优化</p>
+<h2 id="-">好豆结构</h2>
+<p>菜谱页 以</p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/199.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>js全兼容复制组件</title>
+<author>谢亮</author>
+<description><![CDATA[<p>看了很多关于 flash+js 复制的文件, 而工作中正好要用到, 于是就是造轮子, 不要问我为啥造轮子, 我只会说: 不造学不会...</p>
+<p>然后造轮子的路上是痛苦的, 各种兼容问题, 各种事件, 哎, 也罢, 最终也成了... 感谢 张鑫旭 - js+flash(as3)实现复制文字 让我有的思路...</p>
+<p>目前测试兼容ie6+,谷歌,火狐等...当然我是用ietester测的... 有问题直接联系我吧.. 谢谢</p>
+<p>当前接口API:</p>
+<pre><code class="lang-js">/**
+ * 复制文字
+ * 突然觉得不知道用空间是对还是错...
+ * @todo 要做显示,隐藏的接口
+ * @example
+ *     1, 单个节点复制
+ *         msc.tools.copy({
+ *            id:&quot;#id&quot;,
+ *            str:&quot;要复制的内容&quot;
+ *        });
+ *     
+ *     2, 多个节点复制
+ *         msc.tools.copy({
+ *             id:&quot;#id .copy&quot;,
+ *             copy:&quot;111&quot;
+ *         });
+ *     3, 动态获取值
+ *         msc.tools.copy({
+ *             id:&quot;#id&quot;,
+ *             copy:function(){
+ *                 return this.getAttribute(&quot;data-value&quot;);//this为当前的dom
+ *             }
+ *         });
+ *     4, 外部设置内容
+ *         msc.tools.copy({
+ *             id:&quot;#text&quot;
+ *         });
+ *
+ *         msc.tools.copy(&quot;#text&quot;, &quot;我要复制&quot;) === msc.tools.copy({id:&quot;#test&quot;, str:&quot;我要复制&quot;})
+ *     5, 移除实例
+ *         msc.tools.copy.remove(str||ele||jquery);//支持移除数组对象
+ *     6, 配置参数
+ *         config.id 选择器, 支持多个, dom,jquery,str
+ *         config.str 要复制的内容, 支持fn, this指向当前的dom
+ *         config.path swf路径
+ *         config.success 成功回调, 回调参数为复制的内容, this指向当前的dom
+ *         config.mouseover, mouseout, mousedown, mouseup 四个事件, this指向当前的dom
+ *
+ * 
+ */
+</code></pre>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/198.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>for循环里的那些事</title>
+<author>谢亮</author>
+<description><![CDATA[<p>看了一个帖子是一面试官出的几道题, 真心涨姿势了, 但那个for里感觉坑很大, 由于是各种测, 各种试, 内心里感谢腾讯了... so -&gt; 由腾讯@周面试官引起的 &quot;血案&quot;...</p>
+<p>ps: 这里的for循环指的是js的语言哦...</p>
+<p>帖子连接: 点击立刻传送, 不用魔法石</p>
+<h2 id="for-">for循环的构成结构;</h2>
+<pre><code class="lang-js">var i;//为什么要在这定义呢? 请看jQuery源码
+for(i=0; i&lt;10; i++){
+    //这里是循环的block
+}
+</code></pre>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/197.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>seajs的加载原理</title>
+<author>谢亮</author>
+<description><![CDATA[<p>刚跟 @乱码 讨论了下seajs的加载原理, 做了下手记, 记下来... 啦啦啦</p>
+<blockquote>
+<p>define添加到到seajs.cache里里#723 =&gt; 检测检测下依赖+返回值整个 #746 =&gt; 页面use触发(主入口,并留下回调埋点)#795  =&gt;  执行mod.load#813 =&gt; 分析所有依赖如果没有加载则加载#557 =&gt; fetch是加载js文件 =&gt; 如果全部加载完成执行mod.onload =&gt; onload负责运行回调(use里的埋点,CA又转回来了##798) =&gt; 回调里又运行所有依赖模块的exec#662 =&gt; exec里负责查看define的模块是是否被运行#66</p>
+</blockquote>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/196.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>一个测试 dom 和 $的小东东</title>
+<author>谢亮</author>
+<description><![CDATA[<p>一个测试dom和$的小东东, 只为留着, 不为别的</p>
+<pre><code class="lang-js">//DOM是已知的
+
+var J_top_bar = document.createElement(&quot;div&quot;);
+
+J_top_bar.style.cssText = &#39;position:fixed;left:100px;top:100px;background-color:#fff;color:#000;padding:10px;border:2px solid #09f;&#39;;
+
+document.body.appendChild(J_top_bar);
+
+J_top_bar.setAttribute(&quot;data-xl&quot;, 1);
+
+J_top_bar.innerHTML = &#39;1&#39;;
+
+
+//js
+function a (argument) {
+    //不用模拟, 困为
+    var that = this;
+    if(!that._mark){
+        that._mark = 1;
+        //操作dom
+        that.innerHTML = that.innerHTML * 1 + 1;
+
+        that.setAttribute(&quot;xl&quot;, that.getAttribute(&quot;xl&quot;) * 1 + 1);
+    }
+
+    delete that._mark;//去掉标识
+}
+
+
+//$
+function b (argument) {
+
+    //模拟每一次的点击, 因为 点击里面要用 $this  = this;
+    var $this = jQuery(this);
+    if(!$this.data(&quot;mark&quot;)){
+        $this.data(&quot;mark&quot;);
+
+        //操作dom
+        $this.html(function(i, val){
+            return val * 1 + 1;
+        }).attr(&quot;data-xl&quot;, $this.attr(&quot;data-xl&quot;) * 1 + 1);
+
+    }
+
+    $this.data(&quot;mark&quot;, 0);//去掉标识
+
+}
+var start = new Date - 0;
+
+// console.time(&quot;dom&quot;);
+for(var i = 0;i&lt;10000;i++){
+    a.call(J_top_bar);
+}
+// console.timeEnd(&quot;dom&quot;);
+alert(&quot;dom : &quot;+ ((new Date - 0) - start))
+
+start = new Date - 0;
+
+// console.time(&quot;$&quot;);
+for(var i = 0;i&lt;10000;i++){
+    b.call(J_top_bar);
+}
+// console.timeEnd(&quot;$&quot;);
+alert(&quot;$ : &quot;+ ((new Date - 0) - start))
+</code></pre>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/195.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>试着做前端统计系统</title>
+<author>谢亮</author>
+<description><![CDATA[<p>什么是日志系统呢? 我这里说的不是 blog, 也不是qzone的日志, 而是web统计中的日志, 比如说统计网站的PV啊, 某个东东的点击啊, 某个人的爱爱啊, 哪个坏蛋报错啊啥的.. 等等这些都算统计的范围...</p>
+<h2 id="-">用什么工具做统计呢?</h2>
+<p>有的人可能想到做中转URL,比如: 点击广告AV的时候跳转到一个 ad.php, 然后带上些参数, 就成了: ad.php?id=123 等等参数, 然后入库, 但这样的数据是庞大的, 你的库的主力完全不用浪费在这上面...</p>
+<p>来我们看下百度是怎么做的:</p>
+<p>![](<a href="http://www.xuexb.com/upload/image/">http://www.xuexb.com/upload/image/</a></p>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/194.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>github常用语法</title>
+<author>谢亮</author>
+<description><![CDATA[<p>github —— 前端的你值的拥有!</p>
+<p>记录下一些常用的标签说明.</p>
+<h2 id="1-">1, 标题</h2>
+<p>以 # 开头, 空格相隔, # 的数量就是标题的级别,如: # 代表h1, ##代码h2</p>
+<pre><code class="lang-text"># h1
+## h2
+### h3
+#### h4
+##### h5
+###### h6
+</code></pre>
+]]></description>
+</item>
+<item>
+<link>http://www.xuexb.com/html/193.html</link>
+<pubDate>2014-12-19</pubDate>
+<title>developer 你不得不服的一些东东</title>
+<author>谢亮</author>
+<description><![CDATA[<p>developer 你需要深思的问题</p>
+<p>1, 你有没有在qzone看动态的时候经常发现 别人的动态里,点赞的前几个总是你认识的好友? </p>
+<p>2, 有没有试过 qzone 的 &quot;那年的今天&quot; 功能?</p>
+<p>3, qzone的空间访问痕迹是怎么处理的?</p>
+<p>4, 加qq好友时有没有发现qq会自动智能给你分下组? 是按什么规则的?</p>
+<p>5, 邮件里有没有经常收到taobao,tmall等这类的猜你喜欢?什么逻辑推荐的?</p>
+<p>6, 为什么网页上baidu,alimama等广告总是围绕着你搜索的关键词?</p>
+<p>7, 我居然用圈子找到了我8年前的好友...</p>
+<p>8, 微博的大数据关注处理</p>
+]]></description>
+</item>
+</channel></rss>
