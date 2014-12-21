@@ -5,7 +5,7 @@
         </div>
         <div class="fr">
             <h3>
-                <a href="#">前端谢亮[小武]</a>
+                <a href="/html/xieliang.html">前端谢亮[小武]</a>
                 <a href="https://github.com/xuexb" title="进入Github"><i class="icons icon-github"></i></a>
                 <a href="http://www.weibo.com/pcxuexb/" title="新浪微博"><i class="icons icon-sina"></i></a>
             </h3>

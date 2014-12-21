@@ -110,15 +110,10 @@ App.searchAction = function() {
         var key_reg = new RegExp(key, 'gi');
 
         //关键词高亮
+        //只替换标题里的，因为内容是Md生成的html，一替换会出问题
         data.data.forEach(function(val) {
             if (val.title) {
                 val.title = val.title.replace(key_reg, function($0) {
-                    return '<mark>' + $0 + '</mark>';
-                });
-            }
-
-            if (val.markdown_content_list) {
-                val.markdown_content_list = val.markdown_content_list.replace(key_reg, function($0) {
                     return '<mark>' + $0 + '</mark>';
                 });
             }
@@ -394,13 +389,11 @@ App.viewAction = function() {
 
             //初始导航
             //单独处理
-            var nav_type;
+            var nav_type = 'article';
             if (url === 'xieliang') {
                 nav_type = 'about';
             } else if (url === 'zaixianliuyan') {
                 nav_type = 'message';
-            } else {
-                nav_type = 'article';
             }
             self.__set_nav(nav_type, list_data.id);
 
@@ -409,7 +402,12 @@ App.viewAction = function() {
             self.assign('next_article', isEmpty(res[4]) ? null : res[4]);
 
             // 标题
-            self.assign('title', data.title + '_' + list_data.name + '_学习吧');
+            // 处理留言和谢亮
+            if(nav_type === 'article'){
+                self.assign('title', data.title + '_' + list_data.name + '_学习吧');
+            } else {
+                self.assign('title', data.title + '_学习吧');
+            }
 
             return self.display();
         });
