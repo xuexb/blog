@@ -118,10 +118,10 @@ Date.formatDate = function(date, str) {
     getTime = {
         "M+": date.getMonth() + 1, //月份           
         "d+": date.getDate(), //日           
-        "h+": date.getHours() % 12 == 0 ? 12 : date.getHours() % 12, //小时           
-        "H+": date.getHours(), //小时           
-        "m+": date.getMinutes(), //分           
-        "s+": date.getSeconds(), //秒           
+        "h+": date.getHours() % 12 == 0 ? 12 : date.getHours() % 12, //小时
+        "H+": date.getHours(), //小时
+        "m+": date.getMinutes(), //分
+        "s+": date.getSeconds(), //秒
         "S": date.getMilliseconds() //毫秒           
     }
 
