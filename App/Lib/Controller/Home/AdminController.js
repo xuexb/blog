@@ -418,6 +418,242 @@ App.__before = function() {
 }
 
 
+/**
+ * 生成站点地图
+ */
+App.createSitemapAction = function(){
+    var self = this,
+        sql = [];
+
+
+    //查分类
+    sql.push(D('List').get({
+        cache: true,
+        field: 'url, name'
+    }));
+
+    //查文章
+    sql.push(D('Article').get({
+        limit: 150,
+        cache: true,
+        field: 'id, url, update_date, title, markdown_content_list'
+    }));
+
+    //查搜索
+    sql.push(D('Search').get({
+        cache: true,
+        field: 'name',
+        limit: 10
+    }));
+
+    return Promise.all(sql).then(function(data){
+        var res = {};
+        res.home = {
+            title: '学习吧',
+            url: 'http://www.xuexb.com'
+        }
+
+        res.list = data[0];
+        res.article = data[1];
+        res.search = data[2];
+
+        //生成xml
+        App.createXml(res);
+
+        // 生成txt
+        App.createTxt(res);
+
+        // 生成html
+        App.createTxt(res);
+
+        // 生成rss
+        App.createRss(res);
+
+        return self.success_msg('生成成功！');
+    });
+}
+
+
+/**
+ * 生成xml地图
+ * @param  {object} data 数据包 {article: [], list: [], search: []}
+ */
+App.createXml = function(data){
+    var arr = [],
+        fs = require('fs'),
+        path = require('path'),
+        now = Date.formatDate(new Date(), 'yyyy-MM-dd');
+
+    arr.push('<?xml version="1.0" encoding="UTF-8"?>');
+    arr.push('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
+
+
+    // 添加主页
+    arr.push('<url>');
+    arr.push('<loc>'+ data.home.url +'</loc>');
+    arr.push('<lastmod>'+ now +'</lastmod>');
+    arr.push('<changefreq>always</changefreq>');
+    arr.push('<priority>1.0</priority>');
+    arr.push('</url>');
+
+
+    //添加列表
+    data.list.forEach(function(val){
+        arr.push('<url>');
+        arr.push('<loc>'+ data.home.url + Url.article.list(val.id, val.url) +'</loc>');
+        arr.push('<lastmod>'+ now +'</lastmod>');
+        arr.push('<changefreq>always</changefreq>');
+        arr.push('<priority>0.9</priority>');
+        arr.push('</url>');
+    });
+
+    //添加文章
+    data.article.forEach(function(val){
+        arr.push('<url>');
+        arr.push('<loc>'+ data.home.url + Url.article.view(val.id, val.url) +'</loc>');
+        arr.push('<lastmod>'+ Date.formatDate(val.update_date, 'yyyy-MM-dd') +'</lastmod>');
+        arr.push('<changefreq>always</changefreq>');
+        arr.push('<priority>0.8</priority>');
+        arr.push('</url>');
+    });
+
+    //添加文章
+    data.search.forEach(function(val){
+        arr.push('<url>');
+        arr.push('<loc>'+ data.home.url + Url.article.search(val.name) +'</loc>');
+        arr.push('<lastmod>'+ now +'</lastmod>');
+        arr.push('<changefreq>always</changefreq>');
+        arr.push('<priority>0.7</priority>');
+        arr.push('</url>');
+    });
+
+    arr.push('</urlset>');
+
+    fs.writeFileSync(path.resolve(APP_PATH, '../www/sitemap.xml'), arr.join('\n'));
+}
+
+
+/**
+ * 生成rss地图
+ * @param  {object} data 数据包 {article: [], list: [], search: []}
+ */
+App.createRss = function(data){
+    var arr = [],
+        fs = require('fs'),
+        path = require('path'),
+        now = Date.formatDate(new Date(), 'yyyy-MM-dd');
+
+    arr.push('<?xml version="1.0" encoding="UTF-8"?>');
+    arr.push('<rss version="2.0">');
+    arr.push('<channel>');
+    arr.push('<title>'+ data.home.title +'</title>');
+    arr.push('<link>'+ data.home.url +'</link>');
+    arr.push('<description>专注计算机基础知识，web前端发展</description>');
+    arr.push('<language>zh-cn</language>');
+    arr.push('<generator>谢亮</generator>');
+    arr.push('<pubDate>2011-09-11</pubDate>');
+    arr.push('<lastBuildDate>'+ now +'</lastBuildDate>');
+
+    //添加文章
+    data.article.length = 50;
+    data.article.forEach(function(val){
+        arr.push('<item>');
+            arr.push('<link>'+ data.home.url + Url.article.view(val.id, val.url) +'</link>');
+            arr.push('<pubDate>'+ Date.formatDate(val.update_date, 'yyyy-MM-dd') +'</pubDate>');
+            arr.push('<title>'+ val.title +'</title>');
+            arr.push('<author>谢亮</author>');
+            arr.push('<description><![CDATA['+ val.markdown_content_list +']]></description>');
+        arr.push('</item>');
+    });
+
+
+    arr.push('</channel></rss>');
+
+    fs.writeFileSync(path.resolve(APP_PATH, '../www/rss.xml'), arr.join('\n'));
+}
+
+
+/**
+ * 生成txt地图
+ * @param  {object} data 数据包 {article: [], list: [], search: []}
+ */
+App.createTxt = function(data){
+    var arr = [],
+        fs = require('fs'),
+        path = require('path');
+
+
+
+    // 添加主页
+    arr.push(data.home.url);
+
+
+    //添加列表
+    data.list.forEach(function(val){
+        arr.push(data.home.url + Url.article.list(val.id, val.url));
+    });
+
+    //添加文章
+    data.article.forEach(function(val){
+        arr.push(data.home.url + Url.article.view(val.id, val.url));
+    });
+
+    //添加文章
+    data.search.forEach(function(val){
+        arr.push(data.home.url + Url.article.search(val.name));
+    });
+
+
+    fs.writeFileSync(path.resolve(APP_PATH, '../www/sitemap.txt'), arr.join('\n'));
+}
+
+
+/**
+ * 生成html地图
+ * @param  {object} data 数据包 {article: [], list: [], search: []}
+ */
+App.createTxt = function(data){
+    var arr = [],
+        fs = require('fs'),
+        path = require('path');
+
+
+    var get = function(url, title){
+        return '<li><a href="'+ url +'">'+ title +'</a></li>';
+    }
+
+    arr.push('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>网站地图_学习吧</title></head><body>');
+
+    arr.push('<h1>网站地图</h1>', '<p>生成于 '+ Date.formatDate(new Date(), 'yyyy-MM-dd HH:m:ss') +'</p>');
+
+    // 添加主页
+    arr.push(get(data.home.url, data.home.title));
+
+
+    arr.push(get('/rss.xml', 'rss订阅'));
+    arr.push(get('/sitemap.xml', 'XML地图'));
+
+    //添加列表
+    data.list.forEach(function(val){
+        arr.push(get(data.home.url + Url.article.list(val.id, val.url), val.name));
+    });
+
+    //添加文章
+    data.article.forEach(function(val){
+        arr.push(get(data.home.url + Url.article.view(val.id, val.url), val.title));
+    });
+
+    //添加文章
+    data.search.forEach(function(val){
+        arr.push(get(data.home.url + Url.article.search(val.name), '搜索 '+ val.name));
+    });
+
+
+    arr.push('</body></html>');
+
+    fs.writeFileSync(path.resolve(APP_PATH, '../www/sitemap.html'), arr.join('\n'));
+}
+
 
 module.exports = Controller("Home/BaseController", function() {
     return App;

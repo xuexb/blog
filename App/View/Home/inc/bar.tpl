@@ -32,7 +32,7 @@
             </li>
             <li>
                 <div class="bar-nav-rss">
-                    <a href="#">RSS</a>
+                    <a href="/rss.xml">RSS</a>
                 </div>
             </li>
         </ul>
