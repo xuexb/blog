@@ -1,2 +1,9 @@
+# xuexb 
+# xieliang
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /src/
+Disallow: /dist/
+Disallow: /res/
+
+Sitemap: http://www.xuexb.com/sitemap.xml
