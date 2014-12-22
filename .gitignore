@@ -2,6 +2,8 @@ App/Runtime/Data/app.pid
 App/Runtime/Cache
 node_modules/
 output/
+nohup.out
 output.tar.gz
 .DS_Store
 sftp-config.json
+upload
