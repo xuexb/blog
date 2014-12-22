@@ -150,8 +150,7 @@ App.__call = function(http) {
  */
 App.__404Action = function(http) {
     this.status(404);
-    return this.end('404');
-    // return this.display(VIEW_PATH + '/Home/404.html');
+    return this.display(VIEW_PATH + '/Home/index_404.html');
 }
 
 
