@@ -1,5 +1,5 @@
 module.exports = {
-    static_type: 'dist',
+    static_type: 'src',
 
 
     port: 88, //监听端口
@@ -67,11 +67,11 @@ module.exports = {
     // session_timeout: 24 * 3600, //服务器上session失效时间，单位：秒
 
     db_type: 'mysql', // 数据库类型
-    db_host: '127.0.0.1', // 服务器地址
+    db_host: 'www.xuexb.com', // 服务器地址
     db_port: '3306', // 端口
     db_name: 'xuexb', // 数据库名
     db_user: 'root', // 用户名
-    db_pwd: 'test', // 密码
+    db_pwd: 'iWENLING918', // 密码
     db_prefix: '', // 数据库表前缀
     db_charset: 'utf8', // 数据库编码默认采用utf8
     // db_ext_config: {}, //数据库连接时候额外的参数

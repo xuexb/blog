@@ -140,7 +140,7 @@ App.__get_list_data = function() {
  * 空操作
  */
 App.__call = function(http) {
-    return this.end('__call')
+    // return this.end('__call')
     return this.__404Action(http);
 }
 

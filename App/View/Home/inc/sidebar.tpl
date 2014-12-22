@@ -1,7 +1,11 @@
 <div class="sidebar">
     <div class="sidebar-author sidebar-box clear">
         <div class="fl">
-            <a href="#"><img src="http://www.xuexb.com/upload/month_1208/201208271431426663.jpg" alt=""></a>
+            <a href="<% if(user_name){ %>/admin/
+                <% }else{ %>/html/xieliang.html
+                <% } %>">
+                <img src="http://www.xuexb.com/upload/month_1208/201208271431426663.jpg" alt="">
+            </a>
         </div>
         <div class="fr">
             <h3>

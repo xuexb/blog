@@ -256,12 +256,12 @@ App.updateArticleAction = function() {
             _logic: 'OR'
         }
 
-        if(data.url){
+        if (data.url) {
             temp.url = data.url;
         }
 
         return D('Article').thenAdd(data, temp, true).then(function(res) {
-            if(res.type !== 'add'){
+            if (res.type !== 'add') {
                 return self.error_msg('文章标题或者链接已存在');
             }
             return self.success_msg('创建成功');
@@ -323,7 +323,7 @@ App.createArticleAction = function() {
     var self = this;
     self.assign('data', {});
     self.assign('type', 'create');
-    return self.display('Home:admin:editArticle');
+    return self.display('Home:admin:editarticle');
 }
 
 
@@ -413,6 +413,8 @@ App.__before = function() {
         } else {
             self.user_name = data;
         }
+
+        self.assign('user_name', data);
         return self;
     });
 }
@@ -420,8 +422,9 @@ App.__before = function() {
 
 /**
  * 生成站点地图
+ * @description 现在先使用笨方法生成吧，后期要换成模板生成
  */
-App.createSitemapAction = function(){
+App.createSitemapAction = function() {
     var self = this,
         sql = [];
 
@@ -446,7 +449,7 @@ App.createSitemapAction = function(){
         limit: 10
     }));
 
-    return Promise.all(sql).then(function(data){
+    return Promise.all(sql).then(function(data) {
         var res = {};
         res.home = {
             title: '学习吧',
@@ -464,7 +467,7 @@ App.createSitemapAction = function(){
         App.createTxt(res);
 
         // 生成html
-        App.createTxt(res);
+        App.createHtml(res);
 
         // 生成rss
         App.createRss(res);
@@ -478,7 +481,7 @@ App.createSitemapAction = function(){
  * 生成xml地图
  * @param  {object} data 数据包 {article: [], list: [], search: []}
  */
-App.createXml = function(data){
+App.createXml = function(data) {
     var arr = [],
         fs = require('fs'),
         path = require('path'),
@@ -490,38 +493,38 @@ App.createXml = function(data){
 
     // 添加主页
     arr.push('<url>');
-    arr.push('<loc>'+ data.home.url +'</loc>');
-    arr.push('<lastmod>'+ now +'</lastmod>');
+    arr.push('<loc>' + data.home.url + '</loc>');
+    arr.push('<lastmod>' + now + '</lastmod>');
     arr.push('<changefreq>always</changefreq>');
     arr.push('<priority>1.0</priority>');
     arr.push('</url>');
 
 
     //添加列表
-    data.list.forEach(function(val){
+    data.list.forEach(function(val) {
         arr.push('<url>');
-        arr.push('<loc>'+ data.home.url + Url.article.list(val.id, val.url) +'</loc>');
-        arr.push('<lastmod>'+ now +'</lastmod>');
+        arr.push('<loc>' + data.home.url + Url.article.list(val.id, val.url) + '</loc>');
+        arr.push('<lastmod>' + now + '</lastmod>');
         arr.push('<changefreq>always</changefreq>');
         arr.push('<priority>0.9</priority>');
         arr.push('</url>');
     });
 
     //添加文章
-    data.article.forEach(function(val){
+    data.article.forEach(function(val) {
         arr.push('<url>');
-        arr.push('<loc>'+ data.home.url + Url.article.view(val.id, val.url) +'</loc>');
-        arr.push('<lastmod>'+ Date.formatDate(val.update_date, 'yyyy-MM-dd') +'</lastmod>');
+        arr.push('<loc>' + data.home.url + Url.article.view(val.id, val.url) + '</loc>');
+        arr.push('<lastmod>' + Date.formatDate(val.update_date, 'yyyy-MM-dd') + '</lastmod>');
         arr.push('<changefreq>always</changefreq>');
         arr.push('<priority>0.8</priority>');
         arr.push('</url>');
     });
 
     //添加文章
-    data.search.forEach(function(val){
+    data.search.forEach(function(val) {
         arr.push('<url>');
-        arr.push('<loc>'+ data.home.url + Url.article.search(val.name) +'</loc>');
-        arr.push('<lastmod>'+ now +'</lastmod>');
+        arr.push('<loc>' + data.home.url + Url.article.search(val.name) + '</loc>');
+        arr.push('<lastmod>' + now + '</lastmod>');
         arr.push('<changefreq>always</changefreq>');
         arr.push('<priority>0.7</priority>');
         arr.push('</url>');
@@ -537,7 +540,7 @@ App.createXml = function(data){
  * 生成rss地图
  * @param  {object} data 数据包 {article: [], list: [], search: []}
  */
-App.createRss = function(data){
+App.createRss = function(data) {
     var arr = [],
         fs = require('fs'),
         path = require('path'),
@@ -546,23 +549,23 @@ App.createRss = function(data){
     arr.push('<?xml version="1.0" encoding="UTF-8"?>');
     arr.push('<rss version="2.0">');
     arr.push('<channel>');
-    arr.push('<title>'+ data.home.title +'</title>');
-    arr.push('<link>'+ data.home.url +'</link>');
+    arr.push('<title>' + data.home.title + '</title>');
+    arr.push('<link>' + data.home.url + '</link>');
     arr.push('<description>专注计算机基础知识，web前端发展</description>');
     arr.push('<language>zh-cn</language>');
     arr.push('<generator>谢亮</generator>');
     arr.push('<pubDate>2011-09-11</pubDate>');
-    arr.push('<lastBuildDate>'+ now +'</lastBuildDate>');
+    arr.push('<lastBuildDate>' + now + '</lastBuildDate>');
 
     //添加文章
     data.article.length = 50;
-    data.article.forEach(function(val){
+    data.article.forEach(function(val) {
         arr.push('<item>');
-            arr.push('<link>'+ data.home.url + Url.article.view(val.id, val.url) +'</link>');
-            arr.push('<pubDate>'+ Date.formatDate(val.update_date, 'yyyy-MM-dd') +'</pubDate>');
-            arr.push('<title>'+ val.title +'</title>');
-            arr.push('<author>谢亮</author>');
-            arr.push('<description><![CDATA['+ val.markdown_content_list +']]></description>');
+        arr.push('<link>' + data.home.url + Url.article.view(val.id, val.url) + '</link>');
+        arr.push('<pubDate>' + Date.formatDate(val.update_date, 'yyyy-MM-dd') + '</pubDate>');
+        arr.push('<title>' + val.title + '</title>');
+        arr.push('<author>谢亮</author>');
+        arr.push('<description><![CDATA[' + val.markdown_content_list + ']]></description>');
         arr.push('</item>');
     });
 
@@ -577,7 +580,7 @@ App.createRss = function(data){
  * 生成txt地图
  * @param  {object} data 数据包 {article: [], list: [], search: []}
  */
-App.createTxt = function(data){
+App.createTxt = function(data) {
     var arr = [],
         fs = require('fs'),
         path = require('path');
@@ -589,17 +592,17 @@ App.createTxt = function(data){
 
 
     //添加列表
-    data.list.forEach(function(val){
+    data.list.forEach(function(val) {
         arr.push(data.home.url + Url.article.list(val.id, val.url));
     });
 
     //添加文章
-    data.article.forEach(function(val){
+    data.article.forEach(function(val) {
         arr.push(data.home.url + Url.article.view(val.id, val.url));
     });
 
     //添加文章
-    data.search.forEach(function(val){
+    data.search.forEach(function(val) {
         arr.push(data.home.url + Url.article.search(val.name));
     });
 
@@ -612,19 +615,19 @@ App.createTxt = function(data){
  * 生成html地图
  * @param  {object} data 数据包 {article: [], list: [], search: []}
  */
-App.createTxt = function(data){
+App.createHtml = function(data) {
     var arr = [],
         fs = require('fs'),
         path = require('path');
 
 
-    var get = function(url, title){
-        return '<li><a href="'+ url +'">'+ title +'</a></li>';
+    var get = function(url, title) {
+        return '<li><a href="' + url + '">' + title + '</a></li>';
     }
 
     arr.push('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>网站地图_学习吧</title></head><body>');
 
-    arr.push('<h1>网站地图</h1>', '<p>生成于 '+ Date.formatDate(new Date(), 'yyyy-MM-dd HH:m:ss') +'</p>');
+    arr.push('<h1>网站地图</h1>', '<p>生成于 ' + Date.formatDate(new Date(), 'yyyy-MM-dd HH:m:ss') + '</p>');
 
     // 添加主页
     arr.push(get(data.home.url, data.home.title));
@@ -634,24 +637,41 @@ App.createTxt = function(data){
     arr.push(get('/sitemap.xml', 'XML地图'));
 
     //添加列表
-    data.list.forEach(function(val){
+    data.list.forEach(function(val) {
         arr.push(get(data.home.url + Url.article.list(val.id, val.url), val.name));
     });
 
     //添加文章
-    data.article.forEach(function(val){
+    data.article.forEach(function(val) {
         arr.push(get(data.home.url + Url.article.view(val.id, val.url), val.title));
     });
 
     //添加文章
-    data.search.forEach(function(val){
-        arr.push(get(data.home.url + Url.article.search(val.name), '搜索 '+ val.name));
+    data.search.forEach(function(val) {
+        arr.push(get(data.home.url + Url.article.search(val.name), '搜索 ' + val.name));
     });
 
 
     arr.push('</body></html>');
 
     fs.writeFileSync(path.resolve(APP_PATH, '../www/sitemap.html'), arr.join('\n'));
+}
+
+
+/**
+ * 更新程序
+ */
+App.updateAction = function() {
+    var self = this,
+        Child_process = require('child_process');
+    console.log('cd ' + APP_PATH + ' && cd ../ && git pull');
+
+    return Child_process.exec('git pull', function(a, b) {
+        console.log(a, b);
+        return self.success_msg('更新成功');
+    });
+
+
 }
 
 

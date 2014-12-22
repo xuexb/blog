@@ -1,7 +1,7 @@
 {
-  "name": "jiapai",
-  "description": "嫁拍",
-  "version": "1.0.0",
+  "name": "blog",
+  "description": "谢亮博客",
+  "version": "1.3.0",
   "src_path": "src/",
   "dist_path": "dist/",
   "js_path": "js/",
@@ -10,7 +10,7 @@
   "rules": "src->dist",
   "repository": {
     "type": "git",
-    "url": "git@115.28.73.240:html"
+    "url": "git@github.com:xuexb/blog.git"
   },
   "author": "xieliang",
   "devDependencies": {

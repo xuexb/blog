@@ -716,7 +716,11 @@ background-color:#e8e8e8;}
 .article-detail-nav a{
     text-decoration:underline;
 }
-
+/*标题的删除按钮*/
+.article-detail-title-tool{
+    float:right;
+    font-size:12px;
+}
 /*详情页的评论*/
 .article-detail-comment{
     border:1px solid  #ddd;
@@ -948,4 +952,13 @@ body.auto .bar .w{
 }
 .mod-success{
     color:#333;
+}
+
+.error_404{
+    background-color:#fff;
+    border:1px solid  #ddd;
+    padding:20px;
+}
+.error_404 h1{
+    font-size:18px;
 }
