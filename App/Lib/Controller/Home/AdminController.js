@@ -664,7 +664,6 @@ App.createHtml = function(data) {
 App.updateAction = function() {
     var self = this,
         Child_process = require('child_process');
-    console.log('cd ' + APP_PATH + ' && cd ../ && git pull');
 
     return Child_process.exec('git pull', function(a, b) {
         console.log(a, b);
