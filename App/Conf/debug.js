@@ -71,7 +71,7 @@ module.exports = {
     db_port: '3306', // 端口
     db_name: 'xuexb', // 数据库名
     db_user: 'root', // 用户名
-    db_pwd: 'iWENLING918', // 密码
+    db_pwd: 'root', // 密码
     db_prefix: '', // 数据库表前缀
     db_charset: 'utf8', // 数据库编码默认采用utf8
     // db_ext_config: {}, //数据库连接时候额外的参数
