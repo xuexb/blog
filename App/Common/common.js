@@ -1,9 +1,13 @@
 //这里定义一些全局通用的函数，该文件会被自动加载
+'use strict';
+
+
+
 /**
  * Url解析对象
  * @type {object}
  */
-var Url = global.Url = {};
+global.Url = {};
 
 /**
  * 文章链接
@@ -73,16 +77,16 @@ Url.tags = {
  * @return {string}   美化成功的
  */
 Date.elapsedDate = function(date, str) {
-    var past = (new Date - date) / 1000,
+    var past = (new Date() - date) / 1000,
         result;
     if (past < 10) {
         result = '刚刚';
     } else if (past < 60) {
-        result = Math.round(past) + "秒前";
+        result = Math.round(past) + '秒前';
     } else if (past < 3600) {
-        result = Math.round(past / 60) + "分钟前";
+        result = Math.round(past / 60) + '分钟前';
     } else if (past < 86400) {
-        result = Math.round(past / 3600) + "小时前";
+        result = Math.round(past / 3600) + '小时前';
     } else {
         result = Date.formatDate(date, str);
     }
@@ -116,26 +120,26 @@ Date.formatDate = function(date, str) {
     }
 
     getTime = {
-        "M+": date.getMonth() + 1, //月份           
-        "d+": date.getDate(), //日           
-        "h+": date.getHours() % 12 == 0 ? 12 : date.getHours() % 12, //小时
-        "H+": date.getHours(), //小时
-        "m+": date.getMinutes(), //分
-        "s+": date.getSeconds(), //秒
-        "S": date.getMilliseconds() //毫秒           
+        'M+': date.getMonth() + 1, //月份           
+        'd+': date.getDate(), //日           
+        'h+': date.getHours() % 12 === 0 ? 12 : date.getHours() % 12, //小时
+        'H+': date.getHours(), //小时
+        'm+': date.getMinutes(), //分
+        's+': date.getSeconds(), //秒
+        'S': date.getMilliseconds() //毫秒           
     }
 
 
     //如果有年
     if (/(y+)/i.test(str)) {
         //RegExp.$1为上次正则匹配的第1个结果，那么length就不用说了吧
-        str = str.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+        str = str.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
     }
 
     for (key in getTime) {
-        if (new RegExp("(" + key + ")").test(str)) {
-            str = str.replace(RegExp.$1, (RegExp.$1.length == 1) ? (getTime[key]) :
-                (("00" + getTime[key]).substr(("" + getTime[key]).length)));
+        if (new RegExp('(' + key + ')').test(str)) {
+            str = str.replace(RegExp.$1, (RegExp.$1.length === 1) ? (getTime[key]) :
+                (('00' + getTime[key]).substr(('' + getTime[key]).length)));
         }
     }
     return str;
@@ -157,10 +161,10 @@ global.get_page = function(opt, url) {
         return url.replace(/{\$page}/g, num);
     }
 
-    var str = "",
-        page = opt.page | 0,
+    var str = '',
+        page = parseInt(opt.page, 10) || 1,
         i = 1,
-        pageCount = opt.total | 0;
+        pageCount = parseInt(opt.total, 10) || 0;
 
     if (pageCount > 1) {
 
@@ -184,38 +188,38 @@ global.get_page = function(opt, url) {
                 str += '<span class="current">1</span>';
             } else {
                 str += '<a href="' + render(1) + '">1</a>';
-            };
+            }
             if (page > 4) {
                 str += '<span class="dot">...</span>';
-            };
+            }
             if (page < 5) {
                 start = 1;
             } else {
                 start = page - 2;
-            };
+            }
 
             if (page > (pageCount - 4)) {
                 end = pageCount;
             } else {
                 end = page + 3;
-            };
+            }
             for (var i2 = start; i2 < end; i2++) {
                 if (i2 !== 1 && i2 !== pageCount) { //避免重复输出1和最后一页
                     if (i2 === page) {
                         str += '<span class="current">' + i2 + '</span>';
                     } else {
                         str += '<a href="' + render(i2) + '">' + i2 + '</a>';
-                    };
-                };
-            };
+                    }
+                }
+            }
             if (page < (pageCount - 4)) {
                 str += '<span class="dot">...</span>';
-            };
+            }
             if (page === pageCount) {
-                str += '<span class="on">' + pageCount + '</span>';
+                str += '<span class="current">' + pageCount + '</span>';
             } else {
                 str += '<a href="' + render(pageCount) + '">' + pageCount + '</a>';
-            };
+            }
             start = end = null;
         }
 

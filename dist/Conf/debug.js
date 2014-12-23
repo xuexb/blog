@@ -1,0 +1,2 @@
+/*xuexb_blog - v0.1.3 - 2014-12-24  00:12:50*/
+"use strict";module.exports={static_type:"src",port:88,call_controller:"Home:index:__404",url_params_bind:!1,error_no_key:"errcode",db_type:"mysql",db_host:"www.xuexb.com",db_port:"3306",db_name:"xuexb",db_user:"root",db_pwd:"test",db_prefix:"",db_charset:"utf8",db_fields_cache:!1,db_cache_on:!1};

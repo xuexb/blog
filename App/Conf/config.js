@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
     list_mark: '{__list__}',//列表内容标识
     view_page: '{{view_page}}',//文章分页标识

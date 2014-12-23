@@ -35,9 +35,9 @@ App.indexAction = function() {
  */
 App.tag_listAction = function() {
 
-    var self = this,
-        page = parseInt(self.get('page'), 10) || 1,
-        url = self.get('url');
+    var self = this//,
+        // page = parseInt(self.get('page'), 10) || 1,
+        // url = self.get('url');
 
 
 
@@ -207,7 +207,7 @@ App.listAction = function() {
 App.viewAction = function() {
     var self = this,
         sql = {},
-        url = self.get("url"),
+        url = self.get('url'),
         referer;
 
     if (!url) {
@@ -228,7 +228,7 @@ App.viewAction = function() {
 
     //判断来路是否从搜索过来
     referer = self.referer();
-    if (referer && referer.indexOf("search/") > 0) {
+    if (referer && referer.indexOf('search/') > 0) {
         referer = referer.match(/search\/(.*?)\//) || ['', ''];
         referer = decodeURIComponent(referer[1]);
     } else {
@@ -238,7 +238,7 @@ App.viewAction = function() {
 
     return D('Article').get({
         one: 1,
-        field: 'id, markdown_content, hit, update_date, list_id, title, url',
+        field: 'id, markdown_content, hit, update_date, list_id, title, url, catalog',
         where: sql
     }).then(function(data) {
         var sql;
@@ -377,6 +377,14 @@ App.viewAction = function() {
                 }
 
                 data.markdown_content = page_data[page - 1];
+
+                //修分页带来的半个p标签问题
+                if( page !== 1){
+                    data.markdown_content = '<p><!-- start -->' + data.markdown_content;
+                }
+                if(page !== page_size){
+                    data.markdown_content += '<!-- end --></p>';
+                }
             }
             // 内容分页
             self.assign('view_page', get_page({
@@ -384,8 +392,17 @@ App.viewAction = function() {
                 page: page
             }, Url.article.view(data.id, data.url, '{$page}')));
 
+            //如果有目录
+            if(data.catalog){
+                //当前页慢不用翻页，其实只有在page=1的时候会有问题，因为默认页面是没有 ?page=1的
+                if(page === 1){
+                    data.catalog = data.catalog.replace(new RegExp('\\?page\\=1', 'g'), '');
+                }
+                data.markdown_content = data.catalog + data.markdown_content;
+            }
 
-            self.assign("data", data);
+
+            self.assign('data', data);
 
             //初始导航
             //单独处理
@@ -416,6 +433,6 @@ App.viewAction = function() {
 
 
 
-module.exports = Controller("Home/BaseController", function() {
+module.exports = Controller('Home/BaseController', function() {
     return App;
 });

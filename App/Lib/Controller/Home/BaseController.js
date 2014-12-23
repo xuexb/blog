@@ -35,12 +35,10 @@ App.init = function(http) {
     var self = this;
     var arr = [];
 
-    self.super("init", http);
+    self.super('init', http);
 
     self.__set_nav();
     self.assign('title', '谢亮博客 - 学习吧');
-
-    var arr = [];
 
     //分类数据 0 
     arr.push(self.__get_list_data());
@@ -56,7 +54,7 @@ App.init = function(http) {
 
     return Promise.all(arr).then(function(data) {
         //处理宽屏
-        var auto = parseInt(self.get('auto') || self.cookie('auto'), 10) || 0;;
+        var auto = parseInt(self.get('auto') || self.cookie('auto'), 10) || 0;
         self.assign('auto', auto);
         self.cookie('auto', auto);
 
@@ -64,7 +62,7 @@ App.init = function(http) {
         self.user_name = data[3];
         self.assign('user_name', data[3]);
 
-        self.assign("LIST", data[0]);
+        self.assign('LIST', data[0]);
         self.LIST = data[0];
         self.assign('new_article', data[1]);
         self.assign('hot_search', data[2]);
@@ -86,7 +84,7 @@ App.init = function(http) {
 App.__set_nav = function(type, list_id) {
     var self = this;
     self.assign('nav_list_id', list_id);
-    self.assign("nav_type", type || 'home');
+    self.assign('nav_type', type || 'home');
     return self;
 }
 
@@ -140,7 +138,7 @@ App.__call = function(http) {
 /**
  * 404错误页
  */
-App.__404Action = function(http) {
+App.__404Action = function() {
     this.status(404);
     return this.display(VIEW_PATH + '/Home/index_404.html');
 }
@@ -154,8 +152,6 @@ App.__404Action = function(http) {
  * @return {Promise}
  */
 App.__get_list = function(options) {
-    var self = this;
-
     options = options || {};
 
     options.field = options.field || 'id, title, list_id, url, update_date, hit, markdown_content_list';
@@ -164,7 +160,7 @@ App.__get_list = function(options) {
         var content_data = options.isPage ? data.data : data;
 
         var arr = [];
-        var List = D('List');;
+        var List = D('List');
 
         //如果为空
         if(content_data.length === 0){

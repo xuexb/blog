@@ -11,7 +11,7 @@
 }
 
 .wrap{
-    padding-top:80px;
+    padding-top:20px;
 }
 
 html{
@@ -53,6 +53,7 @@ background-color:#e8e8e8;}
     font-size:20px;
     padding:0 10px;
     border-bottom:1px solid #e5e5e5;
+    background-color:#f7f7f7;
 }
 .article-list-title:hover a{
     text-decoration:none;
@@ -136,12 +137,31 @@ background-color:#e8e8e8;}
     font-size:20px;
     padding:0 10px;
     border-bottom:1px solid #e5e5e5;
+    background-color:#f7f7f7;
 }
 .article-detail-title:hover a{
     text-decoration:none;
 }
 .article-detail-content{
     padding:10px;
+}
+
+/*详情的内容导航*/
+.article-detail-sidebar{
+    background-color:#fff;
+    float:right;
+    padding-left:20px;
+    max-width:300px;
+    position:relative;z-index:100;
+}
+.article-detail-sidebar > ul{
+    margin-bottom:0;
+    padding:10px;padding-left:2em;
+    background-color:#f7f7f7;
+    border:1px solid  #ddd;
+}
+.article-detail-sidebar .child{
+    margin-left:15px;
 }
 
 /*详情分页*/

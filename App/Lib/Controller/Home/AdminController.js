@@ -211,7 +211,7 @@ App.editArticleAction = function() {
 App.updateArticleAction = function() {
     var self = this,
         type = 'create',
-        marked, id, temp, data;
+        marked, id, temp, data, renderer, catalog_data;
 
     // 如果不是POST
     if (!self.isPost()) {
@@ -241,13 +241,59 @@ App.updateArticleAction = function() {
         return self.error_msg('内容为空');
     }
 
-    // 转成md
+    // md -> html
     marked = require('marked');
+
     temp = data.content.replace(new RegExp(C('list_mark'), 'g'), ''); //替换列表标识为空
-    data.markdown_content = marked(xss_html(temp)); //去标签
+
+    //对标题添加字段
+    renderer = new marked.Renderer();
+    renderer.heading = function(text, level) {
+        var escapedText = encodeURIComponent(text); //.replace(/[^\w]+/g, '');
+
+        return '<h' + level + '><a name="anchor-' +
+            escapedText +
+            '" class="anchor" href="#anchor-' +
+            escapedText +
+            '"><span class="header-link"></span></a>' +
+            text + '</h' + level + '>';
+    }
+    data.markdown_content = marked(xss_html(temp), {
+        renderer: renderer
+    }); //去标签
+
+    // 提取目录
+    catalog_data = [];
+    temp = data.markdown_content.split(C('view_page'));
+    temp.forEach(function(val, index) {
+        var temp_all = val.match(/<h([23])><a name\=\"anchor\-(.+?)\"/g) || [];
+        temp_all.forEach(function(val2) {
+            var temp_item = val2.match(/<h([23])><a name\=\"anchor\-(.+?)\"/);
+
+            if (temp_item) {
+                if (temp_item[1] === '2') {
+                    catalog_data.push('<li><a href="?page=' + (index + 1) + '#anchor-' + temp_item[2] + '">' + 
+                        decodeURIComponent(temp_item[2]) + '</a></li>');
+                } else {
+                    catalog_data.push('<li class="child"><a href="?page=' + (index + 1) + '#anchor-' + 
+                        temp_item[2] + '">'+ decodeURIComponent(temp_item[2]) + '</a></li>');
+                }
+            }
+
+            temp_item = null;
+        });
+        temp_all = null;
+    });
+    if(catalog_data.length){
+        data.catalog = '<div class="article-detail-sidebar"><ul>'+ catalog_data.join('') +'</ul></div>';
+        catalog_data = null;
+    }
+
 
     // 列表用内容字段
     data.markdown_content_list = App.get_list_content(data.content.replace(new RegExp(C('view_page'), 'g'), ''));
+
+    
 
     // 更新时间
     data.update_date = new Date() - 0;
@@ -383,7 +429,7 @@ App.loginPost = function() {
         return self.error_msg('用户名或者密码错误');
     }
 
-    return self.user_loginAction(user_name, true).then(function(data) {
+    return self.user_loginAction(user_name, auto).then(function(data) {
         if (isEmpty(data)) {
             return self.error_msg('登录失败');
         }
@@ -679,6 +725,6 @@ App.updateAction = function() {
 }
 
 
-module.exports = Controller("Home/BaseController", function() {
+module.exports = Controller('Home/BaseController', function() {
     return App;
 });

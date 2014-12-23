@@ -17,7 +17,8 @@ module.exports = Model(function() {
                 isPage: false,
                 cache: false,
                 where: null,
-                field: 'id, title, list_id, url, update_date, hit, content, markdown_content, markdown_content_list',
+                field: 'id, title, list_id, url, update_date, hit, content, markdown_content, '+
+                        'markdown_content_list, catalog',
                 one: false
             }, options || {});
 

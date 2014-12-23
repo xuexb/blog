@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * 自定义路由
  * @type {Object}
