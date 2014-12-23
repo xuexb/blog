@@ -1,7 +1,7 @@
 {
-  "name": "project-name",
+  "name": "xuexb_blog",
   "description": "project created by thinkjs",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "author": {},
   "dependencies": {
     "thinkjs": "*"
@@ -9,14 +9,19 @@
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:xuexb/blog.git"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "readmeFilename": "README.md",
   "devDependencies": {
+    "grunt": "^0.4.5",
     "thinkjs": "*",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-htmlmin": "*",
+    "grunt-contrib-copy":"*",
     "marked": "*"
   }
 }

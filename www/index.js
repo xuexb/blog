@@ -1,6 +1,6 @@
 var path = require('path');
 //定义APP的根目录
-global.APP_PATH = path.dirname(__dirname) + '/App';
+global.APP_PATH = path.dirname(__dirname) + '/dist';
 //静态资源根目录
 global.RESOURCE_PATH = __dirname;
 //网站根目录
