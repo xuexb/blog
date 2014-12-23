@@ -105,6 +105,11 @@ App.user_loginAction = function(user_name, auto) {
 App.user_checkAction = function() {
         var self = this;
 
+        //如果已经登录
+        if(self.user_name){
+            return getPromise(self.user_name);
+        }
+
         //异步cookie授权验证， 注cookie会先验证session
         return self.session('user_name').then(function(data) {
 

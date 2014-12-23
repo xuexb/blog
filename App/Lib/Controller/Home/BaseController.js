@@ -18,21 +18,6 @@ App.error_msg = function(str){
 
 
 /**
- * 前置操作 ,临时的判断是否登录
- */
-App.__before = function() {
-    var self = this;
-
-    return self.session('user_name').then(function(data) {
-        self.user_name = data;
-        self.assign('user_name', data);
-        return self;
-    });
-}
-
-
-
-/**
  * 成功提示
  * @param  {string} str 成功的内容
  */
@@ -57,20 +42,27 @@ App.init = function(http) {
 
     var arr = [];
 
-    //分类数据
+    //分类数据 0 
     arr.push(self.__get_list_data());
 
-    // 最近更新的文章
+    // 最近更新的文章 1
     arr.push(self.__get_new_article());
 
-    // 搜索最多的词
+    // 搜索最多的词 2
     arr.push(self.__hot_search());
+
+    // 判断是否登录 3
+    arr.push(self.session('user_name'));
 
     return Promise.all(arr).then(function(data) {
         //处理宽屏
         var auto = parseInt(self.get('auto') || self.cookie('auto'), 10) || 0;;
         self.assign('auto', auto);
         self.cookie('auto', auto);
+
+        // 登录判断
+        self.user_name = data[3];
+        self.assign('user_name', data[3]);
 
         self.assign("LIST", data[0]);
         self.LIST = data[0];
