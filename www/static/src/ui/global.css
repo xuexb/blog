@@ -745,7 +745,7 @@ background-color:#e8e8e8;}
 .article-detail-comment{
     border:1px solid  #ddd;
     padding:10px;
-    background:#fff url('/res/img/loading-32-32.gif') center center no-repeat;
+    background:#fff url('../../img/loading-32-32.gif') center center no-repeat;
     min-height:100px;
 }
 .article-detail-comment .ds-thread{
@@ -764,7 +764,7 @@ background-color:#e8e8e8;}
     width:100px;height:100px;
 }
 .sidebar-author img{width:100px;height:100px;display:block;
-background:#f3f3f3 url('/res/img/loading-16-16.gif') center center no-repeat;}
+background:#f3f3f3 url('../../res/img/loading-16-16.gif') center center no-repeat;}
 .sidebar-author .fr{
     padding-top:10px;
     padding-right:6px;
