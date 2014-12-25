@@ -151,6 +151,7 @@ App.__404Action = function() {
  * @param {boolean} options.isPage 是否为分页列表
  * @return {Promise}
  */
+// SELECT t.* FROM post_has_tags AS h,tags AS t WHERE h.post_id = 3 AND h.tag_id = t.id 
 App.__get_list = function(options) {
     options = options || {};
 
@@ -185,6 +186,20 @@ App.__get_list = function(options) {
             content_data.forEach(function(val, index) { //把分类的数据叠加到主数据上
                 val.list_data = list_data[index];
             });
+            return data;
+        }).then(function(){
+            // var sql = [];
+
+            // content_data.forEach(function(val){
+                // console.log(val.id);
+                // sql.push(D('Group').query('SELECT * FROM __TAGS_INDEX__'));
+                // sql.push(D('Group').query('SELECT t.* FROM __TAGSINDEX__ as h,__TAGS__ AS t WHERE h.article_id = %d AND h.tags_id = t.id', val.id));
+            // });
+
+            // return Promise.all(sql).then(function(tags_data){
+                // console.log(tags_data);
+                // return data;
+            // });
             return data;
         });
     });
