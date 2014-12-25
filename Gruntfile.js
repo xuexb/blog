@@ -7,7 +7,6 @@ module.exports = function(grunt) {
     var obj = {}; //初始化对象
     var jshint = obj.jshint = {}; //jshint
     var uglify = obj.uglify = {}; //压缩js
-    var htmlmin = obj.htmlmin = {};//压缩html
     var copy = obj.copy = {}; //复制文件
 
     //配置包
@@ -35,21 +34,6 @@ module.exports = function(grunt) {
             dest: './dist/'
         }]
     }
-
-    // html压缩配置
-    htmlmin.options =  {
-        removeComments: true,
-        collapseWhitespace: true
-    }
-    htmlmin.all = {
-        files: [{
-            expand: true,
-            cwd: './App/',
-            src: ['**/*.tpl', '**/*.html'],
-            dest: './dist/'
-        }]
-    }    
-
 
     // 复制
     copy.all = {
@@ -81,7 +65,6 @@ module.exports = function(grunt) {
     //激活插件
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify'); 
-    grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-copy');//复制
 
 
