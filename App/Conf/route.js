@@ -19,6 +19,10 @@ module.exports = [
 	[/^tags\/([^\/]+)(?:\/(\d+))?$/, 'index/tags_list/?url=:1&page=:2'],//标签列表
 	[/^tags$/, 'index/tags/'],//标签主页
 		
+	[/^all(?:\/(\d+))?$/, 'index/all/?page=:1'],//全部文章
+	[/^(list|html|search)$/, 'index/all/'],//为了体验好
+
+
 	//后台
 	[/^admin\/article\/edit$/, 'admin/editArticle'],
 	[/^admin\/article\/create$/, 'admin/createArticle'],

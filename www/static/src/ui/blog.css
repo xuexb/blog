@@ -190,7 +190,7 @@ background-color:#e8e8e8;}
 .article-detail-comment{
     border:1px solid  #ddd;
     padding:10px;
-    background:#fff url('./loading-32-32.gif') center center no-repeat;
+    background:#fff url('/res/img/loading-32-32.gif') center center no-repeat;
     min-height:100px;
 }
 .article-detail-comment .ds-thread{
@@ -209,7 +209,7 @@ background-color:#e8e8e8;}
     width:100px;height:100px;
 }
 .sidebar-author img{width:100px;height:100px;display:block;
-background:#f3f3f3 url('./loading-16-16.gif') center center no-repeat;}
+background:#f3f3f3 url('/res/img/loading-16-16.gif') center center no-repeat;}
 .sidebar-author .fr{
     padding-top:10px;
     padding-right:6px;
@@ -426,4 +426,28 @@ body.auto .bar .w{
 }
 .error_404 h1{
     font-size:18px;
+}
+
+
+/*返回顶*/
+#J-goTop{
+    width:50px;height:50px;
+    position:fixed;right:20px;bottom:20px;
+    overflow:hidden;
+    text-indent:-999em;
+}
+#J-goTop > a{
+    width:32px;height:15px;
+    display:block;
+    background-color:#1f7b9b;
+    padding:17px 9px 18px;
+}
+#J-goTop > a:hover{
+    opacity:0.5;
+    filter: alpha(opacity=50);
+}
+#J-goTop i{
+    display:block;
+    width:32px;height:15px;
+    background-image:url('./sprite/goTop.png');
 }

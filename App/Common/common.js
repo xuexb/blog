@@ -14,6 +14,9 @@ global.Url = {};
  * @type {Object}
  */
 Url.article = {
+    all: function(page){
+        return '/all/' + (page ? page + '/' : '');
+    },
     view: function(id, url, page) {
         if (url) {
             id = url;

@@ -8,6 +8,27 @@
 var App = {};
 
 
+App.allAction = function(){
+    var self = this,
+        page = parseInt(self.get('page'), 10) || 1;
+
+
+    return self.__get_list({
+        isPage: true,
+        page: page
+    }).then(function(data) {
+
+        self.assign({
+            list: data.data,
+            page: data.count > 0 ?
+                get_page(data, Url.article.all('{$page}')) : '',
+            title: '全部文章_学习吧'
+        });
+
+        return self.display();
+    });
+}
+
 /**
  * 主页
  */
@@ -396,7 +417,7 @@ App.viewAction = function() {
             if(data.catalog){
                 //当前页慢不用翻页，其实只有在page=1的时候会有问题，因为默认页面是没有 ?page=1的
                 if(page === 1){
-                    data.catalog = data.catalog.replace(new RegExp('\\?page\\=1', 'g'), '');
+                    data.catalog = data.catalog.replace(new RegExp('\\?page\\=1\#', 'g'), '');
                 }
                 data.markdown_content = data.catalog + data.markdown_content;
             }

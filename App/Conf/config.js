@@ -6,7 +6,7 @@ module.exports = {
 
 
     static_type: 'dist',
-    static_url: '/',
+    static_url: '/static/',
     static_version: new Date() - 0,
     dist: function(url, version){
         return C('static_url') +  C('static_type') + '/' + url + (!version ? '?'+ C('static_version') : '');
@@ -24,7 +24,7 @@ module.exports = {
     // url_pathname_suffix: '.html', //不解析的pathname后缀，这样利于seo
     // app_tag_on: true, //是否支持标签功能
     // url_resource_on: true, //是否监听静态资源类请求
-    url_resource_reg: /^(src\/|dist\/|res\/|static\/|favicon\.ico|robot\.txt)/, //判断是否是静态资源的正则
+    url_resource_reg: /^(static\/|favicon\.ico|robots\.txt)/, //判断是否是静态资源的正则
     // url_route_on: true, //是否开启自定义路由功能
 
     // post_json_content_type: ['application/json'], //post数据为json时的content-type
@@ -90,11 +90,11 @@ module.exports = {
     db_charset: 'utf8', // 数据库编码默认采用utf8
     // db_ext_config: {}, //数据库连接时候额外的参数
     // db_fieldtype_check: false, // 是否进行字段类型检查
-    db_fields_cache: false, // 启用字段缓存
+    db_fields_cache: true, // 启用字段缓存
     // db_nums_per_page: 20, //默认每页显示的条数
     // db_like_fields: [], //自动进行模糊查询,|连接，如: ['title', 'content']
-    db_cache_on: false, //是否启用查询缓存，如果关闭那么cache方法则无效
-    // db_cache_type: '', //缓存类型，默认为内存缓存
+    db_cache_on: true, //是否启用查询缓存，如果关闭那么cache方法则无效
+    db_cache_type: 'File', //缓存类型，默认为内存缓存
     // db_cache_path: CACHE_PATH + '/db', //缓存路径，File类型下有效
     // db_cache_timeout: 3600, //缓存时间，默认为1个小时
     // db_log_sql: false, //是否打印sql语句
@@ -136,4 +136,4 @@ module.exports = {
 
     // redis_host: '127.0.0.1', //redis host
     // redis_port: 6379, // redis port
-};
+}

@@ -27,11 +27,11 @@ module.exports = {
     // default_group: 'Home', //默认分组
     // default_controller: 'Index', //默认模块
     // default_action: 'index', //默认Action
-    call_controller: 'Home:index:__404', //controller不存在时执行方法，此配置表示调用Home分组下IndexController的_404Action方法
+    // call_controller: 'Home:index:__404', //controller不存在时执行方法，此配置表示调用Home分组下IndexController的_404Action方法
     // call_method: '__call', //当找不到方法时调用什么方法，这个方法存在时才有效
     // before_action: '__before', //调用一个action前调用的方法，会将action名传递进去
     // after_action: '__after', //调用一个action之后调用的方法，会将action名传递进去
-    url_params_bind: false, //方法参数绑定,将URL参数值绑定到action的参数上
+    // url_params_bind: false, //方法参数绑定,将URL参数值绑定到action的参数上
     // action_suffix: 'Action', //action后缀
     // url_callback_name: 'callback', //jsonp格式的callback名字
     // json_content_type: 'application/json', //发送json时的content-type
@@ -53,7 +53,7 @@ module.exports = {
 
     // error_tpl_path: THINK_PATH + '/View/error.html', //错误页模版
     // error_code: 500, //报错时的状态码
-    error_no_key: 'errcode', //错误号的key
+    // error_no_key: 'errcode', //错误号的key
     // error_no_default_value: 1000, //错误号默认值
     // error_msg_key: 'errmsg', //错误消息的key
 
@@ -68,20 +68,20 @@ module.exports = {
     // session_sign: '', //session对应的cookie使用签名
     // session_timeout: 24 * 3600, //服务器上session失效时间，单位：秒
 
-    db_type: 'mysql', // 数据库类型
+    // db_type: 'mysql', // 数据库类型
     db_host: 'www.xuexb.com', // 服务器地址
-    db_port: '3306', // 端口
-    db_name: 'xuexb', // 数据库名
-    db_user: 'root', // 用户名
+    // db_port: '3306', // 端口
+    // db_name: 'xuexb', // 数据库名
+    // db_user: 'root', // 用户名
     db_pwd: 'test', // 密码
-    db_prefix: '', // 数据库表前缀
-    db_charset: 'utf8', // 数据库编码默认采用utf8
+    // db_prefix: '', // 数据库表前缀
+    // db_charset: 'utf8', // 数据库编码默认采用utf8
     // db_ext_config: {}, //数据库连接时候额外的参数
     // db_fieldtype_check: false, // 是否进行字段类型检查
-    db_fields_cache: false, // 启用字段缓存
+    // db_fields_cache: false, // 启用字段缓存
     // db_nums_per_page: 20, //默认每页显示的条数
     // db_like_fields: [], //自动进行模糊查询,|连接，如: ['title', 'content']
-    db_cache_on: false, //是否启用查询缓存，如果关闭那么cache方法则无效
+    // db_cache_on: false, //是否启用查询缓存，如果关闭那么cache方法则无效
     // db_cache_type: '', //缓存类型，默认为内存缓存
     // db_cache_path: CACHE_PATH + '/db', //缓存路径，File类型下有效
     // db_cache_timeout: 3600, //缓存时间，默认为1个小时
@@ -124,4 +124,4 @@ module.exports = {
 
     // redis_host: '127.0.0.1', //redis host
     // redis_port: 6379, // redis port
-};
+}

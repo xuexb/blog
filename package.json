@@ -20,7 +20,6 @@
     "thinkjs": "*",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-uglify": "*",
-    "grunt-contrib-htmlmin": "*",
     "grunt-contrib-copy":"*",
     "marked": "*"
   }
