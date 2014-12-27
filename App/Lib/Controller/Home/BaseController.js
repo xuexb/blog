@@ -191,14 +191,16 @@ App.__get_list = function(options) {
             // var sql = [];
 
             // content_data.forEach(function(val){
-                // console.log(val.id);
-                // sql.push(D('Group').query('SELECT * FROM __TAGS_INDEX__'));
-                // sql.push(D('Group').query('SELECT t.* FROM __TAGSINDEX__ as h,__TAGS__ AS t WHERE h.article_id = %d AND h.tags_id = t.id', val.id));
+            //     console.log(val.id);
             // });
 
+            // console.log(sql);
+
+            // // return data;
+
             // return Promise.all(sql).then(function(tags_data){
-                // console.log(tags_data);
-                // return data;
+            //     console.log(tags_data);
+            //     return data;
             // });
             return data;
         });
