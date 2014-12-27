@@ -2,10 +2,12 @@
     "task":{
         "dist": [
             "dist-copy:all",
+            "dist-css:admin",
             "dist-css:global"
         ]
     },
     "css": {
+        "admin": "ui/admin.css",
         "global": {
             "src": [
                 "ui/reset.css",
