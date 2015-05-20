@@ -179,7 +179,7 @@ App.__get_list = function(options) {
             }));
 
             //发布时间
-            val.create_date = Date.elapsedDate(val.create_date, 'yyyy-M-d');
+            val.update_date = Date.elapsedDate(val.update_date, 'yyyy-M-d');
         });
 
         return Promise.all(arr).then(function(list_data) {
