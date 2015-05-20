@@ -1,2 +1,2 @@
-/*xuexb_blog - v0.1.3 - 2014-12-25  23:12:36*/
+/*xuexb_blog - v0.0.1 - 2015-05-20  22:05:06*/
 "use strict";module.exports=[[/^list\/([a-zA-Z]+)\/(\d+)$/,"index/list/?url=:1&page=:2"],[/^list\/([a-zA-Z]+)$/,"index/list/?url=:1"],[/^html\/([a-zA-Z0-9\-\_]+)$/,"index/view/?url=:1"],[/^search\/([^\/]+)(?:\/(\d+))?$/,"index/search/?key=:1&page=:2"],[/^tags\/([^\/]+)(?:\/(\d+))?$/,"index/tags_list/?url=:1&page=:2"],[/^tags$/,"index/tags/"],[/^all(?:\/(\d+))?$/,"index/all/?page=:1"],[/^(list|html|search)$/,"index/all/"],[/^admin\/article\/edit$/,"admin/editArticle"],[/^admin\/article\/create$/,"admin/createArticle"],[/^admin\/article\/del$/,"admin/delArticle"]];

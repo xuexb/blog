@@ -1,2 +1,2 @@
-/*xuexb_blog - v0.1.3 - 2014-12-25  23:12:36*/
+/*xuexb_blog - v0.0.1 - 2015-05-20  22:05:06*/
 "use strict";module.exports={list_mark:"{__list__}",view_page:"{{view_page}}",static_type:"dist",static_url:"/static/",static_version:new Date-0,dist:function(a,b){return C("static_url")+C("static_type")+"/"+a+(b?"":"?"+C("static_version"))},res:function(a,b){return C("static_url")+"res/"+a+(b?"":"?"+C("static_version"))},port:8899,url_resource_reg:/^(static\/|favicon\.ico|robots\.txt)/,call_controller:"Home:index:__404",url_params_bind:!1,error_no_key:"errcode",db_type:"mysql",db_host:"127.0.0.1",db_port:"3306",db_name:"xuexb",db_user:"root",db_pwd:"test",db_prefix:"",db_charset:"utf8",db_fields_cache:!0,db_cache_on:!0,db_cache_type:"File"};
