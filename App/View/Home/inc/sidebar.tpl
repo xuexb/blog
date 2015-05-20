@@ -22,7 +22,7 @@
     <div class="mt20 sidebar-search">
         <form id="J-form" action="/index/search/" class="clear" autocomplete="off">
             <label class="hide" for="J-key">搜索：</label>
-            <input type="text" name="key" value="<%=key%>" class="fl sidebar-search-text" id="J-key"><input class="sidebar-search-btn fr" type="submit" value="搜索">
+            <input type="text" name="key" value="<%=key%>"autocomplete="off" accesskey="s" class="fl sidebar-search-text" id="J-key"><input class="sidebar-search-btn fr" type="submit" value="搜索">
         </form>
         <script type="text/javascript">
             (function(){
