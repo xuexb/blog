@@ -111,7 +111,7 @@
                 <a href="http://dyy.im/" data-pjax="false">哥特复兴</a>
                 <a href="http://cssha.com/" data-pjax="false" title="去哪前端大神">安·记</a>
                 <a href="http://www.imququ.com/" data-pjax="false" title="JerryQu的小站">JerryQu</a>
-                <a href="http://julying.com/" data-pjax="false" title="七月、前端攻城师王子墨">王子墨</a>
+                <!-- <a href="http://julying.com/" data-pjax="false" title="七月、前端攻城师王子墨">王子墨</a> -->
                 <a href="http://www.baidufe.com/" data-pjax="false" title="Alien的笔记">Alien的笔记</a>
                 <a href="http://www.welefen.com/" data-pjax="false" title="welefen的随笔">welefen的随笔</a>
                 <a href="http://www.aips.me/" title="关注 WordPress 与互联网的原创IT科技博客">周良博客</a>
@@ -126,15 +126,13 @@
                 有情 有链 有情意
             </dt>
             <dd>
-                <a href="http://www.zhuji91.com/" title="主机91">主机91</a>
-                <a href="http://www.vdeli.cn/" title="威德利健康网">威德利健康网</a>
+                <!-- <a href="http://www.zhuji91.com/" title="主机91">主机91</a> -->
                 <a href="http://www.beijixingpc.com/" data-pjax="false">计算机基础知识</a>
                 <a href="http://www.shenglei.org/" data-pjax="false">盛磊博客</a>
                 <a href="http://www.5ivu.com/" data-pjax="false">最新笑话</a>
                 <a href="http://www.nuobg.com/" data-pjax="false">网络推广</a>
                 <a href="http://youxi.pw/" data-pjax="false">新博客</a>
                 <a href="http://www.freehao123.com/" data-pjax="false" title="全球最新的免费资源发布区">免费资源部落</a>
-                <a href="http://freevpnssh.org/" title="免费VPN与SSH分享" data-pjax="false">vpn</a>
                 <a href="http://www.softwhy.com/" data-pjax="false" title="蚂蚁部落">div css教程</a>
                 <a href="http://www.siyonli.com/">大晚</a>
             </dd>
