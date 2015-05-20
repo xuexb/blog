@@ -24,7 +24,7 @@
                         <i class="article-list-tool-hit"></i><%=val.hit%>
                     </li>
                     <li>
-                        <i class="article-list-tool-time"></i><%=val.create_date%>
+                        <i class="article-list-tool-time"></i><%=val.update_date%>
                     </li>
                     <% if(val.list_data){ %>
                     <li>
