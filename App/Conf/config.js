@@ -34,7 +34,7 @@ module.exports = {
     // post_ajax_filename_header: 'x-filename', //通过ajax上传文件时文件名对应的header，如果有这个header表示是文件上传
     // post_file_upload_path: APP_PATH + '/Runtime/Temp', //文件上传的临时目录
 
-    // app_group_list: ['Home', 'Admin', 'Restful'], //分组列表
+    app_group_list: ['Home', 'Touch'], //分组列表
     // deny_group_list: [],
     // default_group: 'Home', //默认分组
     // default_controller: 'Index', //默认模块

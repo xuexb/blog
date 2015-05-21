@@ -47,7 +47,7 @@ module.exports = Model(function() {
 
             //如果要查分页
             if (options.isPage) {
-                return sql.countSelect({}, false);
+                return sql.countSelect({});
             }
 
             //如果是单个模式返回 ｛｝， 否则返回 [{}]

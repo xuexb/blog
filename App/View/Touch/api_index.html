@@ -1,0 +1,12 @@
+<% if(list && list.length){ %>
+    <% list.forEach(function(val){ %>
+        <li>
+            <a href="<%=Url.article.view(val.id, val.url)%>">
+                <h3><%-val.title%></h3>
+                <div class="index-list-info">
+                    <%-val.markdown_content_list%>
+                </div>
+            </a>
+        </li>
+    <% }); %>
+<%}%>
