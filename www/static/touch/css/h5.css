@@ -100,9 +100,9 @@
     width:100%;
     min-width:320px;
 
-    max-height:11.2rem;
-    overflow:hidden;
-    overflow-y:auto;
+    /*max-height:11.2rem;*/
+    /*overflow:hidden;*/
+    /*overflow-y:auto;*/
 
     /*展示*/
     opacity:0;
