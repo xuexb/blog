@@ -9,3 +9,4 @@ output.tar.gz
 .DS_Store
 sftp-config.json
 upload
+Cache
