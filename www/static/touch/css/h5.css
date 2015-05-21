@@ -331,7 +331,8 @@
     line-height:1rem;
     color:#999;
     padding-left:.5rem;
-    max-height:3rem;overflow:hidden;
+    /*max-height:3rem;*/
+    overflow:hidden;
 }
 
 /*404*/
