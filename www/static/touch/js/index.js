@@ -28,6 +28,7 @@
 
         App.Ajax = new AjaxPage({
             url: '/api/index',
+            page: 0,
             data: data,
             elem: '#J-list', //列表元素ul
             empty: function() {
