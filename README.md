@@ -2,6 +2,8 @@
 
 使用`thinkjs`创建的博客
 
+> [http://www.xuexb.com/](http://www.xuexb.com)
+
 ## 命令
 
 ### jshint
