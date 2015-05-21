@@ -8,7 +8,7 @@ module.exports = {
 
         // 如果为手机端
         if (http.getHeader('user-agent').toLowerCase().match(/applewebkit.*mobile.*/)) {
-            http.group = "Touch";
+            http.group = 'Touch';
         }
     }]
 }
