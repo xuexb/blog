@@ -44,10 +44,12 @@ module.exports = function(grunt) {
             dest: './dist/Runtime/'
         }],
     }
+    //复制环境配置
     copy.environment = {
         'src': './App/Conf/environment.json',
         'dest': './dist/Conf/environment.json'
     }
+    //复制模板
     copy.tpl = {
         options: {
             process: function(content) {
