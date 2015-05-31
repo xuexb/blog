@@ -8,6 +8,17 @@
 var App = {};
 
 
+/**
+ * rss订阅
+ */
+App.rssAction = function(){
+    return this.redirect('/rss.xml', 301);
+}
+
+
+/**
+ * 全部文章
+ */
 App.allAction = function(){
     var self = this,
         page = parseInt(self.get('page'), 10) || 1;
