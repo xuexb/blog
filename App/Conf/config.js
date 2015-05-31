@@ -1,18 +1,18 @@
 'use strict';
 
-module.exports = {
-    list_mark: '{__list__}',//列表内容标识
-    view_page: '{{view_page}}',//文章分页标识
+var config = {
+    list_mark: '{__list__}', //列表内容标识
+    view_page: '{{view_page}}', //文章分页标识
 
 
     static_type: 'dist',
     static_url: '/static/',
     static_version: new Date() - 0,
-    dist: function(url, version){
-        return C('static_url') +  C('static_type') + '/' + url + (!version ? '?'+ C('static_version') : '');
+    dist: function(url, version) {
+        return C('static_url') + C('static_type') + '/' + url + (!version ? '?' + C('static_version') : '');
     },
-    res: function(url, version){
-        return C('static_url') +  'res/' + url + (!version ? '?'+ C('static_version') : '');
+    res: function(url, version) {
+        return C('static_url') + 'res/' + url + (!version ? '?' + C('static_version') : '');
     },
 
 
@@ -81,11 +81,11 @@ module.exports = {
     // session_timeout: 24 * 3600, //服务器上session失效时间，单位：秒
 
     db_type: 'mysql', // 数据库类型
-    db_host: '127.0.0.1', // 服务器地址
+    db_host: 'www.xuexb.com', // 服务器地址
     db_port: '3306', // 端口
     db_name: 'xuexb', // 数据库名
     db_user: 'root', // 用户名
-    db_pwd: 'test', // 密码
+    db_pwd: 'iWENLING918LIANG', // 密码
     db_prefix: '', // 数据库表前缀
     db_charset: 'utf8', // 数据库编码默认采用utf8
     // db_ext_config: {}, //数据库连接时候额外的参数
@@ -137,3 +137,7 @@ module.exports = {
     // redis_host: '127.0.0.1', //redis host
     // redis_port: 6379, // redis port
 }
+
+
+module.exports = require('./environment')(config);
+
