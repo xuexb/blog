@@ -190,7 +190,7 @@ background-color:#e8e8e8;}
 .article-detail-comment{
     border:1px solid  #ddd;
     padding:10px;
-    background:#fff url('../../img/loading-32-32.gif') center center no-repeat;
+    background:#fff url('../../res/img/loading-32-32.gif') center center no-repeat;
     min-height:100px;
 }
 .article-detail-comment .ds-thread{
