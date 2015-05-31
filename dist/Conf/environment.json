@@ -1,0 +1,10 @@
+[
+    {
+        "name": ["xxoo-for-mm", "xieyaowudeMacBook-Air.local"],
+        "config": "dev"
+    },
+    {
+        "name": "cloud",
+        "config": "online"
+    }
+]
