@@ -14,7 +14,7 @@
                 <a href="http://www.weibo.com/pcxuexb/" title="新浪微博"><i class="icons icon-sina"></i></a>
             </h3>
             <p>
-                努力做一个<br>懂用户体验的切图仔
+                爱前端<br>爱生活
             </p>
         </div>
     </div>
