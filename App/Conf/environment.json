@@ -1,14 +1,10 @@
 [
     {
-        "name": "xxoo-for-mm",
-        "config": "xx"
+        "name": ["xxoo-for-mm", "xieyaowudeMacBook-Air.local"],
+        "config": "dev"
     },
     {
-        "name": ["ceshiji", "work"],
-        "config": "xxx"
-    },
-    {
-        "name": "online",
-        "config": ""
+        "name": "cloud",
+        "config": "online"
     }
 ]

@@ -131,7 +131,7 @@ App.__get_list_data = function() {
  */
 App.__call = function(http) {
     // return this.end('__call')
-    return this.__404Action(http);
+    return this.__404Action.call(this, http);
 }
 
 
@@ -140,6 +140,12 @@ App.__call = function(http) {
  */
 App.__404Action = function() {
     this.status(404);
+
+    //如果为手机访问
+    if(this.http.getHeader('user-agent').toLowerCase().match(/applewebkit.*mobile.*/)){
+        return this.action('Touch:index:__404');
+    }
+
     return this.display(VIEW_PATH + '/Home/index_404.html');
 }
 

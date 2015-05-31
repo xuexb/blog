@@ -86,7 +86,7 @@ App.user_set_sessionAction = function(user_name, auto) {
 App.user_loginAction = function(user_name, auto) {
     var self = this;
 
-    if (user_name !== (F('user_info') || {}).user_name) {
+    if (user_name !== (C('user_info') || {}).user_name) {
         return null;
     }
 
@@ -423,7 +423,7 @@ App.loginPost = function() {
         return self.error_msg('密码不能少于6位');
     }
 
-    user_info = F('user_info');
+    user_info = C('user_info');
 
     if (user_name !== user_info.user_name || user_pass !== user_info.user_pass) {
         return self.error_msg('用户名或者密码错误');

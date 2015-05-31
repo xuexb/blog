@@ -4,6 +4,11 @@ var config = {
     list_mark: '{__list__}', //列表内容标识
     view_page: '{{view_page}}', //文章分页标识
 
+    //管理员信息
+    user_info: {
+        user_name: 'thinkjs',
+        user_pass: 'thinkjs',
+    },
 
     static_type: 'dist',
     static_url: '/static/',
@@ -83,9 +88,9 @@ var config = {
     db_type: 'mysql', // 数据库类型
     db_host: 'www.xuexb.com', // 服务器地址
     db_port: '3306', // 端口
-    db_name: 'xuexb', // 数据库名
-    db_user: 'root', // 用户名
-    db_pwd: 'iWENLING918LIANG', // 密码
+    db_name: 'xxx', // 数据库名
+    db_user: 'xxx', // 用户名
+    db_pwd: 'xxx', // 密码
     db_prefix: '', // 数据库表前缀
     db_charset: 'utf8', // 数据库编码默认采用utf8
     // db_ext_config: {}, //数据库连接时候额外的参数
@@ -140,4 +145,3 @@ var config = {
 
 
 module.exports = require('./environment')(config);
-

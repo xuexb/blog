@@ -22,6 +22,9 @@ module.exports = [
 	[/^all(?:\/(\d+))?$/, 'index/all/?page=:1'],//全部文章
 	[/^(list|html|search)$/, 'index/all/'],//为了体验好
 
+	// rss
+	[/^rss$/, 'index/rss'],
+
 
 	//后台
 	[/^admin\/article\/edit$/, 'admin/editArticle'],
