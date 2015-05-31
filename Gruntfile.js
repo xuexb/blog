@@ -24,7 +24,7 @@ module.exports = function(grunt) {
     //js压缩配置
     uglify.options = {
         banner: '/*' + config.name + ' - v' + config.version +
-         ' - <%= grunt.template.today("yyyy-mm-dd  HH:mm:ss") %>*/' + '\n'
+            ' - <%= grunt.template.today("yyyy-mm-dd  HH:mm:ss") %>*/' + '\n'
     }
     uglify.all = {
         files: [{
@@ -42,11 +42,15 @@ module.exports = function(grunt) {
             cwd: './App/Runtime/',
             src: '**/*',
             dest: './dist/Runtime/'
-        }]
+        }],
+    }
+    copy.environment = {
+        'src': './App/Conf/environment.json',
+        'dest': './dist/Conf/environment.json'
     }
     copy.tpl = {
         options: {
-            process: function(content){
+            process: function(content) {
                 return content.replace(/[\r\n]/g, '').replace(/\s{2,}/g, '');
             }
         },
@@ -64,8 +68,8 @@ module.exports = function(grunt) {
 
     //激活插件
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-uglify'); 
-    grunt.loadNpmTasks('grunt-contrib-copy');//复制
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-copy'); //复制
 
 
     grunt.registerTask('build', function() {
