@@ -22,10 +22,6 @@ module.exports = function(grunt) {
     }
 
     //js压缩配置
-    uglify.options = {
-        banner: '/*' + config.name + ' - v' + config.version +
-            ' - <%= grunt.template.today("yyyy-mm-dd  HH:mm:ss") %>*/' + '\n'
-    }
     uglify.all = {
         files: [{
             expand: true,
