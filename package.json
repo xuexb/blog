@@ -1,7 +1,7 @@
 {
   "name": "xuexb_blog",
   "description": "project created by thinkjs",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": {},
   "dependencies": {
     "thinkjs": "*"
