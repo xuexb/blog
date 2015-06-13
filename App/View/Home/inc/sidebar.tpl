@@ -2,14 +2,14 @@
     <div class="sidebar-author sidebar-box clear">
         <div class="fl">
             <a href="<% if(user_name){ %>/admin/
-                <% }else{ %>/html/xieliang.html
+                <% }else{ %>/html/xiaowu.html
                 <% } %>">
                 <img src="http://www.xuexb.com/upload/month_1208/201208271431426663.jpg" alt="">
             </a>
         </div>
         <div class="fr">
             <h3>
-                <a href="/html/xieliang.html">前端谢亮[小武]</a>
+                <a href="/html/xiaowu.html">前端小武</a>
                 <a href="https://github.com/xuexb" title="进入Github"><i class="icons icon-github"></i></a>
                 <a href="http://www.weibo.com/pcxuexb/" title="新浪微博"><i class="icons icon-sina"></i></a>
             </h3>

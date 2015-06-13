@@ -15,7 +15,6 @@ App.init = function(http) {
 
     self.super('init', http);
 
-    self.assign('title', '前端小武-谢亮');
     self.assign('nav_list_id', '');
     self.assign('nav_list_name', '全部文章');
     self.assign('key', '');

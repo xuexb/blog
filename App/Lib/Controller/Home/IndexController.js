@@ -33,7 +33,7 @@ App.allAction = function(){
             list: data.data,
             page: data.count > 0 ?
                 get_page(data, Url.article.all('{$page}')) : '',
-            title: '全部文章_学习吧'
+            // title: '全部文章_学习吧'
         });
 
         return self.display();
@@ -52,7 +52,7 @@ App.indexAction = function() {
         self.assign('links', true);
         self.assign({
             list: data,
-            title: '学习吧 - 专注计算机基础知识和WEB前端开发'
+            // title: '学习吧 - 专注计算机基础知识和WEB前端开发'
         });
 
         return self.display();
@@ -175,7 +175,7 @@ App.searchAction = function() {
             key: key,
             page: data.count > 0 ?
                 get_page(data, Url.article.search(key, '{$page}')) : '',
-            title: '搜索 ' + key + ' 的结果_学习吧'
+            title: '搜索 ' + key + ' 的结果——前端小武博客'
         });
         return self.display();
     });
@@ -223,7 +223,7 @@ App.listAction = function() {
                 list: data.data,
                 page: data.count > 0 ?
                     get_page(data, Url.article.list(list_data.id, list_data.url, '{$page}')) : '',
-                title: list_data.name + '_学习吧'
+                title: list_data.name + '——前端小武博客'
             });
 
             return self.display();
@@ -247,7 +247,11 @@ App.viewAction = function() {
     }
 
     //拼sql条件
-    if (!parseInt(url, 10)) { //非数字或者0
+    if (!isFinite(url)) { //非数字或者0
+        //如果为老域名，兼容下301
+        if(url === 'xieliang'){
+            return self.redirect('/html/xiaowu.html', 301);
+        }
         sql.url = url;
     } else {
         sql.id = parseInt(url, 10);
@@ -439,10 +443,12 @@ App.viewAction = function() {
             //初始导航
             //单独处理
             var nav_type = 'article';
-            if (url === 'xieliang') {
+            if (url === 'xiaowu') {
                 nav_type = 'about';
             } else if (url === 'zaixianliuyan') {
                 nav_type = 'message';
+            } else if (url === 'links') {
+                nav_type = 'links';
             }
             self.__set_nav(nav_type, list_data.id);
 
@@ -453,9 +459,9 @@ App.viewAction = function() {
             // 标题
             // 处理留言和谢亮
             if(nav_type === 'article'){
-                self.assign('title', data.title + '_' + list_data.name + '_学习吧');
+                self.assign('title', data.title + '_' + list_data.name + '_前端小武博客');
             } else {
-                self.assign('title', data.title + '_学习吧');
+                self.assign('title', data.title + '——前端小武博客');
             }
 
             return self.display();

@@ -1,6 +1,6 @@
 /**
  * 博客标签索引表模块
- * @author xieliang
+ * @author fe_xiaowu@gmail.com
  */
 module.exports = Model(function() {
     'use strict';

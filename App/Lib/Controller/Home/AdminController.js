@@ -604,7 +604,7 @@ App.createRss = function(data) {
     arr.push('<link>' + data.home.url + '</link>');
     arr.push('<description>专注计算机基础知识，web前端发展</description>');
     arr.push('<language>zh-cn</language>');
-    arr.push('<generator>谢亮</generator>');
+    arr.push('<generator>前端小武</generator>');
     arr.push('<pubDate>2011-09-11</pubDate>');
     arr.push('<lastBuildDate>' + now + '</lastBuildDate>');
 
@@ -615,7 +615,7 @@ App.createRss = function(data) {
         arr.push('<link>' + data.home.url + Url.article.view(val.id, val.url) + '</link>');
         arr.push('<pubDate>' + Date.formatDate(val.update_date, 'yyyy-MM-dd') + '</pubDate>');
         arr.push('<title>' + val.title + '</title>');
-        arr.push('<author>谢亮</author>');
+        arr.push('<author>前端小武</author>');
         arr.push('<description><![CDATA[' + val.markdown_content_list + ']]></description>');
         arr.push('</item>');
     });

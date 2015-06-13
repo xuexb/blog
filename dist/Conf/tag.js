@@ -1,2 +1,2 @@
-/*xuexb_blog - v0.0.1 - 2015-05-31  22:05:52*/
+/*xuexb_blog - v0.1.0 - 2015-06-14  00:06:30*/
 "use strict";module.exports={app_begin:[function(a){"Home"===a.group&&a.getHeader("user-agent").toLowerCase().match(/applewebkit.*mobile.*/)&&(a.group="Touch")}]};

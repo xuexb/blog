@@ -22,10 +22,10 @@
                 <a href="http://github.xuexb.com/">Demo</a>
             </li>
             <li>
-                <a href="<%=Url.tags.index()%>"<% if(nav_type === 'tags'){ %> class="current"<% } %>>标签</a>
+                <a href="<%=Url.article.view(0, 'xiaowu')%>"<% if(nav_type === 'about'){ %> class="current"<% } %>>关于我</a>
             </li>
             <li>
-                <a href="<%=Url.article.view(0, 'xieliang')%>"<% if(nav_type === 'about'){ %> class="current"<% } %>>关于我</a>
+                <a href="/html/links.html"<% if(nav_type === 'links'){ %> class="current"<% } %>>友情链接</a>
             </li>
             <li>
                 <a href="<%=Url.article.view(0, 'zaixianliuyan')%>"<% if(nav_type === 'message'){ %> class="current"<% } %>>留言</a>
