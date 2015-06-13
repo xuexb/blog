@@ -49,6 +49,8 @@ App.searchAction = function() {
     var self = this,
         key = self.get('key').trim();
 
+    self.assign('title', '搜索 ' + key + ' 的结果——前端小武');
+
     self.assign('key', key);
 
     return App.indexAction.call(this);
@@ -71,12 +73,42 @@ App.listAction = function() {
         },
         field: 'id, name, url'
     }).then(function(list_data) {
+        var key, desc;
+
         if (isEmpty(list_data)) {
             return self.__404Action();
         }
         //设置导航
         self.assign('nav_list_id', list_data.id);
         self.assign('nav_list_name', list_data.name);
+
+
+        if(url === 'wangzhanbiancheng'){
+            key = '前端小武 谢耀武 前端开发';
+        } else if(url === 'nodejs'){
+            key = '前端小武 谢耀武 前端开发 nodejs';
+            desc = 'Node是一个Javascript运行环境(runtime)。';
+        } else if(url === 'qianduankaifa'){
+            key = '前端小武 谢耀武 前端开发';
+            desc = 'Web前端开发是一项很特殊的工作，涵盖的知识面非常广，既有具体的技术，又有抽象的理念。';
+        } else if(url === 'diannaozhishi'){
+            key = '前端小武 谢耀武 计算机基础';
+            desc = '前端开发必须掌握的一些计算机基础知识。';
+        } else if(url === 'jishiben'){
+            key = '前端小武 谢耀武 前端故事';
+        }
+
+        if(key){
+            self.assign('keywords', key);
+        }
+
+        if(desc){
+            self.assign('description', desc);
+        }
+
+        self.assign('title', list_data.name + '——前端小武');
+
+
         return App.indexAction.call(self);
     });
 }
@@ -96,7 +128,11 @@ App.viewAction = function() {
     }
 
     //拼sql条件
-    if (!parseInt(url, 10)) { //非数字或者0
+    if (!isFinite(url)) { //非数字或者0
+        //如果为老域名，兼容下301
+        if(url === 'xieliang'){
+            return self.redirect('/html/xiaowu.html', 301);
+        }
         sql.url = url;
     } else {
         sql.id = parseInt(url, 10);
@@ -155,7 +191,13 @@ App.viewAction = function() {
 
             self.assign('data', data);
 
-            self.assign('title', data.title);
+            // 标题
+            // 处理留言和谢亮
+            if(url !== 'xiaowu' && url !== 'links' && url !== 'zaixianliuyan'){
+                self.assign('title', data.title + '_' + list_data.name + '_前端小武');
+            } else {
+                self.assign('title', data.title + '——前端小武');
+            }
 
             return self.display();
         });

@@ -63,10 +63,11 @@
         // 绑定点击取消按钮
         $search.find('.ui-search-btn').on('touchstart', function(event) {
             var list_id = App.Ajax.config('data').list_id || 0;
-            if (!$search.hasClass('is-focus')) { //如果在页面上点击取消则需要重置ajax列表
+            if (!$search.hasClass('is-focus') || !$key.val()) { //如果在页面上点击取消则需要重置ajax列表 或者关键字空
                 App.Ajax.config('data', null).config('data', {
                     list_id: list_id
                 }).config('page', 0).empty().reset();
+                $('#J-topbar h1').text($('.topbar-sort-more .current').eq(0).text());
             }
 
             $key.val('').blur().trigger('mm'); //清空文本框，并触发逻辑状态
@@ -81,6 +82,8 @@
                 App.Ajax.config('data', {
                     key: key
                 }).config('page', 0).empty().reset();
+
+                $('#J-topbar h1').html('搜索 <mark>'+ key +'</mark> 的结果');
 
                 $key.blur();
             }

@@ -175,7 +175,7 @@ App.searchAction = function() {
             key: key,
             page: data.count > 0 ?
                 get_page(data, Url.article.search(key, '{$page}')) : '',
-            title: '搜索 ' + key + ' 的结果——前端小武博客'
+            title: '搜索 ' + key + ' 的结果——前端小武',
         });
         return self.display();
     });
@@ -215,6 +215,31 @@ App.listAction = function() {
             isPage: true,
             page: page
         }).then(function(data) {
+            var key, desc;
+
+            if(url === 'wangzhanbiancheng'){
+                key = '前端小武 谢耀武 前端开发';
+            } else if(url === 'nodejs'){
+                key = '前端小武 谢耀武 前端开发 nodejs';
+                desc = 'Node是一个Javascript运行环境(runtime)。';
+            } else if(url === 'qianduankaifa'){
+                key = '前端小武 谢耀武 前端开发';
+                desc = 'Web前端开发是一项很特殊的工作，涵盖的知识面非常广，既有具体的技术，又有抽象的理念。';
+            } else if(url === 'diannaozhishi'){
+                key = '前端小武 谢耀武 计算机基础';
+                desc = '前端开发必须掌握的一些计算机基础知识。';
+            } else if(url === 'jishiben'){
+                key = '前端小武 谢耀武 前端故事';
+            }
+
+            if(key){
+                self.assign('keywords', key);
+            }
+
+            if(desc){
+                self.assign('description', desc);
+            }
+
             //设置导航
             self.__set_nav('article', list_data.id);
 
@@ -223,7 +248,7 @@ App.listAction = function() {
                 list: data.data,
                 page: data.count > 0 ?
                     get_page(data, Url.article.list(list_data.id, list_data.url, '{$page}')) : '',
-                title: list_data.name + '——前端小武博客'
+                title: list_data.name + '——前端小武'
             });
 
             return self.display();
@@ -459,9 +484,9 @@ App.viewAction = function() {
             // 标题
             // 处理留言和谢亮
             if(nav_type === 'article'){
-                self.assign('title', data.title + '_' + list_data.name + '_前端小武博客');
+                self.assign('title', data.title + '_' + list_data.name + '_前端小武');
             } else {
-                self.assign('title', data.title + '——前端小武博客');
+                self.assign('title', data.title + '——前端小武');
             }
 
             return self.display();

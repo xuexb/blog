@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title><%=title%></title>
+    <meta name="keywords" content="<%=keywords%>" />
+    <meta name="description" content="<%=description%>" />
     <meta content="width=device-width,minimum-scale=1.0,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,minimal-ui" name="viewport" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta content="telephone=no" name="format-detection" />
@@ -16,7 +18,11 @@
 
     <div id="J-topbar">
         <div class="topbar">
-            <h1><%=nav_list_name%></h1>
+            <h1><%if(key){%>
+                搜索 <mark><%=key%></mark> 的结果
+            <%}else{%>
+                <%=nav_list_name%>
+            <%}%></h1>
             <div class="topbar-sort">
                 <span>筛选</span>
             </div>

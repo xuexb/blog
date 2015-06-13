@@ -38,7 +38,7 @@ App.init = function(http) {
     self.super('init', http);
 
     self.__set_nav();
-    self.assign('title', '前端小武博客--前端开发小武专注计算机基础和WEB前端开发知识');
+    self.assign('title', '前端小武--前端开发小武专注计算机基础和WEB前端开发知识');
     self.assign('keywords', '前端小武  谢耀武  小武  计算机基础   前端开发');
     self.assign('description', '谢耀武，网名前端小武，喜欢各种折腾, 喜欢研究源, 对美好的代码有极强的透视症, 崇尚有强烈技术氛围的UED...');
 
