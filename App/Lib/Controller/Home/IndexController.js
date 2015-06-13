@@ -453,6 +453,10 @@ App.viewAction = function() {
                 page: page
             }, Url.article.view(data.id, data.url, '{$page}')));
 
+            //生成描述
+            self.assign('description', data.markdown_content
+                .replace(/<[^>]+?>/g, '').replace(/[\r\n]/g, ',').substr(0, 120) + '...');
+
             //如果有目录
             if(data.catalog){
                 //当前页慢不用翻页，其实只有在page=1的时候会有问题，因为默认页面是没有 ?page=1的

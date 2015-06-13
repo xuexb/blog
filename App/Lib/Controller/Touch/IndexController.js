@@ -191,6 +191,10 @@ App.viewAction = function() {
 
             self.assign('data', data);
 
+            //生成描述
+            self.assign('description', data.markdown_content
+                .replace(/<[^>]+?>/g, '').replace(/[\r\n]/g, ',').substr(0, 120) + '...');
+
             // 标题
             // 处理留言和谢亮
             if(url !== 'xiaowu' && url !== 'links' && url !== 'zaixianliuyan'){
