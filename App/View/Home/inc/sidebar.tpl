@@ -9,9 +9,7 @@
         </div>
         <div class="fr">
             <h3>
-                <a href="/html/xiaowu.html">前端小武</a>
-                <a href="https://github.com/xuexb" title="进入Github"><i class="icons icon-github"></i></a>
-                <a href="http://www.weibo.com/pcxuexb/" title="新浪微博"><i class="icons icon-sina"></i></a>
+                <a href="/html/xiaowu.html">前端小武</a> &nbsp; [<a href="/html/xiaowu.html#anchor-%E8%81%94%E7%B3%BB%E6%88%91">联系我</a>]
             </h3>
             <p>
                 爱前端<br>爱生活
