@@ -4,7 +4,7 @@ NODE=`which node`
 # get action
 ACTION=$1
 
-PID_FILE='./App/Runtime/Data/app.pid';
+PID_FILE='./dist/Runtime/Data/app.pid';
 
 # help
 usage() {

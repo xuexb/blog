@@ -189,6 +189,10 @@ App.viewAction = function() {
             //发布时间
             data.update_date = Date.elapsedDate(data.update_date, 'yyyy-M-d h:m');
 
+            // 移动端替换没有分隔
+            data.markdown_content = data.markdown_content.replace(new RegExp(C('view_page'), 'g'), '')
+                .replace(new RegExp(C('list_mark'), 'g'), '');
+
             self.assign('data', data);
 
             //生成描述
