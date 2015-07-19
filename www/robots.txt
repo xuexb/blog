@@ -1,9 +1,7 @@
-# xuexb 
-# xieliang
+# xiaowu
 User-agent: *
 Allow: /
-Disallow: /src/
-Disallow: /dist/
-Disallow: /res/
+Disallow: /upload/
+Disallow: /static/
 
 Sitemap: http://www.xuexb.com/sitemap.xml
