@@ -90,52 +90,55 @@
     <% } %>
 
     <% if(links){ %>
-    <div class="sidebar-box mt20">
-        <dl class="sidebar-links">
-            <dt>
-                名人 名博 名事迹
-            </dt>
-            <dd>
-                <a href="http://www.dmimi.org/" data-pjax="false" title="轻量级前端类库">Dmimi</a>
-                <a href="http://sentsin.com/" data-pjax="false" title="前端大神">贤心</a> 
-                <a href="http://ziren.org/" data-pjax="false">前端开发-子任</a>
-                <a href="http://www.pmsun.net/" data-pjax="false" title="CURD程序员一枚">暖阳丶午后</a>
-                <a href="http://www.yutent.com/" title="一个迷失在前端与后台之间的PHPer" data-pjax="false">宇天</a>
-                <a href="http://www.cnblogs.com/52cik/" title="叫我楼教主" data-pjax="false">乱码</a>
-                <a href="http://www.wenkm.com/" title="Kevin的博客" data-pjax="false">Kevin's Blog</a>
-                <a href="http://qianduanblog.com/" data-pjax="false" title="很牛气的前端，有很多前端资源">前端博客</a>
-                <a href="http://www.html-js.com/" title="最专业的前端技术内容社区" data-pjax="false">前端乱炖</a>
-                <a href="http://www.wufangbo.com/" title="前端开发-武方博" data-pjax="false">前端开发</a>
-                <a href="http://dyy.im/" data-pjax="false">哥特复兴</a>
-                <a href="http://cssha.com/" data-pjax="false" title="去哪前端大神">安·记</a>
-                <a href="http://www.imququ.com/" data-pjax="false" title="JerryQu的小站">JerryQu</a>
-                <!-- <a href="http://julying.com/" data-pjax="false" title="七月、前端攻城师王子墨">王子墨</a> -->
-                <a href="http://www.baidufe.com/" data-pjax="false" title="Alien的笔记">Alien的笔记</a>
-                <a href="http://www.welefen.com/" data-pjax="false" title="welefen的随笔">welefen的随笔</a>
-                <a href="http://www.aips.me/" title="关注 WordPress 与互联网的原创IT科技博客">周良博客</a>
-                <a href="http://stylechen.com/" title="关注前端与用户体验">雨夜带刀's Blog</a>
-                <a href="http://yanhaijing.com/">颜海镜</a>
-            </dd>
-        </dl>
-    </div>
+        <div class="sidebar-box mt20">
+            <dl class="sidebar-links">
+                <dt>
+                    名人 名博 名事迹
+                </dt>
+                <dd>
+                    <a href="http://www.dmimi.org/" data-pjax="false" title="轻量级前端类库">Dmimi</a>
+                    <a href="http://sentsin.com/" data-pjax="false" title="前端大神">贤心</a> 
+                    <a href="http://ziren.org/" data-pjax="false">前端开发-子任</a>
+                    <a href="http://www.pmsun.net/" data-pjax="false" title="CURD程序员一枚">暖阳丶午后</a>
+                    <a href="http://www.yutent.com/" title="一个迷失在前端与后台之间的PHPer" data-pjax="false">宇天</a>
+                    <a href="http://www.cnblogs.com/52cik/" title="叫我楼教主" data-pjax="false">乱码</a>
+                    <a href="http://www.wenkm.com/" title="Kevin的博客" data-pjax="false">Kevin's Blog</a>
+                    <a href="http://qianduanblog.com/" data-pjax="false" title="很牛气的前端，有很多前端资源">前端博客</a>
+                    <a href="http://www.html-js.com/" title="最专业的前端技术内容社区" data-pjax="false">前端乱炖</a>
+                    <a href="http://www.wufangbo.com/" title="前端开发-武方博" data-pjax="false">前端开发</a>
+                    <!-- <a href="http://julying.com/" data-pjax="false" title="七月、前端攻城师王子墨">王子墨</a> -->
+                    <a href="http://www.baidufe.com/" data-pjax="false" title="Alien的笔记">Alien的笔记</a>
+                    <a href="http://www.welefen.com/" data-pjax="false" title="welefen的随笔">welefen的随笔</a>
+                    <a href="http://www.aips.me/" title="关注 WordPress 与互联网的原创IT科技博客">周良博客</a>
+                    <a href="http://stylechen.com/" title="关注前端与用户体验">雨夜带刀's Blog</a>
+                    <a href="http://yanhaijing.com/">颜海镜</a>
+                </dd>
+            </dl>
+        </div>
 
-    <div class="sidebar-box mt20">
-        <dl class="sidebar-links">
-            <dt>
-                有情 有链 有情意
-            </dt>
-            <dd>
-                <!-- <a href="http://www.zhuji91.com/" title="主机91">主机91</a> -->
-                <a href="http://www.beijixingpc.com/" data-pjax="false">计算机基础知识</a>
-                <a href="http://www.shenglei.org/" data-pjax="false">盛磊博客</a>
-                <a href="http://www.5ivu.com/" data-pjax="false">最新笑话</a>
-                <a href="http://www.nuobg.com/" data-pjax="false">网络推广</a>
-                <a href="http://youxi.pw/" data-pjax="false">新博客</a>
-                <a href="http://www.freehao123.com/" data-pjax="false" title="全球最新的免费资源发布区">免费资源部落</a>
-                <a href="http://www.softwhy.com/" data-pjax="false" title="蚂蚁部落">div css教程</a>
-                <a href="http://www.siyonli.com/">大晚</a>
-            </dd>
-        </dl>
-    </div>
+        <div class="sidebar-box mt20">
+            <dl class="sidebar-links">
+                <dt>
+                    有情 有链 有情意
+                </dt>
+                <dd>
+                    <!-- <a href="http://www.beijixingpc.com/" data-pjax="false">计算机基础知识</a> -->
+                    <a href="http://www.shenglei.org/" data-pjax="false">盛磊博客</a>
+                    <a href="http://www.5ivu.com/" data-pjax="false">最新笑话</a>
+                    <a href="http://www.nuobg.com/" data-pjax="false">网络推广</a>
+                    <a href="http://youxi.pw/" data-pjax="false">新博客</a>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="sidebar-box mt20">
+            <dl class="sidebar-links">
+                <dd>
+                    <p style="font-size:12px;padding: 10px;color: #999;">
+                        注：由于站长平台提醒我首页链接过多，故申请的链接都会出现在 <a href="/html/links.html" style="display: inline;padding: 0;color: #4183c4;">友情链接</a>！
+                    </p>
+                </dd>
+            </dl>
+        </div>
     <% } %>
 </div>
