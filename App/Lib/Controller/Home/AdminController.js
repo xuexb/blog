@@ -287,6 +287,9 @@ App.updateArticleAction = function() {
     if(catalog_data.length){
         data.catalog = '<div class="article-detail-sidebar"><ul>'+ catalog_data.join('') +'</ul></div>';
         catalog_data = null;
+    } else {
+        // fix 更新文章时如果没有文章导航没有清空
+        data.catalog = '';
     }
 
 
