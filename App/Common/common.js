@@ -241,30 +241,30 @@ global.get_page = function(opt, url) {
 
 
 global.xss_html = function(str){
-    var data = [],
-        i,len;
-    str = String(str);
+    // var data = [],
+    //     i,len;
+    // str = String(str);
 
 
 
-    //过滤 代码块
-    str = str.replace(/(```|`)([\s\S]+?)(\1)/g, function($0){
-        return '```'+ (data.push($0) - 1) +'```';
-    });
+    // //过滤 代码块
+    // str = str.replace(/(```|`)([\s\S]+?)(\1)/g, function($0){
+    //     return '```'+ (data.push($0) - 1) +'```';
+    // });
 
-    //转义下
-    // str = encodeHTML(str);
+    // //转义下
+    // // str = encodeHTML(str);
 
-    str = str.replace(/<[^>]*?>/g, '');
-
-
-    //把代码块替换到内容
-    for(i=0,len = data.length; i<len; i++){
-        str = str.replace('```'+ i +'```', data[i]);
-    }
+    // str = str.replace(/<[^>]*?>/g, '');
 
 
-    i = len = data = null;
+    // //把代码块替换到内容
+    // for(i=0,len = data.length; i<len; i++){
+    //     str = str.replace('```'+ i +'```', data[i]);
+    // }
+
+
+    // i = len = data = null;
 
     return str;
 }
