@@ -1,0 +1,2 @@
+/*blog - v1.4.0 - 2015-08-02  23:08:40*/
+!function(a,b){"use strict";var c=a.cache={set:function(){},get:function(){}},d={js:"script",css:"style"},e=function(a,c){var d,e=new Date((new Date).getTime()+864e5);d="; expires="+e,b.cookie=a+"="+encodeURIComponent(c)+";domain="+b.domain+d},f=function(a,c){var d=b.createElement(a);d.innerHTML=c,b.head.appendChild(d),d=null},g=function(a,b){var c=localStorage[a];c&&f(d[b],c)},h=function(a){var c=b.getElementById(a);c&&(e(a,"1"),localStorage[a]=c.innerHTML.trim())};try{a.localStorage&&(c.get=g,c.set=h)}catch(i){}}(window,document);
