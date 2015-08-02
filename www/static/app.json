@@ -3,7 +3,8 @@
         "dist": [
             "dist-copy:all",
             "dist-css:admin",
-            "dist-css:global"
+            "dist-css:global",
+            "dist-js:cache"
         ]
     },
     "css": {
@@ -14,21 +15,16 @@
                 "ui/bar.css",
                 "ui/page.css",
                 "ui/footer.css",
-                "ui/markdown.css"
+                "ui/markdown.css",
+                "ui/blog.css"
             ],
-            "sprite": {
-                "src": "ui/blog.css",
-                "options": {
-                    "imgName": "sprite0.png",
-                    "imagepath": "ui/sprite/",
-                    "spritedest": "ui/",
-                    "spritepath": "./"
-                }
-            },
             "dest": "ui/global.css"
         }
     },
     "js": {
+        "cache": {
+            "noCmd": "cache/base.js"
+        }
     },
     "copy": {
         "all": {
