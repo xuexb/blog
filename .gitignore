@@ -9,6 +9,5 @@ output.tar.gz
 .DS_Store
 sftp-config.json
 /www/upload
-Cache
 dev.js
 online.js
