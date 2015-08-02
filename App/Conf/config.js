@@ -10,14 +10,12 @@ var config = {
         user_pass: 'thinkjs',
     },
 
-    static_type: 'dist',
-    static_url: '/static/',
     static_version: new Date() - 0,
     dist: function(url, version) {
-        return C('static_url') + C('static_type') + '/' + url + (!version ? '?' + C('static_version') : '');
+        return '/static/dist/' + url + (!version ? '?' + C('static_version') : '');
     },
     res: function(url, version) {
-        return C('static_url') + 'res/' + url + (!version ? '?' + C('static_version') : '');
+        return '/static/res/' + url + (!version ? '?' + C('static_version') : '');
     },
 
 

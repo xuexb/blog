@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <% include inc/head.tpl %>
-    <link rel="stylesheet" href="<%=C('res')('hljs/hljs.css')%>">
 </head>
 <body<%if(auto){%> class="auto"<% } %>>
     <% include inc/bar.tpl %>
@@ -100,9 +99,5 @@
     </div>
 
     <% include inc/footer.tpl %>
-
-
-    <script src="<%=C('res')('hljs/hljs.js')%>"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>

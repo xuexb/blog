@@ -4,6 +4,30 @@
 
 'use strict';
 
+var render = function(data){
+    var marked = require('marked');
+    var highlight = require('highlight.js');
+    var renderer = new marked.Renderer();
+    renderer.heading = function(text, level) {
+        var escapedText = encodeURIComponent(text); //.replace(/[^\w]+/g, '');
+
+        return '<h' + level + '><a name="anchor-' +
+            escapedText +
+            '" class="anchor" href="#anchor-' +
+            escapedText +
+            '"><span class="header-link"></span></a>' +
+            text + '</h' + level + '>';
+    }
+    // 渲染代码
+    renderer.code = function (data, lang) {
+        data = highlight.highlightAuto(data).value;
+        return '<pre><code class="hljs lang-' + lang + '">' + data + '</code></pre>';
+    };
+    return marked(xss_html(data), {
+        renderer: renderer
+    }); //
+}
+
 var App = {};
 
 
@@ -156,7 +180,7 @@ App.get_list_content = function(str) {
         }
     }
 
-    return require('marked')(xss_html(content));
+    return render(content);
 }
 
 
@@ -211,7 +235,7 @@ App.editArticleAction = function() {
 App.updateArticleAction = function() {
     var self = this,
         type = 'create',
-        marked, id, temp, data, renderer, catalog_data;
+        id, temp, data,  catalog_data;
 
     // 如果不是POST
     if (!self.isPost()) {
@@ -241,26 +265,9 @@ App.updateArticleAction = function() {
         return self.error_msg('内容为空');
     }
 
-    // md -> html
-    marked = require('marked');
-
     temp = data.content.replace(new RegExp(C('list_mark'), 'g'), ''); //替换列表标识为空
 
-    //对标题添加字段
-    renderer = new marked.Renderer();
-    renderer.heading = function(text, level) {
-        var escapedText = encodeURIComponent(text); //.replace(/[^\w]+/g, '');
-
-        return '<h' + level + '><a name="anchor-' +
-            escapedText +
-            '" class="anchor" href="#anchor-' +
-            escapedText +
-            '"><span class="header-link"></span></a>' +
-            text + '</h' + level + '>';
-    }
-    data.markdown_content = marked(xss_html(temp), {
-        renderer: renderer
-    }); //去标签
+    data.markdown_content = render(temp);
 
     // 提取目录
     catalog_data = [];
