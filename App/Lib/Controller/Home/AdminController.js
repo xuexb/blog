@@ -8,6 +8,8 @@ var render = function(data){
     var marked = require('marked');
     var highlight = require('highlight.js');
     var renderer = new marked.Renderer();
+
+    var guid = 1;
     var pre_data = {};
     var pre_index = [];
 
@@ -23,7 +25,8 @@ var render = function(data){
     }
     // 渲染代码
     renderer.code = function (data, lang) {
-        var id = pre_index.push(1);
+        var id = guid++;
+        pre_index.push(id);
 
         data = highlight.highlightAuto(data).value;
         pre_data[id] = '<pre><code class="hljs lang-' + lang + '">' + data + '</code></pre>';
@@ -40,7 +43,7 @@ var render = function(data){
     data = data.replace(/[\r\n]/g, '');
 
     // 替换pre
-    pre_index.forEach(function(value, id){
+    pre_index.forEach(function(id){
         data = data.replace('{{{'+ id +'}}}', pre_data[id] || '');
     });
 
