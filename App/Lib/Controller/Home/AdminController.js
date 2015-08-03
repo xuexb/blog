@@ -8,6 +8,9 @@ var render = function(data){
     var marked = require('marked');
     var highlight = require('highlight.js');
     var renderer = new marked.Renderer();
+    var pre_data = {};
+    var pre_index = [];
+
     renderer.heading = function(text, level) {
         var escapedText = encodeURIComponent(text); //.replace(/[^\w]+/g, '');
 
@@ -20,12 +23,28 @@ var render = function(data){
     }
     // 渲染代码
     renderer.code = function (data, lang) {
+        var id = pre_index.push(1);
+
         data = highlight.highlightAuto(data).value;
-        return '<pre><code class="hljs lang-' + lang + '">' + data + '</code></pre>';
+        pre_data[id] = '<pre><code class="hljs lang-' + lang + '">' + data + '</code></pre>';
+
+        return '{{{'+ id +'}}}';
     };
-    return marked(xss_html(data), {
+    
+    // md => html
+    data = marked(xss_html(data), {
         renderer: renderer
-    }); //
+    });
+
+    // 去换行
+    data = data.replace(/[\r\n]/g, '');
+
+    // 替换pre
+    pre_index.forEach(function(value, id){
+        data = data.replace('{{{'+ id +'}}}', pre_data[id] || '');
+    });
+
+    return data;
 }
 
 var App = {};
