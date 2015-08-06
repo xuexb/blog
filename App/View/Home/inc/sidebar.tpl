@@ -96,19 +96,20 @@
                     名人 名博 名事迹
                 </dt>
                 <dd>
-                    <a href="http://www.dmimi.org/" data-pjax="false" title="轻量级前端类库">Dmimi</a>
-                    <a href="http://sentsin.com/" data-pjax="false" title="前端大神">贤心</a> 
+                    <a href="http://www.dmimi.org/" title="轻量级前端类库">Dmimi</a>
+                    <a href="http://sentsin.com/" title="前端大神">贤心</a> 
                     <a href="http://ziren.org/" data-pjax="false">前端开发-子任</a>
-                    <a href="http://www.pmsun.net/" data-pjax="false" title="CURD程序员一枚">暖阳丶午后</a>
+                    <a href="http://www.pmsun.net/" title="CURD程序员一枚">暖阳丶午后</a>
                     <a href="http://www.yutent.com/" title="一个迷失在前端与后台之间的PHPer" data-pjax="false">宇天</a>
                     <a href="http://www.cnblogs.com/52cik/" title="叫我楼教主" data-pjax="false">乱码</a>
                     <a href="http://www.wenkm.com/" title="Kevin的博客" data-pjax="false">Kevin's Blog</a>
-                    <a href="http://qianduanblog.com/" data-pjax="false" title="很牛气的前端，有很多前端资源">前端博客</a>
+                    <a href="https://imququ.com">Jerry Qu</a>
+                    <a href="http://qianduanblog.com/" title="很牛气的前端，有很多前端资源">前端博客</a>
                     <a href="http://www.html-js.com/" title="最专业的前端技术内容社区" data-pjax="false">前端乱炖</a>
                     <a href="http://www.wufangbo.com/" title="前端开发-武方博" data-pjax="false">前端开发</a>
-                    <!-- <a href="http://julying.com/" data-pjax="false" title="七月、前端攻城师王子墨">王子墨</a> -->
-                    <a href="http://www.baidufe.com/" data-pjax="false" title="Alien的笔记">Alien的笔记</a>
-                    <a href="http://www.welefen.com/" data-pjax="false" title="welefen的随笔">welefen的随笔</a>
+                    <!-- <a href="http://julying.com/" title="七月、前端攻城师王子墨">王子墨</a> -->
+                    <a href="http://www.baidufe.com/" title="Alien的笔记">Alien的笔记</a>
+                    <a href="http://www.welefen.com/" title="welefen的随笔">welefen的随笔</a>
                     <a href="http://www.aips.me/" title="关注 WordPress 与互联网的原创IT科技博客">周良博客</a>
                     <a href="http://stylechen.com/" title="关注前端与用户体验">雨夜带刀's Blog</a>
                     <a href="http://yanhaijing.com/">颜海镜</a>
