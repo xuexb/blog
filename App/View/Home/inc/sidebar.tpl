@@ -4,7 +4,7 @@
             <a href="<% if(user_name){ %>/admin/
                 <% }else{ %>/html/xiaowu.html
                 <% } %>">
-                <img src="http://www.xuexb.com/upload/month_1208/201208271431426663.jpg" alt="">
+                <img src="/upload/month_1208/201208271431426663.jpg" alt="">
             </a>
         </div>
         <div class="fr">
