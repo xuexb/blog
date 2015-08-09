@@ -1,7 +1,4 @@
-App/Runtime/Data/app.pid
-App/Runtime/Cache
-dist/Runtime/Data/app.pid
-dist/Runtime/Data/Cache
+Runtime/
 node_modules/
 output/
 nohup.out
