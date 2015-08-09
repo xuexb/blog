@@ -63,8 +63,8 @@ App.init = function(http) {
         self.cookie('auto', auto);
 
         // 处理是否加载过样式
-        self.assign('css_global_s', self.cookie('css_global'));
-        self.assign('css_hljs_s', self.cookie('css_hljs'));
+        self.assign('css_global_s', self.cookie('css_global_s'));
+        self.assign('css_hljs_s', self.cookie('css_hljs_s'));
 
         // 登录判断
         self.user_name = data[3];
