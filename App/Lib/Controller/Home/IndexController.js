@@ -453,6 +453,12 @@ App.viewAction = function() {
                 page: page
             }, Url.article.view(data.id, data.url, '{$page}')));
 
+            // 兼容https
+            data.markdown_content = data.markdown_content.replace(/http\:\/\/(www|github)\.xuexb/g,
+                function($0, $1){
+                    return 'https://'+ $1 +'.xuexb';
+                });
+
             //生成描述
             self.assign('description', data.markdown_content
                 .replace(/<[^>]+?>/g, '').replace(/[\r\n]/g, ',').substr(0, 120) + '...');

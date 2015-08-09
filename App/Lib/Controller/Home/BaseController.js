@@ -194,6 +194,12 @@ App.__get_list = function(options) {
 
             //发布时间
             val.update_date = Date.elapsedDate(val.update_date, 'yyyy-M-d');
+
+            // 兼容https
+            val.markdown_content_list = val.markdown_content_list.replace(/http\:\/\/(www|github)\.xuexb/g,
+                function($0, $1){
+                    return 'https://'+ $1 +'.xuexb';
+                });
         });
 
         return Promise.all(arr).then(function(list_data) {
