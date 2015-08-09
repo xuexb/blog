@@ -25,6 +25,9 @@ module.exports = [
 	// rss
 	[/^rss$/, 'index/rss'],
 
+	//代理
+	[/^proxy\/(.+?)$/, 'index/proxy/?url=:1'],
+
 
 	//后台
 	[/^admin\/article\/edit$/, 'admin/editArticle'],

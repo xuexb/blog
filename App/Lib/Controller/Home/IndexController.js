@@ -15,6 +15,12 @@ App.rssAction = function(){
     return this.redirect('/rss.xml', 301);
 }
 
+App.proxyAction = function(){
+    var url = this.get('url');
+    url = url.replace('http:/', '').replace('http://', '');
+    return this.redirect('http://'+ url, 301);
+}
+
 
 /**
  * 全部文章
