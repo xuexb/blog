@@ -42,7 +42,7 @@ App.init = function(http) {
     self.assign('keywords', '前端小武  谢耀武  小武  计算机基础   前端开发');
     self.assign('description', '谢耀武，网名前端小武，喜欢各种折腾, 喜欢研究源, 对美好的代码有极强的透视症, 崇尚有强烈技术氛围的UED...');
 
-    http.setHeader('Author', 'fe_xiaowu@gmail.com');
+    http.setHeader('Author', 'fe.xiaowu@gmail.com');
 
     //分类数据 0 
     arr.push(self.__get_list_data());

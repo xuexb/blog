@@ -1,7 +1,7 @@
 /**
  * 环境配置
  * @description 根据environment.json里配置的hostname来加载不同的配置文件，并覆盖传来的参数，注意加载的配置文件是基于当前路径下的
- * @author fe_xiaowu@gmail.com
+ * @author fe.xiaowu@gmail.com
  * @path App/Conf/environment.js
  */
 
