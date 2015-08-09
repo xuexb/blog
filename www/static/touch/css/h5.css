@@ -264,14 +264,14 @@
 .ui-ajax-loading span:before{
     content:' ';
     display:inline-block;
-    background:url('http://static.meishichina.com/v6/img/loading-16-16.gif') 0 0 no-repeat;
+    background:url('/static/res/img/loading-16-16.gif') 0 0 no-repeat;
     height:16px;width:16px;vertical-align:middle;
     padding-right:10px;
 }
 
 /*图占位*/
 .ui-imgload{
-    background:#f0f0f0 url('http://static.meishichina.com/v6/img/loading-16-16.gif') center center no-repeat;
+    background:#f0f0f0 url('/static/res/img/loading-16-16.gif') center center no-repeat;
     display:block;
     width:100%;height:100%;
     overflow:hidden;

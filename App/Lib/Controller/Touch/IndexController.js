@@ -193,6 +193,12 @@ App.viewAction = function() {
             data.markdown_content = data.markdown_content.replace(new RegExp(C('view_page'), 'g'), '')
                 .replace(new RegExp(C('list_mark'), 'g'), '');
 
+            // 兼容https
+            data.markdown_content = data.markdown_content.replace(/http\:\/\/(www|github)\.xuexb/g,
+                function($0, $1){
+                    return 'https://'+ $1 +'.xuexb';
+                });
+            
             self.assign('data', data);
 
             //生成描述
