@@ -460,9 +460,9 @@ App.viewAction = function() {
             }, Url.article.view(data.id, data.url, '{$page}')));
 
             // 兼容https
-            data.markdown_content = data.markdown_content.replace(/http\:\/\/(www|github)\.xuexb/g,
-                function($0, $1){
-                    return 'https://'+ $1 +'.xuexb';
+            data.markdown_content = 
+                data.markdown_content.replace(/http\:\/\/(www|github)\.xuexb\.com\/upload(s)?/g, function($0){
+                    return $0.replace('http:', 'https:');
                 });
 
             //生成描述
