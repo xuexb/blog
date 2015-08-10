@@ -194,9 +194,10 @@ App.viewAction = function() {
                 .replace(new RegExp(C('list_mark'), 'g'), '');
 
             // 兼容https
-            data.markdown_content = data.markdown_content.replace(/http\:\/\/(www|github)\.xuexb/g,
-                function($0, $1){
-                    return 'https://'+ $1 +'.xuexb';
+            data.markdown_content = 
+                data.markdown_content
+                .replace(/http\:\/\/(www|github)\.xuexb(.+?)\.(jpg|git|jpeg|png)$/g, function($0){
+                    return $0.replace('http:', 'https:');
                 });
             
             self.assign('data', data);

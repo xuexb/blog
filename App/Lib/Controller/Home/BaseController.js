@@ -197,7 +197,8 @@ App.__get_list = function(options) {
 
             // 兼容https
             val.markdown_content_list = 
-                val.markdown_content_list.replace(/http\:\/\/(www|github)\.xuexb\.com\/upload(s)?/g, function($0){
+                val.markdown_content_list
+                .replace(/http\:\/\/(www|github)\.xuexb\/(.+?)\.(jpg|git|jpeg|png)$/g, function($0){
                     return $0.replace('http:', 'https:');
                 });
         });
