@@ -462,7 +462,7 @@ App.viewAction = function() {
             // 兼容https
             data.markdown_content = 
                 data.markdown_content
-                .replace(/http\:\/\/(www|github)\.xuexb(.+?)\.(jpg|git|jpeg|png)$/g, function($0){
+                .replace(/http\:\/\/(www|github)\.xuexb(.+?)\.(jpg|git|jpeg|png)/g, function($0){
                     return $0.replace('http:', 'https:');
                 });
 
