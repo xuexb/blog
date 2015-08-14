@@ -19,7 +19,7 @@
                 </div>
             </li>
             <li>
-                <a href="http://github.xuexb.com/">Demo</a>
+                <a href="https://github.xuexb.com/">Demo</a>
             </li>
             <li>
                 <a href="<%=Url.article.view(0, 'xiaowu')%>"<% if(nav_type === 'about'){ %> class="current"<% } %>>关于我</a>
