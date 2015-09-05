@@ -1,10 +1,10 @@
 [
     {
-        "name": ["DESKTOP-TQE3SPB", "xieyaowudeMacBook-Air.local"],
+        "name": ["xiaowu-pc", "xieyaowudeMacBook-Air.local", "baidudeMacBook-Pro.local"],
         "config": "dev"
     },
     {
-        "name": "cloud",
+        "name": ["iZ2556j5v9iZ"],
         "config": "online"
     }
 ]
