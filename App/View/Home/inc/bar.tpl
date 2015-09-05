@@ -2,7 +2,7 @@
     <div class="w clear">
         <div class="bar-logo fl">
             <h1>
-                <a href="http://www.xuexb.com/">前端小武</a>
+                <a href="/">前端小武</a>
             </h1>
         </div>
 
