@@ -113,6 +113,7 @@
                     <a href="http://www.aips.me/" title="关注 WordPress 与互联网的原创IT科技博客">周良博客</a>
                     <a href="http://stylechen.com/" title="关注前端与用户体验">雨夜带刀's Blog</a>
                     <a href="http://yanhaijing.com/">颜海镜</a>
+                    <a href="http://f2er.club/" title="前端人的俱乐部">醉牛前端</a>
                 </dd>
             </dl>
         </div>
