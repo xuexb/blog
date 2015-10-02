@@ -1,7 +1,7 @@
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title><%=title%></title>
-<script type="text/javascript" src="<%=C('dist')('cache/base.js')%>"></script>
+<script><% include ../../../../www/static/dist/cache/base.js %></script>
 
 <%if (!css_global_s){ %>
     <style id="css_global_s">
