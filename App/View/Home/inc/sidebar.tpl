@@ -96,7 +96,7 @@
                     名人 名博 名事迹
                 </dt>
                 <dd>
-                    <a href="http://www.dmimi.org/" title="轻量级前端类库">Dmimi</a>
+                    <a href="http://dmimi.sinaapp.com/" title="轻量级前端类库">Dmimi</a>
                     <a href="http://sentsin.com/" title="前端大神">贤心</a> 
                     <a href="http://ziren.org/" data-pjax="false">前端开发-子任</a>
                     <a href="http://www.pmsun.net/" title="CURD程序员一枚">暖阳丶午后</a>
