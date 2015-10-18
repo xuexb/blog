@@ -655,6 +655,7 @@ App.createRss = function(data) {
 
     arr.push('</channel></rss>');
 
+    fs.writeFileSync(path.resolve(APP_PATH, '../www/rss2.xml'), arr.join('\n'));
     fs.writeFileSync(path.resolve(APP_PATH, '../www/rss.xml'), arr.join('\n'));
 }
 
