@@ -114,6 +114,7 @@
                     <a href="http://stylechen.com/" title="关注前端与用户体验">雨夜带刀's Blog</a>
                     <a href="http://yanhaijing.com/">颜海镜</a>
                     <a href="http://f2er.club/" title="前端人的俱乐部">醉牛前端</a>
+                    <a href="http://www.52cik.com/" title="前端牛人乱码">楼教主</a>
                 </dd>
             </dl>
         </div>
