@@ -1,7 +1,0 @@
-# xiaowu
-User-agent: *
-Allow: /
-Disallow: /upload/
-Disallow: /static/
-
-Sitemap: http://www.xuexb.com/sitemap.xml

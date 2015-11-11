@@ -1,27 +1,35 @@
 {
-  "name": "xuexb_blog",
-  "description": "project created by thinkjs",
-  "version": "0.1.0",
-  "author": {},
-  "dependencies": {
-    "thinkjs": "*"
-  },
-  "keywords": [],
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:xuexb/blog.git"
-  },
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "readmeFilename": "README.md",
-  "devDependencies": {
-    "grunt": "^0.4.5",
-    "thinkjs": "*",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-uglify": "*",
-    "grunt-contrib-copy":"*",
-    "marked": "*",
-    "highlight.js": "*"
-  }
+    "name": "xuexb_blog",
+    "description": "xuexb created by thinkjs",
+    "version": "3.0.0",
+    "license": "MIT",
+    "author": {
+        "name": "xiaowu",
+        "url": "https://xuexb.com"
+    },
+    "dependencies": {
+        "thinkjs": "^2.0.6",
+        "marked": "^0.3.5",
+        "babel": "5.8.21",
+        "babel-runtime": "5.6.17"
+    },
+    "scripts": {
+        "check": "fecs check src/*.js",
+        "start": "node www/index.js",
+        "compile": "babel --loose all --optional runtime --stage 0 --modules common src/ --out-dir app/ --retain-lines",
+        "watch-compile": "node -e \"console.log('<npm run watch-compile> no longer need, use <npm start> command direct.');console.log();\"",
+        "watch": "npm run watch-compile"
+    },
+    "keywords": [],
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:xuexb/blog.git"
+    },
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "readmeFilename": "README.md",
+    "devDependencies": {
+        "fecs": "^0.4.13"
+    }
 }

@@ -7,9 +7,7 @@ var instance = new thinkjs({
   APP_PATH: rootPath + '/app',
   ROOT_PATH: rootPath,
   RESOURCE_PATH: __dirname,
-  env: 'development'
+  env: 'testing'
 });
-//watch compile code
 instance.compile();
-
 instance.run();
