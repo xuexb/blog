@@ -1,21 +1,12 @@
-# 博客nodejs版
+# 博客nodejs版 for thinkjs
 
-使用`thinkjs`创建的博客
+> 3.0
 
-> [http://www.xuexb.com/](http://www.xuexb.com)
+## install
 
-## 命令
-
-### jshint
-
-```shell
-$ grunt jshint
-```
-
-### 编译压缩
-
-> 注：代码必须通过`jshint`检查才可以编译
-
-```shell
-$ grunt build
+```bash
+git clone https://github.com/xuexb/blog.git
+cd blog
+npm install
+npm run start
 ```
