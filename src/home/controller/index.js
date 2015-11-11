@@ -1,14 +1,25 @@
 'use strict';
 
-import Base from './base.js';
+import Base from './base';
 
 export default class extends Base {
-  /**
-   * index action
-   * @return {Promise} []
-   */
-  indexAction(){
-    //auto render template file index_index.html
-    return this.display();
-  }
+    /**
+     * index action
+     * @return {Promise} []
+     */
+    async indexAction() {
+        let article = this.model('article');
+
+        let data = await article.field('title, id, list_id').order('id DESC').limit(3).select();
+
+        return this.json(data);
+        console.log(data);
+
+        return this.json({a:32});
+
+
+
+
+
+    }
 }
