@@ -1,0 +1,11 @@
+{
+  "name": "blog-static",
+  "description": "博客静态资源",
+  "version": "0.0.1",
+  "author": "xiaowu",
+  "devDependencies": {
+    "extend": "^3.0.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-cssmin": "^0.11.0"
+  }
+}
