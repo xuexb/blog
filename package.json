@@ -8,7 +8,7 @@
         "url": "https://xuexb.com"
     },
     "dependencies": {
-        "thinkjs": "^2.0.7",
+        "thinkjs": "^2.0.8",
         "marked": "^0.3.5",
         "babel": "5.8.21",
         "babel-runtime": "5.6.17"

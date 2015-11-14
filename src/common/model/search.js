@@ -8,11 +8,11 @@ export default class extends think.model.base {
     }
 
     /**
-     * 获取有缓存的列表数据
+     * 获取有缓存的点击排行,top6
      *
      * @return {Promise}   []
      */
-    getCacheList() {
-        return this.cache('list_data').order('id DESC').select();
+    getCacheHitTopList() {
+        return this.field('name, hit').cache('search_hit').order('hit DESC').limit(6).select();
     }
 }

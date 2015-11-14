@@ -10,3 +10,7 @@
  *     
  * }
  */
+
+import Util from '../util';
+
+global.parseUrl = Util.parseUrl;
