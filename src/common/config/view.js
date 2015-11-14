@@ -1,12 +1,20 @@
 'use strict';
+
+import Util from '../util';
+
 /**
  * template config
  */
 export default {
-  type: 'ejs',
-  content_type: 'text/html',
-  file_ext: '.html',
-  file_depr: '_',
-  root_path: think.ROOT_PATH + '/view',
-  options: {}
+    type: "nunjucks",
+    root_path: think.ROOT_PATH + '/view',
+    adapter: {
+        nunjucks: {
+            prerender: function (nunjucks, env) {
+                env.addFilter('elapsed', (date, str) => {
+                    return Util.parseDate.elapsed(date, str);
+                });
+            }
+        }
+    }
 };

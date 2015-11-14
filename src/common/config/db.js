@@ -16,8 +16,8 @@ export default {
   log_sql: true,
   log_connect: true,
   cache: {
-    on: false,
-    type: '',
+    on: true,
+    type: 'file',
     timeout: 3600
   }
 };

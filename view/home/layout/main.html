@@ -7,116 +7,25 @@
     <title>{{ title }}</title>
     <meta name="keywords" content="{{ keywords }}" />
     <meta name="description" content="{{ description }}" />
-    <link rel="stylesheet" type="text/css" href="{{ config.get_static('pc/global.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ config.blog.get_static('pc/global.css') }}">
+
+    {% block head_end_before %}{% endblock %}
 </head>
 <body>
 
-    <div class="bar">
-        <div class="w clear">
-            <div class="bar-logo fl">
-                <h1>
-                    <a href="/">前端小武</a>
-                </h1>
-            </div>
-
-            <ul class="bar-nav fr clear">
-                <li>
-                    <a href="/">首页</a>
-                </li>
-                <li>
-                    <span>文章</span>
-                    <div class="bar-nav-dropdown">
-                        <a href="#">测试</a>
-                        <a href="#">测试</a>
-                        <a href="#">测试</a>
-                        <a href="#">测试</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="https://github.xuexb.com/">Demo</a>
-                </li>
-                <li>
-                    <a href="http://apijs.xuexb.com/">Apijs</a>
-                </li>
-                <li>
-                    <a href="#">关于我</a>
-                </li>
-                <li>
-                    <a href="#">友情链接</a>
-                </li>
-                <li>
-                    <a href="#">留言</a>
-                </li>
-                <li>
-                    <div class="bar-nav-rss">
-                        <a href="/rss.xml">RSS</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
+    {% block bar %} 
+        {% include './inc_bar.html' %}
+    {% endblock %}
 
     <div class="wrap">
         <div class="w clear">
-            <div class="ui-crumbs">
-                <a href="/">首页</a> > <%=list_data.name%>
-            </div>
+            {% block location %}
+            {% endblock %}
             <div class="main">
                 <div class="main-inner">
-                    <ul class="article-list">
-                        <li>
-                            <h2 class="article-list-title text-overflow">
-                                <a href="#">测试标题</a>
-                            </h2>
-                            <div class="article-list-content">
-                                <div class="markdown-body">
-                                    我是内容
-                                    <pre>
-fds
-
-fsd
-
-fsd
-fs
-sf
-
-
-sfsdf
-
-                                    </pre>
-                                </div>
-                            </div>
-                            <div class="article-list-more">
-                                <a href="#">阅读全文 »</a>
-                            </div>
-                            <div class="article-list-tool clear">
-                                <ul class="fr">
-                                    <li>
-                                        <i class="article-list-tool-hit"></i>1
-                                    </li>
-                                    <li>
-                                        <i class="article-list-tool-time"></i>215-22
-                                    </li>
-                                    <li>
-                                        <i class="article-list-tool-class"></i>
-                                        <a href="#">
-                                            名称
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <i class="article-list-tool-tag"></i>
-                                        <a href="#">标签名</a>
-                                        <a href="#">标签名</a>
-                                        <a href="#">标签名</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <div class="ui-empty">
-                        没有数据！
-                    </div>
+                    {% block main_inner%}
+                        {% include './inc_article_list.html' %}
+                    {% endblock %}
                 </div>
             </div>
             
@@ -140,139 +49,78 @@ sfsdf
                 <div class="mt20 sidebar-search">
                     <form id="J-form" action="/index/search/" class="clear" autocomplete="off">
                         <label class="hide" for="J-key">搜索：</label>
-                        <input type="text" name="key" placeholder="搜点什么呢？" value="<%=key%>"autocomplete="off" accesskey="s" class="fl sidebar-search-text" id="J-key"><input class="sidebar-search-btn fr" type="submit" value="搜索">
+                        <input type="text" name="key" placeholder="搜点什么呢？" value="{{ key }}" autocomplete="off" accesskey="s" class="fl sidebar-search-text" id="J-key">
+                        <input class="sidebar-search-btn fr" type="submit" value="搜索">
                     </form>
-                    <script type="text/javascript">
-                        (function(){
-                            var form = document.getElementById('J-form'),
-                                text = document.getElementById('J-key');
-                            form.onsubmit = function(){
-                                var key = text.value.replace(/(^\s*)|(\s*$)/, '');
-                                if(!key){
-                                    text.focus();
-                                } else {
-                                    location.href = '<%=Url.article.search("{key}")%>'.replace('{key}', key);
-                                }
-                                return false;
-                            }
-                        })();
-                    </script>
                 </div>
 
-                <div class="sidebar-box mt20">
-                    <dl class="sidebar-article">
-                        <dt>
-                            关于 "<%=key%>" 的其她文章
-                        </dt>
-                        <dd>
-                            <a href="#">111</a>
-                            <a href="#">111</a>
-                            <a href="#">111</a>
-                            <a href="#">111</a>
-                            <a href="#">111</a>
-                            <a href="#">111</a>
-                        </dd>
-                    </dl>
-                </div>
+                {% block search_after %}
+                {% endblock %}
 
-                <div class="sidebar-box mt20">
-                    <dl class="sidebar-article">
-                        <dt>
-                            最近更新的文章
-                        </dt>
-                        <dd>
-                            <a href="#">111</a>
-                            <a href="#">111</a>
-                            <a href="#">111</a>
-                            <a href="#">111</a>
-                        </dd>
-                    </dl>
-                </div>
+                {% block new_article %}
+                    {% if rand_tags_data and rand_tags_data.length %}
+                        <div class="sidebar-box mt20">
+                            <dl class="sidebar-links">
+                                <dt>
+                                    标签
+                                </dt>
+                                <dd>
+                                    {% for item in rand_tags_data %}
+                                        <a href="/tags/{{ item.url or item.id }}/">{{ item.name }}</a>
+                                    {% endfor %}
+                                </dd>
+                            </dl>
+                        </div>
+                    {% endif %}
+                {% endblock %}
 
-
-                <div class="sidebar-box mt20">
-                    <dl class="sidebar-article">
-                        <dt>
-                            搜索最多的词
-                        </dt>
-                        <dd>
-                                <a href="#" data-hit="1">fsf</a>
-                        </dd>
-                    </dl>
-                </div>
-
-                <div class="sidebar-box mt20">
-                    <dl class="sidebar-links">
-                        <dt>
-                            名人 名博 名事迹
-                        </dt>
-                        <dd>
-                            <a href="http://dmimi.sinaapp.com/" title="轻量级前端类库">Dmimi</a>
-                            <a href="http://sentsin.com/" title="前端大神">贤心</a> 
-                            <a href="http://ziren.org/" data-pjax="false">前端开发-子任</a>
-                            <a href="http://www.pmsun.net/" title="CURD程序员一枚">暖阳丶午后</a>
-                            <a href="http://www.yutent.com/" title="一个迷失在前端与后台之间的PHPer" data-pjax="false">宇天</a>
-                            <a href="http://www.cnblogs.com/52cik/" title="叫我楼教主" data-pjax="false">乱码</a>
-                            <a href="http://www.wenkm.com/" title="Kevin的博客" data-pjax="false">Kevin's Blog</a>
-                            <a href="https://imququ.com">Jerry Qu</a>
-                            <a href="http://qianduanblog.com/" title="很牛气的前端，有很多前端资源">前端博客</a>
-                            <a href="http://www.html-js.com/" title="最专业的前端技术内容社区" data-pjax="false">前端乱炖</a>
-                            <a href="http://www.wufangbo.com/" title="前端开发-武方博" data-pjax="false">前端开发</a>
-                            <!-- <a href="http://julying.com/" title="七月、前端攻城师王子墨">王子墨</a> -->
-                            <a href="http://www.baidufe.com/" title="Alien的笔记">Alien的笔记</a>
-                            <a href="http://www.welefen.com/" title="welefen的随笔">welefen的随笔</a>
-                            <a href="http://www.aips.me/" title="关注 WordPress 与互联网的原创IT科技博客">周良博客</a>
-                            <a href="http://stylechen.com/" title="关注前端与用户体验">雨夜带刀's Blog</a>
-                            <a href="http://yanhaijing.com/">颜海镜</a>
-                            <a href="http://f2er.club/" title="前端人的俱乐部">醉牛前端</a>
-                            <a href="http://www.52cik.com/" title="前端牛人乱码">楼教主</a>
-                        </dd>
-                    </dl>
-                </div>
-                <div class="sidebar-box mt20">
-                    <dl class="sidebar-links">
-                        <dt>
-                            有情 有链 有情意
-                        </dt>
-                        <dd>
-                            <!-- <a href="http://www.beijixingpc.com/" data-pjax="false">计算机基础知识</a> -->
-                            <a href="http://www.shenglei.org/" data-pjax="false">盛磊博客</a>
-                            <a href="http://www.5ivu.com/" data-pjax="false">最新笑话</a>
-                            <a href="http://www.nuobg.com/" data-pjax="false">网络推广</a>
-                            <a href="http://youxi.pw/" data-pjax="false">新博客</a>
-                        </dd>
-                    </dl>
-                </div>
-                <div class="sidebar-box mt20">
-                    <dl class="sidebar-links">
-                        <dd>
-                            <p style="font-size:12px;padding: 10px;color: #999;">
-                                注：由于站长平台提醒我首页链接过多，故申请的链接都会出现在 <a href="/html/links.html" style="display: inline;padding: 0;color: #4183c4;">友情链接</a>！
-                            </p>
-                        </dd>
-                    </dl>
-                </div>
+                {% block search_hit %}
+                    {% if search_hit_data and search_hit_data.length %}
+                        <div class="sidebar-box mt20">
+                            <dl class="sidebar-article">
+                                <dt>
+                                    搜索最多的词
+                                </dt>
+                                <dd>
+                                    {% for item in search_hit_data %}
+                                        <a href="#" data-hit="{{ item.hit }}">{{ item.name }}</a>
+                                    {% endfor %}
+                                </dd>
+                            </dl>
+                        </div>
+                    {% endif %}
+                {% endblock %}
+                
+                {% block links %}
+                {% endblock %}
             </div>
         </div>
     </div>
-
-    <div class="footer">
-        <div class="footer-inner">
-            <div class="w">
-                <p>
-                    <a href="/sitemap.html">网站地图</a> | <a href="/sitemap.xml">sitemap地图</a> | <a href="/rss.xml">rss订阅</a> | <a href="/html/xiaowu.html">前端小武</a>
-                </p>
-                <p>
-                    &copy; 2011-2015 xuexb.com <a href="https://xuexb.com/">前端开发</a> - <a href="http://www.miitbeian.gov.cn/" target="_blank">冀ICP备15021942号-1</a>
-                </p>
+    
+    {% block footer %}
+        <div class="footer">
+            <div class="footer-inner">
+                <div class="w">
+                    <p>
+                        <a href="/sitemap.html">网站地图</a> | <a href="/sitemap.xml">sitemap地图</a> | <a href="/rss.xml">rss订阅</a> | <a href="/html/xiaowu.html">前端小武</a>
+                    </p>
+                    <p>
+                        &copy; 2011-2015 xuexb.com <a href="https://xuexb.com/">前端开发</a> - <a href="http://www.miitbeian.gov.cn/" target="_blank">冀ICP备15021942号-1</a>
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-
+    {% endblock %}
+    
+    {% block gotop%}
     <div id="J-goTop">
         <a href="#top">
             <i>返回顶部</i>
         </a>
     </div>
+    {% endblock %}
+
+    {% block body_end_before %}{% endblock %}
+
 </body>
 </html>
