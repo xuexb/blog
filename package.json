@@ -8,17 +8,14 @@
         "url": "https://xuexb.com"
     },
     "dependencies": {
-        "thinkjs": "^2.0.6",
+        "thinkjs": "^2.0.7",
         "marked": "^0.3.5",
         "babel": "5.8.21",
         "babel-runtime": "5.6.17"
     },
     "scripts": {
         "check": "fecs check src/*.js",
-        "start": "node www/index.js",
-        "compile": "babel --loose all --optional runtime --stage 0 --modules common src/ --out-dir app/ --retain-lines",
-        "watch-compile": "node -e \"console.log('<npm run watch-compile> no longer need, use <npm start> command direct.');console.log();\"",
-        "watch": "npm run watch-compile"
+        "start": "node www/development.js"
     },
     "keywords": [],
     "repository": {
