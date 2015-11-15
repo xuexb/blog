@@ -122,6 +122,13 @@ export default class extends Base {
             'name|url': ['like', '%' + key +'%']
         }).select();
 
+        // 高亮搜索词
+        tags_data.forEach(val => {
+            val.name = val.name.replace(RegExp(key, 'gi'), function($0) {
+                return '<mark>' + $0 + '</mark>';
+            });
+        });
+
         // 不管有没有数据，插入/更新这个key
         let update_search_result = await this.model('search').thenAdd({
             name: key,
