@@ -58,6 +58,21 @@
                         <label class="hide" for="J-key">搜索：</label>
                         <input type="text" name="key" placeholder="搜点什么呢？" value="{{ key }}" autocomplete="off" accesskey="s" class="fl sidebar-search-text" id="J-key">
                         <input class="sidebar-search-btn fr" type="submit" value="搜索">
+                        <script>
+                            (function(){
+                                var form = document.getElementById('J-form'),
+                                    text = document.getElementById('J-key');
+                                form.onsubmit = function(){
+                                    var key = text.value.replace(/(^\s*)|(\s*$)/, '');
+                                    if(!key){
+                                        text.focus();
+                                    } else {
+                                        location.href = '/search/'+ key +'/';
+                                    }
+                                    return false;
+                                }
+                            })();
+                        </script>
                     </form>
                 </div>
 
