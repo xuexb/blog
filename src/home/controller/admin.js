@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import Base from './base';
 import Util from '../../common/util';
-import Create from '../../common/createSitemap';
+import Create from '../../common/create_sitemap';
 
 export default class extends Base {
     /**
