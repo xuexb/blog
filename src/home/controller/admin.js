@@ -21,13 +21,13 @@ export default class extends Base {
      *
      * @param {Object} data 数据 {url, name}
      */
-    setLocation(...data) {
+    set_location(...data) {
         data.unshift({
             url: '/admin',
             name: '后台'
         });
 
-        super.setLocation(...data);
+        super.set_location(...data);
     }
 
     /**
@@ -38,9 +38,11 @@ export default class extends Base {
     async indexAction() {
 
         // 设置当前位置
-        super.setLocation({
+        super.set_location({
             name: '后台'
         });
+
+        this.set_title('后台主页');
 
         return this.display();
     }
@@ -51,7 +53,7 @@ export default class extends Base {
      * @param {int} page 页码
      * @param {string} key 关键字
      * @param {number} list_id 分类id
-     * @return {Proimise} []
+     * @return {Promise} []
      */
     async articleAction() {
         let page = this.param('page');
@@ -61,7 +63,7 @@ export default class extends Base {
 
         // 处理条件
         if(list_id){
-            let list_data = this.config('list').filter(val => String(val.id) === list_id);
+            let list_data = this.config('list_data').filter(val => String(val.id) === list_id);
             if(!think.isEmpty(list_data)){
                 where.list_id = list_data[0].id;
             }
@@ -73,7 +75,7 @@ export default class extends Base {
         }
 
         // 设置当前位置
-        this.setLocation({
+        this.set_location({
             name: '管理文章'
         });
 
@@ -89,6 +91,8 @@ export default class extends Base {
             page_data: data.count > 0 ? Util.getPageStr(data, page_url) : ''
         });
 
+        this.set_title('管理文章');
+
         return this.display();
     }
 
@@ -96,7 +100,7 @@ export default class extends Base {
      * 编辑文章
      *
      * @param {number} id 文章id
-     * @return {Proimise} []
+     * @return {Promise} []
      */
     async editArticleAction() {
         let id = this.param('id');
@@ -124,7 +128,7 @@ export default class extends Base {
         }
 
         // 设置当前位置
-        this.setLocation({
+        this.set_location({
             name: '编辑文章'
         });
 
@@ -135,17 +139,19 @@ export default class extends Base {
             type: 'edit'
         });
 
+        this.set_title('编辑文章');
+
         return this.display();
     }
 
     /**
      * 添加文章
-     * @return {Proimise} []
+     * @return {Promise} []
      */
     async addArticleAction() {
 
         // 设置当前位置
-        this.setLocation({
+        this.set_location({
             name: '添加文章'
         });
 
@@ -159,6 +165,8 @@ export default class extends Base {
             type: 'add'
         });
 
+        this.set_title('添加文章');
+
         return this.display('home/admin/edit_article');
     }
 
@@ -167,16 +175,19 @@ export default class extends Base {
      *
      * @param  {strin} str 字符
      *
-     * @return {Proimise}     []
+     * @return {Promise}     []
      */
     tipsAction(str = '', url = '') {
-        this.setLocation({
+        this.set_location({
             name: '操作提示'
         });
         this.assign({
             msg: str,
             back_url: url
         });
+
+        this.set_title('操作提示');
+
         return this.display('home/admin/tips');
     }
 
@@ -184,7 +195,7 @@ export default class extends Base {
      * 删除文章
      *
      * @param {number} id 文章id
-     * @return {Proimise} []
+     * @return {Promise} []
      */
     async delArticleAction() {
         let id = this.param('id');
@@ -202,6 +213,14 @@ export default class extends Base {
         return this.tipsAction('删除成功', '/admin/article/');
     }
 
+    /**
+     * 筛选标签数据
+     *
+     * @param  {Array} newArr 新标签数据
+     * @param  {Array} oldArr 旧标签数据
+     *
+     * @return {Object}        {jia, jian}
+     */
     filterTags(newArr, oldArr) {
         if(think.isEmpty(newArr)){
             newArr = [];
@@ -243,7 +262,7 @@ export default class extends Base {
      * 保存文章
      *
      * @type {POST}
-     * @return {Proimise} []
+     * @return {Promise} []
      */
     async saveArticleAction() {
         let data = this.post();
@@ -363,7 +382,7 @@ export default class extends Base {
     /**
      * 标签管理
      *
-     * @return {Proimise} []
+     * @return {Promise} []
      */
     async tagsAction() {
         let model_tags_index = this.model('tags_index');
@@ -376,9 +395,11 @@ export default class extends Base {
         });
 
         // 设置当前位置
-        this.setLocation({
-            name: '标签'
+        this.set_location({
+            name: '标签管理'
         });
+
+        this.set_title('标签管理');
 
         return this.display();
     }
@@ -386,11 +407,11 @@ export default class extends Base {
     /**
      * 添加标签
      *
-     * @return {Proimise}  []
+     * @return {Promise}  []
      */
     async addTagsAction() {
         // 设置当前位置
-        this.setLocation({
+        this.set_location({
             url: '/admin/tags/',
             name: '标签'
         }, {
@@ -403,6 +424,8 @@ export default class extends Base {
             type: 'add'
         });
 
+        this.set_title('添加标签');
+
         return this.display('home/admin/edit_tags');
     }
 
@@ -410,13 +433,13 @@ export default class extends Base {
      * 编辑标签
      *
      * @param {number} id 标签id
-     * @return {Proimise}  []
+     * @return {Promise}  []
      */
     async editTagsAction() {
         let id = this.param('id');
 
         // 设置当前位置
-        this.setLocation({
+        this.set_location({
             url: '/admin/tags/',
             name: '标签'
         }, {
@@ -438,6 +461,8 @@ export default class extends Base {
             type: 'edit'
         });
 
+        this.set_title('编辑标签');
+
         return this.display('home/admin/edit_tags');
     }
 
@@ -445,7 +470,7 @@ export default class extends Base {
      * 保存标签
      *
      * @type {POST}
-     * @return {Proimise} []
+     * @return {Promise} []
      */
     async saveTagsAction() {
         if(!this.isPost()){
@@ -503,7 +528,7 @@ export default class extends Base {
      * 删除标签
      *
      * @param {number} id 文章id
-     * @return {Proimise} []
+     * @return {Promise} []
      */
     async delTagsAction() {
         let id = this.param('id');
@@ -529,7 +554,7 @@ export default class extends Base {
     async sitemapAction() {
         let result = {};
 
-        result.list = this.config('list');
+        result.list = this.config('list_data');
 
         result.article = await this.model('article')
             .field('id, url, update_date, title, markdown_content_list')

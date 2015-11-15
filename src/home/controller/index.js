@@ -21,6 +21,15 @@ export default class extends Base {
     }
 
     /**
+     * rss订阅
+     *
+     * @return {Promise} []
+     */
+    rssAction() {
+        return this.redirect('/rss.xml', 301);
+    }
+
+    /**
      * 主页
      *
      * @return {Promise} []
@@ -28,7 +37,12 @@ export default class extends Base {
     async indexAction() {
         let article = this.model('article');
         let data = await article.field(this.listSqlField).order('id DESC').limit(10).select();
-        this.assign('list', data);
+
+        this.assign({
+            description: '谢耀武，网名前端小武，喜欢各种折腾, 喜欢研究源, 对美好的代码有极强的透视症, 崇尚有强烈技术氛围的UED...',
+            list: data
+        });
+
         return this.display();
     }
 
@@ -42,7 +56,7 @@ export default class extends Base {
     async listAction() {
         let url = this.param('xssurl');
         let page = this.param('xsspage');
-        let list_data = this.config('list') || [];
+        let list_data = this.config('list_data') || [];
 
         // 根据url筛选出列表数据，如果不存在则说明传的是假的
         list_data = list_data.filter((val) => val.url === url);
@@ -61,14 +75,19 @@ export default class extends Base {
         // 配置模板数据
         this.assign({
             list: data.data,
-            page_data: data.count > 0 ? Util.getPageStr(data, '/list/'+ list_data.url + '/{$page}/') : '',
-            title: list_data.name + '——'+ this.config('blog.name')
+            page_data: data.count > 0 ? Util.getPageStr(data, '/list/'+ list_data.url + '/{$page}/') : ''
         });
 
+        // 设置标题
+        this.set_title(list_data.name);
+
         // 设置当前位置
-        this.setLocation({
+        this.set_location({
             name: list_data.name
         });
+
+        // 设置导航
+        this.set_nav_type('article', list_data.id);
 
         return this.display();
     }
@@ -132,12 +151,14 @@ export default class extends Base {
             tags_data: think.isEmpty(tags_data) ? null : tags_data,
             key: key,
             list: data.data,
-            page_data: data.count > 0 ? Util.getPageStr(data, '/search/'+ key + '/{$page}/') : '',
-            title: `搜索 ${key} 的结果——${this.config('blog.name')}`
+            page_data: data.count > 0 ? Util.getPageStr(data, '/search/'+ key + '/{$page}/') : ''
         });
 
+        // 设置标题
+        this.set_title(`搜索 ${key} 的结果`);
+
         // 设置当前位置
-        this.setLocation({
+        this.set_location({
             name: `搜索 ${key} 的结果`
         });
 
@@ -195,15 +216,20 @@ export default class extends Base {
 
         // 配置模板数据
         this.assign({
+            tags_data: tags_data,
             list: data.data,
-            page_data: data.count > 0 ? Util.getPageStr(data, '/tags/'+ url + '/{$page}/') : '',
-            title: tags_data.name + '——'+ this.config('blog.name')
+            page_data: data.count > 0 ? Util.getPageStr(data, '/tags/'+ url + '/{$page}/') : ''
         });
 
+        // 设置标题
+        this.set_title(tags_data.name, '标签');
+
         // 设置当前位置
-        this.setLocation({
+        this.set_location({
             name: tags_data.name
         });
+
+        this.set_nav_type('tags');
 
         return this.display();
     }
@@ -231,14 +257,17 @@ export default class extends Base {
         // 配置模板数据
         this.assign({
             max_count: max_count,
-            list: data,
-            title: '标签——'+ this.config('blog.name')
+            list: data
         });
 
+        this.set_title('标签');
+
         // 设置当前位置
-        this.setLocation({
+        this.set_location({
             name: '标签'
         });
+
+        this.set_nav_type('tags');
 
         return this.display();
     }
@@ -330,18 +359,37 @@ export default class extends Base {
             next_article_data: think.isEmpty(next_article) ? null : next_article
         });
 
-        // 设置当前位置
+        // 配置描述
+        let description = data.markdown_content.replace(/<[^>]+?>/g, '')
+            .replace(/[\r\n]/g, '')
+            .replace(/\s+/g, '')
+            .substr(0, 100) + '...';
+        this.assign('description', description);
+
+        // 根据类型设置标签
+        if (data.url === 'xiaowu') {
+            this.set_nav_type('xiaowu', data.list_data.id);
+        } else if (data.url === 'links') {
+            this.set_nav_type('links', data.list_data.id);
+        } else {
+            this.set_nav_type('article', data.list_data.id);
+        }
+
+        // 设置当前位置+标题
         if(data.list_data && data.list_data.id){
-            this.setLocation({
+            this.set_title(data.title, data.list_data.name);
+
+            this.set_location({
                 url: `/list/${data.list_data.url || data.list_data.id}/`,
                 name: data.list_data.name
             }, {
                 name: data.title
             });
         } else {
-            this.setLocation({
+            this.set_location({
                 name: data.title
             });
+            this.set_title(data.title);
         }
 
         return this.display();

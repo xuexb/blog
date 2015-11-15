@@ -18,7 +18,7 @@ export default class extends Base {
      *
      * @param {Object} data 数据 {url, name}
      */
-    setLocation(...data) {
+    set_location(...data) {
         let arr = [
             {
                 url: '/',
@@ -34,19 +34,33 @@ export default class extends Base {
     }
 
     /**
+     * 设置导航类型
+     *
+     * @param {string} type 大类型
+     * @param {number} id   小类id
+     */
+    set_nav_type(type, id = null) {
+        this.assign('nav_type', type);
+
+        if (id) {
+            this.assign('nav_type_id', id);
+        }
+    }
+
+    /**
      * 前置方法
      */
     async __before(){
-        // 列表数据
-        this.config('list', await this.model('list').getCacheList());
+        this.set_nav_type('home');
 
-        // 默认的TDK
+        // 列表数据
+        this.config('list_data', await this.model('list').getCacheList());
+
+        // 默认的title
         this.assign('title', '前端小武--前端开发小武专注计算机基础和WEB前端开发知识');
-        this.assign('keywords', '前端小武  谢耀武  小武  计算机基础   前端开发');
-        this.assign('description', '谢耀武，网名前端小武，喜欢各种折腾, 喜欢研究源, 对美好的代码有极强的透视症, 崇尚有强烈技术氛围的UED...');
 
         // 列表数据设置到模板中
-        this.assign('list_data', this.config('list'));
+        this.assign('list_data', this.config('list_data'));
 
         // 最新文章
         this.assign('rand_tags_data', await this.model('tags').getCacheRandList());

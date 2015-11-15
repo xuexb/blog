@@ -16,8 +16,11 @@
     "thinkjs": "^2.0.8"
   },
   "scripts": {
-    "check": "fecs check src/*.js",
-    "start": "node www/development.js"
+    "check": "fecs check src/",
+    "start": "node www/development.js",
+    "compile": "babel --loose all --optional runtime --stage 0 --modules common src/ --out-dir app/ --retain-lines",
+    "watch-compile": "node -e \"console.log('<npm run watch-compile> no longer need, use <npm start> command direct.');console.log();\"",
+    "watch": "npm run watch-compile"
   },
   "keywords": [],
   "repository": {
