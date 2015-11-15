@@ -18,14 +18,14 @@ import highlight from 'highlight.js';
  *
  * @return {Object}      结果对象，{data, catalog}
  */
-Util.renderMarkdown = function(data){
+Util.renderMarkdown = (data) => {
     let renderer = new marked.Renderer();
     let cachekey = {};
 
     let catalog = [];
 
     // 渲染标题
-    renderer.heading = function (text, level) {
+    renderer.heading = (text, level) => {
         let key;
 
         if (level !== 2 && level !== 3) {
@@ -56,7 +56,7 @@ Util.renderMarkdown = function(data){
 
 
     // 渲染代码
-    renderer.code = function (data, lang) {
+    renderer.code = (data, lang) => {
         data = highlight.highlightAuto(data).value;
 
         if(lang){
@@ -93,7 +93,7 @@ let parseDate = Util.parseDate = {};
  * "yyyy-MM-dd EEE hh:mm:ss" =>
  * "yyyy-M-d h:m:s.S" =>
  */
-parseDate.format = function (date, str) {
+parseDate.format = (date, str) => {
 
     let getTime;
     let key;
@@ -143,7 +143,7 @@ parseDate.format = function (date, str) {
  * @param {string} str 时间格式
  * @return {string}   美化成功的
  */
-parseDate.elapsed = function (date, str) {
+parseDate.elapsed = (date, str) => {
     var past = (new Date() - date) / 1000,
         result;
     if (past < 10) {
@@ -172,10 +172,8 @@ parseDate.elapsed = function (date, str) {
  * @param  {string} url 分页连接，用 {$page} 表示分页变量
  * @return {string}     最终分页代码，有可能是空字符
  */
-Util.getPageStr = function (option = {}, url = '') {
-    let render = function (num) {
-        return url.replace(/{\$page}/g, num);
-    };
+Util.getPageStr = (option = {}, url = '') => {
+    let render = (num) => url.replace(/{\$page}/g, num);
 
     let str = '';
     let page = option.currentPage;
