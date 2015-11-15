@@ -58,7 +58,13 @@ Util.renderMarkdown = function(data){
     // 渲染代码
     renderer.code = function (data, lang) {
         data = highlight.highlightAuto(data).value;
-        return '<pre><code class="hljs lang-' + lang + '">' + data + '</code></pre>';
+
+        if(lang){
+            return `
+                <pre><span class="hljs-lang-tips">${lang}</span><code class="hljs lang-${lang}">${data}</code></pre>`;
+        }
+        
+        return `<pre><code class="hljs">${data}</code></pre>`;
     };
 
     // md => html

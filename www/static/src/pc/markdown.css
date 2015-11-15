@@ -124,16 +124,6 @@
     box-sizing:border-box
 }
 
-/*.markdown-body code,*/ .markdown-body tt {
-    padding:0 2px;
-    padding-top:0.2em;
-    padding-bottom:0.2em;
-    margin:0;
-    font-size:85%;
-    background-color:rgba(0, 0, 0, 0.1);
-    border-radius:3px
-}
-
 .markdown-body code br, .markdown-body tt br {
     display:none
 }
@@ -141,49 +131,29 @@
     text-decoration:inherit;
     vertical-align:text-top
 }
-/*.markdown-body pre>code {
-    padding:0;
-    margin:0;
-    font-size:100%;
-    word-break:normal;
-    white-space:pre;
-    background:transparent;
-    border:0
+
+.markdown-body pre{
+    position: relative; 
+}
+.markdown-body pre code{
+    padding: 10px; 
+}
+.markdown-body code {
+    background:#f2f2f2;
+    border-radius:5px;
+    font-family:"Consolas", "Courier New", Courier, mono, serif;
+    font-size: 13px; 
+    margin:0 2px;
+    padding:4px 5px;
+    vertical-align:middle
 }
 
-.markdown-body pre {
-    word-wrap:normal
-}
-.markdown-body pre code, .markdown-body pre tt {
-    display:inline;
-    max-width:initial;
-    padding:0;
-    margin:0;
-    overflow:initial;
-    line-height:inherit;
-    word-wrap:normal;
-    background-color:transparent;
-    border:0
-}
-
-.markdown-body pre{border: 1px solid  #ccc;padding: 5px;border-radius:3px;background-color:rgba(0, 0, 0, 0.07);}
-*/
-
-/*fix*/
-code{
-    padding:0.2em 0.5em;
-    margin:0;
-    font-size:85%;
-    background-color:rgba(0, 0, 0, 0.1);
-    border-radius:3px;
-}
-
-pre > code{
-    padding:0.5em;
-    background:none;
-    display:block;
-}
-pre{
-    color:#fff;
-    background-color:#000;
+.markdown-body pre .hljs-lang-tips{
+    color: #C5C3C3;
+    font-size: 60px;
+    line-height: 1;
+    pointer-events: none;
+    position: absolute;
+    right: 10px;
+    top: 10px;
 }
