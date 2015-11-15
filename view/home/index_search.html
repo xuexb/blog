@@ -1,7 +1,21 @@
 {% extends './layout/main.html' %}
 
-{% block location %}
-    <div class="ui-crumbs">
-        <a href="/">首页</a> > 搜索 {{ key }} 的结果
-    </div>
+{% block main_inner%}
+    {% if tags_data %}
+        <div class="search-tags">
+            你是不是在找：
+            {% for item in tags_data %}
+                <a href="/tags/{{ item.url or item.id }}/">{{ item.name }}</a>
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    {% if list and list.length%}
+        {% include './layout/inc_article_list.html' %}
+    {% elif not tags_data %}
+        <div class="ui-empty">
+            没有数据！
+        </div>
+    {% endif %}
+
 {% endblock %}

@@ -1,5 +1,5 @@
 /**
- * @file 博客主控制器
+ * @file 博客主控制器，主要写一些所有模块全部都用的，比如标题设置，压缩
  * @author xiaowu
  */
 
@@ -12,7 +12,14 @@ export default class extends think.controller.base {
     async displayMin() {
         let templateFile = await this.fetch();
         let preCache = [];
+
+        // 替换pre
         templateFile = templateFile.replace(/<pre>([\s\S]+?)<\/pre>/g, function ($0) {
+            return '{<' + preCache.push($0) + '>}';
+        });
+
+        // 替换textarea
+        templateFile = templateFile.replace(/<textarea[^>]+?>([\s\S]+?)<\/textarea>/g, function ($0) {
             return '{<' + preCache.push($0) + '>}';
         });
 
@@ -22,7 +29,12 @@ export default class extends think.controller.base {
         });
 
         preCache = null;
+
         this.end(templateFile);
+    }
+
+    setTitle(str = '', flag = false) {
+        
     }
 
     /**

@@ -1,0 +1,56 @@
+{% extends './layout/admin.html' %}
+
+{% block main_inner %}
+    <div class="center">
+        <form action="/admin/article/">
+            <div>
+                <span>分类：</span>
+                <select name="list_id">
+                    <option value="">全部</option>
+                    {% if list_data and list_data.length %}
+                        {% for item in list_data %}
+                            {% if list_id and list_id == item.id %}
+                                <option value="{{ item.id }}" selected>{{ item.name }}</option>
+                            {% else %}
+                                <option value="{{ item.id }}">{{ item.name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </select>
+            </div>
+
+            <div>
+                <span>关键词：</span>
+                <input type="text" name="key" value="{{ key }}">
+                <input type="submit" value="搜索">
+            </div>
+        </form>
+    </div>
+
+    {% if list and list.length  %}
+
+        <div class="center mt20">
+            <div class="markdown-body">
+                <ul>
+                    {% for item in list %}
+                        <li>
+                            {% if item.list_data and item.list_data.id %}
+                                【<a href="/list/{{ item.list_data.url or item.list_data.id }}/">{{ item.list_data.name }}</a>】
+                            {% endif %}
+                            <a href="/html/{{ item.url or item.id }}.html">{{ item.title }}</a> - [<a href="/admin/edit_article?id={{ item.id }}">编辑</a>] [<a href="/admin/del_article?id={{ item.id }}" onclick="return confirm('确认删除吗？')">删除</a>]
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        {% if page_data %}
+            {{ page_data }}
+        {% endif %}
+
+    {% else %}
+        <div class="ui-empty mt20">
+            没有数据
+        </div>
+    {% endif %}
+{% endblock %}

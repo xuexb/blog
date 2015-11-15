@@ -10,6 +10,8 @@ export default {
         return this.static_prefix + this.static_type + path;
     },
 
+    list_mark: '{__list__}',
+
     /**
      * 是否压缩
      *

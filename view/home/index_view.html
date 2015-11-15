@@ -1,15 +1,5 @@
 {% extends './layout/main.html' %}
 
-{% block location %}
-    <div class="ui-crumbs">
-        {% if data.list_data %}
-            <a href="/">首页</a> > <a href="/list/{{ data.list_data.url or data.list_data.id }}/">{{ data.list_data.name }}</a> > {{ data.title }}
-        {% else %}
-            <a href="/">首页</a> > {{ data.title }}
-        {% endif %}
-    </div>
-{% endblock %}
-
 {% block search_after %}
     {% if like_data %}
         <div class="sidebar-box mt20">
@@ -50,7 +40,7 @@
                 <li>
                     <i class="article-list-tool-time"></i>{{ data.update_date | elapsed }}
                 </li>
-                {% if data.list_data %}
+                {% if data.list_data and data.list_data.id %}
                     <li>
                         <i class="article-list-tool-class"></i>
                         <a href="/list/{{ data.list_data.url or data.list_data.id }}/">

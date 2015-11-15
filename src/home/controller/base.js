@@ -1,5 +1,6 @@
 'use strict';
 
+// 扩展blog基础
 import Base from '../../common/controller/blog';
 
 export default class extends Base {
@@ -10,8 +11,26 @@ export default class extends Base {
      */
     init(http){
         super.init(http); //调用父类的init方法 
+    }
 
-        this.initCompress();
+    /**
+     * 设置当前位置
+     *
+     * @param {Object} data 数据 {url, name}
+     */
+    setLocation(...data) {
+        let arr = [
+            {
+                url: '/',
+                name: '主页'
+            }
+        ];
+
+        arr.push(...data);
+
+        arr = arr.map((val) => val.url ? `<a href="${val.url}">${val.name}</a>` : val.name);
+
+        this.assign('location_data', arr.join(' > '));
     }
 
     /**

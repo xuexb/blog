@@ -12,6 +12,15 @@ export default class extends Base {
     static listSqlField = 'id, title, list_id, url, update_date, hit, markdown_content_list';
 
     /**
+     * 初始化
+     *
+     * @param  {Object} http http
+     */
+    init(http){
+        super.init(http); //调用父类的init方法 
+    }
+
+    /**
      * 主页
      *
      * @return {Promise} []
@@ -38,7 +47,7 @@ export default class extends Base {
         // 根据url筛选出列表数据，如果不存在则说明传的是假的
         list_data = list_data.filter((val) => val.url === url);
 
-        if(!list_data || !list_data.length){
+        if(think.isEmpty(list_data)){
             return this.error404();
         }
 
@@ -51,10 +60,14 @@ export default class extends Base {
 
         // 配置模板数据
         this.assign({
-            current_list_data: list_data,
             list: data.data,
             page_data: data.count > 0 ? Util.getPageStr(data, '/list/'+ list_data.url + '/{$page}/') : '',
             title: list_data.name + '——'+ this.config('blog.name')
+        });
+
+        // 设置当前位置
+        this.setLocation({
+            name: list_data.name
         });
 
         return this.display();
@@ -85,38 +98,47 @@ export default class extends Base {
             }
         });
 
-        // 如果有数据，插入/更新这个key
-        if (data.count > 0) {
-            let update_search_result = await this.model('search').thenAdd({
-                name: key,
-                hit: 0
-            }, {
-                name: key
-            });
+        // 模糊搜标签
+        let tags_data = await this.model('tags').limit(6).field('id, name, url').where({
+            'name|url': ['like', '%' + key +'%']
+        }).select();
 
-            // 如果已存在
-            if(update_search_result.id && update_search_result.type === 'exist'){
-                await this.model('search').where({
-                    id: update_search_result.id
-                }).increment('hit');
-                this.log({
-                    msg: '更新搜索词',
-                    key: key
-                });
-            } else {
-                this.log({
-                    msg: '添加搜索词',
-                    key: key
-                });
-            }
+        // 不管有没有数据，插入/更新这个key
+        let update_search_result = await this.model('search').thenAdd({
+            name: key,
+            hit: 0
+        }, {
+            name: key
+        });
+
+        // 如果已存在
+        if(update_search_result.id && update_search_result.type === 'exist'){
+            await this.model('search').where({
+                id: update_search_result.id
+            }).increment('hit');
+            this.log({
+                msg: '更新搜索词',
+                key: key
+            });
+        } else {
+            this.log({
+                msg: '添加搜索词',
+                key: key
+            });
         }
 
         // 配置模板数据
         this.assign({
+            tags_data: think.isEmpty(tags_data) ? null : tags_data,
             key: key,
             list: data.data,
             page_data: data.count > 0 ? Util.getPageStr(data, '/search/'+ key + '/{$page}/') : '',
-            title: '搜索 ' + key + ' 的结果——'+ this.config('blog.name')
+            title: `搜索 ${key} 的结果——${this.config('blog.name')}`
+        });
+
+        // 设置当前位置
+        this.setLocation({
+            name: `搜索 ${key} 的结果`
         });
 
         return this.display();
@@ -154,6 +176,9 @@ export default class extends Base {
             tags_id: tags_data.id
         }).page(page).getByTagsList(this.listSqlField);
 
+        // 筛选出有文章信息的数据
+        data.data = data.data.filter((val) => !think.isEmpty(val.article_data));
+
         // 生成列表使用的数据
         data.data = data.data.map((val) => val.article_data);
 
@@ -170,13 +195,15 @@ export default class extends Base {
 
         // 配置模板数据
         this.assign({
-            tags_data: tags_data,
             list: data.data,
             page_data: data.count > 0 ? Util.getPageStr(data, '/tags/'+ url + '/{$page}/') : '',
             title: tags_data.name + '——'+ this.config('blog.name')
         });
 
-        // return this.json(data.data)
+        // 设置当前位置
+        this.setLocation({
+            name: tags_data.name
+        });
 
         return this.display();
     }
@@ -201,16 +228,23 @@ export default class extends Base {
             max_count += val.article_count;
         }
 
+        // 配置模板数据
         this.assign({
             max_count: max_count,
             list: data,
             title: '标签——'+ this.config('blog.name')
-        })
+        });
+
+        // 设置当前位置
+        this.setLocation({
+            name: '标签'
+        });
+
         return this.display();
     }
 
     /**
-     * 说情页
+     * 详情页
      *
      * @return {Promise} []
      */
@@ -278,9 +312,15 @@ export default class extends Base {
             }).setRelation(false).select();
         }
 
+        // 如果有来路的key则设置key
         if(referer){
             this.assign('key', referer);
         }
+
+        // 更新文章计数
+        await this.model('article').where({
+            id: data.id
+        }).increment('hit');
 
         // 配置模板数据
         this.assign({
@@ -289,6 +329,20 @@ export default class extends Base {
             prev_article_data: think.isEmpty(prev_article) ? null : prev_article,
             next_article_data: think.isEmpty(next_article) ? null : next_article
         });
+
+        // 设置当前位置
+        if(data.list_data && data.list_data.id){
+            this.setLocation({
+                url: `/list/${data.list_data.url || data.list_data.id}/`,
+                name: data.list_data.name
+            }, {
+                name: data.title
+            });
+        } else {
+            this.setLocation({
+                name: data.title
+            });
+        }
 
         return this.display();
     }
