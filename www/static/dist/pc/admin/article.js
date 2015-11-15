@@ -1,0 +1,2 @@
+/*blog-static - v0.0.1 - 2015-11-15 20:11:09*/
+define("pc/admin/article",["../common/jquery"],function(a){var b=a("../common/jquery");b(".mod-form-tags").on("click","label",function(){b(this).toggleClass("checked")})});

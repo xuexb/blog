@@ -101,6 +101,9 @@
 .bar-nav-dropdown > a.current{
     background-color:#e8e8e8;
 }
+.bar-nav-dropdown > a:hover{
+    background-color: #f0f0f0; 
+}
 .bar-nav-dropdown > a:first-child.current:after{
     border:10px dashed transparent;height: 0;width:0;overflow:hidden;
     content:' ';
