@@ -20,11 +20,16 @@
     <div class="wrap">
         <div class="w clear">
             {% block location %}
+                {%if location_data %}
+                    <div class="ui-crumbs">
+                        {{ location_data }}
+                    </div>
+                {% endif %}
             {% endblock %}
             <div class="main">
                 <div class="main-inner">
                     {% block main_inner%}
-                        {% include './inc_article_list.html' %}
+                        {% include './main_inner.html' %}
                     {% endblock %}
                 </div>
             </div>
@@ -83,7 +88,7 @@
                                 </dt>
                                 <dd>
                                     {% for item in search_hit_data %}
-                                        <a href="#" data-hit="{{ item.hit }}">{{ item.name }}</a>
+                                        <a href="/search/{{ item.name }}" data-hit="{{ item.hit }}">{{ item.name }}</a>
                                     {% endfor %}
                                 </dd>
                             </dl>

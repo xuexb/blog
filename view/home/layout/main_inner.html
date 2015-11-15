@@ -1,0 +1,7 @@
+{% if list and list.length%}
+    {% include './inc_article_list.html' %}
+{% else %}
+    <div class="ui-empty">
+        没有数据！
+    </div>
+{% endif %}

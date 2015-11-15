@@ -1,64 +1,58 @@
-{% if list and list.length%}
-    <ul class="article-list">
-        {% for item in list%}
-            <li>
-                <h2 class="article-list-title text-overflow">
-                    <a href="/html/{{ item.url or item.id }}.html">{{ item.title }}</a>
-                </h2>
-                <div class="article-list-content">
-                    <div class="markdown-body">
-                        {{ item.markdown_content_list }}
-                    </div>
+<ul class="article-list">
+    {% for item in list%}
+        <li>
+            <h2 class="article-list-title text-overflow">
+                <a href="/html/{{ item.url or item.id }}.html">{{ item.title }}</a>
+            </h2>
+            <div class="article-list-content">
+                <div class="markdown-body">
+                    {{ item.markdown_content_list }}
                 </div>
-                <div class="article-list-more">
-                    <a href="/html/{{ item.url or item.id }}.html">阅读全文 »</a>
-                </div>
-                <div class="article-list-tool clear">
-                    <ul class="fr">
-                        <li>
-                            <i class="article-list-tool-hit"></i>{{ item.hit }}
-                        </li>
-                        <li>
-                            <i class="article-list-tool-time"></i>{{ item.update_date|elapsed }}
-                        </li>
-                        {% if item.list_data %}
-                        <li>
-                            <i class="article-list-tool-class"></i>
-                            <a href="/list/{{ item.list_data.url or item.list_data.id }}/">
-                                {{ item.list_data.name }}
-                            </a>
-                        </li>
-                        {% endif %}
+            </div>
+            <div class="article-list-more">
+                <a href="/html/{{ item.url or item.id }}.html">阅读全文 »</a>
+            </div>
+            <div class="article-list-tool clear">
+                <ul class="fr">
+                    <li>
+                        <i class="article-list-tool-hit"></i>{{ item.hit }}
+                    </li>
+                    <li>
+                        <i class="article-list-tool-time"></i>{{ item.update_date | elapsed }}
+                    </li>
+                    {% if item.list_data and item.list_data.id %}
+                    <li>
+                        <i class="article-list-tool-class"></i>
+                        <a href="/list/{{ item.list_data.url or item.list_data.id }}/">
+                            {{ item.list_data.name }}
+                        </a>
+                    </li>
+                    {% endif %}
 
-                        
-                        {% if item.tags_data and item.tags_data.length %}
-                            <li>
-                                <i class="article-list-tool-tag"></i>
-                                {% for $tagsItem in item.tags_data%}
-                                    {% if $tagsItem.tag_data and $tagsItem.tag_data.name %}
-                                        <a href="/tags/{{ $tagsItem.tag_data.url or $tagsItem.tag_data.id }}/">
-                                            {% if tags_data and tags_data.id == $tagsItem.tag_data.id %}
-                                                <mark>{{ $tagsItem.tag_data.name }}</mark>
-                                            {% else %}
-                                                {{ $tagsItem.tag_data.name }}
-                                            {% endif %}
-                                        </a>
-                                    {% endif %}
-                                {% endfor %}
-                                </li>
-                        {% endif %}
-                        
-                    </ul>
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
+                    
+                    {% if item.tags_data and item.tags_data.length %}
+                        <li>
+                            <i class="article-list-tool-tag"></i>
+                            {% for $tagsItem in item.tags_data%}
+                                {% if $tagsItem.tag_data and $tagsItem.tag_data.name %}
+                                    <a href="/tags/{{ $tagsItem.tag_data.url or $tagsItem.tag_data.id }}/">
+                                        {% if tags_data and tags_data.id == $tagsItem.tag_data.id %}
+                                            <mark>{{ $tagsItem.tag_data.name }}</mark>
+                                        {% else %}
+                                            {{ $tagsItem.tag_data.name }}
+                                        {% endif %}
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                            </li>
+                    {% endif %}
+                    
+                </ul>
+            </div>
+        </li>
+    {% endfor %}
+</ul>
 
-    {% if page_data %}
-        {{ page_data }}
-    {% endif %}
-{% else %}
-    <div class="ui-empty">
-        没有数据！
-    </div>
+{% if page_data %}
+    {{ page_data }}
 {% endif %}

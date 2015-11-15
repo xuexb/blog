@@ -1,11 +1,77 @@
-//这里定义一些全局通用的函数，该文件会被自动加载
 'use strict';
 
 let Util = {};
 
+import marked from 'marked';
+import highlight from 'highlight.js';
+
+
+/**
+ * 渲染markdown
+ *
+ * @param  {string} data md源
+ *
+ * @return {Object}      结果对象，{data, catalog}
+ */
+Util.renderMarkdown = function(data){
+    let renderer = new marked.Renderer();
+    let cachekey = {};
+
+    let catalog = [];
+
+    // 渲染标题
+    renderer.heading = function (text, level) {
+        let key;
+
+        if (level !== 2 && level !== 3) {
+            return `<h${level}>${text}</h${level}>`;
+        }
+
+        if (!cachekey[level]) {
+            cachekey[level] = 0;
+        }
+
+        key = ++cachekey[level];
+
+        catalog.push({
+            text: text,
+            level: level,
+            id: `h${level}-${key}`
+        });
+
+        return `
+            <h${level}>
+                <span>
+                    <a name="h${level}-${key}" class="anchor" href="#h${level}-${key}"></a>
+                    <span>${text}</span>
+                </span>
+            </h${level}>
+        `;
+    };
+
+
+    // 渲染代码
+    renderer.code = function (data, lang) {
+        data = highlight.highlightAuto(data).value;
+        return '<pre><code class="hljs lang-' + lang + '">' + data + '</code></pre>';
+    };
+
+    // md => html
+    data = marked(data, {
+        renderer: renderer
+    });
+
+    // 兼容todo
+    data = data.replace(/<li>\s*\[ \]\s*/g, '<li><input type="checkbox" class="ui-todo" disabled>');
+    data = data.replace(/<li>\s*\[x\]\s*/g, '<li><input type="checkbox" disabled checked class="ui-todo">');
+
+    return {
+        data: data,
+        catalog: catalog
+    };
+}
+
 let parseDate = Util.parseDate = {};
-
-
 
 /**
  * 日期格式化
@@ -58,7 +124,6 @@ parseDate.format = function (date, str) {
     }
     return str;
 };
-
 
 
 /**
