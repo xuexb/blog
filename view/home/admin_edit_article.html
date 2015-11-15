@@ -57,9 +57,21 @@
                 <li>
                     <label class="mod-form-label">标签：</label>
                     <div class="mod-form-box mod-form-tags">
+                        {% if data.tags_data and data.tags_data.length %}
+                            {% for item in data.tags_data %}
+                                <input type="hidden" name="old_tags_id" value="{{ item.tags_id }}">
+                            {% endfor %}
+                        {% endif %}
+
                         {%if tags_data %}
                             {% for item in tags_data %}
-                                <span>{{ item.name }}</span>
+                                {% if item.checked %}
+                                    <label for="J-tags-{{ item.id }}" class="checked">{{ item.name }}</label>
+                                    <input name="tags_id" type="checkbox" checked id="J-tags-{{ item.id }}" value="{{ item.id }}">
+                                {% else %}
+                                    <label for="J-tags-{{ item.id }}">{{ item.name }}</label>
+                                    <input name="tags_id" type="checkbox" id="J-tags-{{ item.id }}" value="{{ item.id }}">
+                                {% endif %}
                             {% endfor %}
                         {% else %}
                             没有标签
@@ -78,4 +90,10 @@
             </ul>
         </form>
     </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        seajs.use('admin/article');
+    </script>
 {% endblock %}
