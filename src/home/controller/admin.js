@@ -1,7 +1,10 @@
 'use strict';
 
+import fs from 'fs';
+import path from 'path';
 import Base from './base';
 import Util from '../../common/util';
+import Create from '../../common/createSitemap';
 
 export default class extends Base {
     /**
@@ -107,6 +110,19 @@ export default class extends Base {
             return this.error404();
         }
 
+        // 标签数据
+        let tags_data = await this.model('tags').field('id, name').order('id DESC').select();
+
+        // 如果有标签数据并且文章有标签信息
+        if(!think.isEmpty(tags_data) && !think.isEmpty(data.tags_data)){
+            let hash = {};
+            data.tags_data.forEach(val => {
+                hash[val.tags_id] = 1;
+            });
+
+            tags_data.forEach(val => val.checked = !!hash[val.id]);
+        }
+
         // 设置当前位置
         this.setLocation({
             name: '编辑文章'
@@ -114,6 +130,7 @@ export default class extends Base {
 
         // 配置模板数据
         this.assign({
+            tags_data: think.isEmpty(tags_data) ? null : tags_data,
             data: data,
             type: 'edit'
         });
@@ -185,6 +202,43 @@ export default class extends Base {
         return this.tipsAction('删除成功', '/admin/article/');
     }
 
+    filterTags(newArr, oldArr) {
+        if(think.isEmpty(newArr)){
+            newArr = [];
+        }
+        if (!think.isArray(newArr)){
+            newArr = [newArr];
+        }
+
+        if(think.isEmpty(oldArr)){
+            oldArr = [];
+        }
+        if (!think.isArray(oldArr)){
+            oldArr = [oldArr];
+        }
+
+        let result = {
+            jia: [],
+            jian: []
+        };
+
+        // 如果新数组有，旧数组没有，则说明为加
+        newArr.forEach(val => {
+            if(oldArr.indexOf(val) === -1){
+                result.jia.push(val);
+            }
+        });
+
+        // 如果旧数组有，新数组没有，则说明为减
+        oldArr.forEach(val => {
+            if(newArr.indexOf(val) === -1){
+                result.jian.push(val);
+            }
+        });
+
+        return result;
+    }
+
     /**
      * 保存文章
      *
@@ -193,7 +247,7 @@ export default class extends Base {
      */
     async saveArticleAction() {
         let data = this.post();
-        let list_mark = think.config('blog.list_mark')
+        let list_mark = think.config('blog.list_mark');
 
         // 渲染后的md，一定要去列表标识
         let temp = Util.renderMarkdown(data.content.replace(new RegExp(list_mark, 'g'), ''));
@@ -217,7 +271,33 @@ export default class extends Base {
             data.catalog = `<div class="article-detail-sidebar"><ul>${temp.catalog.join('')}</ul></div>`;
         }
 
+
+
+        // 如果有id则表示为修改
         if(data.id){
+            // 处理标签索引
+            let tags_obj = this.filterTags(data.tags_id, data.old_tags_id);
+
+            // 处理新加的标签
+            for(let val of tags_obj.jia) {
+                await this.model('tags_index').thenAdd({
+                    article_id: data.id,
+                    tags_id: val
+                }, {
+                    article_id: data.id,
+                    tags_id: val
+                });
+            };
+
+            // 处理减少的标签
+            for(let val of tags_obj.jian){
+                await this.model('tags_index').where({
+                    article_id: data.id,
+                    tags_id: val
+                }).delete();;
+            }
+
+            // 更新信息
             let res = await this.model('article').where({
                 id: data.id
             }).update(data);
@@ -242,6 +322,29 @@ export default class extends Base {
         }
 
         let res = await this.model('article').thenAdd(data, where);
+
+        // 如果新添加成功，则插入标签
+        if(res.type === 'add' && !think.isEmpty(data.tags_id)){
+            if(!think.isArray(data.tags_id)){
+                data.tags_id = [data.tags_id];
+            }
+            // 处理新加的标签
+            for(let val of data.tags_id) {
+                await this.model('tags_index').thenAdd({
+                    article_id: res.id,
+                    tags_id: val
+                }, {
+                    article_id: res.id,
+                    tags_id: val
+                });
+            };
+        }
+
+        // 删除没用数据
+        delete data.tags_id;
+        delete data.old_tags_id;
+
+
         let tips;
 
         if(think.isEmpty(res)){
@@ -416,5 +519,43 @@ export default class extends Base {
         }).delete();
 
         return this.tipsAction('删除成功', '/admin/tags/');
+    }
+
+    /**
+     * 生成站点地图
+     *
+     * @return {[type]} [description]
+     */
+    async sitemapAction() {
+        let result = {};
+
+        result.list = this.config('list');
+
+        result.article = await this.model('article')
+            .field('id, url, update_date, title, markdown_content_list')
+            .limit(50)
+            .order('id DESC')
+            .select();
+
+        result.search = await this.model('search').field('name').limit(10).order('hit DESC').select();
+
+        result.home = {
+            title: this.config('blog.name'),
+            url: this.config('blog.url')
+        };
+
+        //生成xml
+        Create.createXml(result);
+
+        // 生成txt
+        Create.createTxt(result);
+
+        // 生成html
+        Create.createHtml(result);
+
+        // 生成rss
+        Create.createRss(result);
+
+        return this.tipsAction('成功');
     }
 }

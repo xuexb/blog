@@ -43,15 +43,19 @@
 .mod-form-tags {
     line-height: 26px;
 }
-.mod-form-tags span{
+.mod-form-tags label{
     display: inline-block; 
     margin-right: 5px; 
     padding: 0 5px; 
     cursor: pointer; 
 }
-.mod-form-tags span:hover{
+.mod-form-tags label:hover{
     background-color: #f0f0f0; 
 }
-.mod-form-tags span.checked{
-    background-color: #09f; 
+.mod-form-tags label.checked{
+    background-color: #1f7b9b; 
+    color: #fff; 
+}
+.mod-form-tags input{
+    display: none; 
 }

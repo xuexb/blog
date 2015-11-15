@@ -1,3 +1,8 @@
+/**
+ * @file 博客常用的方法
+ * @author xiaowu
+ */
+
 'use strict';
 
 let Util = {};
@@ -84,8 +89,8 @@ let parseDate = Util.parseDate = {};
  */
 parseDate.format = function (date, str) {
 
-    var getTime,
-        key;
+    let getTime;
+    let key;
 
     str = str || 'yyyy-M-d H:mm';
 
@@ -251,4 +256,5 @@ Util.getPageStr = function (option = {}, url = '') {
 
     return str;
 };
+
 export default Util;

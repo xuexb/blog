@@ -4,6 +4,7 @@
  */
 export default {
     name: '前端小武',
+    url: 'https://xuexb.com',
     static_prefix: '/static/',
     static_type: 'src/',
     get_static: function get_static(path) {
