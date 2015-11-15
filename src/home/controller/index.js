@@ -111,7 +111,7 @@ export default class extends Base {
         // 高亮标题关键词
         data.data.forEach((val) => {
             if (val.title) {
-                val.title = val.title.replace(RegExp(key, 'gi'), function($0) {
+                val.title = val.title.replace(RegExp(key, 'gi'), ($0) => {
                     return '<mark>' + $0 + '</mark>';
                 });
             }
@@ -124,7 +124,7 @@ export default class extends Base {
 
         // 高亮搜索词
         tags_data.forEach(val => {
-            val.name = val.name.replace(RegExp(key, 'gi'), function($0) {
+            val.name = val.name.replace(RegExp(key, 'gi'), ($0) => {
                 return '<mark>' + $0 + '</mark>';
             });
         });
@@ -341,6 +341,12 @@ export default class extends Base {
                 id: ['!=', data.id],
                 title: ['like', '%' + referer + '%']
             }).setRelation(false).select();
+
+            like_data.forEach(val => {
+                val.title = val.title.replace(RegExp(referer, 'gi'), ($0) => {
+                    return '<mark>' + $0 + '</mark>';
+                });
+            });
         } else {
             like_data = await this.model('article').order('rand()').limit(6).field('id, title, url').where({
                 id: ['!=', data.id],
