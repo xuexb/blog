@@ -18,4 +18,7 @@ export default [
 
     // 详情页
     [/^html\/([a-zA-Z0-9\-\_]+)$/, 'home/index/view/?url=:1'],
+
+    // rss订阅
+    [/rss$/, 'home/index/rss']
 ];

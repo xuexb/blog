@@ -9,7 +9,8 @@ export default {
         port: '3306',
         name: 'xuexb',
         user: 'root',
-        pwd: 'test'
+        pwd: 'test',
+        prefix: ''
     },
 
     compress: false

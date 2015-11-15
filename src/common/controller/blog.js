@@ -6,10 +6,11 @@
 'use strict';
 
 export default class extends think.controller.base {
+
     /**
      * 压缩页面html并显示
      */
-    async displayMin() {
+    async display_min() {
         let templateFile = await this.fetch();
         let preCache = [];
 
@@ -33,8 +34,14 @@ export default class extends think.controller.base {
         this.end(templateFile);
     }
 
-    setTitle(str = '', flag = false) {
-        
+    /**
+     * 设置标题
+     *
+     * @param {string} data 标题
+     */
+    set_title(...data) {
+        data.push(this.config('blog.name'));
+        this.assign('title', data.join(this.config('blog.title_separate')));
     }
 
     /**
@@ -48,17 +55,18 @@ export default class extends think.controller.base {
 
     /**
      * 初始化压缩配置
+     *
      * @description 优先使用url中的compress，不存在则使用配置的compress
      */
-    initCompress() {
+    init_compress() {
         let compress = this.param('compress');
 
-        if(!compress){
+        if (!compress) {
             compress = this.config('compress') ? '1' : '0';
         }
 
-        if(compress === '1'){
-            this.display = this.displayMin;
+        if (compress === '1') {
+            this.display = this.display_min;
         }
     }
 
@@ -71,7 +79,7 @@ export default class extends think.controller.base {
      * @return {Promise}      []
      */
     log(data) {
-        if(think.isObject(data)){
+        if (think.isObject(data)) {
             data = JSON.stringify(data);
         }
         return think.log(data, 'BLOG');
@@ -82,10 +90,11 @@ export default class extends think.controller.base {
      *
      * @param  {Object} http http
      */
-    init(http){
-        super.init(http); //调用父类的init方法 
+    init(http) {
+        // 调用父类的init方法
+        super.init(http);
 
-        this.initCompress();
+        this.init_compress();
     }
 
 }

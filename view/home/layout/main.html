@@ -5,8 +5,10 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ title }}</title>
-    <meta name="keywords" content="{{ keywords }}" />
-    <meta name="description" content="{{ description }}" />
+
+    {% if description %}
+        <meta name="description" content="{{ description }}" />
+    {% endif %}
     <link rel="stylesheet" type="text/css" href="{{ config.blog.get_static('pc/global.css') }}">
 
     {% block head_end_before %}{% endblock %}

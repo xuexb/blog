@@ -5,12 +5,12 @@
  */
 export default {
   type: 'mysql',
-  host: 'www.xuexb.com',
-  port: '3306',
-  name: 'xuexb',
-  user: 'root',
+  host: 'db',
+  port: '',
+  name: '',
+  user: '',
   pwd: '',
-  prefix: '',
+  prefix: 'think_',
   encoding: 'utf8',
   nums_per_page: 10,
   log_sql: true,
