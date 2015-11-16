@@ -65,8 +65,17 @@ export default class extends Base {
         let user_info = this.config('blog.user_info');
 
         if(data.username !== user_info.username || data.password !== user_info.password){
+            this.log({
+                msg: '登录用户失败',
+                data: data
+            });
             return this.tips('用户名或者密码错误', '/admin/login/');
         }
+
+        this.log({
+            msg: '登录用户成功',
+            data: data
+        });
 
         await this.session('user_info', user_info);
 
