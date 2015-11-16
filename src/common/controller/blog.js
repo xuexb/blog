@@ -10,8 +10,8 @@ export default class extends think.controller.base {
     /**
      * 压缩页面html并显示
      */
-    async display_min() {
-        let templateFile = await this.fetch();
+    async display_min(...args) {
+        let templateFile = await this.fetch(...args);
         let preCache = [];
 
         // 替换pre
