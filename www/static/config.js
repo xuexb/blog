@@ -39,7 +39,7 @@ copy = app.copy = {};
 
 
 // 任务配置
-task['0.0.1'] = [
+task['0.0.2'] = [
     'dist-css:all',
     'dist-js:all'
 ];
@@ -68,7 +68,7 @@ css.all = [
 // ================================================================
 js.all = {
     src: 'pc/**/*.js',
-    noCmd: 'pc/seajs/sea.js'
+    noCmd: 'seajs/sea.js'
 }
 
 module.exports = app;
