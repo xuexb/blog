@@ -134,6 +134,8 @@
 
 .markdown-body pre{
     position: relative; 
+    font-family: "Consolas","Liberation Mono",Courier,monospace;
+    overflow: hidden; 
 }
 .markdown-body pre code{
     padding: 10px; 
