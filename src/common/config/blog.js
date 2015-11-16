@@ -45,7 +45,7 @@ export default {
      *
      * @type {Boolean}
      */
-    compress: false,
+    compress: true,
 
     /**
      * 标签分隔线
