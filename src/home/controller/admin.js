@@ -17,6 +17,63 @@ export default class extends Base {
     }
 
     /**
+     * 前置
+     *
+     * @param  {Object} http http对象
+     */
+    async __before(http) {
+        await super.__before(http);
+
+        /**
+         * 不需要登录检查的action名
+         *
+         * @type {Array}
+         */
+        let action = [
+            'login',
+            'exit'
+        ];
+
+        if (action.indexOf(this.http.action) > -1) {
+            return this;
+        }
+
+        let user_info = await this.session('user_info');
+        if (think.isEmpty(user_info)) {
+            return this.redirect('/admin/login', 302);
+        }
+
+        this.user_info = user_info;
+        this.assign('user_info', user_info);
+    }
+
+    /**
+     * 登录
+     *
+     * @return {Promise} []
+     */
+    async loginAction() {
+        if(this.isGet()){
+            this.set_location({
+                name: '登录'
+            });
+            this.set_title('登录');
+            return this.display();    
+        }
+
+        let data = this.post();
+        let user_info = this.config('blog.user_info');
+
+        if(data.username !== user_info.username || data.password !== user_info.password){
+            return this.tips('用户名或者密码错误', '/admin/login/');
+        }
+
+        await this.session('user_info', user_info);
+
+        return this.redirect('/admin/');
+    }
+
+    /**
      * 设置当前位置
      *
      * @param {Object} data 数据 {url, name}
@@ -177,7 +234,7 @@ export default class extends Base {
      *
      * @return {Promise}     []
      */
-    tipsAction(str = '', url = '') {
+    tips(str = '', url = '') {
         this.set_location({
             name: '操作提示'
         });
@@ -210,7 +267,7 @@ export default class extends Base {
             article_id: id
         }).delete();
 
-        return this.tipsAction('删除成功', '/admin/article/');
+        return this.tips('删除成功', '/admin/article/');
     }
 
     /**
@@ -322,9 +379,9 @@ export default class extends Base {
             }).update(data);
 
             if(think.isEmpty(res)){
-                return this.tipsAction('保存失败');
+                return this.tips('保存失败');
             } else {
-                return this.tipsAction('保存成功');
+                return this.tips('保存成功');
             }
         }
 
@@ -376,7 +433,7 @@ export default class extends Base {
             tips = '未知错误';
         }
 
-        return this.tipsAction(tips);
+        return this.tips(tips);
     }
 
     /**
@@ -521,7 +578,7 @@ export default class extends Base {
             }
         }
 
-        return this.tipsAction(tips, '/admin/tags/');
+        return this.tips(tips, '/admin/tags/');
     }
 
     /**
@@ -543,7 +600,7 @@ export default class extends Base {
             tags_id: id
         }).delete();
 
-        return this.tipsAction('删除成功', '/admin/tags/');
+        return this.tips('删除成功', '/admin/tags/');
     }
 
     /**
@@ -581,6 +638,6 @@ export default class extends Base {
         // 生成rss
         Create.createRss(result);
 
-        return this.tipsAction('成功');
+        return this.tips('成功');
     }
 }

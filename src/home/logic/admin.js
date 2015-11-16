@@ -16,9 +16,34 @@ export default class extends think.logic.base {
     }
 
     /**
+     * 登录
+     *
+     * @type {POST}
+     * @param {string} username 用户名
+     * @param {string} password 密码
+     * @return {Proimise} []
+     */
+    loginAction() {
+        if(!this.isPost()){
+            return this;
+        }
+
+        let rules = {
+            password: 'required|string',
+            password: 'required|string'
+        }
+
+        let flag = this.validate(rules);
+
+        if (!flag) {
+            return this.fail('validate error', this.errors());
+        }
+    }
+
+    /**
      * 保存文章
      *
-     * @return {[type]} [description]
+     * @return {Proimise} []
      */
     saveArticleAction(){
 
@@ -49,7 +74,7 @@ export default class extends think.logic.base {
     /**
      * 保存标签
      *
-     * @return {[type]} [description]
+     * @return {Proimise} []
      */
     saveTagsAction() {
 
