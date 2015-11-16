@@ -23,6 +23,17 @@ export default {
     },
 
     /**
+     * ls配置
+     *
+     * @type {Object}
+     */
+    ls: {
+        css: {
+            'global': 'A'
+        }
+    },
+
+    /**
      * 列表分隔线
      *
      * @type {String}

@@ -86,6 +86,29 @@ export default class extends think.controller.base {
     }
 
     /**
+     * 初始化ls
+     */
+    async init_ls() {
+        let ls_data = await think.cache('ls_data');
+
+        if (think.isEmpty(ls_data)) {
+            ls_data = {css: {}, js: {}};
+            
+        }
+
+        console.log(ls_data);
+    }
+
+    /**
+     * 前置
+     */
+    __before() {
+        this.init_compress();
+
+        this.init_ls();
+    }
+
+    /**
      * 初始化
      *
      * @param  {Object} http http
@@ -93,8 +116,6 @@ export default class extends think.controller.base {
     init(http) {
         // 调用父类的init方法
         super.init(http);
-
-        this.init_compress();
     }
 
 }
