@@ -50,7 +50,9 @@ export default class extends Base {
     /**
      * 前置方法
      */
-    async __before(){
+    async __before(http){
+        super.__before(http);
+
         this.set_nav_type('home');
 
         // 列表数据
