@@ -13,5 +13,7 @@ export default {
         prefix: ''
     },
 
-    compress: false
+    blog: {
+        compress: false
+    }
 };

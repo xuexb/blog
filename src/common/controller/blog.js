@@ -62,7 +62,7 @@ export default class extends think.controller.base {
         let compress = this.param('compress');
 
         if (!compress) {
-            compress = this.config('compress') ? '1' : '0';
+            compress = this.config('blog.compress') ? '1' : '0';
         }
 
         if (compress === '1') {
