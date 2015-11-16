@@ -96,7 +96,7 @@ export default class extends think.controller.base {
             
         }
 
-        console.log(ls_data);
+        // console.log(ls_data);
     }
 
     /**

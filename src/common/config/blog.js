@@ -52,5 +52,15 @@ export default {
      *
      * @type {String}
      */
-    title_separate: '_'
+    title_separate: '_',
+
+    /**
+     * 用户信息
+     *
+     * @type {Object}
+     */
+    user_info: {
+        username: 'test',
+        password: 'test'
+    }
 };
