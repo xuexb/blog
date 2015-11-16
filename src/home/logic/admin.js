@@ -29,7 +29,7 @@ export default class extends think.logic.base {
         }
 
         let rules = {
-            password: 'required|string',
+            username: 'required|string',
             password: 'required|string'
         }
 
