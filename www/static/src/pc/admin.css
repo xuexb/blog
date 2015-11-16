@@ -48,6 +48,8 @@
     margin-right: 5px; 
     padding: 0 5px; 
     cursor: pointer; 
+    -webkit-user-select: none; 
+    user-select: none; 
 }
 .mod-form-tags label:hover{
     background-color: #f0f0f0; 
