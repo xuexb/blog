@@ -16,6 +16,6 @@ export default class extends think.model.base {
     * @return {Promise}   []
     */
     getCacheRandList(top = 20) {
-        return this.field('name, id, url').cache('rand_tags_list').order('rand()').limit(top).select();
+        return this.field('name, id, url').cache('rand_tags_list_data').order('rand()').limit(top).select();
     }
 }
