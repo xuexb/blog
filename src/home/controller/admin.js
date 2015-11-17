@@ -17,6 +17,21 @@ export default class extends Base {
     }
 
     /**
+     * 更新文章缓存
+     */
+    async updateArticleCache() {
+        await think('new_article_data', null);
+        await think('index_article_data', null);
+    }
+
+    /**
+     * 更新标签缓存
+     */
+    async updateTagsCache() {
+        await think('rand_tags_list_data', null);
+    }
+
+    /**
      * 前置
      *
      * @param  {Object} http http对象
@@ -356,7 +371,8 @@ export default class extends Base {
             data.catalog = `<div class="article-detail-sidebar"><ul>${temp.catalog.join('')}</ul></div>`;
         }
 
-
+        // 更新文章缓存
+        await this.updateArticleCache();
 
         // 如果有id则表示为修改
         if(data.id){
@@ -586,6 +602,9 @@ export default class extends Base {
                 tips = '未知错误';
             }
         }
+
+        // 更新标签缓存
+        await this.updateTagsCache();
 
         return this.tips(tips, '/admin/tags/');
     }
