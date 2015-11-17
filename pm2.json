@@ -1,0 +1,14 @@
+{
+  "apps": [{
+    "name": "demo",
+    "script": "www/production.js",
+    "cwd": "/Users/baidu/work/github/blog",
+    "max_memory_restart": "300M",
+    "autorestart": true,
+    "node_args": [],
+    "args": [],
+    "env": {
+      
+    }
+  }]
+}

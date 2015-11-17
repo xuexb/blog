@@ -1,0 +1,11 @@
+{% extends './main.html' %}
+
+{% block head_end_before %}
+    <link rel="stylesheet" type="text/css" href="{{ config.blog.get_static('pc/admin.css') }}">
+{% endblock %}
+
+
+
+{% block js_before %}
+    <script src="{{ config.blog.get_static('seajs/sea.js') }}"></script>
+{% endblock %}

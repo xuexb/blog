@@ -1,10 +1,26 @@
 {
   "name": "xuexb_blog",
-  "description": "project created by thinkjs",
-  "version": "0.1.0",
-  "author": {},
+  "description": "xuexb created by thinkjs",
+  "version": "3.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "xiaowu",
+    "url": "https://xuexb.com"
+  },
   "dependencies": {
-    "thinkjs": "*"
+    "babel": "5.8.21",
+    "babel-runtime": "5.6.17",
+    "highlight.js": "^8.9.1",
+    "marked": "^0.3.5",
+    "nunjucks": "^2.1.0",
+    "thinkjs": "^2.0.8"
+  },
+  "scripts": {
+    "check": "fecs check src/",
+    "start": "node www/development.js",
+    "compile": "babel --loose all --optional runtime --stage 0 --modules common src/ --out-dir app/ --retain-lines",
+    "watch-compile": "node -e \"console.log('<npm run watch-compile> no longer need, use <npm start> command direct.');console.log();\"",
+    "watch": "npm run watch-compile"
   },
   "keywords": [],
   "repository": {
@@ -16,12 +32,6 @@
   },
   "readmeFilename": "README.md",
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "thinkjs": "ˆ1.0.0",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-uglify": "*",
-    "grunt-contrib-copy":"*",
-    "marked": "*",
-    "highlight.js": "*"
+    "fecs": "^0.4.13"
   }
 }

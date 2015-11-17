@@ -1,9 +1,0 @@
-@charset "UTF-8";
-/*page*/
-.ui-page{line-height:22px;font-size:0;background-color:#fff;padding:10px;border:1px solid  #ddd;}
-.ui-page a,.ui-page span{font-size:14px;margin-right:5px;padding:0 5px;display:inline-block;border:1px solid #dedede;vertical-align:top;}
-.ui-page a:hover{background-color:#ccc;text-decoration:none;}
-.ui-page .current{background-color:#ccc;border-color:#ccc;cursor:default;}
-.ui-page .dot{border-width:0;cursor:default;}
-.ui-page .disabled{background-color:#f0f0f0;color:#c0c0c0;border-color:#f0f0f0;cursor:default;}
-.ui-page .button{width:60px;height:23px;}
