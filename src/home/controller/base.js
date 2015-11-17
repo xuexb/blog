@@ -64,7 +64,7 @@ export default class extends Base {
         // 列表数据设置到模板中
         this.assign('list_data', this.config('list_data'));
 
-        // 最新文章
+        // 随机标签
         this.assign('rand_tags_data', await this.model('tags').getCacheRandList());
 
         // 点击排行

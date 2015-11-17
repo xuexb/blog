@@ -54,6 +54,7 @@ abbr,acronym {
 
 /* 一致的 del 样式 */
 del {
+    color: #999; 
     text-decoration:line-through;
 }
 
