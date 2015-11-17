@@ -1,0 +1,23 @@
+@charset "UTF-8";
+/**
+ * 博客样式 - 底部
+ */
+
+.footer{
+    padding-top:20px;color:#999;
+}
+.footer a{
+    color:#999;
+}
+.footer a:hover{
+    color:#1f7b9b;
+}
+.footer-inner{
+    padding-top:20px;
+    padding-bottom:10px;
+    background-color:#fff;
+    border-top:1px solid  #ddd;
+}
+.footer p{
+    text-align:center;
+}

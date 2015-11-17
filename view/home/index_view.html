@@ -1,0 +1,82 @@
+{% extends './layout/main.html' %}
+
+{% block search_after %}
+    {% if like_data %}
+        <div class="sidebar-box mt20">
+            <dl class="sidebar-article">
+                <dt>
+                    {% if key %}
+                        关于 "{{ key }}" 的其她文章
+                    {% else %}
+                        来试试
+                    {% endif %}
+                </dt>
+                <dd>
+                    {% for item in like_data %}
+                        <a href="/html/{{ item.url or item.id }}.html">{{ item.title }}</a>
+                    {% endfor %}
+                </dd>
+            </dl>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block main_inner %}
+    <div class="article-detail">
+        <h1 class="article-detail-title text-overflow">
+            {{ data.title }}
+        </h1>
+        <div class="article-detail-content">
+            <div class="markdown-body">
+                {{ data.catalog }}
+                {{ data.markdown_content }}
+            </div>
+        </div>
+        <div class="article-list-tool clear">
+            <ul class="fr">
+                <li>
+                    <i class="article-list-tool-hit"></i>{{ data.hit }}
+                </li>
+                <li>
+                    <i class="article-list-tool-time"></i>{{ data.update_date | elapsed }}
+                </li>
+                {% if data.list_data and data.list_data.id %}
+                    <li>
+                        <i class="article-list-tool-class"></i>
+                        <a href="/list/{{ data.list_data.url or data.list_data.id }}/">
+                            {{ data.list_data.name }}
+                        </a>
+                    </li>
+                {% endif %}
+                {% if data.tags_data and data.tags_data.length %}
+                    <li>
+                        <i class="article-list-tool-tag"></i>
+                        {% for $tagsItem in data.tags_data%}
+                            {% if $tagsItem.tag_data and $tagsItem.tag_data.name %}
+                                <a href="/tags/{{ $tagsItem.tag_data.url or $tagsItem.tag_data.id }}/">
+                                        {{ $tagsItem.tag_data.name }}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    
+    {% if prev_article_data or next_article_data %}
+        <div class="article-detail-nav mt20">
+            {% if prev_article_data %}
+                <p>
+                    上一篇：<a href="/html/{{ prev_article_data.url or prev_article_data.id }}.html">{{ prev_article_data.title }}</a>
+                </p>
+            {% endif %}
+            {% if next_article_data %}
+                <p>
+                    下一篇：<a href="/html/{{ next_article_data.url or next_article_data.id }}.html">{{ next_article_data.title }}</a>
+                </p>
+            {% endif %}
+        </div>
+    {% endif %}
+
+{% endblock %}
