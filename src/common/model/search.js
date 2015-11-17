@@ -13,6 +13,6 @@ export default class extends think.model.base {
      * @return {Promise}   []
      */
     getCacheHitTopList() {
-        return this.field('name, hit').cache('search_hit').order('hit DESC').limit(6).select();
+        return this.field('name, hit').cache('search_hit_data').order('hit DESC').limit(6).select();
     }
 }
