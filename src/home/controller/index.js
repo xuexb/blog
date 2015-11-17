@@ -9,7 +9,7 @@ export default class extends Base {
      *
      * @type {String}
      */
-    static listSqlField = 'id, title, list_id, url, update_date, hit, markdown_content_list';
+    static list_sql_field = 'id, title, list_id, url, update_date, hit, markdown_content_list';
 
     /**
      * 初始化
@@ -35,8 +35,9 @@ export default class extends Base {
      * @return {Promise} []
      */
     async indexAction() {
-        let article = this.model('article');
-        let data = await article.field(this.listSqlField).order('id DESC').limit(10).select();
+        let data = this.model('article').field(this.list_sql_field).order('id DESC').limit(10);
+
+        data = await data.cache('index_article_data').select();
 
         this.assign({
             description: '谢耀武，网名前端小武，喜欢各种折腾, 喜欢研究源, 对美好的代码有极强的透视症, 崇尚有强烈技术氛围的UED...',
@@ -68,7 +69,7 @@ export default class extends Base {
         list_data = list_data[0];
 
         // 根据列表id查文章数据
-        let data = await this.model('article').field(this.listSqlField).order('id DESC').where({
+        let data = await this.model('article').field(this.list_sql_field).order('id DESC').where({
             'list_id': list_data.id
         }).page(page).countSelect({}, false);
 
@@ -104,7 +105,7 @@ export default class extends Base {
         let page = this.param('page');
 
         // 根据key查文章列表数据
-        let data = await this.model('article').field(this.listSqlField).order('id DESC').where({
+        let data = await this.model('article').field(this.list_sql_field).order('id DESC').where({
             title: ['like', '%' + key + '%']
         }).page(page).countSelect({}, false);
 
@@ -202,7 +203,7 @@ export default class extends Base {
         // 根据标签id来关联的文章列表数据
         let data = await this.model('tags_index').field('tags_id, article_id').where({
             tags_id: tags_data.id
-        }).page(page).getByTagsList(this.listSqlField);
+        }).page(page).getByTagsList(this.list_sql_field);
 
         // 筛选出有文章信息的数据
         data.data = data.data.filter((val) => !think.isEmpty(val.article_data));
