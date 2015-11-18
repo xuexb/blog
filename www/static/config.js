@@ -40,7 +40,8 @@ copy = app.copy = {};
 
 // 任务配置
 task['0.0.2'] = [
-    'dist-css:all',
+    'dist-css:global',
+    'dist-css:admin',
     'dist-js:all'
 ];
 
@@ -51,10 +52,9 @@ task['0.0.2'] = [
 /**
  * 全部样式
  */
-css.all = [
-    'pc/admin.css',
-    'pc/global.css'
-];
+css.global = 'pc/global.css';
+
+css.admin = 'pc/admin.css';
 
 
 
