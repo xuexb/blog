@@ -20,15 +20,15 @@ export default class extends Base {
      * 更新文章缓存
      */
     async updateArticleCache() {
-        await think('new_article_data', null);
-        await think('index_article_data', null);
+        await think.cache('new_article_data', null);
+        await think.cache('index_article_data', null);
     }
 
     /**
      * 更新标签缓存
      */
     async updateTagsCache() {
-        await think('rand_tags_list_data', null);
+        await think.cache('rand_tags_list_data', null);
     }
 
     /**
