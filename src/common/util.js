@@ -62,7 +62,7 @@ Util.renderMarkdown = (data) => {
         // 必须有语言且行数>=2
         if(lang && data.split(/\n/).length >= 2){
             return `
-                <pre><span class="hljs-lang-tips">${lang}</span><code class="hljs lang-${lang}">${data}</code></pre>`;
+                <pre><code class="hljs lang-${lang}"><span class="hljs-lang-tips">${lang}</span>${data}</code></pre>`;
         }
         
         return `<pre><code class="hljs">${data}</code></pre>`;
