@@ -7,6 +7,7 @@
 
 export default {
     name: '前端小武',
+    version: '3.0.1',
     url: 'https://xuexb.com',
     static_prefix: '/static/',
     static_type: 'src/',
@@ -19,6 +20,7 @@ export default {
      * @return {string}      绝对路径
      */
     get_static: function get_static(path) {
+        path = path.indexOf('?') ? '&v=' + this.version : '?r='+ version;
         return this.static_prefix + this.static_type + path;
     },
 
