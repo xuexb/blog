@@ -20,7 +20,7 @@ export default {
      * @return {string}      绝对路径
      */
     get_static: function get_static(path) {
-        path += path.indexOf('?') ? '&v=' + this.version : '?r='+ version;
+        path += path.indexOf('?') > -1 ? '&v=' + this.version : '?r='+ version;
         return this.static_prefix + this.static_type + path;
     },
 
