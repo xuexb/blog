@@ -60,7 +60,7 @@ Util.renderMarkdown = (data) => {
         data = highlight.highlightAuto(data).value;
 
         // 必须有语言且行数>=2
-        if(lang && data.split(/\n/).length >= 2){
+        if(lang && data.split(/\n/).length >= 3){
             return `
                 <pre><code class="hljs lang-${lang}"><span class="hljs-lang-tips">${lang}</span>${data}</code></pre>`;
         }
