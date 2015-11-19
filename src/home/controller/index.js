@@ -1,6 +1,8 @@
 'use strict';
 
 import Base from './base';
+import child_process from 'child_process';
+
 import Util from '../../common/util';
 
 export default class extends Base {
@@ -24,6 +26,51 @@ export default class extends Base {
      * 更新node程序
      */
     async updateAction() {
+        // 如果不是post
+        if (!this.isPost()) {
+            return this.error404();
+        }
+
+        let data = this.post();
+
+        // 如果没有提交信息
+        if (think.isEmpty(data.commits)) {
+            return this.json({
+                errmsg: '没有提交信息'
+            });
+        }
+
+        if (think.isEmpty(data.commits.slice(-1).message)) {
+            return this.json({
+                errmsg: '提交message为空'
+            });
+        }
+
+        if (data.commits.slice(-1).message.indexOf('[blog compile]') === -1) {
+            return this.json({
+                errmsg: '没有[blog compile]信息'
+            });
+        }
+
+        // 执行拉取
+        let self = this;
+        let cmd = `cd ${think.ROOT_PATH} && git pull && npm run compile && npm run pm2-restart`;
+        child_process.exec(cmd, function (err, b) {
+            if (err) {
+                console.error(err);
+                self.json({
+                    errmsg: '更新失败'
+                });
+            } else {
+                self.log({
+                    msg: '更新博客'
+                });
+                this.json({
+                    status: 'ok'
+                });
+            }
+        });
+
         return this.json(this.post());
     }
 
