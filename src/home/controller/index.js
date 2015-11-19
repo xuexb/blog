@@ -64,15 +64,9 @@ export default class extends Base {
             cwd: think.ROOT_PATH
         }, function (err, b) {
             if (err) {
-                console.error(err);
-                self.log({
-                    errmsg: err,
-                    msg: '更新博客失败'
-                });
+                console.log('更新博客失败');
             } else {
-                self.log({
-                    msg: '更新博客成功'
-                });
+                console.log('更新博客成功');
             }
         });
 
