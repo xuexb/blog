@@ -13,14 +13,14 @@
     "highlight.js": "^8.9.1",
     "marked": "^0.3.5",
     "nunjucks": "^2.1.0",
+    "pm2": "^0.15.10",
     "thinkjs": "^2.0.8"
   },
   "scripts": {
     "check": "fecs check src/",
     "start": "node www/development.js",
-    "compile": "babel --loose all --optional runtime --stage 0 --modules common src/ --out-dir app/ --retain-lines",
-    "watch-compile": "node -e \"console.log('<npm run watch-compile> no longer need, use <npm start> command direct.');console.log();\"",
-    "watch": "npm run watch-compile"
+    "compile": "babel --loose all --optional runtime --stage 0 --modules common src/ --out-dir app/",
+    "pm2-start": "pm2 start www/production.js --name blog -e err.log -o out.log"
   },
   "keywords": [],
   "repository": {
