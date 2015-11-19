@@ -22,12 +22,6 @@ export default class extends Base {
         super.init(http); //调用父类的init方法 
     }
 
-    test3Action() {
-        this.json({
-            status: 'ok'
-        });
-    }
-
     /**
      * 更新node程序
      */
