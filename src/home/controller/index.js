@@ -22,6 +22,8 @@ export default class extends Base {
         super.init(http); //调用父类的init方法 
     }
 
+    async
+
     /**
      * 更新node程序
      */
@@ -54,8 +56,9 @@ export default class extends Base {
 
         // 执行拉取
         let self = this;
-        let cmd = `cd ${think.ROOT_PATH} && git pull && npm run compile && npm run pm2-restart`;
-        child_process.exec(cmd, function (err, b) {
+        child_process.exec(`git pull && npm run compile && npm run pm2-restart`, {
+            cwd: think.ROOT_PATH
+        }, function (err, b) {
             if (err) {
                 console.error(err);
                 self.json({
@@ -65,13 +68,11 @@ export default class extends Base {
                 self.log({
                     msg: '更新博客'
                 });
-                this.json({
+                self.json({
                     status: 'ok'
                 });
             }
         });
-
-        return this.json(this.post());
     }
 
     /**
