@@ -105,7 +105,7 @@ export default class extends think.controller.base {
     __before() {
         this.init_compress();
 
-        this.init_ls();
+        // this.init_ls();
     }
 
     /**
