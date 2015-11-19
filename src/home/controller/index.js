@@ -22,7 +22,7 @@ export default class extends Base {
         super.init(http); //调用父类的init方法 
     }
 
-    test2Action() {
+    test3Action() {
         this.json({
             status: 'ok'
         });
