@@ -65,17 +65,19 @@ export default class extends Base {
         }, function (err, b) {
             if (err) {
                 console.error(err);
-                self.json({
-                    errmsg: '更新失败'
+                self.log({
+                    errmsg: err,
+                    msg: '更新博客失败'
                 });
             } else {
                 self.log({
-                    msg: '更新博客'
-                });
-                self.json({
-                    status: 'ok'
+                    msg: '更新博客成功'
                 });
             }
+        });
+
+        return this.json({
+            status: 'ok'
         });
     }
 
