@@ -46,13 +46,13 @@ export default class extends Base {
             });
         }
 
-        if (think.isEmpty(data.commits.slice(-1).message)) {
+        if (think.isEmpty(data.commits.slice(-1)[0].message)) {
             return this.json({
                 errmsg: '提交message为空'
             });
         }
 
-        if (data.commits.slice(-1).message.indexOf('[blog compile]') === -1) {
+        if (data.commits.slice(-1)[0].message.indexOf('[blog compile]') === -1) {
             return this.json({
                 errmsg: '没有[blog compile]信息'
             });
