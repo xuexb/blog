@@ -21,6 +21,13 @@ export default class extends Base {
     }
 
     /**
+     * 更新node程序
+     */
+    async updateAction() {
+        return this.json(this.post());
+    }
+
+    /**
      * rss订阅
      *
      * @return {Promise} []
