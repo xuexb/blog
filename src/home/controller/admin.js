@@ -63,6 +63,14 @@ export default class extends Base {
     }
 
     /**
+     * 更新node程序
+     */
+    async updateAction() {
+        console.log(this.post());
+        return this.json({})
+    }
+
+    /**
      * 登录
      *
      * @return {Promise} []

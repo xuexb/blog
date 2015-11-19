@@ -1,13 +1,9 @@
 Runtime/
 node_modules/
 output/
-nohup.out
-output.tar.gz
 .DS_Store
-sftp-config.json
 /www/upload
-dev.js
-online.js
-/app/
 www/sitemap.*
 www/*.xml
+*.log
+/app/
