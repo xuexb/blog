@@ -29,7 +29,7 @@
     "url": "git@github.com:xuexb/blog.git"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=0.12.0"
   },
   "readmeFilename": "README.md",
   "devDependencies": {
