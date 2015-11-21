@@ -9,34 +9,6 @@ import fs from 'fs';
 import path from 'path';
 
 export default class extends think.controller.base {
-
-    /**
-     * 压缩页面html并显示
-     */
-    async display_min(...args) {
-        let templateFile = await this.fetch(...args);
-        let preCache = [];
-
-        // 替换pre
-        templateFile = templateFile.replace(/<pre>([\s\S]+?)<\/pre>/g, function ($0) {
-            return '{<' + preCache.push($0) + '>}';
-        });
-
-        // 替换textarea
-        templateFile = templateFile.replace(/<textarea[^>]+?>([\s\S]+?)<\/textarea>/g, function ($0) {
-            return '{<' + preCache.push($0) + '>}';
-        });
-
-        templateFile = templateFile.replace(/\n(\s*)/g, '');
-        templateFile = templateFile.replace(/\{\<(\d+?)\>\}/g, function ($0, $1) {
-            return preCache[$1 - 1] || '';
-        });
-
-        preCache = null;
-
-        this.end(templateFile);
-    }
-
     /**
      * 设置标题
      *
@@ -55,24 +27,6 @@ export default class extends think.controller.base {
     error404() {
         return think.statusAction(404, this.http);
     }
-
-    /**
-     * 初始化压缩配置
-     *
-     * @description 优先使用url中的compress，不存在则使用配置的compress
-     */
-    init_compress() {
-        let compress = this.param('compress');
-
-        if (!compress) {
-            compress = this.config('blog.compress') ? '1' : '0';
-        }
-
-        if (compress === '1') {
-            this.display = this.display_min;
-        }
-    }
-
 
     /**
      * 打印日志
@@ -189,8 +143,6 @@ export default class extends think.controller.base {
      * 前置
      */
     async __before() {
-        await this.init_compress();
-
         await this.init_ls();
     }
 

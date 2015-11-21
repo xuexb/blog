@@ -3,5 +3,5 @@
  * config
  */
 export default {
-    
+    compress: true
 };
