@@ -13,7 +13,5 @@ export default {
         prefix: ''
     },
 
-    blog: {
-        compress: false
-    }
+    compress: false
 };
