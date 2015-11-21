@@ -19,7 +19,7 @@
   "scripts": {
     "check": "fecs check src/",
     "start": "node www/development.js",
-    "compile": "babel --loose all --optional runtime --stage 0 --modules common src/ --out-dir app/",
+    "compile": "rm -rf app/ && babel --loose all --optional runtime --stage 0 --modules common src/ --out-dir app/",
     "pm2-start": "pm2 start www/production.js --name blog-8899 -e err.log -o out.log",
     "pm2-restart": "pm2 restart blog-8899"
   },
