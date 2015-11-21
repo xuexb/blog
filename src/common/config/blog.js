@@ -13,13 +13,13 @@ export default {
     static_type: 'src/',
 
     /**
-     * 获取静态资源
+     * 获取静态资源路径
      *
      * @param  {string} path 路径
      *
      * @return {string}      绝对路径
      */
-    get_static: function get_static(path) {
+    get_static: function (path) {
         path += path.indexOf('?') > -1 ? '&v=' + this.version : '?r='+ this.version;
         return this.static_prefix + this.static_type + path;
     },
@@ -31,7 +31,7 @@ export default {
      */
     ls: {
         css: {
-            'global': 'A'
+            'global': 'www/static/dist/pc/global.css'
         }
     },
 

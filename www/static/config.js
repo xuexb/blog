@@ -71,4 +71,8 @@ js.all = {
     noCmd: 'seajs/sea.js'
 }
 
+js.ls = {
+    noCmd: 'ls.js'
+}
+
 module.exports = app;
