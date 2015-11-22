@@ -11,7 +11,7 @@ export default class extends Base {
      *
      * @type {String}
      */
-    static list_sql_field = 'id, title, list_id, url, update_date, hit, markdown_content_list';
+    list_sql_field = 'id, title, list_id, url, update_date, hit, markdown_content_list';
 
     /**
      * 初始化
