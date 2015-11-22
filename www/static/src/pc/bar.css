@@ -41,6 +41,8 @@
     padding:0 8px;
     font-size:16px;
     border-top:4px solid #fff;
+    -webkit-transition: border-top-color .3s; 
+    transition: border-top-color .3s; 
 }
 .bar-nav > li > span{
     cursor:default;
@@ -48,8 +50,13 @@
 .bar-nav > li > a:hover{
     text-decoration:none;
 }
-.bar-nav > li > .current{
+.bar-nav > li > .current,
+.bar-nav > li > a:hover,
+.bar-nav > li > span:hover{
     border-top-color:#1f7b9b;
+}
+.bar-nav:hover > li > .current{
+    border-top-color: #fff;
 }
 .bar-nav-rss{
     overflow:hidden;
