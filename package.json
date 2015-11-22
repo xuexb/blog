@@ -16,7 +16,7 @@
     "pm2": "^0.15.10",
     "think-compress-html": "^0.0.2",
     "think-ls": "^0.0.3",
-    "thinkjs": "^2.0.8"
+    "thinkjs": "2.x.x"
   },
   "scripts": {
     "check": "fecs check src/",
