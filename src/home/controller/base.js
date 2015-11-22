@@ -53,6 +53,13 @@ export default class extends Base {
     async __before(http){
         await super.__before(http);
 
+        // 布局
+        let auto = this.get('auto');
+        if (auto) {
+            this.cookie('auto', auto);
+        }
+        this.assign('auto', auto || this.cookie('auto'));
+
         this.set_nav_type('home');
 
         // 列表数据
