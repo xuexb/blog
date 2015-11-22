@@ -25,29 +25,11 @@ export default {
     },
 
     /**
-     * ls配置
-     *
-     * @type {Object}
-     */
-    ls: {
-        css: {
-            'global': 'www/static/dist/pc/global.css'
-        }
-    },
-
-    /**
      * 列表分隔线
      *
      * @type {String}
      */
     list_mark: '{__list__}',
-
-    /**
-     * 是否压缩
-     *
-     * @type {Boolean}
-     */
-    compress: true,
 
     /**
      * 标签分隔线

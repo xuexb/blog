@@ -11,3 +11,9 @@ var instance = new thinkjs({
 });
 
 instance.run();
+
+
+var ls = require('think-ls');
+new ls().build().then(function(a){
+    console.log('编译ls结束~');
+});

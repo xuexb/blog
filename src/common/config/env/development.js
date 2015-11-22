@@ -13,5 +13,12 @@ export default {
         prefix: ''
     },
 
-    compress: false
+    compress: false,
+
+    ls: {
+        on: false,
+        css: {
+            'global': '/static/src/pc/global.css'
+        }
+    }
 };
