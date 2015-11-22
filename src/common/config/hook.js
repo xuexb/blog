@@ -1,9 +1,12 @@
+/**
+ * @file hook配置
+ * @author xiaowu
+ * @email fe.xiaowu@gmail.com
+ */
+
 'use strict';
 
-/**
- * hook config
- * https://thinkjs.org/doc/middleware.html#toc-df6
- */
 export default {
-    view_parse: ['append', 'think-compress-html']
+    view_filter: ['think-ls'],
+    view_parse: ['parse_template', 'think-compress-html']
 }

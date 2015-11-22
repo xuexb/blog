@@ -1,5 +1,5 @@
 /**
- * @file 好搜首页缓存模拟
+ * @file LS.js
  * @description 只是玩玩，代码没有考虑过多的场景
  * @author xiaowu
  * @email fe.xiaowu@baidu.com
