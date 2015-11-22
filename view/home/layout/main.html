@@ -15,7 +15,11 @@
 
     {% block head_end_before %}{% endblock %}
 </head>
+{% if auto == 1 %}
+<body class="auto">
+{% else %}
 <body>
+{% endif %}
 
     {% block bar %} 
         {% include './inc_bar.html' %}
