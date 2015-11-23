@@ -337,6 +337,11 @@ export default class extends Base {
     async viewAction() {
         let url = this.param('url');
 
+        //如果为老域名，兼容下301
+        if(url === 'xieliang'){
+            return this.redirect('/html/xiaowu.html', 301);
+        }
+
         let where = {};
 
         if(isFinite(url)){
