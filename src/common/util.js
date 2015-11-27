@@ -59,12 +59,18 @@ Util.renderMarkdown = (data) => {
     renderer.code = (data, lang) => {
         data = highlight.highlightAuto(data).value;
 
-        // 必须有语言且行数>=2
-        if(lang && data.split(/\n/).length >= 3){
-            return `
-                <pre><code class="hljs lang-${lang}"><span class="hljs-lang-tips">${lang}</span>${data}</code></pre>`;
+        // 如果有语言
+        if (lang) {
+
+            // 如果行数>=3
+            if (data.split(/\n/).length >= 3){
+                let code = `<code class="hljs lang-${lang}"><span class="hljs-lang-tips">${lang}</span>${data}</code>`; 
+                return `<pre>${code}</pre>`;
+            }
+
+            return `<pre><code class="hljs lang-${lang}">${data}</code></pre>`;
         }
-        
+
         return `<pre><code class="hljs">${data}</code></pre>`;
     };
 
