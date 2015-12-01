@@ -52,7 +52,7 @@ export default class extends think.logic.base {
         }
 
         // 检查内容是否包含列表标识
-        if(this.post('content').indexOf(think.config('blog.list_mark')) === -1){
+        if (!this.post('goto_url') && this.post('content').indexOf(think.config('blog.list_mark')) === -1){
             return this.fail('必须包含列表提取字段～');
         }
 

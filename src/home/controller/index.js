@@ -351,13 +351,23 @@ export default class extends Base {
         }
 
         let data = await this.model('article')
-            .field('id, markdown_content, hit, update_date, list_id, title, url, catalog')
+            .field('id, markdown_content, hit, update_date, list_id, title, url, catalog, goto_url')
             .where(where)
             .find();
 
         // 如果为空，说明该文章不存在
         if(think.isEmpty(data)){
             return this.error404();
+        }
+
+        // 更新文章计数
+        await this.model('article').where({
+            id: data.id
+        }).increment('hit');
+
+        // 如果有跳转url
+        if (data.goto_url) {
+            return this.redirect(data.goto_url, 301);
         }
 
         // 上一个
@@ -413,11 +423,6 @@ export default class extends Base {
         if(referer){
             this.assign('key', referer);
         }
-
-        // 更新文章计数
-        await this.model('article').where({
-            id: data.id
-        }).increment('hit');
 
         // 配置模板数据
         this.assign({
