@@ -186,7 +186,7 @@ export default class extends Base {
     async editArticleAction() {
         let id = this.param('id');
 
-        let data = await this.model('article').field('id, title, content, update_date, hit, list_id, url').where({
+        let data = await this.model('article').field('id, title, content, update_date, hit, list_id, url, goto_url').where({
             id: id
         }).find();
 
@@ -347,28 +347,57 @@ export default class extends Base {
      */
     async saveArticleAction() {
         let data = this.post();
-        let list_mark = think.config('blog.list_mark');
-
-        // 渲染后的md，一定要去列表标识
-        let temp = Util.renderMarkdown(data.content.replace(new RegExp(list_mark, 'g'), ''));
-        data.markdown_content = temp.data;
-
-        // 渲染后的列表md
-        data.markdown_content_list = Util.renderMarkdown(data.content.split(list_mark)[0]).data;
 
         // 更新时间
         data.update_date = Date.now();
 
-        // 导航数据
-        temp.catalog = temp.catalog.map(val => {
-            if(val.level === 2){
-                return `<li><a href="#${val.id}">${val.text}</a></li>`;
+        if (data.goto_url) {
+            // 渲染后的md，一定要去列表标识
+            let temp = Util.renderMarkdown(data.content);
+            data.markdown_content = temp.data;
+
+            // 渲染后的列表md
+            data.markdown_content_list = temp.data;
+
+            // 导航数据
+            if (!think.isEmpty(temp.catalog)) {
+                temp.catalog = temp.catalog.map(val => {
+                    if(val.level === 2){
+                        return `<li><a href="#${val.id}">${val.text}</a></li>`;
+                    }
+
+                    return `<li class="child"><a href="#${val.id}">${val.text}</a></li>`;
+                });
+
+                data.catalog = `<div class="article-detail-sidebar"><ul>${temp.catalog.join('')}</ul></div>`;
             }
 
-            return `<li class="child"><a href="#${val.id}">${val.text}</a></li>`;
-        });
-        if(!think.isEmpty(temp.catalog)){
-            data.catalog = `<div class="article-detail-sidebar"><ul>${temp.catalog.join('')}</ul></div>`;
+            temp = null;
+        }
+        else {
+            let list_mark = think.config('blog.list_mark');
+
+            // 渲染后的md，一定要去列表标识
+            let temp = Util.renderMarkdown(data.content.replace(new RegExp(list_mark, 'g'), ''));
+            data.markdown_content = temp.data;
+
+            // 渲染后的列表md
+            data.markdown_content_list = Util.renderMarkdown(data.content.split(list_mark)[0]).data;
+
+            // 导航数据
+            if(!think.isEmpty(temp.catalog)){
+                temp.catalog = temp.catalog.map(val => {
+                    if(val.level === 2){
+                        return `<li><a href="#${val.id}">${val.text}</a></li>`;
+                    }
+
+                    return `<li class="child"><a href="#${val.id}">${val.text}</a></li>`;
+                });
+            
+                data.catalog = `<div class="article-detail-sidebar"><ul>${temp.catalog.join('')}</ul></div>`;
+            }
+
+            temp = null;
         }
 
         // 更新文章缓存
