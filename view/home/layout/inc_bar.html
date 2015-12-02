@@ -11,6 +11,14 @@
                         <a href="/"{% if nav_type == 'home' %} class="current"{% endif %}>首页</a>
                     </li>
                     <li>
+                        <span>作品</span>
+                        <div class="bar-nav-dropdown">
+                            <a href="https://apijs.org/">apijs</a>
+                            <a href="https://github.xuexb.com/mdjs/">mdjs</a>
+                            <a href="https://github.xuexb.com/">demo</a>
+                        </div>
+                    </li>
+                    <li>
                         <span{% if nav_type == 'article' %} class="current"{% endif %}>文章</span>
                         <div class="bar-nav-dropdown">
                             {% for nav in list_data %}
@@ -24,9 +32,6 @@
                     </li>
                     <li>
                         <a href="/tags/"{% if nav_type == 'tags' %} class="current"{% endif %}>标签</a>
-                    </li>
-                    <li>
-                        <a href="https://apijs.org/">Apijs</a>
                     </li>
                     <li>
                         <a href="/html/xiaowu.html"{% if nav_type == 'xiaowu' %} class="current"{% endif %}>关于我</a>
