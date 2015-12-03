@@ -52,7 +52,8 @@
 }
 .bar-nav > li > .current,
 .bar-nav > li > a:hover,
-.bar-nav > li > span:hover{
+.bar-nav > li > span:hover,
+.bar-nav:hover > li > .current:hover{
     border-top-color:#1f7b9b;
 }
 .bar-nav:hover > li > .current{
