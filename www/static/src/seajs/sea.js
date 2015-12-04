@@ -958,11 +958,12 @@ seajs.config = function(configData) {
   if (!elem) {
     return;
   }
-  version = elem.getAttribute('data-version');
+  version = elem.href;
+  version = version.substr(version.indexOf('?'));
   seajs.config({
     map: [
       function(uri){
-        return uri + '?' + version;
+        return uri + version;
       }
     ]
   });
