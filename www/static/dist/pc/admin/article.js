@@ -1,2 +1,2 @@
-/*blog-static - v0.0.2 - 2015-11-16 23:11:53*/
-define("pc/admin/article",["../common/jquery"],function(a){var b=a("../common/jquery");b(".mod-form-tags").on("click","label",function(){b(this).toggleClass("checked")})});
+/*blog-static - v0.0.2 - 2015-12-04 15:12:30*/
+define("pc/admin/article",["../common/jquery"],function(a){var b=a("../common/jquery");b(".mod-form-tags").on("click","label",function(){b(this).toggleClass("checked")});var c=null,d=null;b("#J-title").on("input propertychange",function(){c&&c.abort(),clearTimeout(d),d=setTimeout(function(){c=b.ajax({type:"POST",url:"/admin/transliteration",dataType:"json",data:{word:b("#J-title").val()},success:function(a){a.errcode||b("#J-url").val(a.url)},compile:function(){c=null}})},500)})});

@@ -6,6 +6,8 @@ import Base from './base';
 import Util from '../../common/util';
 import Create from '../../common/create_sitemap';
 
+import {slugify} from 'transliteration';
+
 export default class extends Base {
     /**
      * 初始化
@@ -60,6 +62,31 @@ export default class extends Base {
 
         this.user_info = user_info;
         this.assign('user_info', user_info);
+    }
+
+    /**
+     * 中文转拼音
+     *
+     * @type POST
+     * @return {string} word
+     * @return {string} 拼音
+     */
+    transliterationAction() {
+        if (!this.isPost()) {
+            return this.error404();
+        }
+
+        let word = this.post('word');
+
+        if (!word) {
+            return this.json({
+                url: ''
+            });
+        }
+
+        return this.json({
+            url: slugify(word)
+        });
     }
 
     /**
