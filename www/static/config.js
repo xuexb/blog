@@ -71,6 +71,10 @@ js.all = {
     noCmd: 'seajs/sea.js'
 }
 
+js.sea = {
+    noCmd: 'seajs/sea.js'
+}
+
 js.admin = 'pc/admin/**/*.js';
 
 js.ls = {

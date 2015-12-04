@@ -7,5 +7,5 @@
 
 
 {% block js_before %}
-    <script src="{{ config.blog.get_static('seajs/sea.js') }}"></script>
+    <script id="seajsnode" data-version="{{ config.blog.version }}" src="{{ config.blog.get_static('seajs/sea.js') }}"></script>
 {% endblock %}
