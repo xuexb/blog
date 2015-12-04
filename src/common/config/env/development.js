@@ -3,10 +3,10 @@
 export default {
     db: {
         host: 'www.xuexb.com',
-        port: '3306',
+        port: '1180',
         name: 'xuexb',
-        user: 'root',
-        pwd: 'iWENLING918LIANG',
+        user: 'test',
+        pwd: 'test',
         prefix: ''
     },
 
