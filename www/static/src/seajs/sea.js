@@ -958,7 +958,7 @@ seajs.config = function(configData) {
   if (!elem) {
     return;
   }
-  version = elem.href;
+  version = elem.src;
   version = version.substr(version.indexOf('?'));
   seajs.config({
     map: [
