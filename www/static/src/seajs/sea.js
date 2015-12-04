@@ -950,3 +950,20 @@ seajs.config = function(configData) {
 }
 
 })(this);
+
+(function(){
+
+  var elem = document.getElementById('seajsnode');
+  var version;
+  if (!elem) {
+    return;
+  }
+  version = elem.getAttribute('data-version');
+  seajs.config({
+    map: [
+      function(uri){
+        return uri + '?' + version;
+      }
+    ]
+  });
+})();
