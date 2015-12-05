@@ -386,19 +386,6 @@ export default class extends Base {
             // 渲染后的列表md
             data.markdown_content_list = temp.data;
 
-            // 导航数据
-            if (!think.isEmpty(temp.catalog)) {
-                temp.catalog = temp.catalog.map(val => {
-                    if(val.level === 2){
-                        return `<li><a href="#${val.id}">${val.text}</a></li>`;
-                    }
-
-                    return `<li class="child"><a href="#${val.id}">${val.text}</a></li>`;
-                });
-
-                data.catalog = `<div class="article-detail-sidebar"><ul>${temp.catalog.join('')}</ul></div>`;
-            }
-
             temp = null;
         }
         else {
