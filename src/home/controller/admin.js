@@ -1,3 +1,9 @@
+/**
+ * @file 后端控制器
+ * @author xiaowu
+ * @email fe.xiaowu@gmail.com
+ */
+
 'use strict';
 
 import fs from 'fs';
