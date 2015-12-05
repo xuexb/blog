@@ -475,7 +475,7 @@ export default class extends Base {
             title: data.title
         }
         if(data.url){
-            where.url = url;
+            where.url = data.url;
         }
 
         let res = await this.model('article').thenAdd(data, where);
