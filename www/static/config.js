@@ -89,6 +89,7 @@ js.ls = {
 js.wise_global = {
     noCmd: [
         'wise/sm/zepto.min.js',
+        'wise/sm/sm.config.js',
         'wise/sm/sm.min.js',
         'wise/xuexb.js'
     ],

@@ -95,8 +95,4 @@
 
 })();
 
-$.config = {
-    swipePanelOnlyClose: true
-};
-
 $.init();
