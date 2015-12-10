@@ -7,8 +7,6 @@ think.middleware('think-compress-html', compress);
 think.middleware('think-ls', ls);
 
 think.middleware('think-auto-mobile', http => {
-    console.log(http.module, '这', think.module, think.mode);
-
     if (http.module !== 'home') {
         return;
     }
