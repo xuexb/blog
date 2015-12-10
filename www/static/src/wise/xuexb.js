@@ -11,14 +11,20 @@
     var page = 1;
     var empty = false;
 
-    var load = function(type){
+    var load = function (type) {
         if (loading || empty) {
             return;
         }
 
+        if (type === 'append') {
+            page += 1;
+        }
+        else {
+            page = 1;
+        }
+
         // 设置flag
         loading = true;
-
 
         $.ajax({
             type: 'POST',
@@ -51,6 +57,7 @@
                 if (type !== 'append') {
                     $('.list-container').empty();
                 }
+
                 $('.list-container').append(html);
                 $.refreshScroller();
             },
@@ -58,18 +65,16 @@
                 $.toast('加载失败');
             }
         });
-    }
+    };
 
     $(document).on('infinite', '.infinite-scroll', function () {
-        page += 1;
         load('append');
     });
 
     // 添加'refresh'监听器
-    $(document).on('refresh', '.pull-to-refresh-content',function(e) {
+    $(document).on('refresh', '.pull-to-refresh-content', function (e) {
         $.showIndicator();
-        setTimeout(function(){
-            page = 1;
+        setTimeout(function () {
             empty = false;
             load();
             $.pullToRefreshDone('.pull-to-refresh-content');
@@ -88,5 +93,9 @@
     });
 
 })();
+
+$.config = {
+    swipePanelOnlyClose: true
+};
 
 $.init();
