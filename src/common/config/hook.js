@@ -7,6 +7,7 @@
 'use strict';
 
 export default {
-    view_filter: ['think-ls'],
-    view_parse: ['parse_template', 'think-compress-html']
+    route_parse: ['append', 'think-auto-mobile'],
+    view_filter: ['prepend', 'think-ls'],
+    view_parse: ['append', 'think-compress-html']
 }

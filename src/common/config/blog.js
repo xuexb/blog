@@ -24,6 +24,11 @@ export default {
         return this.static_prefix + this.static_type + path;
     },
 
+    get_static_res: function(path) {
+        path += path.indexOf('?') > -1 ? '&v=' + this.version : '?r='+ this.version;
+        return this.static_prefix + 'res/' + path;
+    },
+
     /**
      * 列表分隔线
      *
