@@ -98,6 +98,7 @@ var b="next"===a?h.months.length-1:0;h.months.eq(b).addClass("picker-calendar-mo
             var key = $('#J-search').val().trim();
             if (key) {
                 $.router.loadPage('?key=' + key);
+                $('#J-search').blur();
             }
 
             return false;
@@ -107,7 +108,7 @@ var b="next"===a?h.months.length-1:0;h.months.eq(b).addClass("picker-calendar-mo
 })();
 
 $.config = {
-    swipePanelOnlyClose: false
+    swipePanelOnlyClose: true
 };
 
 $.init();

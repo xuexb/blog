@@ -86,6 +86,7 @@
             var key = $('#J-search').val().trim();
             if (key) {
                 $.router.loadPage('?key=' + key);
+                $('#J-search').blur();
             }
 
             return false;
