@@ -44,6 +44,10 @@ task['0.0.2'] = [
     'dist-css:admin',
     'dist-js:all'
 ];
+task.wise = [
+    'dist-js:wise_global',
+    'dist-css:wise_global'
+]
 
 // ================================================================
 //                          样式配置
@@ -80,5 +84,18 @@ js.admin = 'pc/admin/**/*.js';
 js.ls = {
     noCmd: 'ls.js'
 }
+
+// wise
+js.wise_global = {
+    noCmd: [
+        'wise/sm/zepto.min.js',
+        'wise/sm/sm.min.js',
+        'wise/xuexb.js'
+    ],
+    dest: 'wise/global.js'
+}
+css.wise_global = [
+    'wise/global.css'
+]
 
 module.exports = app;
