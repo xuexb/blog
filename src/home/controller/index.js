@@ -242,7 +242,7 @@ export default class extends Base {
         }
 
         // 查出来标签的数据
-        let tags_data = await this.model('tags').field('name, id, url').where(where).order('id DESC').find();
+        let tags_data = await this.model('tags').field('name, id, url').where(where).find();
 
         // 如果没有这个标签
         if(think.isEmpty(tags_data)){
@@ -252,7 +252,7 @@ export default class extends Base {
         // 根据标签id来关联的文章列表数据
         let data = await this.model('tags_index').field('tags_id, article_id').where({
             tags_id: tags_data.id
-        }).page(page).getByTagsList(this.list_sql_field);
+        }).page(page).order('id DESC').getByTagsList(this.list_sql_field);
 
         // 筛选出有文章信息的数据
         data.data = data.data.filter((val) => !think.isEmpty(val.article_data));
