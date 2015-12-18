@@ -1,2 +1,2 @@
-/*blog-static - v0.0.2 - 2015-12-18 18:12:41*/
+/*blog-static - v0.0.2 - 2015-12-18 19:12:03*/
 $.config={swipePanelOnlyClose:!0};
