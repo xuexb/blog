@@ -242,7 +242,7 @@ export default class extends Base {
         }
 
         // 查出来标签的数据
-        let tags_data = await this.model('tags').field('name, id, url').where(where).find();
+        let tags_data = await this.model('tags').field('name, id, url').where(where).order('id DESC').find();
 
         // 如果没有这个标签
         if(think.isEmpty(tags_data)){
