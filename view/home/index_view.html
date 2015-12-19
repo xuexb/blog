@@ -23,11 +23,11 @@
 
 {# 结构化数据 #}
 {% block head_end_before %}
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="{{ data.title }}">
-    <meta property="og:description" content="{{ description }}">
-    <meta property="og:author" content="前端小武">
-    <meta property="og:release_date" content="{{ data.create_date|format('yyyy-MM-dd') }}">
+    <meta property="og:type" content="blog"/>
+    <meta property="og:title" content="{{ data.title }}"/>
+    <meta property="og:description" content="{{ description }}"/>
+    <meta property="og:author" content="前端小武"/>
+    <meta property="og:release_date" content="{{ data.create_date|format('yyyy-MM-dd') }}"/>
     
     <meta itemprop="http://rdfs.org/sioc/ns#link" content="https://xuexb.com/html/{{ data.url or data.id }}.html" />
     <meta itemprop="channelId" content="{{ data.list_data.name }}">
