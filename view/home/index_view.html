@@ -21,6 +21,15 @@
     {% endif %}
 {% endblock %}
 
+{# 好搜结构化数据 #}
+{% block head_end_before %}
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="{{ data.title }}">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:author" content="前端小武">
+    <meta property="og:release_date" content="{{ data.create_date|format('yyyy-MM-dd') }}">
+{% endblock %}
+
 {% block main_inner %}
     <div class="article-detail">
         <h1 class="article-detail-title text-overflow">

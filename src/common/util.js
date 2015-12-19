@@ -105,7 +105,7 @@ parseDate.format = (date, str) => {
     let getTime;
     let key;
 
-    str = str || 'yyyy-M-d H:mm';
+    str = str || 'yyyy-MM-dd HH:mm';
 
     if (date) {
         if (!(date instanceof Date)) {
