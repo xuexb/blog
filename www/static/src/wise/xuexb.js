@@ -93,6 +93,17 @@
         });
     });
 
+    // 委托body,由于sm委托的是document，我们要比她早点
+    $('body').on('click', 'a', function(event){
+        var url = $(this).attr('href');
+
+        // 我认为这样是外链接
+        if (!/^(\/)|(http(s)?:\/\/(www\.)?xuexb\.com)/.test(url)) {
+            console.log(1);
+            event.stopPropagation();
+        }
+    });
+
 })();
 
 $.init();
