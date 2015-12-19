@@ -1,0 +1,50 @@
+<div class="bar">
+    <div class="w clear">
+        <div class="bar-logo fl">
+            <h1>
+                <a href="/">前端小武</a>
+            </h1>
+        </div>
+
+        <ul class="bar-nav fr clear">
+            <li>
+                <a href="/"{% if nav_type == 'home' %} class="current"{% endif %}>首页</a>
+            </li>
+            <li>
+                <span>作品</span>
+                <div class="bar-nav-dropdown">
+                    <a href="https://apijs.org/" title="很纯洁的api数据模拟">apijs</a>
+                    <a href="https://github.xuexb.com/mdjs/" title="一个纯洁的md文档在线浏览">mdjs</a>
+                    <a href="https://github.xuexb.com/" title="写的一些demo">demo</a>
+                    <a href="https://github.com/xuexb/key-cache/" title="以key形式的cache">key-cache</a>
+                </div>
+            </li>
+            <li>
+                <span{% if nav_type == 'article' %} class="current"{% endif %}>文章</span>
+                <div class="bar-nav-dropdown">
+                    {% for nav in list_data %}
+                        {% if nav_type_id and nav_type_id == nav.id %}
+                            <a href="/list/{{ nav.url or nav.id }}/" class="current">{{ nav.name }}</a>
+                        {% else %}
+                            <a href="/list/{{ nav.url or nav.id }}/">{{ nav.name }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </li>
+            <li>
+                <a href="/tags/"{% if nav_type == 'tags' %} class="current"{% endif %}>标签</a>
+            </li>
+            <li>
+                <a href="/html/xiaowu.html"{% if nav_type == 'xiaowu' %} class="current"{% endif %}>关于我</a>
+            </li>
+            <li>
+                <a href="/html/links.html"{% if nav_type == 'links' %} class="current"{% endif %}>友情链接</a>
+            </li>
+            <li>
+                <div class="bar-nav-rss">
+                    <a href="/rss.xml">RSS</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
