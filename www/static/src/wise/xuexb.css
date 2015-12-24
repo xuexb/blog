@@ -177,6 +177,7 @@
 }
 
 .markdown-body pre code .hljs-lang-tips{
+    display: block !important;
     color: #C5C3C3;
     font-size: 60px;
     line-height: 1;
