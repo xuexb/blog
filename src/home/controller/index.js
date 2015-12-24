@@ -351,7 +351,7 @@ export default class extends Base {
         }
 
         let data = await this.model('article')
-            .field('id, markdown_content, hit, update_date, list_id, title, url, catalog, goto_url')
+            .field('id, markdown_content, hit, update_date, list_id, title, url, catalog, goto_url, create_date, content')
             .where(where)
             .find();
 
@@ -433,10 +433,13 @@ export default class extends Base {
         });
 
         // 配置描述
-        let description = data.markdown_content.replace(/<[^>]+?>/g, '')
+        let description = data.content
+            .replace(/<[\w]+?>([\s\S]+?)<\/[\w]+?>/g, '')
+            .replace(/```([\s\S]+?)```/g, '')
+            .replace(/\#+\s/g, '')
             .replace(/[\r\n]/g, '')
-            .replace(/\s+/g, '')
-            .substr(0, 100) + '...';
+            .substr(0, 100)
+            .replace(/([\"\/])/g, '\\$1') + '...';
         this.assign('description', description);
 
         // 根据类型设置标签
