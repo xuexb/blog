@@ -63,8 +63,10 @@ Util.renderMarkdown = (data) => {
         if (lang) {
 
             // 如果行数>=3
+            // 这里用 +＝ 是由于在pre里换行很难看
             if (data.split(/\n/).length >= 3){
-                let code = `<code class="hljs lang-${lang}"><span class="hljs-lang-tips">${lang}</span>${data}</code>`; 
+                let code = `<code class="hljs lang-${lang}">`
+                code += `<span class="hljs-lang-tips" style="display:none">${lang}</span>${data}</code>`; 
                 return `<pre>${code}</pre>`;
             }
 

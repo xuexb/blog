@@ -1,7 +1,7 @@
 {
     "name": "blog-static",
     "description": "博客静态资源",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "src_path": "src/",
     "dist_path": "dist/",
     "port": 80,
