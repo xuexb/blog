@@ -7,7 +7,7 @@
 
 export default {
     name: '前端小武',
-    version: '3.0.5',
+    version: '3.0.6',
     url: 'https://xuexb.com',
     static_prefix: '/static/',
     static_type: 'src/',
