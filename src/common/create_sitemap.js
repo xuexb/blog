@@ -82,10 +82,9 @@ Create.createRss = function(data) {
     arr.push('<channel>');
     arr.push('<title>' + data.home.title + '</title>');
     arr.push('<link>' + data.home.url + '</link>');
-    arr.push('<description>专注计算机基础知识，web前端发展</description>');
+    arr.push('<description>前端开发小武专注计算机基础和WEB前端开发知识</description>');
     arr.push('<language>zh-cn</language>');
     arr.push('<generator>前端小武</generator>');
-    arr.push('<pubDate>2011-09-11</pubDate>');
     arr.push('<lastBuildDate>' + now + '</lastBuildDate>');
 
     //添加文章
@@ -93,10 +92,10 @@ Create.createRss = function(data) {
     data.article.forEach(function(val) {
         arr.push('<item>');
         arr.push('<link>' + data.home.url + '/html/'+ (val.url || val.id) +'.html' + '</link>');
-        arr.push('<pubDate>' + Util.parseDate.format(val.update_date, 'yyyy-MM-dd') + '</pubDate>');
+        arr.push('<pubDate>' + Util.parseDate.format(val.create_date, 'yyyy-MM-dd') + '</pubDate>');
         arr.push('<title>' + val.title + '</title>');
         arr.push('<author>前端小武</author>');
-        arr.push('<description><![CDATA[' + val.markdown_content_list + ']]></description>');
+        arr.push('<description><![CDATA[' + val.markdown_content + ']]></description>');
         arr.push('</item>');
     });
 

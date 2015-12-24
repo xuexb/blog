@@ -691,7 +691,7 @@ export default class extends Base {
         result.list = this.config('list_data');
 
         result.article = await this.model('article')
-            .field('id, url, update_date, title, markdown_content_list')
+            .field('id, url, update_date, title, markdown_content, create_date')
             .limit(50)
             .order('id DESC')
             .select();
