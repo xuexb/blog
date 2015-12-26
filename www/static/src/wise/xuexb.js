@@ -97,9 +97,13 @@
     $('body').on('click', 'a', function(event){
         var url = $(this).attr('href');
 
+        // 修复点击icon
+        if (!url || this.classList.contains('icon')) {
+            return true;
+        }
+
         // 我认为这样是外链接
         if (!/^(\/)|(http(s)?:\/\/(www\.)?xuexb\.com)/.test(url)) {
-            console.log(1);
             event.stopPropagation();
         }
     });
