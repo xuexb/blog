@@ -1,6 +1,4 @@
-# 小武博客nodejs版 for thinkjs 2.x
-
-> 3.0
+# xiaowu blog 3.x for thinkjs 2.x
 
 ## sql cache list
 
