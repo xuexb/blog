@@ -10,7 +10,10 @@ export default class extends Base {
      * @param  {Object} http http
      */
     init(http){
-        super.init(http); //调用父类的init方法 
+        super.init(http); //调用父类的init方法
+
+        // 添加thinkjs当前版本变量，在foot里使用
+        this.assign('think_version', think.version);
     }
 
     /**
