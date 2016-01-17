@@ -7,3 +7,4 @@ www/sitemap.*
 www/*.xml
 *.log
 /app/
+/src/common/config/env/
