@@ -12,7 +12,7 @@ export default class extends Base {
     init(http){
         super.init(http); //调用父类的init方法
 
-        // 添加thinkjs当前版本变量，在foot里使用
+        // 添加thinkjs当前版本变量，在foot copyright里使用
         this.assign('think_version', think.version);
     }
 
