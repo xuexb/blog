@@ -54,8 +54,6 @@ export default class extends Base {
      * 前置方法
      */
     async __before(http){
-        await super.__before(http);
-
         // 布局
         let auto = this.get('auto');
         if (auto) {

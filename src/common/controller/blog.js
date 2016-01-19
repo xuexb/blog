@@ -45,9 +45,8 @@ export default class extends think.controller.base {
     /**
      * 前置
      */
-    async __before() {
-        await super.__before();
-    }
+    // __before() {
+    // }
 
     /**
      * 初始化

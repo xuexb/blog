@@ -12,7 +12,7 @@ export default class extends think.model.relation {
             fKey: 'id', //forign key
             field: 'id, name, url'
         }
-    }
+    };
 
     init(...args) {
         super.init(...args);

@@ -19,8 +19,6 @@ export default class extends Base {
      * @private
      */
     async __before(http){
-        await super.__before(http);
-
         this.assign('dark', this.cookie('dark'));
 
         // 列表数据

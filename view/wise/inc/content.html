@@ -19,7 +19,7 @@
                     {% for item in list%}
                         <li class="item-content">
                             <div class="item-inner">
-                                <a href="/html/{{ item.url or item.id }}.html" class="item-title">{{ item.title }}</a>
+                                <a href="/html/{{ item.url or item.id }}.html" class="item-title">{{ item.title | safe }}</a>
                             </div>
                         </li>
                     {% endfor %}

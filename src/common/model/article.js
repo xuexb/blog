@@ -18,9 +18,9 @@ export default class extends think.model.relation {
             model: 'tags_index', //model name
             key: 'id',
             fKey: 'article_id', //forign key
-            field: 'article_id, tags_id',
+            field: 'article_id, tags_id'
         }
-    }
+    };
 
     init(...args) {
         super.init(...args);

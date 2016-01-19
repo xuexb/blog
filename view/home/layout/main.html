@@ -31,7 +31,7 @@
             {% block location %}
                 {%if location_data %}
                     <div class="ui-crumbs">
-                        {{ location_data }}
+                        {{ location_data | safe }}
                     </div>
                 {% endif %}
             {% endblock %}
@@ -47,7 +47,7 @@
                 <div class="sidebar-author sidebar-box clear">
                     <div class="fl">
                         <a href="/html/xiaowu.html">
-                            <img src="/upload/month_1208/201208271431426663.jpg" alt="">
+                            <img src="/upload/month_1208/201208271431426663.jpg" alt="前端小武">
                         </a>
                     </div>
                     <div class="fr">

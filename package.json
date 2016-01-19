@@ -8,18 +8,19 @@
     "url": "https://xuexb.com"
   },
   "dependencies": {
-    "thinkjs": "2.1.x",
     "babel-runtime": "6.x.x",
     "highlight.js": "^8.x.x",
     "marked": "^0.x.x",
+    "nunjucks": "^2.2.0",
     "pm2": "^0.15.10",
     "think-compress-html": "^0.0.2",
     "think-ls": "^0.0.3",
+    "thinkjs": "2.1.x",
     "transliteration": "*"
   },
   "scripts": {
     "start": "node www/development.js",
-    "compile": "babel --presets es2015-loose,stage-1 --plugins transform-runtime src/ --out-dir app/ --retain-lines",
+    "compile": "babel --presets es2015-loose,stage-1 --plugins transform-runtime,syntax-class-properties src/ --out-dir app/ --retain-lines",
     "watch-compile": "node -e \"console.log('<npm run watch-compile> no longer need, use <npm start> command direct.');console.log();\"",
     "watch": "npm run watch-compile",
     "pm2-start": "pm2 start www/production.js --name blog-8899 -e err.log -o out.log",
