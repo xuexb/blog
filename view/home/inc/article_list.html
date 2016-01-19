@@ -2,11 +2,11 @@
     {% for item in list%}
         <li>
             <h2 class="article-list-title text-overflow">
-                <a href="/html/{{ item.url or item.id }}.html">{{ item.title }}</a>
+                <a href="/html/{{ item.url or item.id }}.html">{{ item.title | safe }}</a>
             </h2>
             <div class="article-list-content">
                 <div class="markdown-body">
-                    {{ item.markdown_content_list }}
+                    {{ item.markdown_content_list | safe }}
                 </div>
             </div>
             <div class="article-list-more">
@@ -54,5 +54,5 @@
 </ul>
 
 {% if page_data %}
-    {{ page_data }}
+    {{ page_data | safe }}
 {% endif %}

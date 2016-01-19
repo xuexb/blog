@@ -45,7 +45,7 @@
         </div>
 
         {% if page_data %}
-            {{ page_data }}
+            {{ page_data | safe}}
         {% endif %}
 
     {% else %}

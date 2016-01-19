@@ -13,7 +13,7 @@
                 </dt>
                 <dd>
                     {% for item in like_data %}
-                        <a href="/html/{{ item.url or item.id }}.html">{{ item.title }}</a>
+                        <a href="/html/{{ item.url or item.id }}.html">{{ item.title | safe }}</a>
                     {% endfor %}
                 </dd>
             </dl>
@@ -27,11 +27,11 @@
     <meta property="og:title" content="{{ data.title }}"/>
     <meta property="og:description" content="{{ description }}"/>
     <meta property="og:author" content="前端小武"/>
-    <meta property="og:release_date" content="{{ data.create_date|format('yyyy-MM-dd') }}"/>
+    <meta property="og:release_date" content="{{ data.create_date | format('yyyy-MM-dd') }}"/>
     
     <meta itemprop="http://rdfs.org/sioc/ns#link" content="https://xuexb.com/html/{{ data.url or data.id }}.html" />
     <meta itemprop="channelId" content="{{ data.list_data.name }}">
-    <meta itemprop="datePublished" content="{{ data.create_date|format('yyyy-MM-dd') }}">
+    <meta itemprop="datePublished" content="{{ data.create_date | format('yyyy-MM-dd') }}">
 {% endblock %}
 
 {% block main_inner %}
@@ -50,8 +50,8 @@
 
         <div class="article-detail-content">
             <div class="markdown-body">
-                {{ data.catalog }}
-                {{ data.markdown_content }}
+                {{ data.catalog | safe }}
+                {{ data.markdown_content | safe }}
             </div>
         </div>
         <div class="article-list-tool clear">
