@@ -470,6 +470,8 @@ export default class extends Base {
             this.set_title(data.title);
         }
 
+        this.assign('duoshuo', this.get('duoshuo'));
+
         return this.display();
     }
 }
