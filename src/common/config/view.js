@@ -6,11 +6,14 @@ import Util from '../util';
  * template config
  */
 export default {
-    type: "nunjucks",
+    type: 'nunjucks',
     root_path: think.ROOT_PATH + '/view',
     adapter: {
+        ejs: {
+            prerender: () => {}
+        },
         nunjucks: {
-            prerender: function (nunjucks, env) {
+            prerender: (nunjucks, env) => {
                 // 美化时间
                 env.addFilter('elapsed', (date, str) => {
                     return Util.parseDate.elapsed(date, str);
