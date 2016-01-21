@@ -470,7 +470,7 @@ export default class extends Base {
             this.set_title(data.title);
         }
 
-        this.assign('duoshuo', this.get('duoshuo'));
+        this.assign('duoshuo', this.get('duoshuo') || Math.round(Math.random()));
 
         return this.display();
     }
