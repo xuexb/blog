@@ -102,7 +102,7 @@
     {% endif %}
 
     {% if duoshuo %}
-        <div class="article-detail-comment mt20">
+        <div class="article-detail-comment mt20" id="comments">
             <div class="ds-thread" data-thread-key="{{ data.id }}" data-title="{{ data.title }}" data-url="https://xuexb.com/html/{{ data.url or data.id }}.html"></div>
             <script type="text/javascript">
                 var duoshuoQuery = {short_name:"xuexb"};
