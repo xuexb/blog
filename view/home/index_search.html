@@ -3,7 +3,7 @@
 {% block main_inner%}
     {% if tags_data %}
         <div class="search-tags">
-            你是不是在找：
+            你是不是在找这些标签：
             {% for item in tags_data %}
                 <a href="/tags/{{ item.url or item.id }}/">{{ item.name | safe }}</a>
             {% endfor %}
