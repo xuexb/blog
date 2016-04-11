@@ -67,7 +67,7 @@ export default class extends Base {
         this.config('list_data', await this.model('list').getCacheList());
 
         // 默认的title
-        this.assign('title', '前端小武--前端开发小武专注WEB前端和用户体验);
+        this.assign('title', '前端小武--前端开发小武专注WEB前端和用户体验，爱生活爱前端');
 
         // 列表数据设置到模板中
         this.assign('list_data', this.config('list_data'));
