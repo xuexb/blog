@@ -82,7 +82,7 @@ Create.createRss = function(data) {
     arr.push('<channel>');
     arr.push('<title>' + data.home.title + '</title>');
     arr.push('<link>' + data.home.url + '</link>');
-    arr.push('<description>前端开发小武专注计算机基础和WEB前端开发知识</description>');
+    arr.push('<description>前端开发小武专注WEB前端和用户体验</description>');
     arr.push('<language>zh-cn</language>');
     arr.push('<generator>前端小武</generator>');
     arr.push('<lastBuildDate>' + now + '</lastBuildDate>');
