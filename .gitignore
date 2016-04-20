@@ -6,5 +6,6 @@ output/
 www/sitemap.*
 www/*.xml
 *.log
+*.log.*
 /app/
 /src/common/config/env/
