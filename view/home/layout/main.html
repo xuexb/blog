@@ -152,6 +152,31 @@
     {% block js_before %}{% endblock %}
     {% block js %}{% endblock %}
 
+    {% if command %}
+        <script src="/static/res/command.js"></script>
+        <script>
+            command.create({
+                name: '前端小武博客',
+                data: function () {
+                    return new Promise(function (resolve, reject) {
+                        fetch("/command.json").then(function (res) {
+                            if (res.ok) {
+                                res.json().then(function (data) {
+                                    resolve(data);
+                                });
+                            }
+                            else {
+                                reject('解析失败');
+                            }
+                        }, function () {
+                            reject('请求失败');
+                        });
+                    });
+                }
+            });
+        </script>
+    {% endif %}
+
     <div style="display:none;">
         <script type="text/javascript">
     var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");

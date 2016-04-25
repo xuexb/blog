@@ -77,5 +77,7 @@ export default class extends Base {
 
         // 点击排行
         this.assign('search_hit_data', await this.model('search').getCacheHitTopList());
+
+        this.assign('command', http.userAgent().indexOf('Chrome') > -1);
     }
 }
