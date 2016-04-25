@@ -20,5 +20,7 @@ export default [
     [/^html\/([a-zA-Z0-9\-\_]+)$/, 'index/view/?url=:1'],
 
     // rss订阅
-    [/rss$/, 'index/rss']
+    [/rss$/, 'index/rss'],
+
+    ['command.json', 'home/index/command']
 ];

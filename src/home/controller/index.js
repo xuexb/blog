@@ -23,6 +23,30 @@ export default class extends Base {
     }
 
     /**
+     * command数据
+     *
+     * @return {Array} 数组
+     */
+    async commandAction() {
+        let data = await this.model('article').field('title, id, url').order('id DESC').select();
+        data = data.map(val => {
+            let post = {
+                title: val.title,
+                url: `https://xuexb.com/html/${val.url || val.id}.html`
+            }
+
+            if (val.tags_data && val.tags_data.length) {
+                post.tags = val.tags_data.map(tag => {
+                    return tag.tag_data.name;
+                });
+            }
+
+            return post;
+        });
+        return this.json(data)
+    }
+
+    /**
      * 更新node程序
      */
     async updateAction() {
