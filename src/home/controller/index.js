@@ -114,7 +114,7 @@ export default class extends Base {
         data = await data.page(page).countSelect({}, false);
 
         this.assign({
-            description: '谢耀武，网名前端小武，喜欢各种折腾, 喜欢研究源, 对美好的代码有极强的透视症, 崇尚有强烈技术氛围的UED...',
+            description: '网名前端小武，喜欢各种折腾, 喜欢研究源, 对美好的代码有极强的透视症, 崇尚有强烈技术氛围的UED...',
             list: data.data,
             page_data: data.count > 0 ? Util.getPageStr(data, '/?page={$page}') : ''
         });
