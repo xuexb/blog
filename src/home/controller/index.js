@@ -494,7 +494,9 @@ export default class extends Base {
             this.set_title(data.title);
         }
 
-        this.assign('duoshuo', this.get('duoshuo') || Math.round(Math.random()));
+        // 多说命中
+        this.assign('duoshuo', 1);
+        // this.assign('duoshuo', this.get('duoshuo') || Math.round(Math.random()));
 
         return this.display();
     }
