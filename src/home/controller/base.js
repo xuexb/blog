@@ -55,11 +55,12 @@ export default class extends Base {
      */
     async __before(http){
         // 布局
-        let auto = this.get('auto');
-        if (auto) {
-            this.cookie('auto', auto);
-        }
-        this.assign('auto', auto || this.cookie('auto'));
+        this.assign('auto', 1);
+        // let auto = this.get('auto');
+        // if (auto) {
+        //     this.cookie('auto', auto);
+        // }
+        // this.assign('auto', auto || this.cookie('auto'));
 
         this.set_nav_type('home');
 
