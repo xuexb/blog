@@ -39,8 +39,7 @@
             success: function (res) {
                 var html;
                 if (!res || !res.data || !res.data.length) {
-                    $.detachInfiniteScroll('.infinite-scroll');
-                    $.attachInfiniteScroll('.infinite-scroll');
+                    $.detachInfiniteScroll($('.infinite-scroll'));
                     $('.infinite-scroll-preloader').remove();
                     empty = true;
                     return;
