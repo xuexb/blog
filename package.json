@@ -1,0 +1,30 @@
+{
+    "name": "Firekylin",
+    "description": "A Simple & Fast Node Bloging Platform Base On ThinkJS 2.0 & ReactJS & ES2015+",
+    "version": "0.12.5",
+    "scripts": {
+        "start": "node www/development.js",
+        "webpack": "webpack --watch"
+    },
+    "dependencies": {
+        "babel-runtime": "6.x.x",
+        "highlight.js": "^9.2.0",
+        "marked": "^0.3.5",
+        "marked-toc": "^0.3.0",
+        "moment": "^2.11.2",
+        "node-crontab": "0.0.8",
+        "nodemailer": "^2.3.2",
+        "nunjucks": "^2.3.0",
+        "phpass": "^0.1.1",
+        "push-to-firekylin": "^0.2.2",
+        "request": "^2.69.0",
+        "semver": "^5.1.0",
+        "source-map-support": "^0.4.0",
+        "speakeasy": "2.0.0",
+        "thinkjs": "^2.1.5",
+        "to-markdown": "^2.0.1",
+        "xml2js": "^0.4.16"
+    },
+    "repository": "https://github.com/75team/firekylin",
+    "license": "MIT"
+}
