@@ -1,11 +1,4 @@
-Runtime/
 node_modules/
-output/
 .DS_Store
-/www/upload
-www/sitemap.*
-www/*.xml
 *.log
 *.log.*
-/app/
-/src/common/config/env/
