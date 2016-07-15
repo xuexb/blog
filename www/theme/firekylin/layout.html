@@ -3,12 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <link rel="search" type="application/opensearchdescription+xml" href="/content-search.xml" title="前端小武" />  
   <link rel="icon" href="{{options.favicon_url |default('/static/img/firekylin.jpg')}}">
   {% if options.favicon %}
   <link rel="shortcut icon" href="{{options.favicon}}" type="image/x-icon">
   {% endif %}
   <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/rss.html">
-  <meta name="keywords" content="{{options.keywords}}">
+  {% if options.keywords %}
+    <meta name="keywords" content="{{options.keywords}}">
+  {% endif %}
   <meta name="description" content="{{options.description}}">
   <title>{% block title %}{% endblock %}</title>
   {% if http.userAgent() and http.userAgent().indexOf("MSIE ") == -1 and not http.cookie("stc_nls")%}{%if not http_stc_ls_base_flag%}{%set http_stc_ls_base_flag = true%}<script>(function(e,t){function n(e){return t.getElementById(e)}function r(){u("stc_nls",1,1)}function i(n,r){var i="";try{i=p[n]||"",i.length<99&&(u(r,0),t.documentElement.style.display="none",l(),e.onbeforeunload=null,location.reload(!0))}catch(s){l()}return i}function s(e,t){try{p[e]=t,t!==p[e]&&l()}catch(n){l()}}function o(e){var n=t.cookie.split("; ");for(var r=0,i=n.length,s;r<i;r++){s=n[r].split("=");if(s[0]===e)return s[1]}return""}function u(e,n,r){r=r||60,n||(r=-1),r=(new Date(+(new Date)+r*864e5)).toGMTString();var i=e+"="+n+"; path=/; expires="+r;location.protocol.indexOf("https")>-1&&(i+="; Secure"),t.cookie=i}function a(e,t){var r=n(t)&&n(t).innerHTML.trim();s(e,r)}function f(e,n,r){var s=i(e,r),o=t.createElement(n);o.innerHTML=s,t.head.appendChild(o)}function l(){var e=/(?:;)?stc_[^=]*=[^;]*;?/g,n=t.cookie.match(e)||[],r=n.length;while(r)--r,u(n[r].split("=")[0],0)}function c(e,t,n){var r=o(e).split(""),i=!1;for(var s=0,a=r.length;s<a;s+=2)if(r[s]===t){r[s+1]=n,i=!0;break}i||r.push(t,n),u(e,r.join(""))}var h=function(){},p,d=0,v=e.LS={html2ls:h,ls2html:h,updateVersion:h};try{p=localStorage,v.html2ls=a,v.ls2html=f,v.updateVersion=c}catch(m){r()}})(this,document)</script>{%endif%}{%set stcLsCookieFn = eval('think.stcLsCookie = function(http){\
