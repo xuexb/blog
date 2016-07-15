@@ -4,7 +4,7 @@ node_modules/
 *.log.*
 
 /app/common/runtime/
-
+/pm2.json
 *.swp
-
+/.installed
 /app/common/config/db.js
