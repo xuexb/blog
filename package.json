@@ -1,7 +1,7 @@
 {
-    "name": "Firekylin",
-    "description": "A Simple & Fast Node Bloging Platform Base On ThinkJS 2.0 & ReactJS & ES2015+",
-    "version": "0.12.5",
+    "name": "blog",
+    "description": "前端小武博客",
+    "version": "4.0.0",
     "scripts": {
         "start": "node www/development.js",
         "webpack": "webpack --watch"
@@ -25,6 +25,6 @@
         "to-markdown": "^2.0.1",
         "xml2js": "^0.4.16"
     },
-    "repository": "https://github.com/75team/firekylin",
+    "repository": "https://github.com/xuexb/blog.git",
     "license": "MIT"
 }
