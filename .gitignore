@@ -7,5 +7,5 @@ node_modules/
 /pm2.json
 *.swp
 /.installed
-#/app/common/config/db.js
+/app/common/config/db.js
 /www/upload/
