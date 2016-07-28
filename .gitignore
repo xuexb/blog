@@ -9,3 +9,5 @@ node_modules/
 /.installed
 /app/common/config/db.js
 /www/upload/
+/www/*.html
+/www/*.txt
