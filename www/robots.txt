@@ -1,0 +1,6 @@
+# xiaowu
+User-agent: *
+Allow: /
+Disallow: /upload/
+Disallow: /static/
+Disallow: /theme/

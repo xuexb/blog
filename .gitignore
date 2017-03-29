@@ -3,11 +3,6 @@ node_modules/
 *.log
 *.log.*
 
-/app/common/runtime/
-/pm2.json
-*.swp
-/.installed
+/*.sql
+/runtime
 /app/common/config/db.js
-/www/upload/
-/www/*.html
-/www/*.txt
