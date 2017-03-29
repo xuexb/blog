@@ -6,3 +6,5 @@ node_modules/
 /*.sql
 /runtime
 /app/common/config/db.js
+/app/common/runtime
+/www/upload
