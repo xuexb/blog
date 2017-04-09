@@ -2,7 +2,9 @@
 
 {% block title %}归档 - {{options.title}}{% endblock %}
 
-{% block head_meta %}<link rel="canonical" href="https://xuexb.com/archives"/>{% endblock %}
+{% block headers %}
+<link rel="canonical" href="{{site_url}}/archives" />
+{% endblock %}
 
 {% block content %}
 <article class="post archive">

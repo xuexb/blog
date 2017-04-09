@@ -2,7 +2,9 @@
 
 {% block title %}标签 - {{options.title}}{% endblock %}
 
-{% block head_meta %}<link rel="canonical" href="https://xuexb.com/tags"/>{% endblock %}
+{% block headers %}
+<link rel="canonical" href="{{site_url}}/tags" />
+{% endblock %}
 
 {% block content %}
 <article class="post tags">
@@ -10,7 +12,7 @@
   <div class="entry-content">
     <section>
       {% for tag in list %}
-      <a href="/tags/{{tag.name}}" data-tag="{{tag.name}}">{{tag.name}}({{tag.count}})</a>
+      <a href="/tag/{{tag.pathname}}" data-tag="{{tag.name}}">{{tag.name}}({{tag.count}})</a>
       {% endfor %}
     </section>
   </div>

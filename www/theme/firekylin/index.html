@@ -1,8 +1,10 @@
 {% extends './layout.html' %}
 
-{% block title %}前端小武--前端开发小武专注WEB前端和用户体验,爱生活爱前端{% endblock %}
+{% block title %}{% if tag %}标签 {{tag}} - {% elif cate %}分类 {{cate}} - {% endif %}{{options.title}}{% endblock %}
 
-{% block head_meta %}<link rel="canonical" href="https://xuexb.com"/>{% endblock %}
+{% block headers %}
+<link rel="canonical" href="{{site_url}}/{% if tag %}tag/{{pathname}}{% elif cate %}cate/{{pathname}}{% endif %}{% if pagination.currentPage > 1 %}?page={{pagination.currentPage}}{% endif %}" />
+{% endblock %}
 
 {% block content %}
 <section id="page-index">

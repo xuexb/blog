@@ -1,12 +1,9 @@
 {
     "name": "Firekylin",
     "description": "A Simple & Fast Node Bloging Platform Base On ThinkJS 2.0 & ReactJS & ES2015+",
-    "version": "0.15.5",
+    "version": "0.15.6",
     "scripts": {
-        "start": "node www/production.js",
-        "webpack": "webpack --watch",
-        "webpack.build": "webpack",
-        "webpack.build.production": "webpack --config=webpack.production.config.babel.js"
+        "start": "node www/production.js"
     },
     "dependencies": {
         "babel-runtime": "6.x.x",
@@ -29,6 +26,9 @@
         "upyun": "^2.0.4",
         "xml2js": "^0.4.16"
     },
-    "repository": "https://github.com/75team/firekylin",
-    "license": "MIT"
+    "repository": "https://github.com/firekylin/firekylin",
+    "license": "MIT",
+    "pre-commit": [
+        "lint-break-on-errors"
+    ]
 }
