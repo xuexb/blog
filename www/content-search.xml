@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
-    <ShortName>前端小武</ShortName>
+    <ShortName>前端小武的博客</ShortName>
     <Url type="text/html" template="https://xuexb.com/search.html?keyword={searchTerms}/"/> 
 </OpenSearchDescription>
