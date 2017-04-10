@@ -4,4 +4,4 @@ Allow: /
 Disallow: /upload/
 Disallow: /static/
 Disallow: /theme/
-Stiemap: https://xuexb.com/sitemap.xml
+Sitemap: https://xuexb.com/sitemap.xml
