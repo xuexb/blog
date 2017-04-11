@@ -61,3 +61,5 @@ www/theme/firekylin_new
 db/
 
 .eslintcache
+
+/dist/
