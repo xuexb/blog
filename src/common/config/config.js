@@ -12,5 +12,8 @@ if(think.isFile(portFile)) {
  */
 export default {
   port: port || process.env.PORT || 8360,
-  resource_reg: /^(static\/|theme\/|[^\/]+\.(?!js|html|xml)\w+$)/
+  resource_reg: /^(static\/|theme\/|[^\/]+\.(?!js|html|xml)\w+$)/,
+  subdomain: {
+    admin: 'admin'
+  }
 };

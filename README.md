@@ -42,4 +42,5 @@
     1. nginx日志分析
 1. 升级到 [firekylin](https://github.com/75team/firekylin) 
     1. 开启全站CDN - 20170408
-    2. -
+1. 基于 [firekylin](https://github.com/75team/firekylin)  扩展, 有diff的点:
+    1. 开始 `admin.xuexb.com` 后台二级地址, 修改后台的异步接口链接

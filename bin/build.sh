@@ -16,6 +16,7 @@ mkdir -p www/theme/firekylin.build/html;
 cp -r www/theme/firekylin/*.html www/theme/firekylin.build/html/
 cp -r www/theme/firekylin/inc www/theme/firekylin.build/html/
 cp -r www/theme/firekylin/template www/theme/firekylin.build/html/
+cp -r www/theme/firekylin/error www/theme/firekylin.build/html/
 cp -r www/theme/firekylin/package.json www/theme/firekylin.build/html/
 
 node stc.view.config.js;
