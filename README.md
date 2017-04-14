@@ -4,8 +4,8 @@
 
 ### 进度
 
-- [ ] 前端样式编译: ls、压缩
-- [ ] 打包上线流程: 搞个 Jenkins ? 哈哈哈
+- [x] 前端样式编译: ls、压缩 - 使用`npm run build`产出`/output/`运行时文件
+- [x] 打包上线流程 - 产出运行文件后覆盖现有`blog`
 - [ ] nginx缓存的设置: 过期时间、反向代理缓存、Etag
 - [ ] MIP页开发
 - [ ] AMP页开发
@@ -44,7 +44,7 @@
     1. 开启全站CDN - 20170408
 1. 基于 [firekylin](https://github.com/75team/firekylin)  扩展, 有diff的点:
     1. 开始 `admin.xuexb.com` 后台二级地址, 修改后台的异步接口链接
-    2. 模板迁移到 `/View/home/` 内
+    2. 模板迁移到 `/view/home/` 内
     3. 前端样式迁移到 `/www/static/home/` 内, 后台样式迁移到 `/www/static/admin/` 内
     4. 废弃合作者投稿功能
     5. 废弃 `/post/*.json` 返回`JSON`数据接口
