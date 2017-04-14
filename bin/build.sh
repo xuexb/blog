@@ -29,4 +29,4 @@ cp -r app output;
 # 删除没用文件
 rm -rf output/app/common/runtime;
 rm -rf output/www/static/admin/js/*.map;
-rm -rf output/app/*.map;
+find output/app -name '*.map' | xargs rm;
