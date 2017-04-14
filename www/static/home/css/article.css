@@ -164,6 +164,17 @@ article table td {
   padding: 6px 20px;
 }
 
+@media screen and (max-width: 414px) {
+  article table td {
+    padding: 5px;
+  }
+}
+@media screen and (max-width: 375px) {
+  article table td {
+    padding: 3px;
+  }
+}
+
 article .expire-tips {
   padding: 5px 10px;
   font-size: 15px;
