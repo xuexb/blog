@@ -5,8 +5,8 @@
 ### 进度
 
 - [x] 前端样式编译: ls、压缩 - 使用`npm run build`产出`/output/`运行时文件
-- [x] 打包上线流程 - 产出运行文件后覆盖现有`blog`
-- [ ] nginx缓存的设置: 过期时间、反向代理缓存、Etag
+- [x] 打包上线流程 - 线上在`blog.src`编译, 把`blog`文件夹软连到`blog.src/output`中
+- [ ] nginx缓存的设置: 过期时间、反向代理缓存、Etag、清除缓存
 - [ ] MIP页开发
 - [ ] AMP页开发
 - [ ] PWA
