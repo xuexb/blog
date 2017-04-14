@@ -62,7 +62,7 @@ export default class extends Base {
       cate: cateName,
       pathname: where.tag || where.cate
     });
-    return this.displayView('index');
+    return this.display();
   }
   /**
    * post detail
@@ -80,7 +80,7 @@ export default class extends Base {
     detail.pathname = encodeURIComponent(detail.pathname);
     this.assign('post', detail);
 
-    return this.displayView('post');
+    return this.display();
   }
 
   async pageAction() {
@@ -99,19 +99,22 @@ export default class extends Base {
     this.assign('pathname', pathname);
 
     let template = 'page';
+
+    // 支持自定义模板
     if(detail.options) {
       try {
         detail.options = JSON.parse(detail.options);
         if(detail.options.template) {
-          /*let stat = */await stats(path.join(this.THEME_VIEW_PATH, 'template', detail.options.template));
-          template = `template${think.sep}`+detail.options.template.slice(0, -5);
+          let filepath = path.join(think.ROOT_PATH, '/view/home/template/', detail.options.template);
+          await stats(filepath);
+          template = filepath;
         }
       } catch(e) {
         console.log(e);  // eslint-disable-line no-console
       }
     }
 
-    return this.displayView(template);
+    return this.display(template);
   }
   /**
    * post archive
@@ -122,14 +125,14 @@ export default class extends Base {
     let data = await model.getPostArchive();
     for(let i in data) { data[i].map(post => post.pathname = encodeURIComponent(post.pathname)) }
     this.assign('list', data);
-    return this.displayView('archive');
+    return this.display();
   }
 
   async tagAction() {
     let model = this.model('tag');
     let data = await model.getTagArchive();
     this.assign('list', data);
-    return this.displayView('tag');
+    return this.display();
   }
   /**
    * search action
@@ -151,6 +154,6 @@ export default class extends Base {
 
 
     this.assign('keyword', keyword);
-    return this.displayView('search');
+    return this.display();
   }
 }

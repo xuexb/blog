@@ -8,7 +8,7 @@ var resourceVersion = require('stc-resource-version');
 stc.config({
   product: 'firekylin',
   include: ['view/', 'www/static/'],
-  exclude: [/static\/src/, /static\/upload/],
+  exclude: [/static\/admin\/src/, /static\/upload/],
   tpl: {
     engine: 'nunjucks',
     ld: ['{%', '{{', '{#'],
@@ -17,7 +17,7 @@ stc.config({
 });
 
 stc.workflow({
-  uglify: {plugin: uglify, exclude: [/static\/src/]},
+  uglify: {plugin: uglify, exclude: [/static\/admin\/src/]},
   cssCompress: {plugin: cssCompress},
   resourceVersion: {plugin: resourceVersion},
   htmlCompress: {plugin: htmlCompress}

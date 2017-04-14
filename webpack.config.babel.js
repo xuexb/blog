@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-var base = path.join(__dirname, 'www/static');
+var base = path.join(__dirname, 'www/static/admin');
 module.exports = {
   devtool: 'source-map',
   entry: {
@@ -21,7 +21,7 @@ module.exports = {
   output: {
     path: `${base}/js`,
     filename: '[name].js',
-    publicPath: '/static/js/',
+    publicPath: '/static/admin/js/',
     chunkFilename: '[name].js'
   },
   resolve: {

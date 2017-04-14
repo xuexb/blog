@@ -44,3 +44,10 @@
     1. 开启全站CDN - 20170408
 1. 基于 [firekylin](https://github.com/75team/firekylin)  扩展, 有diff的点:
     1. 开始 `admin.xuexb.com` 后台二级地址, 修改后台的异步接口链接
+    2. 模板迁移到 `/View/home/` 内
+    3. 前端样式迁移到 `/www/static/home/` 内, 后台样式迁移到 `/www/static/admin/` 内
+    4. 废弃合作者投稿功能
+    5. 废弃 `/post/*.json` 返回`JSON`数据接口
+
+
+

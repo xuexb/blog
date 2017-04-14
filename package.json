@@ -1,7 +1,7 @@
 {
-  "name": "Firekylin",
-  "description": "A Simple & Fast Node Bloging Platform Base On ThinkJS 2.0 & ReactJS & ES2015+",
-  "version": "0.15.6",
+  "name": "blog",
+  "description": "前端小武博客",
+  "version": "4.1.0",
   "scripts": {
     "start": "node www/development.js",
     "compile": "babel --presets es2015,stage-1 --plugins transform-runtime src/ --out-dir app/",
@@ -11,9 +11,9 @@
     "webpack": "webpack --watch",
     "webpack.build": "webpack",
     "webpack.build.production": "webpack --config=webpack.production.config.babel.js",
-    "lint": "eslint ./src ./*.js ./www/*.js ./www/static/src ./www/theme/firekylin --ignore-path .gitignore --cache -f table --ext .js,.jsx || true",
-    "lint-fix": "eslint ./src ./*.js ./www/*.js ./www/static/src ./www/theme/firekylin --ignore-path .gitignore -f table --ext .js,.jsx --fix || true",
-    "lint-break-on-errors": "echo '\n[INFO] Running ESLint...\n[INFO] (Autofix with `npm run lint-fix`)' && eslint ./src ./*.js ./www/*.js ./www/static/src ./www/theme/firekylin --ignore-path .gitignore -f table --ext .js,.jsx",
+    "lint": "eslint ./src ./*.js ./www/*.js ./www/static/admin/src ./www/static/home --ignore-path .gitignore --cache -f table --ext .js,.jsx || true",
+    "lint-fix": "eslint ./src ./*.js ./www/*.js ./www/static/admin/src ./www/static/home --ignore-path .gitignore -f table --ext .js,.jsx --fix || true",
+    "lint-break-on-errors": "echo '\n[INFO] Running ESLint...\n[INFO] (Autofix with `npm run lint-fix`)' && eslint ./src ./*.js ./www/*.js ./www/static/admin/src ./www/static/home --ignore-path .gitignore -f table --ext .js,.jsx",
     "check-extraneous-pkgs": "npm list --depth=0 && echo '[SUCCESS] No extraneous packages.' || (echo '[INFO] Pruning extraneous packages...\n' && npm prune)"
   },
   "dependencies": {
@@ -85,7 +85,7 @@
     "superagent": "^1.7.2",
     "webpack": "^2.2.0"
   },
-  "repository": "https://github.com/firekylin/firekylin",
+  "repository": "https://github.com/xuexb/blog",
   "license": "MIT",
   "pre-commit": [
   ]

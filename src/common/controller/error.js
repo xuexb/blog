@@ -30,25 +30,21 @@ export default class extends think.controller.base {
       return this.fail(status, message);
     }
 
-    let module = 'common';
-    if(think.mode !== think.mode_module) {
-      module = this.config('default_module');
-    }
-    let file = `${module}/error/${status}.html`;
+    let file = `common/error/${status}`;
 
-    let {theme} = await this.model('options').getOptions();
-    let themeErrorFilePath = path.join(think.RESOURCE_PATH, 'theme', theme, 'error', `${status}.html`);
+    // 优先尝试主题内的错误文件
+    let themeErrorFilePath = path.join(think.ROOT_PATH, `view/${this.http.module}/error/${status}.html`);
     try {
       await stats(themeErrorFilePath);
       file = themeErrorFilePath;
     } catch(e) {
-      console.log(e);  // eslint-disable-line no-console
     }
 
     let options = this.config('tpl');
     options = think.extend({}, options, {type: 'base', file_depr: '_'});
     this.fetch(file, {}, options).then(content => {
       content = content.replace('ERROR_MESSAGE', message);
+      this.status(status);
       this.type(options.content_type);
       this.end(content);
     });

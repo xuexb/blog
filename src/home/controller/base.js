@@ -10,7 +10,6 @@ export default class extends think.controller.base {
   init(http) {
     super.init(http);
     //home view path
-    this.HOME_VIEW_PATH = `${think.ROOT_PATH}${think.sep}view${think.sep}home${think.sep}`;
   }
   /**
    * some base method in here
@@ -44,7 +43,6 @@ export default class extends think.controller.base {
     this.assign('VERSION', pack.version);
     //set theme view root path
     let theme = options.theme || 'firekylin';
-    this.THEME_VIEW_PATH = `${think.ROOT_PATH}${think.sep}www${think.sep}theme${think.sep}${theme}${think.sep}`;
 
     //网站地址
     let siteUrl = this.options.site_url;
@@ -58,26 +56,5 @@ export default class extends think.controller.base {
     this.assign('categories', categories);
 
     this.assign('currentYear', (new Date()).getFullYear());
-  }
-  /**
-   * display view page
-   * @param  {} name []
-   * @return {}      []
-   */
-  async displayView(name) {
-    if (this.http.url.match(/\.json(?:\?|$)/)) {
-      let jsonOutput = {},
-        assignObj = this.assign();
-      Object.keys(assignObj).forEach((key)=>{
-        if (['controller', 'http', 'config', '_', 'options'].indexOf(key) === -1) {
-          jsonOutput[key] = assignObj[key];
-        }
-      })
-
-      this.type('application/json');
-      return this.end(jsonOutput);
-    }
-
-    return this.display(this.THEME_VIEW_PATH + name + '.html');
   }
 }

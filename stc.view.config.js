@@ -1,15 +1,18 @@
 var stc = require('stc');
 var cssCompress = require('stc-css-compress');
-// var resourceVersion = require('stc-resource-version');
+var resourceVersion = require('stc-resource-version');
 var localstorage = require('stc-localstorage');
 var localstorageAdapter = require('stc-localstorage-nunjucks');
 var cssCombine = require('stc-css-combine');
-// var htmlCompress = require('stc-html-compress');
+var htmlCompress = require('stc-html-compress');
+var uglify = require('stc-uglify');
+
+
 
 stc.config({
-  product: 'firekylin.view',
-  include: ['www/theme/firekylin.build/html', 'www/theme/firekylin/res'],
-  exclude: [],
+  product: 'xuexb.com',
+  include: ['view/', 'www/static/'],
+  exclude: [/static\/admin\/src/, /static\/upload/],
   outputPath: 'output.theme',
   tpl: {
     engine: 'nunjucks',
@@ -19,6 +22,7 @@ stc.config({
 });
 
 stc.workflow({
+  uglify: {plugin: uglify, exclude: [/static\/admin\/src/]},
   cssCombine: {plugin: cssCombine, include: /\.css$/},
   cssCompress: {plugin: cssCompress},
   localstorage: {
@@ -30,8 +34,8 @@ stc.workflow({
       appId : '3e988cdb'
     }
   },
-  // htmlCompress: {plugin: htmlCompress}
-  // resourceVersion: {plugin: resourceVersion}
+  htmlCompress: {plugin: htmlCompress},
+  resourceVersion: {plugin: resourceVersion}
 });
 
 stc.start();
