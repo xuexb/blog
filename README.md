@@ -5,13 +5,14 @@
 ### 进度
 
 - [x] 前端样式编译: ls、压缩 - 使用`npm run build`产出`/output/`运行时文件
-- [x] 打包上线流程 - 线上在`blog.src`编译, 把`blog`文件夹软连到`blog.src/output`中
+- [x] 打包上线流程 - 线上在`blog.src`编译, 把`blog`文件夹软连到`blog.src/output`中, 在`blog.src/output`执行`npm i --product`安装线上依赖
 - [ ] nginx缓存的设置: 过期时间、反向代理缓存、Etag、清除缓存
 - [ ] MIP页开发
 - [ ] AMP页开发
 - [ ] PWA
 - [ ] 主动推送Google Analytics
 - [ ] 应用Elasticsearch做站内切词搜索: 搜索摘要、搜索词高亮
+- [ ] Webp图片优化
 
 ### 历史版本
 

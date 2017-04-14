@@ -60,7 +60,6 @@
     "eslint-plugin-react": "^6.10.3",
     "history": "^1.17.0",
     "md5": "^2.0.0",
-    "pre-commit": "^1.2.2",
     "qrcode-react": "^0.1.10",
     "rc-select": "^5.10.0",
     "react": "^0.14.7",
@@ -87,7 +86,5 @@
     "webpack": "^2.2.0"
   },
   "repository": "https://github.com/xuexb/blog",
-  "license": "MIT",
-  "pre-commit": [
-  ]
+  "license": "MIT"
 }
