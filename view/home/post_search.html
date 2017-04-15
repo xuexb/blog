@@ -1,13 +1,13 @@
 {% extends './layout.html' %}
 
-{% block title -%}
+{% block title %}
 站内搜索 - {{ options.title }}
-{%- endblock %}
+{% endblock %}
 
-{% block headers -%}
+{% block headers %}
 <link rel="canonical" href="{{ site_url }}/search.html{% if keyword %}?keyword={{ keyword }}{% endif %}{% if pagination.currentPage > 1 %}&amp;page={{ pagination.currentPage }}{% endif %}" />
 <link rel="miphtml" href="{{ mip_site_url }}/search.html{% if keyword %}?keyword={{ keyword }}{% endif %}{% if pagination.currentPage > 1 %}&amp;page={{ pagination.currentPage }}{% endif %}" />
-{%- endblock %}
+{% endblock %}
 
 {% block content %}
 <article class="post detail">
@@ -58,5 +58,5 @@
   </div>
 </article>
 
-{% include "./inc/pagination.html" %}
+{% include './inc/pagination.html' %}
 {% endblock %}

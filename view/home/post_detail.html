@@ -1,13 +1,13 @@
 {% extends './layout.html' %}
 
-{% block title -%}
+{% block title %}
 {{ post.title }} - {{ options.title }}
-{%- endblock %}
+{% endblock %}
 
-{% block headers -%}
+{% block headers %}
 <link rel="canonical" href="{{ site_url }}/post/{{ post.pathname }}.html" />
 <link rel="miphtml" href="{{ mip_site_url }}/post/{{ post.pathname }}.html" />
-{%- endblock %}
+{% endblock %}
 
 {% block content %}
 <div id="page-post">

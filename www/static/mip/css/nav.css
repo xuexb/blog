@@ -1,5 +1,5 @@
 .mip-nav-wrapper .navbar-brand {
-    width: 200px;
+    min-width: 200px;
 }
 .mip-nav-wrapper {
     padding: 0 10px;
@@ -7,6 +7,8 @@
 }
 
 .mip-nav-wrapper .navbar-brand,
-.mip-nav-wrapper .navbar-brand:hover {
-    color: #fff !important;
+.mip-nav-wrapper .navbar-brand:hover,
+.navbar-nav a,
+.navbar-nav a:hover {
+    color: #fff ;
 }

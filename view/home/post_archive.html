@@ -1,13 +1,13 @@
 {% extends './layout.html' %}
 
-{% block title -%}
+{% block title %}
 归档 - {{ options.title }}
-{%- endblock %}
+{% endblock %}
 
-{% block headers -%}
+{% block headers %}
 <link rel="canonical" href="{{ site_url }}/archives" />
 <link rel="miphtml" href="{{ mip_site_url }}/archives" />
-{%- endblock %}
+{% endblock %}
 
 {% block content %}
 <article class="post archive">

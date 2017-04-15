@@ -1,8 +1,12 @@
 {% extends './layout.html' %}
 
-{% block title -%}
+{% block title %}
     {% if tag %}标签 {{ tag }} - {% elif cate %}分类 {{cate}} - {% endif %}{{ options.title }}
-{%- endblock %}
+{% endblock %}
+
+{% block headers %}
+<link rel="canonical" href="{{ site_url }}/{% if tag %}tag/{{ pathname }}{% elif cate %}cate/{{ pathname }}{% endif %}{% if pagination.currentPage > 1 %}?page={{ pagination.currentPage }}{% endif %}" />
+{% endblock %}
 
 {% block content %}
     {% if tag %}
@@ -24,5 +28,5 @@
             </div>
         </article>
     {% endfor %}
-    {% include "./inc/pagination.html" %}
+    {% include './inc/pagination.html' %}
 {% endblock %}
