@@ -4,6 +4,9 @@ export default {
   admin: {
     reg: /^admin/
   },
+  mip: {
+    reg: /^mip/
+  },
   home: {
 
   }

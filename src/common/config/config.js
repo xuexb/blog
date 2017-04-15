@@ -14,6 +14,7 @@ export default {
   port: port || process.env.PORT || 8360,
   resource_reg: /^(static\/|[^\/]+\.(?!js|html|xml)\w+$)/,
   subdomain: {
-    admin: 'admin'
+    admin: 'admin',
+    mip: 'mip'
   }
 };
