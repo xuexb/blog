@@ -80,6 +80,7 @@
     "stc-inline": "^1.1.0",
     "stc-localstorage": "^1.0.3",
     "stc-localstorage-nunjucks": "^1.0.1",
+    "stc-replace": "^1.0.5",
     "stc-resource-version": "^1.0.0",
     "stc-uglify": "^1.0.1",
     "style-loader": "^0.13.0",

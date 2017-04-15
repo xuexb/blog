@@ -7,6 +7,7 @@ var cssCombine = require('stc-css-combine');
 var htmlCompress = require('stc-html-compress');
 var uglify = require('stc-uglify');
 var inline = require('stc-inline');
+var replace = require('stc-replace');
 
 stc.config({
     product: 'xuexb.com',
@@ -55,7 +56,19 @@ stc.workflow({
             jsinline: true,
             allowRemote: true
         }
+    },
+
+    // md替换mip的style标签, 这种方式也是给醉了
+    replace: {
+        plugin: replace,
+        include: [/view\/mip(.+?)\.html/, {
+            type: 'tpl'
+        }],
+        options: {
+            '<style>': '<style mip-custom>'
+        }
     }
+
 });
 
 stc.start();
