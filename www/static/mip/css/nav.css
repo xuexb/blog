@@ -3,10 +3,10 @@
 }
 .mip-nav-wrapper {
     padding: 0 10px;
-    background-color: #f2f2f2;
+    background-color: #323436;
 }
 
-.mip-nav-wrapper a,
-.mip-nav-wrapper a:hover {
-    color: #333 !important;
+.mip-nav-wrapper .navbar-brand,
+.mip-nav-wrapper .navbar-brand:hover {
+    color: #fff !important;
 }
