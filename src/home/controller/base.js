@@ -15,13 +15,6 @@ export default class extends think.controller.base {
    * some base method in here
    */
   async __before() {
-    if(this.http.action === 'install') {
-      return;
-    }
-    if(!firekylin.isInstalled) {
-      return this.redirect('/index/install');
-    }
-
     let model = this.model('options');
     let options = await model.getOptions();
     this.options = options;
@@ -40,9 +33,6 @@ export default class extends think.controller.base {
     this.assign('options', options);
     this.assign('navigation', navigation);
     this.assign('themeConfig', themeConfig);
-    this.assign('VERSION', pack.version);
-    //set theme view root path
-    let theme = options.theme || 'firekylin';
 
     //网站地址
     let siteUrl = this.options.site_url;
