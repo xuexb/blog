@@ -6,8 +6,7 @@ var localstorageAdapter = require('stc-localstorage-nunjucks');
 var cssCombine = require('stc-css-combine');
 var htmlCompress = require('stc-html-compress');
 var uglify = require('stc-uglify');
-
-
+var inline = require('stc-inline');
 
 stc.config({
   product: 'xuexb.com',
@@ -22,6 +21,16 @@ stc.config({
 });
 
 stc.workflow({
+  inline: {
+    plugin: inline,
+    include: /\.html$/,
+    options: {
+      uglify: true,
+      datauri: true,
+      jsinline: true,
+      allowRemote: true
+    }
+  },
   uglify: {plugin: uglify, exclude: [/static\/admin\/src/]},
   cssCombine: {plugin: cssCombine, include: /\.css$/},
   cssCompress: {plugin: cssCompress},

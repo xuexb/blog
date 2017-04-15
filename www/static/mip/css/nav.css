@@ -1,0 +1,12 @@
+.mip-nav-wrapper .navbar-brand {
+    width: 200px;
+}
+.mip-nav-wrapper {
+    padding: 0 10px;
+    background-color: #f2f2f2;
+}
+
+.mip-nav-wrapper a,
+.mip-nav-wrapper a:hover {
+    color: #333 !important;
+}

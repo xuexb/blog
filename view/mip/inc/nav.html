@@ -1,0 +1,22 @@
+<mip-fixed type="top">
+<div class="mip-nav-wrapper">
+    <mip-nav-slidedown data-id="bs-navbar" class="mip-element-sidebar container" data-showbrand="1" data-brandhref="/" data-brandname="{{ options.title }}">
+        <nav id="bs-navbar" class="navbar-collapse collapse navbar navbar-static-top">
+            <ul class="nav navbar-nav navbar-right">
+                {% for nav in navigation %}
+                    <li>
+                        <a href="{{ nav.url }}" title="{{ nav.label }}">{{ nav.label }}</a>
+                    </li>
+                {% endfor %}
+
+                <li>
+                    <a href="/search.html" title="搜索">搜索</a>
+                </li>
+
+                <li class="navbar-wise-close">
+                    <span id="navbar-wise-close-btn"></span>
+                </li>
+            </ul>
+        </nav>
+    </mip-nav-slidedown>
+</div></mip-fixed>

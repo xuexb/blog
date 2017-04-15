@@ -1,5 +1,5 @@
 /**
- * @file 前台base控制器
+ * @file mip-base控制器
  * @author xuexb <fe.xiaowu@gmail.com>
  */
 
