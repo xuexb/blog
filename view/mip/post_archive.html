@@ -8,7 +8,7 @@
 <link rel="canonical" href="{{ site_url }}/archives" />
 {%- endblock %}
 
-{%- block content %}
+{% block content %}
 <article class="post archive">
     <h1 class="title">归档</h1>
     {% for yearMonth,data in list%}
@@ -24,4 +24,4 @@
     </div>
     {% endfor %}
 </article>
-{% endblock -%}
+{% endblock %}

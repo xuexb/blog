@@ -10,25 +10,25 @@
     {% if options.favicon %}<link rel="shortcut icon" href="{{ options.favicon }}" type="image/x-icon">{% endif %}
     <link rel="stylesheet" type="text/css" href="//mipcache.bdstatic.com/static/v1/mip.css">
     <link rel="stylesheet" type="text/css" href="/static/mip/css/all.css">
-    {%- block headers %}{% endblock -%}
+    {% block headers %}{% endblock %}
 </head>
 <body>
-    {%- block nav %}
+    {% block nav %}
         {% include "./inc/nav.html" %}
-    {% endblock -%}
+    {% endblock %}
     <div class="main">
-        {%- block content %}{% endblock -%}
+        {% block content %}{% endblock %}
     </div>
 
-    {%- block foot %}
+    {% block foot %}
         {% include "./inc/foot.html" %}
-    {% endblock -%}
+    {% endblock %}
     <script src="//mipcache.bdstatic.com/static/v1/mip.js"></script>
     <script src="//mipcache.bdstatic.com/static/v1/mip-nav-slidedown/mip-nav-slidedown.js"></script>
     <script src="//mipcache.bdstatic.com/static/v1/mip-gototop/mip-gototop.js"></script>
     <script src="//mipcache.bdstatic.com/static/v1/mip-fixed/mip-fixed.js"></script>
     <script src="//mipcache.bdstatic.com/static/v1/mip-stats-baidu/mip-stats-baidu.js"></script>
     <mip-stats-baidu token="9e2b145b1229bd71028c43933c167d30"></mip-stats-baidu>
-    {%- block script %}{% endblock -%}
+    {% block script %}{% endblock %}
 </body>
 </html>

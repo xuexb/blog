@@ -15,6 +15,8 @@ export default {
   root_path: think.ROOT_PATH + '/view',
   adapter: {
     nunjucks: {
+      trimBlocks: true,
+      lstripBlocks: true,
       prerender: function(nunjucks, env) {
         env.addFilter('utc', time => (new Date(time)).toUTCString());
         env.addFilter('pagination', function(page) {

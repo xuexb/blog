@@ -10,7 +10,7 @@
   {% if options.favicon %}<link rel="shortcut icon" href="{{ options.favicon }}" type="image/x-icon">{% endif %}
   <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/rss.html">
   <link rel=search type="application/opensearchdescription+xml" href="/content-search.xml" title="{{ options.title }}">
-  {%- block headers %}{% endblock -%}
+  {% block headers %}{% endblock %}
   {% set lscookie = 'lscookie' %}
   <link rel="stylesheet" href="/static/home/css/all.css" type="text/css" data-ls="css_firekylin">
   {% if themeConfig.sidebarBackground or themeConfig.sidebarBackgroundColor or themeConfig.customCSS or themeConfig.sidebarColor %}
