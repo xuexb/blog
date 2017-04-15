@@ -17,14 +17,16 @@
 
     {% for post in posts %}
         <article class="post">
-            <h1 class="title"><a href="{{ mip_site_url }}/post/{{ post.pathname }}.html">{{ post.title }}</a></h1>
+            <h1 class="title">
+                <mip-link href="{{ mip_site_url }}/post/{{ post.pathname }}.html" title="{{ post.title }}">{{ post.title }}</mip-link>
+            </h1>
 
             <div class="meta">
                 发布于<span class="date">{{ think.datetime(post.create_time, 'YYYY-MM-DD') }}</span>, 更新于<span class="date">{{ think.datetime(post.update_time, 'YYYY-MM-DD') }}</span>
             </div>
 
             <div class="entry-content">
-                {{ post.summary | safe }}<p class="more"><a href="{{ mip_site_url }}/post/{{ post.pathname }}.html">阅读全文 »</a></p>
+                {{ post.summary | safe }}<p class="more"><mip-link href="{{ mip_site_url }}/post/{{ post.pathname }}.html" title="{{ post.title }}">阅读全文 »</mip-link></p>
             </div>
         </article>
     {% endfor %}
