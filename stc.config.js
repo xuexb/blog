@@ -21,16 +21,6 @@ stc.config({
 });
 
 stc.workflow({
-  inline: {
-    plugin: inline,
-    include: /\.html$/,
-    options: {
-      uglify: true,
-      datauri: true,
-      jsinline: true,
-      allowRemote: true
-    }
-  },
   uglify: {plugin: uglify, exclude: [/static\/admin\/src/]},
   cssCombine: {plugin: cssCombine, include: /\.css$/},
   cssCompress: {plugin: cssCompress},
@@ -44,7 +34,17 @@ stc.workflow({
     }
   },
   htmlCompress: {plugin: htmlCompress},
-  resourceVersion: {plugin: resourceVersion}
+  resourceVersion: {plugin: resourceVersion},
+  inline: {
+    plugin: inline,
+    include: /\.html$/,
+    options: {
+      uglify: true,
+      datauri: true,
+      jsinline: true,
+      allowRemote: true
+    }
+  }
 });
 
 stc.start();
