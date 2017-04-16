@@ -59,15 +59,16 @@ stc.workflow({
     },
 
     // md替换mip的style标签, 这种方式也是给醉了
-    replace: {
-        plugin: replace,
-        include: [/view\/mip(.+?)\.html/, {
-            type: 'tpl'
-        }],
-        options: {
-            '<style>': '<style mip-custom>'
-        }
-    }
+    // 有bug, 先用sed替换   
+    // replace: {
+    //     plugin: replace,
+    //     include: [/view\/mip(.+?)\.html/, {
+    //         type: 'tpl'
+    //     }],
+    //     options: {
+    //         '<style>': '<style mip-custom>'
+    //     }
+    // }
 
 });
 
