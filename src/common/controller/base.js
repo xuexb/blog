@@ -31,6 +31,7 @@ export default class extends think.controller.base {
         this.assign('site_url', siteUrl);
         // mip地址
         this.assign('mip_site_url', 'https://mip.xuexb.com');
+        this.assign('amp_site_url', 'https://amp.xuexb.com');
 
         let {navigation, themeConfig} = this.options;
         try {

@@ -28,8 +28,8 @@ cp -r app output;
 
 # 删除没用文件
 rm -rf output/app/common/runtime;
-rm -rf output/www/static/admin/js/*.map;
-find output/app -name '*.map' | xargs rm;
+#rm -rf output/www/static/admin/js/*.map;
+#find output/app -name '*.map' | xargs rm;
 
 # 替换style为mip, amp规范的
 sed -i 's/<style>/<style mip-custom>/g' ./output/view/mip/layout.html
