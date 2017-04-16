@@ -15,6 +15,7 @@ export default {
   resource_reg: /^(static\/|[^\/]+\.(?!js|html|xml)\w+$)/,
   subdomain: {
     admin: 'admin',
-    mip: 'mip'
+    mip: 'mip',
+    amp: 'amp'
   }
 };

@@ -59,6 +59,7 @@ export default class extends Base {
       cate: cateName,
       pathname: where.tag || where.cate
     });
+
     return this.display();
   }
   /**
@@ -94,7 +95,6 @@ export default class extends Base {
     detail.pathname = encodeURIComponent(detail.pathname);
     this.assign('page', detail);
     this.assign('pathname', pathname);
-
     return this.display();
   }
   /**

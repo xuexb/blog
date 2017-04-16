@@ -7,6 +7,9 @@ export default {
   mip: {
     reg: /^mip/
   },
+  amp: {
+    reg: /^amp/
+  },
   home: {
 
   }

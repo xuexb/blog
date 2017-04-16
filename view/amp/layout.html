@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN" amp>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    {% if options.keywords %}<meta name="keywords" content="{{ options.keywords }}">{% endif %}
+    {% if options.description %}<meta name="description" content="{{ options.description }}">{% endif %}
+    {% if options.favicon_url %}<link rel="icon" href="{{ mip_site_url }}{{ options.favicon_url }}">{% endif %}
+    {% if options.favicon %}<link rel="shortcut icon" href="{{ mip_site_url }}{{ options.favicon }}" type="image/x-icon">{% endif %}
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <link rel="stylesheet" href="/static/amp/css/all.css" inline>
+    {% block headers %}{% endblock %}
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+</head>
+<body>
+    {% block nav %}
+        {% include './inc/nav.html' %}
+    {% endblock %}
+    <div class="main">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% block foot %}
+        {% include "./inc/foot.html" %}
+    {% endblock %}
+
+    {% block script %}{% endblock %}
+</body>
+</html>
