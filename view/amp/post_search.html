@@ -6,6 +6,7 @@
 
 {% block headers %}
 <link rel="canonical" href="{{ site_url }}/search.html{% if keyword %}?keyword={{ keyword }}{% endif %}{% if pagination.currentPage > 1 %}&amp;page={{ pagination.currentPage }}{% endif %}" />
+<script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
 {% endblock %}
 
 {% block content %}
