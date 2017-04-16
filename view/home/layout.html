@@ -12,7 +12,7 @@
   <link rel=search type="application/opensearchdescription+xml" href="/content-search.xml" title="{{ options.title }}">
   {% block headers %}{% endblock %}
   {% set lscookie = 'lscookie' %}
-  <link rel="stylesheet" href="/static/home/css/all.css" type="text/css" data-ls="css_firekylin">
+  <link rel="stylesheet" href="/static/home/css/all.css" type="text/css" data-ls="css">
   {% if themeConfig.sidebarBackground or themeConfig.sidebarBackgroundColor or themeConfig.customCSS or themeConfig.sidebarColor %}
   <style>
     {% if themeConfig.sidebarBackground or themeConfig.sidebarBackgroundColor %}
@@ -109,7 +109,7 @@
   Powered by&nbsp;<a target="_blank" href="https://thinkjs.org">ThinkJS</a>&nbsp;&amp;&nbsp;<a target="_blank" rel="nofollow" class="external" href="https://firekylin.org">FireKylin v0.15.6</a>
 </footer>
 </div>
-<script src="/static/home/js/firekylin.js" data-ls="js_firekylin"></script>
+<script src="/static/home/js/firekylin.js" data-ls="js"></script>
 {% if options.analyze_code %}
   {{ options.analyze_code | safe }}
 {% endif %}
