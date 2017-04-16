@@ -13,15 +13,15 @@ rm -rf output/www/static;
 echo 'copy www/* end';
 
 echo 'webpack start ...';
-# npm run webpack.build.production;
+npm run webpack.build.production;
 echo 'webpack end';
 
 echo 'stc start ...';
 node stc.config.js;
 echo 'stc end';
 
-# npm run compile;
-# npm run copy-package;
+npm run compile;
+npm run copy-package;
 
 # 复制app
 cp -r app output;
