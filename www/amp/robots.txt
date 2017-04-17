@@ -1,0 +1,14 @@
+# xiaowu
+
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /*.php$
+
+User-agent: googlebot-mobile
+Allow: /
+Disallow: /admin/
+Disallow: /*.php$
+
+User-agent: *
+Disallow: /

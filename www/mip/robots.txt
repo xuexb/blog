@@ -1,0 +1,8 @@
+# xiaowu
+User-agent: Baiduspider
+Allow: /
+Disallow: /admin/
+Disallow: /*.php$
+
+User-agent: *
+Disallow: /
