@@ -427,7 +427,11 @@ class MdEditor extends Base {
         res.data = location.origin + res.data;
       }
       if(type.includes('image') || res.data.match(/\.(?:jpg|jpeg|png|bmp|gif|webp|svg|wmf|tiff|ico)$/i)) {
-        this._preInputText(`![alt](${res.data})`, 2, 5, start);
+        firekylin.requestImageSize(res.data).then(({width, height}) => {
+          this._preInputText(`![alt ${width}x${height}](${res.data})`, 2, 5, start);
+        }).catch(() => {
+          this._preInputText(`![alt](${res.data})`, 2, 5, start);
+        });
       } else {
         let text = this.state.fileUrl ? '链接文本' : this.state.file[0].name;
         this._preInputText(`[${text}](${res.data})`, 1, text.length + 1, start);

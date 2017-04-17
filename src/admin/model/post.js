@@ -5,6 +5,21 @@ import toc from 'markdown-toc';
 import highlight from 'highlight.js';
 import Base from './base';
 
+// 处理img标签
+let renderer = new marked.Renderer();
+renderer.image = (href, title, text) => {
+  let data = String(text).match(/\s+(\d+)x(\d+)$/);
+
+  // 如果没有宽高
+  if (!data) {
+    return `<img src="${href}" alt="${text || ''}">`;
+  }
+
+  // 高会在css里重置, 因为移动端得响应式, 用%做
+  return `<span class="imgload"><span style="padding-bottom: ${data[2] / data[1] * 100}%"><img src="${href}" alt="${text.replace(data[0], '')}" width="${data[1]}" height="${data[2]}"></span></span>`;
+};
+
+
 /**
  * relation model
  */
@@ -211,7 +226,7 @@ export default class extends Base {
    * @return {} []
    */
   markdownToHtml(content, option = {toc: true, highlight: true}) {
-    let markedContent = marked(content);
+    let markedContent = marked(content, {renderer});
 
     /**
      * 增加 TOC 目录

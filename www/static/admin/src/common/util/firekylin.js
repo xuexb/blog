@@ -18,6 +18,48 @@ let firekylin = {
     });
     return deferred;
   },
+
+  /**
+   * 获取图片宽高
+   *
+   * @param  {string} url 图片链接
+   *
+   * @return {Promise}
+   */
+  requestImageSize: url => {
+    let deferred = firekylin.defer();
+    let key = '__img__' + Date.now();
+    let img = window[key] = new Image();
+
+    img.onload = img.onerror = img.onabort = function () {
+      let width = img.width;
+      let height = img.height;
+
+      if (width && height) {
+        deferred.resolve({
+          width,
+          height
+        });
+      }
+      else {
+        deferred.reject('解析失败');
+      }
+
+      try {
+          window[key] = undefined;
+          delete window[key];
+      }
+      catch (e) {}
+
+      img.onload = img.onerror = img.onabort = null;
+      img = key = null;
+    };
+
+    img.src = url;
+
+    return deferred.promise;
+  },
+
   /**
    * 处理请求，自动处理出错的情况
    * @param  {[type]} request [description]
