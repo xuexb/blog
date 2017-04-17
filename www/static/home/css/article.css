@@ -278,23 +278,7 @@ a.anchor {
   visibility: hidden;
 }
 
-/*图片延迟加载*/
-article .imgload {
-  background-color: #f1f1f1;
-  margin-top: 10px;
-  margin-bottom: 5px;
-}
-article .imgload,
-article .imgload > span {
-  display: inline-block;
-  vertical-align: top;
-}
-article .imgload > span {
-  height: 0;
-  overflow: hidden;
-}
-article .imgload img {
-  margin: 0;
+/*强制图片高不定*/
+article img {
   height: auto;
-  border: none;
 }

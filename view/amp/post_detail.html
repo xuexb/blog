@@ -13,7 +13,7 @@
     <article class="post detail">
         <h1 class="title">{{ post.title }}</h1>
         <div class="entry-content">
-            {{ post.content | safe }}
+            {{ post.content | replace(r/(<img\s*(.+?)\/?>)/g, '<mip-img layout="responsive" $2></mip-img>') | safe }}
         </div>
         <p class="end">-- <acronym title="End of File">EOF</acronym> --</p>
 

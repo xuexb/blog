@@ -15,8 +15,7 @@ renderer.image = (href, title, text) => {
     return `<img src="${href}" alt="${text || ''}">`;
   }
 
-  // 高会在css里重置, 因为移动端得响应式, 用%做
-  return `<span class="imgload"><span style="padding-bottom: ${data[2] / data[1] * 100}%"><img src="${href}" alt="${text.replace(data[0], '')}" width="${data[1]}" height="${data[2]}"></span></span>`;
+  return `<img src="${href}" alt="${text.replace(data[0], '')}" width="${data[1]}" height="${data[2]}">`;
 };
 
 
