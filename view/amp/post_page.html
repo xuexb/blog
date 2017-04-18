@@ -13,7 +13,7 @@
   {% if page.title %}
   <h1 class="title">{{ page.title }}</h1>
   <div class="entry-content">
-      {{ page.content | replace(r/(<img\s*(.+?)\/?>)/g, '<mip-img layout="responsive" $2></mip-img>') | safe }}
+      {{ page.content | buildAmpImg | safe }}
   </div>
   {% else %}
   <h1 class="title">提示</h1>

@@ -1,6 +1,5 @@
-'use strict';
-
 import {parse} from 'url';
+import buildImg from '../util/buildImg';
 
 const build_query = obj => '?' +
   Object.keys(obj).map(k => encodeURIComponent(k) + '=' + encodeURIComponent(obj[k])).join('&');
@@ -18,6 +17,18 @@ export default {
       trimBlocks: true,
       lstripBlocks: true,
       prerender: function(nunjucks, env) {
+        env.addFilter('buildMipImg', content => {
+          return buildImg.mip(content || '');
+        });
+
+        env.addFilter('buildAmpImg', content => {
+          return buildImg.amp(content || '');
+        });
+
+        env.addFilter('buildLazyImg', content => {
+          return buildImg.lazy(content || '');
+        });
+
         env.addFilter('utc', time => (new Date(time)).toUTCString());
         env.addFilter('pagination', function(page) {
           let {pathname, query} = parse(this.ctx.http.url, true);
