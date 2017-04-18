@@ -280,5 +280,16 @@ a.anchor {
 
 /*强制图片高不定*/
 article img {
+  max-width: 70%;
   height: auto;
+}
+@media screen and (max-width:900px) {
+  article img {
+    max-width: 80%;
+  }
+}
+@media screen and (max-width:600px) {
+  article img {
+    max-width: 100%;
+  }
 }

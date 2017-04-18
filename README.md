@@ -7,8 +7,8 @@
 - [x] 前端样式编译: ls、压缩 - 使用`npm run build`产出`/output/`运行时文件
 - [x] 打包上线流程 - 线上在`blog.src`编译后, 把`blog.src/output`复制到`blog`里, 执行`npm i --product`安装线上依赖
 - [ ] nginx缓存的设置: 过期时间、反向代理缓存、Etag、清除缓存
-- [ ] MIP页开发
-- [ ] AMP页开发
+- [x] MIP页开发
+- [x] AMP页开发
 - [ ] PWA
 - [ ] 主动推送Google Analytics
 - [ ] 应用Elasticsearch做站内切词搜索: 搜索摘要、搜索词高亮
@@ -51,6 +51,8 @@
     5. 废弃 `/post/*.json` 返回`JSON`数据接口
     6. 错误请求时(如404), 设置 http 状态码
     7. 修改文章表格在小窗口时左右间距
+    8. 支持MIP, AMP
+    9. 支持图片自适应, 添加上传后图片宽高的属性
 
 
 
