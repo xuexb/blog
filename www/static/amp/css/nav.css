@@ -44,12 +44,6 @@
     position: absolute;
     font-size: 26px;
 }
-.amp-nav-wrapper .navbar-brand {
-    margin: 5px 0 0;
-    width: 68px;
-    height: 33px;
-    font-size: 23px;
-}
 .navbar-toggle {
     display: block;
     margin: 19px 0 9px;
@@ -61,6 +55,12 @@
 @media screen and (max-width: 767px) {
     .navbar-toggle {
         margin-top: 9px;
+    }
+    .amp-nav-wrapper .navbar-brand {
+        margin: 5px 0 0;
+        width: 68px;
+        height: 33px;
+        font-size: 23px;
     }
 }
 .navbar-header {
