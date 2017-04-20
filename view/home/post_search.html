@@ -1,8 +1,8 @@
 {% extends './layout.html' %}
 
-{% block title %}
-站内搜索 - {{ options.title }}
-{% endblock %}
+{% block title -%}
+站内搜索{% if keyword %} - {{ keyword }}{% endif %} - {% if http.get('page') > 1 %}第{{ http.get('page') }}页 - {% endif %}{{ options.title }}
+{%- endblock %}
 
 {% block headers %}
 <link rel="canonical" href="{{ site_url }}/search.html{% if keyword %}?keyword={{ keyword }}{% endif %}{% if pagination.currentPage > 1 %}&amp;page={{ pagination.currentPage }}{% endif %}" />

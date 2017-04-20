@@ -1,7 +1,7 @@
 {% extends './layout.html' %}
 
 {% block title -%}
-站内搜索 - {{ options.title }}
+站内搜索{% if keyword %} - {{ keyword }}{% endif %} - {% if http.get('page') > 1 %}第{{ http.get('page') }}页 - {% endif %}{{ options.title }}
 {%- endblock %}
 
 {% block script %}
