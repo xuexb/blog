@@ -14,7 +14,7 @@
   <h1 class="title">站内搜索</h1>
   <div class="entry-content">
     <div id="search">
-      <form action="/search.html" method="GET" target="_top">
+      <form action="{{ amp_site_url }}/search.html" method="GET" target="_top">
         <input maxlength="80" placeholder="请输入关键字..." id="keyword" name="keyword" value="{{ keyword }}" type="search" required>
         <input type="submit" class="submit" value="提交">
       </form>
@@ -37,8 +37,8 @@
 
         {% for item in searchData.data %}
           <div class="item">
-            <div class="title"><a href="/post/{{ item.pathname }}.html">{{ item.title | safe }}</a></div>
-            <div class="desc">{{ item.summary | buildAmpImg | safe }}</div>
+            <div class="title"><a href="{{ amp_site_url }}/post/{{ item.pathname }}.html">{{ item.title | safe }}</a></div>
+            <div class="desc">{{ item.summary | buildAmpImg | buildAmpUrl(amp_site_url) | safe }}</div>
           </div>
         {% endfor %}
       </div>
@@ -47,7 +47,7 @@
         <div class="hot-words">
           热搜词：
           {% for tag in hotTags %}
-            <a href="/search.html?keyword={{ tag.name }}">{{ tag.name }}</a>
+            <a href="{{ amp_site_url }}/search.html?keyword={{ tag.name }}">{{ tag.name }}</a>
           {% endfor %}
         </div>
       </div>

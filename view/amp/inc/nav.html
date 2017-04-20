@@ -7,21 +7,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="https://amp.xuexb.com" class="navbar-brand">{{ options.title }}</a>
+            <a href="{{ amp_site_url }}" class="navbar-brand">{{ options.title }}</a>
         </div>
-        <nav>
-            <ul>
-                {% for nav in navigation %}
-                    <li>
-                        <a href="{{ nav.url }}" title="{{ nav.label }}">{{ nav.label }}</a>
-                    </li>
-                {% endfor %}
-
-                <li>
-                    <a href="/search.html" title="搜索">搜索</a>
-                </li>
-            </ul>
-        </nav>
     </div>
 </div>
 
@@ -32,7 +19,7 @@
 
     <div class="sidebar-wrap">
         <div class="profile">
-            <a href="/">
+            <a href="{{ amp_site_url }}">
                 <amp-img
                     src="{{ options.logo_url }}"
                     width="100"
@@ -43,12 +30,12 @@
         <ul>
             {% for nav in navigation %}
                 <li>
-                    <a href="{{ nav.url }}" title="{{ nav.label }}">{{ nav.label }}</a>
+                    <a href="{{ amp_site_url }}{{ nav.url }}" title="{{ nav.label }}">{{ nav.label }}</a>
                 </li>
             {% endfor %}
 
             <li>
-                <a href="/search.html" title="搜索">搜索</a>
+                <a href="{{ amp_site_url }}/search.html" title="搜索">搜索</a>
             </li>
         </ul>
     </div>

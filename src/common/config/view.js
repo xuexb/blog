@@ -1,5 +1,6 @@
 import {parse} from 'url';
 import buildImg from '../util/buildImg';
+import buildUrl from '../util/buildUrl';
 
 const build_query = obj => '?' +
   Object.keys(obj).map(k => encodeURIComponent(k) + '=' + encodeURIComponent(obj[k])).join('&');
@@ -27,6 +28,10 @@ export default {
 
         env.addFilter('buildLazyImg', content => {
           return buildImg.lazy(content || '');
+        });
+
+        env.addFilter('buildAmpUrl', (content, prefix) => {
+          return buildUrl.amp(content, prefix);
         });
 
         env.addFilter('utc', time => (new Date(time)).toUTCString());

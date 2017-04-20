@@ -18,7 +18,7 @@
     {% for post in posts %}
         <article class="post">
             <h1 class="title">
-                <a href="/post/{{ post.pathname }}.html">{{ post.title }}</a>
+                <a href="{{ amp_site_url }}/post/{{ post.pathname }}.html">{{ post.title }}</a>
             </h1>
 
             <div class="meta">
@@ -26,7 +26,7 @@
             </div>
 
             <div class="entry-content">
-                {{ post.summary | buildAmpImg | safe }}<p class="more"><a href="/post/{{ post.pathname }}.html">阅读全文 »</a></p>
+                {{ post.summary | buildAmpImg | buildAmpUrl(amp_site_url) | safe }}<p class="more"><a href="{{ amp_site_url }}/post/{{ post.pathname }}.html">阅读全文 »</a></p>
             </div>
         </article>
     {% endfor %}
