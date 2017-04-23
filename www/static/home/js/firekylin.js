@@ -280,7 +280,7 @@
     // 1. 往下滚看到就算
     // 2. 一下滚超过屏幕不加载
     return scrollTop + wh >= el.offsetTop + buffer && el.offsetTop + el.offsetHeight >= scrollTop;
-    // return el.offsetTop - (doc.body.scrollTop + ) < buffer;
+    // return el.offsetTop - (doc.body.scrollTop + (win.innerHeight || doc.documentElement.clientHeight)) < buffer;
   }
 
 })(window, document);
