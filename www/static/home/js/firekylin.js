@@ -273,7 +273,14 @@
   }
 
   function lazyLoadShouldAppear(el, buffer) {
-    return el.offsetTop - (doc.body.scrollTop + (win.innerHeight || doc.documentElement.clientHeight)) < buffer;
+    var scrollTop = doc.body.scrollTop;
+    var wh = win.innerHeight || doc.documentElement.clientHeight;
+
+    // 高级可见:
+    // 1. 往下滚看到就算
+    // 2. 一下滚超过屏幕不加载
+    return scrollTop + wh >= el.offsetTop + buffer && el.offsetTop + el.offsetHeight >= scrollTop;
+    // return el.offsetTop - (doc.body.scrollTop + ) < buffer;
   }
 
 })(window, document);
