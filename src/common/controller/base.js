@@ -57,6 +57,9 @@ export default class extends think.controller.base {
         let categories = await this.model('cate').getCateArchive();
         this.assign('categories', categories);
 
+        // 当前环境
+        this.assign('env', think.env);
+
         this.assign('currentYear', (new Date()).getFullYear());
     }
 }

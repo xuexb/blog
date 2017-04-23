@@ -110,7 +110,7 @@
 </footer>
 </div>
 <script src="/static/home/js/firekylin.js" data-ls="js"></script>
-{% if options.analyze_code %}
+{% if env === 'production' and options.analyze_code %}
   {{ options.analyze_code | safe }}
 {% endif %}
 {% if themeConfig.customJS %}<script>{{ themeConfig.customJS | safe }}</script>{% endif %}
