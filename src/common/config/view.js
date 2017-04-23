@@ -34,6 +34,14 @@ export default {
           return buildUrl.amp(content, prefix);
         });
 
+        env.addFilter('buildImgToWebp', (content, isWebp) => {
+          return buildImg.toWebp(content, isWebp);
+        });
+
+        env.addFilter('buildImgToWebpUrl', (url, isWebp) => {
+          return buildImg.toWebpUrl(url, isWebp);
+        });
+
         env.addFilter('utc', time => (new Date(time)).toUTCString());
         env.addFilter('pagination', function(page) {
           let {pathname, query} = parse(this.ctx.http.url, true);

@@ -13,7 +13,7 @@
   {% if page.title %}
   <h1 class="title">{{ page.title }}</h1>
   <div class="entry-content">
-      {{ page.content | buildMipImg | safe }}
+      {{ page.content | buildImgToWebp(enableWebp) | buildMipImg | safe }}
   </div>
   {% else %}
   <h1 class="title">提示</h1>

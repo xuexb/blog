@@ -12,6 +12,24 @@ export default {
   lazy(content) {
     return content.replace(/<img\s+src="([^"]+)"\s*(.*?)\/?>/g, (all, src, alt) => {
       return `<img class="lazy-load" src="${placeholder}" data-src="${src}" ${alt}>`;
-    })
+    });
+  },
+
+  toWebp(content, isWebp) {
+    return isWebp ? 
+      content.replace(/<img\s+(.*?)src="([^"]+)"/g, (all, $0, src) => {
+        if (String(src).indexOf('?imageMogr2/format/webp') === -1) {
+          all = `<img src="${src}?imageMogr2/format/webp" ${$0}`;
+        }
+        return all;
+      })
+      : content;
+  },
+
+  toWebpUrl(url, isWebp) {
+    if (isWebp && String(url).indexOf('?imageMogr2/format/webp') === -1) {
+      url = `${url}?imageMogr2/format/webp`;
+    }
+    return url;
   }
 };

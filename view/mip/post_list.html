@@ -26,7 +26,7 @@
             </div>
 
             <div class="entry-content">
-                {{ post.summary | buildMipImg | safe }}<p class="more"><mip-link href="{{ mip_site_url }}/post/{{ post.pathname }}.html" title="{{ post.title }}">阅读全文 »</mip-link></p>
+                {{ post.summary | buildImgToWebp(enableWebp) | buildMipImg | safe }}<p class="more"><mip-link href="{{ mip_site_url }}/post/{{ post.pathname }}.html" title="{{ post.title }}">阅读全文 »</mip-link></p>
             </div>
         </article>
     {% endfor %}

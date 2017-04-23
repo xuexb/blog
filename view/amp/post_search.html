@@ -38,7 +38,7 @@
         {% for item in searchData.data %}
           <div class="item">
             <div class="title"><a href="{{ amp_site_url }}/post/{{ item.pathname }}.html">{{ item.title | safe }}</a></div>
-            <div class="desc">{{ item.summary | buildAmpImg | buildAmpUrl(amp_site_url) | safe }}</div>
+            <div class="desc">{{ item.summary | buildImgToWebp(enableWebp) | buildAmpImg | buildAmpUrl(amp_site_url) | safe }}</div>
           </div>
         {% endfor %}
       </div>

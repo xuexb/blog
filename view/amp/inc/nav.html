@@ -21,7 +21,7 @@
         <div class="profile">
             <a href="{{ amp_site_url }}">
                 <amp-img
-                    src="{{ options.logo_url }}"
+                    src="{{ options.logo_url | buildImgToWebpUrl(enableWebp) }}"
                     width="100"
                     height="100"></amp-img>
                 <h2>{{ options.title }}</h2>
