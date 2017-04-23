@@ -249,31 +249,39 @@
   /**
    *  Image Lazy Load
    */
-  win.addEventListener('load', lazyLoad);
   win.addEventListener('scroll', lazyLoad);
   win.addEventListener('resize', lazyLoad);
 
   function lazyLoad() {
     var lazyLoadImages = doc.getElementsByClassName('lazy-load');
-
     if (lazyLoadImages.length === 0) {
-      win.removeEventListener('load', lazyLoad);
       win.removeEventListener('scroll', lazyLoad);
       win.removeEventListener('resize', lazyLoad);
     } else {
-      for (var i = 0; i < lazyLoadImages.length; i++) {
+      for (var i = lazyLoadImages.length - 1; i >= 0; i--) {
         var img = lazyLoadImages[i];
-        if (lazyLoadShouldAppear(img, 300)) {
+        if (lazyLoadShouldAppear(img, -200)) {
           img.src = img.getAttribute('data-src');
           img.removeAttribute('data-src');
           img.classList.remove('lazy-load');
         }
       }
     }
+
+    lazyLoadImages = null;
   }
 
   function lazyLoadShouldAppear(el, buffer) {
-    return el.offsetTop - (doc.body.scrollTop + (win.innerHeight || doc.documentElement.clientHeight)) < buffer;
+    var scrollTop = doc.body.scrollTop;
+    var wh = win.innerHeight || doc.documentElement.clientHeight;
+
+    // 高级可见:
+    // 1. 往下滚看到就算
+    // 2. 一下滚超过屏幕不加载
+    return scrollTop + wh >= el.offsetTop + buffer && el.offsetTop + el.offsetHeight >= scrollTop;
   }
+
+  // 默认加载下
+  lazyLoad();
 
 })(window, document);
