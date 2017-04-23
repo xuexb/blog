@@ -26,7 +26,7 @@
             </div>
 
             <div class="entry-content">
-                {{ post.summary | buildAmpImg | buildAmpUrl(amp_site_url) | safe }}<p class="more"><a href="{{ amp_site_url }}/post/{{ post.pathname }}.html">阅读全文 »</a></p>
+                {{ post.summary | buildImgToWebp(enableWebp) | buildAmpImg | buildAmpUrl(amp_site_url) | safe }}<p class="more"><a href="{{ amp_site_url }}/post/{{ post.pathname }}.html">阅读全文 »</a></p>
             </div>
         </article>
     {% endfor %}
