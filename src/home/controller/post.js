@@ -83,6 +83,27 @@ export default class extends Base {
     return this.display();
   }
 
+  /**
+   * post detail markdown
+   * @return {[type]} [description]
+   */
+  async detailmdAction() {
+    this.http.url = decodeURIComponent(this.http.url);
+    let pathname = this.get('pathname').replace(/\.md$/, '');
+
+    let detail = await this.model('post').field('markdown_content').setRelation(false).where({pathname}).find();
+    if(think.isEmpty(detail)) {
+      return think.statusAction(404, this.http);
+    }
+
+    this.type('text/plain');
+
+    let markdown_content = `> 原文: <${this.options.site_url}/post/${encodeURIComponent(pathname)}.html>
+
+${detail.markdown_content}`;
+    return this.end(markdown_content);
+  }
+
   async pageAction() {
     let pathname = this.get('pathname');
     let detail = await this.model('post')
