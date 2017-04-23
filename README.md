@@ -55,6 +55,3 @@
     9. 支持图片自适应, 添加上传后图片宽高的属性 - <https://github.com/xuexb/blog/commit/67c0341872904983f902ed3f9c8f9884c947ccde>
     10. 支持Webp图片适配 - <https://github.com/xuexb/blog/pull/54>
     11. 支持`*.md`访问原markdown内容 - <https://github.com/xuexb/blog/pull/52>
-
-
-
