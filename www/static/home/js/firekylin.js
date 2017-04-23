@@ -267,6 +267,8 @@
         }
       }
     }
+
+    lazyLoadImages = null;
   }
 
   function lazyLoadShouldAppear(el, buffer) {
