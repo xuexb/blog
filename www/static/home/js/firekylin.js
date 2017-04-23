@@ -249,15 +249,12 @@
   /**
    *  Image Lazy Load
    */
-  win.addEventListener('load', lazyLoad);
   win.addEventListener('scroll', lazyLoad);
   win.addEventListener('resize', lazyLoad);
 
   function lazyLoad() {
     var lazyLoadImages = doc.getElementsByClassName('lazy-load');
-
     if (lazyLoadImages.length === 0) {
-      win.removeEventListener('load', lazyLoad);
       win.removeEventListener('scroll', lazyLoad);
       win.removeEventListener('resize', lazyLoad);
     } else {
@@ -280,7 +277,9 @@
     // 1. 往下滚看到就算
     // 2. 一下滚超过屏幕不加载
     return scrollTop + wh >= el.offsetTop + buffer && el.offsetTop + el.offsetHeight >= scrollTop;
-    // return el.offsetTop - (doc.body.scrollTop + (win.innerHeight || doc.documentElement.clientHeight)) < buffer;
   }
+
+  // 默认加载下
+  lazyLoad();
 
 })(window, document);
