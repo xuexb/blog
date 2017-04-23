@@ -38,15 +38,6 @@ stc.workflow({
             appId: '3e988cdb'
         }
     },
-    htmlCompress: {
-        plugin: htmlCompress,
-        options: {
-            trim: true
-        }
-    },
-    resourceVersion: {
-        plugin: resourceVersion
-    },
     inline: {
         plugin: inline,
         include: /\.html$/,
@@ -56,6 +47,15 @@ stc.workflow({
             jsinline: true,
             allowRemote: true
         }
+    },
+    htmlCompress: {
+        plugin: htmlCompress,
+        options: {
+            trim: true
+        }
+    },
+    resourceVersion: {
+        plugin: resourceVersion
     },
 
     // md替换mip的style标签, 这种方式也是给醉了
