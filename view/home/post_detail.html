@@ -30,7 +30,7 @@
             <p>
                 作者
                 {% set user = post.user %}
-                <a href="/author/{{ user.name }}" data-user="{{ user.display_name }}">
+                <a href="/author/{{ user.name }}">
                     <code class="notebook">{% if user.display_name %}{{ user.display_name }}{% else %}{{ user.name }}{% endif %}</code>
                 </a>
 
@@ -40,7 +40,7 @@
                 {% if post.cate.length %}
                 ，添加在分类
                 {% for cate in post.cate %}
-                <a href="/cate/{{ cate.pathname }}" data-cate="{{ cate.name }}">
+                <a href="/cate/{{ cate.pathname }}">
                     <code class="notebook">{{ cate.name }}</code>
                 </a>
                 {% endfor%}
@@ -50,7 +50,7 @@
                 {% if post.tag.length %}
                 ，并被添加「
                 {% for tag in post.tag %}
-                <a href="/tag/{{ tag.pathname }}" data-tag="{{ tag.name }}">
+                <a href="/tag/{{ tag.pathname }}">
                     <code class="notebook">{{ tag.name }}</code>
                 </a>
                 {% endfor %}
