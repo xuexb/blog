@@ -21,7 +21,7 @@
         </div>
         <h1 class="title">{{ post.title }}</h1>
         <div class="entry-content">
-            {{ post.content | buildLazyImg | safe }}
+            {{ post.content | buildImgToWebp(enableWebp) | buildLazyImg | safe }}
         </div>
         <p>本文链接：<a href="{{ site_url + http.url | safe }}">{{ site_url + http.url | safe }}</a></p>
         <p>-- <acronym title="End of File">EOF</acronym> --</p>
