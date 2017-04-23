@@ -23,7 +23,7 @@
         <div class="entry-content">
             {{ post.content | buildImgToWebp(enableWebp) | buildLazyImg | safe }}
         </div>
-        <p>本文链接：<a href="{{ site_url + http.url | safe }}">{{ site_url + http.url | safe }}</a></p>
+        <p>本文链接：<a href="{{ site_url }}/post/{{ post.pathname }}.html">{{ site_url }}/post/{{ post.pathnameSource }}.html</a></p>
         <p>-- <acronym title="End of File">EOF</acronym> --</p>
 
         <div class="post-info">

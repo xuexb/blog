@@ -77,6 +77,7 @@ export default class extends Base {
     if(think.isEmpty(detail)) {
       return this.redirect('/');
     }
+    detail.pathnameSource = detail.pathname;
     detail.pathname = encodeURIComponent(detail.pathname);
     this.assign('post', detail);
 
