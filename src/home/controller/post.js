@@ -77,6 +77,7 @@ export default class extends Base {
     if(think.isEmpty(detail)) {
       return this.redirect('/');
     }
+    detail.pathnameSource = detail.pathname;
     detail.pathname = encodeURIComponent(detail.pathname);
     this.assign('post', detail);
 
@@ -91,17 +92,18 @@ export default class extends Base {
     this.http.url = decodeURIComponent(this.http.url);
     let pathname = this.get('pathname').replace(/\.md$/, '');
 
-    let detail = await this.model('post').field('markdown_content').setRelation(false).where({pathname}).find();
+    let detail = await this.model('post').field('markdown_content, title').setRelation(false).where({pathname}).find();
     if(think.isEmpty(detail)) {
       return think.statusAction(404, this.http);
     }
 
     this.type('text/plain');
 
-    let markdown_content = `> 原文: <${this.options.site_url}/post/${encodeURIComponent(pathname)}.html>
+    return this.end(`# ${detail.title}
 
-${detail.markdown_content}`;
-    return this.end(markdown_content);
+> 原文: <${this.options.site_url}/post/${encodeURIComponent(pathname)}.html>
+
+${detail.markdown_content}`);
   }
 
   async pageAction() {
