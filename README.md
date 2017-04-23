@@ -12,7 +12,7 @@
 - [ ] PWA
 - [ ] 主动推送Google Analytics
 - [ ] 应用Elasticsearch做站内切词搜索: 搜索摘要、搜索词高亮
-- [ ] Webp图片优化
+- [x] Webp图片优化
 
 ### 历史版本
 
@@ -53,6 +53,8 @@
     7. 修改文章表格在小窗口时左右间距 - <https://github.com/xuexb/blog/commit/17e39fe38dc1e890d8f8ef8c2f364d28e8aaba9f#diff-4c41888d6f3998ce8a69f2e3c6e3e4ae>
     8. 支持MIP, AMP - <https://github.com/xuexb/blog/commit/28f831b4bfb5333f85fa4814a1347de98c45d77f>
     9. 支持图片自适应, 添加上传后图片宽高的属性 - <https://github.com/xuexb/blog/commit/67c0341872904983f902ed3f9c8f9884c947ccde>
+    10. 支持Webp图片适配 - <https://github.com/xuexb/blog/pull/54>
+    11. 支持`*.md`访问原markdown内容 - <https://github.com/xuexb/blog/pull/52>
 
 
 
