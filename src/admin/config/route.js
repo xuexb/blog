@@ -2,4 +2,4 @@
 
 export default [
     [/^admin\/(.+?)$/, ':1']
-]
+];
