@@ -21,9 +21,9 @@
             <p>
                 作者
                 {% set user = post.user %}
-                <a href="{{ mip_site_url }}/author/{{ user.name }}" data-user="{{ user.display_name }}">
+                <mip-link href="{{ mip_site_url }}/author/{{ user.name }}" title="{{ user.name }}">
                     <code class="notebook">{% if user.display_name %}{{ user.display_name }}{% else %}{{ user.name }}{% endif %}</code>
-                </a>
+                </mip-link>
 
                 发表于
                 <i>{{ think.datetime(post.create_time) }}</i>
@@ -31,9 +31,9 @@
                 {% if post.cate.length %}
                 ，添加在分类
                 {% for cate in post.cate %}
-                <a href="{{ mip_site_url }}/cate/{{ cate.pathname }}" data-cate="{{ cate.name }}">
+                <mip-link href="{{ mip_site_url }}/cate/{{ cate.pathname }}" title="{{ cate.name }}">
                     <code class="notebook">{{ cate.name }}</code>
-                </a>
+                </mip-link>
                 {% endfor%}
                 下
                 {% endif %}
@@ -41,9 +41,9 @@
                 {% if post.tag.length %}
                 ，并被添加「
                 {% for tag in post.tag %}
-                <a href="{{ mip_site_url }}/tag/{{ tag.pathname }}" data-tag="{{ tag.name }}">
+                <mip-link href="{{ mip_site_url }}/tag/{{ tag.pathname }}" title="{{ tag.name }}">
                     <code class="notebook">{{ tag.name }}</code>
-                </a>
+                </mip-link>
                 {% endfor %}
                  」标签
                 {% endif %}
@@ -59,11 +59,11 @@
     {%if post.prev.title or post.next.title %}
         <nav class="pagination">
             {% if post.prev.title %}
-                <a href="{{ mip_site_url }}/post/{{ post.prev.pathname }}.html" class="prev">&laquo; {{ post.prev.title }}</a>
+                <mip-link href="{{ mip_site_url }}/post/{{ post.prev.pathname }}.html" class="prev" title="{{ post.prev.title }}">&laquo; {{ post.prev.title }}</mip-link>
             {% endif %}
 
             {% if post.next.title %}
-                <a href="{{ mip_site_url }}/post/{{ post.next.pathname }}.html" class="next">{{ post.next.title }} &raquo;</a>
+                <mip-link href="{{ mip_site_url }}/post/{{ post.next.pathname }}.html" class="next" title="{{ post.next.title }}">{{ post.next.title }} &raquo;</mip-link>
             {% endif %}
         </nav>
     {% endif %}

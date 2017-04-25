@@ -17,7 +17,7 @@
         <ul>
         {% for item in data %}
         <li>
-            <a href="{{ mip_site_url }}/post/{{ item.pathname }}.html" title="{{ item.title }}">{{ item.title }}</a>&nbsp;<span class="date">{{ think.datetime(item.create_time, 'YYYY-MM-DD') }}</span>
+            <mip-link href="{{ mip_site_url }}/post/{{ item.pathname }}.html" title="{{ item.title }}">{{ item.title }}</mip-link>&nbsp;<span class="date">{{ think.datetime(item.create_time, 'YYYY-MM-DD') }}</span>
         </li>
         {% endfor %}
         </ul>

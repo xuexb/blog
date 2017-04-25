@@ -34,13 +34,13 @@
         {% if not searchData.count %}
           <div class="no-result">没有找到任何结果，请更换查询词试试~</div>
           <div class="item">
-            <div class="title">或者试试 Google 站内搜索： <a target="_blank" href="https://www.google.com/#q={{ ('site:' + http.hostname + ' ' + keyword) | urlencode }}">site:{{ http.hostname }} {{ keyword }}</a></div>
+            <div class="title">或者试试 Google 站内搜索： <mip-link target="_blank" href="https://www.google.com/#q={{ ('site:' + http.hostname + ' ' + keyword) | urlencode }}">site:{{ http.hostname }} {{ keyword }}</mip-link></div>
           </div>
         {% endif %}
 
         {% for item in searchData.data %}
           <div class="item">
-            <div class="title"><a href="{{ mip_site_url }}/post/{{ item.pathname }}.html">{{ item.title | safe }}</a></div>
+            <div class="title"><mip-link href="{{ mip_site_url }}/post/{{ item.pathname }}.html" title="{{ item.title }}">{{ item.title | safe }}</mip-link></div>
             <div class="desc">{{ item.summary | buildImgToWebp(enableWebp) | buildMipImg | safe }}</div>
           </div>
         {% endfor %}
@@ -50,7 +50,7 @@
         <div class="hot-words">
           热搜词：
           {% for tag in hotTags %}
-            <a href="{{ mip_site_url }}/search.html?keyword={{ tag.name }}">{{ tag.name }}</a>
+            <mip-link href="{{ mip_site_url }}/search.html?keyword={{ tag.name }}" title="搜索: {{ tag.name }}">{{ tag.name }}</mip-link>
           {% endfor %}
         </div>
       </div>

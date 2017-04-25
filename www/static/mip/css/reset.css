@@ -13,3 +13,12 @@ body {
 a {
     color: #2479CC;
 }
+
+/*兼容mip, 醉了*/
+mip-link {
+    display: inline !important;
+    color: #2479CC;
+}
+.navbar-nav mip-link {
+    display: block !important;
+}
