@@ -57,3 +57,4 @@ db/
 
 /dist/
 /www/static/admin/js/
+/yarn.lock
