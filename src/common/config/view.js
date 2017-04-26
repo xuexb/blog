@@ -34,6 +34,10 @@ export default {
           return buildUrl.amp(content, prefix);
         });
 
+        env.addFilter('buildMipUrl', (content, prefix) => {
+          return buildUrl.mip(content, prefix);
+        });
+
         env.addFilter('buildImgToWebp', (content, isWebp) => {
           return buildImg.toWebp(content, isWebp);
         });

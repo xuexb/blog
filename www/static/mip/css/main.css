@@ -245,6 +245,7 @@ article hr {
 }
 
 h1.intro {
+    font-size: 20px;
     padding: 20px 30px;
     background-color: #f6f9fa;
     text-align: center;
@@ -254,8 +255,9 @@ h1.intro strong {
     color: #2479CC;
 }
 
-article.tags section a {
-    display: inline-block;
+article.tags section > a,
+article.tags section > mip-link {
+    display: inline-block !important;
     font-size: 14px;
     padding: 0 15px;
     height: 40px;

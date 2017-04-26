@@ -14,7 +14,7 @@
   <div class="entry-content">
     <section>
       {% for tag in list %}
-      <a href="{{ mip_site_url }}/tag/{{ tag.pathname }}" data-tag="{{ tag.name }}">{{ tag.name }}({{ tag.count }})</a>
+      <mip-link href="{{ mip_site_url }}/tag/{{ tag.pathname }}" title="{{ tag.name }}">{{ tag.name }}({{ tag.count }})</mip-link>
       {% endfor %}
     </section>
   </div>
