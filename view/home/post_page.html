@@ -14,7 +14,7 @@
 <article class="post page">
   {% if page.title %}
   <h1 class="title">{{ page.title }}</h1>
-  <div class="entry-content">
+  <div class="entry-content entry-content-page">
       {{ page.content | buildImgToWebp(enableWebp) | buildLazyImg | safe }}
   </div>
   {% if page.allow_comment %}

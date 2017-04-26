@@ -12,7 +12,7 @@
 <article class="post page">
   {% if page.title %}
   <h1 class="title">{{ page.title }}</h1>
-  <div class="entry-content">
+  <div class="entry-content entry-content-page">
       {{ page.content | buildImgToWebp(enableWebp) | buildAmpImg | buildAmpUrl(amp_site_url) | safe }}
   </div>
   {% else %}
