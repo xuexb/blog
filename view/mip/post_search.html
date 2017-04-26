@@ -41,7 +41,7 @@
         {% for item in searchData.data %}
           <div class="item">
             <div class="title"><mip-link href="{{ mip_site_url }}/post/{{ item.pathname }}.html" title="{{ item.title }}">{{ item.title | safe }}</mip-link></div>
-            <div class="desc">{{ item.summary | buildImgToWebp(enableWebp) | buildMipImg | safe }}</div>
+            <div class="desc">{{ item.summary | buildImgToWebp(enableWebp) | buildMipImg | buildMipUrl(mip_site_url) | safe }}</div>
           </div>
         {% endfor %}
       </div>
