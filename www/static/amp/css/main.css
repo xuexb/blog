@@ -276,7 +276,7 @@ mip-fixed[type="top"], mip-fixed[type="bottom"] {
   overflow: visible;
 }
 
-.entry-content a[href^="https://"]:before {
+.entry-content-page a[href^="https://"]:before {
   content: '';
   display: inline-block;
   width: 16px;

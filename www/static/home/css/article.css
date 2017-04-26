@@ -294,7 +294,7 @@ article img {
   }
 }
 
-.entry-content a[href^="https://"]:before {
+.entry-content-page a[href^="https://"]:before {
   content: '';
   display: inline-block;
   width: 16px;
