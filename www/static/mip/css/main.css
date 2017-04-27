@@ -27,7 +27,7 @@ article h1.title {
 }
 
 article h1.title, article h1.title a {
-    color: #333;
+    color: #333 !important;
 }
 
 article h1.title a {
