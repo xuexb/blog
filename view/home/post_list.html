@@ -23,13 +23,6 @@
   <article class="post">
     <div class="meta">
       <div>
-        {% if post.user %}
-          <span class="author">
-            {% set user = post.user %}
-            {% if user.display_name %}{{ user.display_name }}{% else %}{{ user.name }}{% endif %}
-          </span>
-          <span>发布于</span>
-        {% endif %}
         <span class="date">{{ think.datetime(post.create_time, 'MM月DD, YYYY') }}</span>
       </div>
       <div class="comment">

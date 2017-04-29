@@ -170,6 +170,7 @@ article .expire-tips {
   background-color: #ffffc0;
   border-left: 5px solid #fff000;
   color: #333;
+  margin-top: 10px;
 }
 
 article .aliyun-tips {
@@ -250,6 +251,7 @@ article hr {
 }
 
 h1.intro {
+    font-size: 20px;
     padding: 20px 30px;
     background-color: #f6f9fa;
     text-align: center;
