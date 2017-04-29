@@ -75,6 +75,9 @@ export default class extends Base {
     if(think.isEmpty(detail)) {
       return this.redirect('/');
     }
+    // 更新时间diff
+    detail.update_time_diff_day = Math.ceil((Date.now() - detail.update_time) / (1000 * 60 * 60 * 24));
+
     detail.pathname = encodeURIComponent(detail.pathname);
     this.assign('post', detail);
 

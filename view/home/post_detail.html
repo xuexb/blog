@@ -28,12 +28,6 @@
 
         <div class="post-info">
             <p>
-                作者
-                {% set user = post.user %}
-                <a href="/author/{{ user.name }}">
-                    <code class="notebook">{% if user.display_name %}{{ user.display_name }}{% else %}{{ user.name }}{% endif %}</code>
-                </a>
-
                 发表于
                 <i>{{ think.datetime(post.create_time) }}</i>
 
@@ -64,8 +58,12 @@
             <p>{{ themeConfig.cc | safe }}</p>
             {% endif %}
         </div>
+
+        {% if post.update_time_diff_day > 120 %}
+            <p class="expire-tips">提醒: 本文最后更新于&nbsp;{{ post.update_time_diff_day }}&nbsp;天前，文中所描述的信息可能已发生改变，请谨慎使用。</p>
+        {% endif %}
     </article>
-    {%if post.prev.title or post.next.title %}
+    {% if post.prev.title or post.next.title %}
         <nav class="pagination">
             {% if post.prev.title %}
                 <a href="/post/{{ post.prev.pathname }}.html" class="prev">&laquo; {{ post.prev.title }}</a>
