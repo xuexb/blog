@@ -251,6 +251,7 @@ article hr {
 }
 
 h1.intro {
+    font-size: 20px;
     padding: 20px 30px;
     background-color: #f6f9fa;
     text-align: center;
