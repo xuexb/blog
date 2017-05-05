@@ -10,8 +10,8 @@ export default {
   },
 
   lazy(content) {
-    return content.replace(/<img\s+src="([^"]+)"\s*(.*?)\/?>/g, (all, src, alt) => {
-      return `<img class="lazy-load" src="${placeholder}" data-src="${src}" ${alt}>`;
+    return content.replace(/<img\s+src="([^"]+)"\s*(.*?)width="(\d+)"\s+height="(\d+)"\/?>/g, (all, src, alt, width, height) => {
+      return `<div class="img" style="width: ${width}px;"><i style="padding-bottom: ${height / width * 100}%"></i><img src="${placeholder}" data-src="${src}" class="lazy-load"></div>`;
     });
   },
 
