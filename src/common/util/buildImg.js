@@ -16,20 +16,14 @@ export default {
   },
 
   toWebp(content, isWebp) {
-    return isWebp ? 
-      content.replace(/<img\s+(.*?)src="([^"]+)"/g, (all, $0, src) => {
-        if (String(src).indexOf('?imageMogr2/format/webp') === -1) {
-          all = `<img src="${src}?imageMogr2/format/webp" ${$0}`;
-        }
-        return all;
-      })
-      : content;
+    const imgstr = isWebp ? 'imageMogr2/format/webp' : 'imageslim';
+    return content.replace(/<img\s+(.*?)src="([^"]+)"/g, (all, $0, src) => {
+      return `<img src="${src}?${imgstr}" ${$0}`;
+    });
   },
 
   toWebpUrl(url, isWebp) {
-    if (isWebp && String(url).indexOf('?imageMogr2/format/webp') === -1) {
-      url = `${url}?imageMogr2/format/webp`;
-    }
-    return url;
+    const imgstr = isWebp ? 'imageMogr2/format/webp' : 'imageslim';
+    return `${url}?${imgstr}`;
   }
 };
