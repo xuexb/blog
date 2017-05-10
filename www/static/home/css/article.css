@@ -276,6 +276,7 @@ article .img {
   display: inline-block;
   vertical-align: top;
   max-width: 100%;
+  overflow: hidden;
 }
 article .img i {
   display: block;
@@ -290,6 +291,18 @@ article .img img {
   background: #f7f7f7 url(https://img0.bdstatic.com/static/mobilesearch/widget/component/feeds/images/logo_2d4b695.png) no-repeat center center;
   -webkit-background-size: 20px;
   background-size: 20px;
+  -webkit-transition: filter 1s, transform .3s;
+  transition: filter 1s, transform .3s;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.03);
+  -webkit-filter: blur(2px);
+  filter: blur(2px);
+}
+article .img img.loaded {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-filter: blur(0px);
+  filter: blur(0px);
 }
 
 .entry-content-page a[href^="https://"]:before {
