@@ -51,7 +51,8 @@ export default class extends think.controller.base {
         this.assign('themeConfig', themeConfig);
 
         // 是否在本次请求使用webp图片
-        this.assign('enableWebp', this.http.header('accept').indexOf('image/webp') > -1);
+        // this.assign('enableWebp', this.http.header('accept').indexOf('image/webp') > -1);
+        this.assign('enableWebp', false);
 
         // 所有的分类
         let categories = await this.model('cate').getCateArchive();
