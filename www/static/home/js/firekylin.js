@@ -259,26 +259,37 @@
       win.removeEventListener('resize', lazyLoad);
     } else {
       for (var i = lazyLoadImages.length - 1; i >= 0; i--) {
-        var img = lazyLoadImages[i];
-        if (lazyLoadShouldAppear(img, -200)) {
-          img.src = img.getAttribute('data-src');
-          img.removeAttribute('data-src');
-          img.classList.remove('lazy-load');
-        }
+        (function () {
+          var img = lazyLoadImages[i];
+          if (lazyLoadShouldAppear(img, -200)) {
+            img.onload = function () {
+              img.classList.add('loaded');
+              img = null;
+            };
+            img.onerror = onabort = function () {
+              img = null;
+            };
+            img.src = img.getAttribute('data-src');
+            img.removeAttribute('data-src');
+            img.classList.remove('lazy-load');
+          }
+        })(i);
       }
     }
 
     lazyLoadImages = null;
   }
 
+
   function lazyLoadShouldAppear(el, buffer) {
     var scrollTop = doc.body.scrollTop;
     var wh = win.innerHeight || doc.documentElement.clientHeight;
+    var offsetTop = el.parentNode.offsetTop;
 
     // 高级可见:
     // 1. 往下滚看到就算
     // 2. 一下滚超过屏幕不加载
-    return scrollTop + wh >= el.offsetTop + buffer && el.offsetTop + el.offsetHeight >= scrollTop;
+    return scrollTop + wh >= offsetTop + buffer && offsetTop + el.offsetHeight >= scrollTop;
   }
 
   // 默认加载下
