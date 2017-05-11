@@ -27,7 +27,6 @@ export default {
     amp(content) {
         return content.replace(/<img\s+(.+?)\/?>/g, '<amp-img layout="responsive" $1></amp-img>');
     },
-
     /**
      * 输出主站带有占位+延迟加载的img标签
      *
