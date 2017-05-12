@@ -10,9 +10,8 @@ var inline = require('stc-inline');
 var replace = require('stc-replace');
 
 stc.config({
-    product: 'mip.amp.admin',
-    include: ['view/', 'www/static/'],
-    exclude: [/view\/(home|common)\//, /www\/static\/home\//],
+    product: 'xuexb.com',
+    include: ['view/home/', 'view/common/', 'www/static/home/'],
     outputPath: 'output',
     tpl: {
         engine: 'nunjucks',
@@ -22,7 +21,7 @@ stc.config({
 });
 
 stc.workflow({
-    uglify: {plugin: uglify, exclude: [/static\/admin\/src/]},
+    uglify: {plugin: uglify},
     cssCombine: {plugin: cssCombine, include: /\.css$/},
     cssCompress: {
         plugin: cssCompress
@@ -38,16 +37,6 @@ stc.workflow({
     //         appId: '3e988cdb'
     //     }
     // },
-    inline: {
-        plugin: inline,
-        include: /\.(js|html|css)$/,
-        options: {
-            uglify: true,
-            datauri: true,
-            jsinline: true,
-            allowRemote: true
-        }
-    },
     
     htmlCompress: {
         plugin: htmlCompress,
@@ -58,6 +47,17 @@ stc.workflow({
     resourceVersion: {
         plugin: resourceVersion
     },
+
+    // inline: {
+    //     plugin: inline,
+    //     include: /\.(js|html|css)$/,
+    //     options: {
+    //         uglify: true,
+    //         datauri: true,
+    //         jsinline: true,
+    //         allowRemote: true
+    //     }
+    // },
 
     // md替换mip的style标签, 这种方式也是给醉了
     // 有bug, 先用sed替换   
