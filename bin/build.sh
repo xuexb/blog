@@ -18,6 +18,7 @@ echo 'webpack end';
 
 echo 'stc start ...';
 node stc.config.js;
+node xuexb.com.stc.config.js
 echo 'stc end';
 
 npm run compile;
