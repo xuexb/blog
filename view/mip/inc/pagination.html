@@ -1,12 +1,12 @@
 <nav class="pagination">
   {% if pagination.currentPage > 1 %}
     {% set prev = pagination.currentPage - 1 %}
-    <mip-link href="{{ mip_site_url }}{{ prev | pagination }}" class="prev">&laquo; 上一页</mip-link>
+    <mip-link href="{{ mip_site_url }}{{ prev | pagination }}" class="prev" title="第{{ prev }}页">&laquo; 上一页</mip-link>
   {% endif %}
 
   {% if pagination.currentPage < pagination.totalPages %}
     {% set next = pagination.currentPage + 1 %}
-    <mip-link href="{{ mip_site_url }}{{ next | pagination }}" class="next">下一页 &raquo;</mip-link>
+    <mip-link href="{{ mip_site_url }}{{ next | pagination }}" class="next" title="第{{ next }}页">下一页 &raquo;</mip-link>
   {% endif %}
 
   <div class="center"><mip-link href="{{ mip_site_url }}/archives">博客归档</mip-link></div>
