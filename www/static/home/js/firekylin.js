@@ -247,6 +247,33 @@
   Dom.bindEvent();
 
   /**
+   * 预加载图片
+   *
+   * @param  {string}   url      图片链接
+   * @param  {Function} callback 加载回调
+   */
+  function preLoadImg(url, callback) {
+    var id = '__img__' + Date.now();
+    var img = window[id] = new Image();
+    var destroy = function () {
+      img = null;
+      delete window[id];
+    };
+    img.onload = function () {
+      callback(null, url);
+      destroy();
+    };
+    img.onabort = img.onerror = function () {
+      callback(true, url);
+      destroy();
+    };
+    img.src = url;
+    if (img.complete && img.onload) {
+      img.onload();
+    }
+  }
+
+  /**
    *  Image Lazy Load
    */
   win.addEventListener('scroll', lazyLoad);
@@ -262,14 +289,9 @@
         (function () {
           var img = lazyLoadImages[i];
           if (lazyLoadShouldAppear(img, -200)) {
-            img.onload = function () {
-              img.classList.add('loaded');
-              img = null;
-            };
-            img.onerror = onabort = function () {
-              img = null;
-            };
-            img.src = img.getAttribute('data-src');
+            preLoadImg(img.getAttribute('data-src'), function (err, url) {
+              img.src = url;
+            });
             img.removeAttribute('data-src');
             img.classList.remove('lazy-load');
           }
