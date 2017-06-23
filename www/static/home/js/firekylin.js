@@ -396,7 +396,9 @@
     }
   };
 
-  // 移除所有高亮行号
+  /**
+   * 移除所有高亮行号
+   */
   hljs.removeMark = function () {
     var $mark = doc.querySelectorAll('pre code li.mark');
     for (var i = $mark.length - 1; i >= 0; i--) {
@@ -404,7 +406,9 @@
     }
   };
 
-  // 初始化行号
+  /**
+   * 初始化行号和绑定事件
+   */
   hljs.init = function () {
     var $code = hljs.$code;
     if ($code && $code.length) {
