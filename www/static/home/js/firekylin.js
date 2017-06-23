@@ -317,4 +317,173 @@
   // 默认加载下
   lazyLoad();
 
+
+  // 行号和高亮行处理 @xuexb
+  var hljs = {
+    $code: doc.querySelectorAll('pre code'),
+    hasClass: function (ele, cls) {
+      return ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+    },
+    addClass: function (ele, cls) { 
+      if (!hljs.hasClass(ele, cls)) {
+        ele.className += ' ' + cls;
+      }
+    },
+    removeClass: function (ele, cls) {
+      if (hljs.hasClass(ele,cls)) {
+        ele.className = ele.className.replace(new RegExp('(\\s|^)' + cls + '(\\s|$)'),' ');
+      }
+    }
+  };
+
+  /**
+   * 使用数据生成hash
+   *
+   * @param  {Object} data 数据
+   *
+   * @return {string}
+   */
+  hljs.stringHash = function (data) {
+    var hash = '';
+    if (data.index > 1) {
+      hash += data.index + '-';
+    }
+    hash += 'L' + data.start;
+    if (data.end && data.end > data.start) {
+      hash += '-' + 'L' + data.end;
+    }
+    return hash;
+  };
+
+  /**
+   * 解析hash为数据
+   *
+   * @return {[type]} [description]
+   */
+  hljs.parseHash = function () {
+    var parse = location.hash.substr(1).match(/((\d+)-)?L(\d+)(-L(\d+))?/);
+
+    if (!parse) {
+      return null;
+    }
+
+    return {
+      index: parseInt(parse[2], 10) || 1,
+      start: parseInt(parse[3], 10) || 1,
+      end: parseInt(parse[5], 10) || parseInt(parse[3], 10) || 1
+    }
+  };
+
+  /**
+   * 标记行颜色并跳转
+   */
+  hljs.mark = function (go) {
+    var hash = hljs.parseHash();
+    if (!hash || !hljs.$code || !hljs.$code[hash.index - 1]) {
+      return;
+    }
+
+    var $li = hljs.$code[hash.index - 1].querySelectorAll('li');
+    for (var i = hash.start - 1; i < hash.end; i++) {
+      if ($li[i]) {
+        hljs.addClass($li[i], 'mark');
+      }
+    }
+    if (go && $li && $li[0]) {
+      setTimeout(function () {
+        window.scrollTo(0, getRect($li[0]).top - 50);
+      });
+    }
+  };
+
+  /**
+   * 移除所有高亮行号
+   */
+  hljs.removeMark = function () {
+    var $mark = doc.querySelectorAll('pre code li.mark');
+    for (var i = $mark.length - 1; i >= 0; i--) {
+      hljs.removeClass($mark[i], 'mark');
+    }
+  };
+
+  /**
+   * 初始化行号和绑定事件
+   */
+  hljs.init = function () {
+    var $code = hljs.$code;
+    if ($code && $code.length) {
+      for (var i = $code.length - 1; i >= 0; i--) {
+        var html = $code[i].innerHTML.split(/\n/).slice(0, -1).map(function (item, index) {
+          return '<li class="line" data-line="' + (index + 1) + '">' + item + '</li>';
+        }).join('');
+        $code[i].innerHTML = '<ul>' + html + '</ul>';
+
+        $code[i].setAttribute('data-index', i + 1);
+
+        $code[i].addEventListener('click', function (event) {
+          var isTarget = false;
+          var target = event.target;
+
+          while (!isTarget) {
+            if (hljs.hasClass(target, 'hljs')) {
+              break;
+            }
+            else if (hljs.hasClass(target, 'line')) {
+              isTarget = true;
+              break;
+            }
+            else {
+              target = target.parentNode;
+            }
+          }
+
+          if (!isTarget) {
+            return;
+          }
+
+          // 如果是区间
+          if (event.shiftKey) {
+            var hash = hljs.parseHash();
+            hash.newIndex = target.parentNode.parentNode.getAttribute('data-index');
+            hash.current = target.getAttribute('data-line');
+            if (hash.index !== hash.newIndex - 0) {
+              hash.index = hash.newIndex;
+              hash.start = hash.current;
+              hash.end = 0;
+            }
+            else {
+              if (hash.current > hash.start) {
+                hash.end = hash.current;
+              }
+              else {
+                hash.end = hash.start;
+                hash.start = hash.current;
+              }
+            }
+            location.hash = hljs.stringHash({
+              index: hash.index,
+              start: hash.start,
+              end: hash.end
+            });
+          }
+          else {
+            location.hash = hljs.stringHash({
+              index: target.parentNode.parentNode.getAttribute('data-index'),
+              start: target.getAttribute('data-line')
+            });
+          }
+        });
+      }
+    }
+  };
+
+  hljs.init();
+  win.addEventListener('load', function() {
+    hljs.mark(true);
+  });
+  win.addEventListener('hashchange', function () {
+    hljs.removeMark();
+    hljs.mark();
+  });
+
 })(window, document);
