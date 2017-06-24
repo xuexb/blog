@@ -340,6 +340,9 @@
    * 使用数据生成hash
    *
    * @param  {Object} data 数据
+   * @param {number} data.index 代码块位置, 以1开始
+   * @param {number} data.start 行号开始
+   * @param {number} data.end 行号结束
    *
    * @return {string}
    */
@@ -358,7 +361,7 @@
   /**
    * 解析hash为数据
    *
-   * @return {[type]} [description]
+   * @return {Object} {index: 当前代码块位置, 以1开始,  start: 行号开始,  end: 结束位置}
    */
   hljs.parseHash = function () {
     var parse = location.hash.substr(1).match(/((\d+)-)?L(\d+)(-L(\d+))?/);
@@ -400,52 +403,46 @@
    * 移除所有高亮行号
    */
   hljs.removeMark = function () {
-    var $mark = doc.querySelectorAll('pre code li.mark');
-    for (var i = $mark.length - 1; i >= 0; i--) {
-      hljs.removeClass($mark[i], 'mark');
-    }
+    doc.querySelectorAll('pre code li.mark').forEach(function (elem) {
+      hljs.removeClass(elem, 'mark');
+    });
   };
 
   /**
-   * 初始化行号和绑定事件
+   * 初始化
    */
   hljs.init = function () {
     var $code = hljs.$code;
     if ($code && $code.length) {
-      for (var i = $code.length - 1; i >= 0; i--) {
-        var html = $code[i].innerHTML.split(/\n/).slice(0, -1).map(function (item, index) {
-          return '<li class="line" data-line="' + (index + 1) + '">' + item + '</li>';
+      $code.forEach(function (elem, i) {
+        // 输出行号, -1是为了让最后一个换行忽略
+        var lines = elem.innerHTML.split(/\n/).slice(0, -1);
+        var html = lines.map(function (item, index) {
+          return '<li><span class="line-num" data-line="' + (index + 1) + '"></span>' + item + '</li>';
         }).join('');
-        $code[i].innerHTML = '<ul>' + html + '</ul>';
+        html = '<ul>' + html + '</ul>';
 
-        $code[i].setAttribute('data-index', i + 1);
+        // 输出语言
+        if (lines.length > 3 && elem.className.match(/lang-(\w+)/)) {
+          html += '<b class="name">' + RegExp.$1 + '</b>';
+        }
 
-        $code[i].addEventListener('click', function (event) {
-          var isTarget = false;
-          var target = event.target;
+        elem.innerHTML = html;
 
-          while (!isTarget) {
-            if (hljs.hasClass(target, 'hljs')) {
-              break;
-            }
-            else if (hljs.hasClass(target, 'line')) {
-              isTarget = true;
-              break;
-            }
-            else {
-              target = target.parentNode;
-            }
-          }
+        hljs.addClass(elem, 'firekylin-code');
 
-          if (!isTarget) {
+        // 绑定点击高亮行事件
+        elem.addEventListener('click', function (event) {
+          // 小小的委托
+          if (!event.target || !hljs.hasClass(event.target, 'line-num')) {
             return;
           }
 
           // 如果是区间
           if (event.shiftKey) {
             var hash = hljs.parseHash();
-            hash.newIndex = target.parentNode.parentNode.getAttribute('data-index');
-            hash.current = target.getAttribute('data-line');
+            hash.newIndex = i + 1;
+            hash.current = event.target.getAttribute('data-line');
             if (hash.index !== hash.newIndex - 0) {
               hash.index = hash.newIndex;
               hash.start = hash.current;
@@ -460,20 +457,16 @@
                 hash.start = hash.current;
               }
             }
-            location.hash = hljs.stringHash({
-              index: hash.index,
-              start: hash.start,
-              end: hash.end
-            });
+            location.hash = hljs.stringHash(hash);
           }
           else {
             location.hash = hljs.stringHash({
-              index: target.parentNode.parentNode.getAttribute('data-index'),
-              start: target.getAttribute('data-line')
+              index: i + 1,
+              start: event.target.getAttribute('data-line')
             });
           }
         });
-      }
+      });
     }
   };
 
