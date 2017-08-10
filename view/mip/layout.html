@@ -8,7 +8,7 @@
     {% if options.description %}<meta name="description" content="{{ options.description }}">{% endif %}
     {% if options.favicon_url %}<link rel="icon" href="{{ mip_site_url }}{{ options.favicon_url }}">{% endif %}
     {% if options.favicon %}<link rel="shortcut icon" href="{{ mip_site_url }}{{ options.favicon }}" type="image/x-icon">{% endif %}
-    <link rel="stylesheet" type="text/css" href="//mipcache.bdstatic.com/static/v1/mip.css">
+    <link rel="stylesheet" type="text/css" href="https://mipcache.bdstatic.com/static/v1/mip.css">
     <link rel="stylesheet" type="text/css" href="/static/mip/css/all.css" inline>
     {% block headers %}{% endblock %}
 </head>
@@ -23,12 +23,12 @@
     {% block foot %}
         {% include "./inc/foot.html" %}
     {% endblock %}
-    <script src="//mipcache.bdstatic.com/static/v1/mip.js"></script>
-    <script src="//mipcache.bdstatic.com/static/v1/mip-nav-slidedown/mip-nav-slidedown.js"></script>
-    <script src="//mipcache.bdstatic.com/static/v1/mip-gototop/mip-gototop.js"></script>
-    <script src="//mipcache.bdstatic.com/static/v1/mip-fixed/mip-fixed.js"></script>
-    <script src="//mipcache.bdstatic.com/static/v1/mip-stats-baidu/mip-stats-baidu.js"></script>
-    <script src="//mipcache.bdstatic.com/static/v1/mip-link/mip-link.js"></script>
+    <script src="https://mipcache.bdstatic.com/static/v1/mip.js"></script>
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-nav-slidedown/mip-nav-slidedown.js"></script>
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-gototop/mip-gototop.js"></script>
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-fixed/mip-fixed.js"></script>
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-stats-baidu/mip-stats-baidu.js"></script>
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-link/mip-link.js"></script>
     {% if env === 'production' %}
         <mip-stats-baidu token="89c0356471829ae5086feefa4277bd91"></mip-stats-baidu>
     {% endif %}
