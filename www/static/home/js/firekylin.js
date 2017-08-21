@@ -291,6 +291,7 @@
           if (lazyLoadShouldAppear(img, -200)) {
             preLoadImg(img.getAttribute('data-src'), function (err, url) {
               img.src = url;
+              img.parentNode.classList.add('loaded');
             });
             img.removeAttribute('data-src');
             img.classList.remove('lazy-load');
@@ -304,7 +305,7 @@
 
 
   function lazyLoadShouldAppear(el, buffer) {
-    var scrollTop = doc.body.scrollTop;
+    var scrollTop = win.scrollY || document.documentElement.scrollTop;
     var wh = win.innerHeight || doc.documentElement.clientHeight;
     var offsetTop = el.parentNode.offsetTop;
 
