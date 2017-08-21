@@ -291,6 +291,7 @@
           if (lazyLoadShouldAppear(img, -200)) {
             preLoadImg(img.getAttribute('data-src'), function (err, url) {
               img.src = url;
+              img.parentNode.classList.add('loaded');
             });
             img.removeAttribute('data-src');
             img.classList.remove('lazy-load');

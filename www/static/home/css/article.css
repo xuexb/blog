@@ -297,6 +297,9 @@ article .img img {
   -webkit-background-size: 20px;
   background-size: 20px;
 }
+article .img.loaded img {
+  background-image: none;
+}
 
 .entry-content-page a[href^="https://"]:before {
   content: '';
