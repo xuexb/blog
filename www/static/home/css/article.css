@@ -412,6 +412,5 @@ article blockquote a,
   border-left-color: #ff5722;
 }
 .entry-content .tip-error:before {
-  content: "X";
   background-color: #ff5722;
 }
