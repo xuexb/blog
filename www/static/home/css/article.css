@@ -73,22 +73,6 @@ article em {
   font-style:italic;
 }
 
-article blockquote {
-  margin:10px 0 0 0;
-  padding:15px 20px;
-  border-left:5px solid #2479CC;
-  background-color: #f8f8f8;
-}
-
-article blockquote p{
-  margin-bottom: 0;
-}
-
-article blockquote a{
-  word-break: break-all;
-  word-wrap: break-word;
-}
-
 article code {
     font-family: "Consolas","Courier New",Courier,mono,serif;
   font-size: 80%;
@@ -362,4 +346,72 @@ article .entry-content pre code {
   border: 1px solid  #eee;
   padding: 0;
   line-height: 26px; 
+}
+
+/*tip*/
+article blockquote,
+.entry-content .tip,
+.entry-content .tip-info,
+.entry-content .tip-error {
+  border-top-right-radius: 2px;
+  border-top-right-radius: 2px;
+  margin: 10px 0 0 0;
+  padding: 10px 20px;
+  border-left: 5px solid #ddd;
+  background-color: #f8f8f8;
+}
+article blockquote p,
+.entry-content .tip p,
+.entry-content .tip-info p,
+.entry-content .tip-error p {
+  margin-bottom: 0;
+}
+
+article blockquote a,
+.entry-content .tip a,
+.entry-content .tip-info a,
+.entry-content .tip-error a {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+.entry-content .tip,
+.entry-content .tip-info,
+.entry-content .tip-error {
+  position: relative;
+  border-left: 5px solid #5fb878;
+}
+.entry-content .tip br,
+.entry-content .tip-info br,
+.entry-content .tip-error br {
+  display: none;
+}
+.entry-content .tip-info:before,
+.entry-content .tip-error:before {
+  content: "!";
+  position: absolute;
+  top: 14px;
+  left: -12px;
+  width: 20px;
+  height: 20px;
+  font-family: "Dosis", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  border-radius: 100%;
+  background-color: #5fb878;
+}
+.entry-content .tip-info {
+  border-left-color: #1e9fff;
+}
+.entry-content .tip-info:before {
+  background-color: #1e9fff;
+}
+.entry-content .tip-error {
+  border-left-color: #ff5722;
+}
+.entry-content .tip-error:before {
+  content: "X";
+  background-color: #ff5722;
 }
