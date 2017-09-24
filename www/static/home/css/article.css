@@ -380,9 +380,9 @@ article blockquote a,
   position: relative;
   border-left: 5px solid #5fb878;
 }
-.entry-content .tip br,
-.entry-content .tip-info br,
-.entry-content .tip-error br {
+.entry-content .tip br:first-child,
+.entry-content .tip-info br:first-child,
+.entry-content .tip-error br:first-child {
   display: none;
 }
 .entry-content .tip-info:before,
