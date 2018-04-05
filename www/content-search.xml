@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
-    <ShortName>前端小武的博客</ShortName>
-    <Url type="text/html" template="https://xuexb.com/search.html?keyword={searchTerms}/"/> 
+    <ShortName>前端小武</ShortName>
+    <Description>搜索前端小武博客</Description>
+    <InputEncoding>UTF-8</InputEncoding>
+    <Image width="16" height="16" type="image/x-icon">https://xuexb.com/favicon.ico</Image>
+    <Url type="text/html" method="get" template="https://xuexb.com/search.html?keyword={searchTerms}&amp;ref=opensearch"/> 
 </OpenSearchDescription>
