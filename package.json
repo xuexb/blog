@@ -82,7 +82,7 @@
     "stc-resource-version": "^1.0.0",
     "stc-uglify": "^1.0.1",
     "style-loader": "^0.13.0",
-    "superagent": "^1.7.2",
+    "superagent": "^5.2.1",
     "stc-inline": "^1.1.0",
     "stc-replace": "^1.0.5",
     "webpack": "^2.6.1"
