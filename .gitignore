@@ -29,9 +29,6 @@ node_modules
 # Temporary folder
 .tmp
 
-# Database Config
-src/common/config/db.js
-
 # Compiled Release
 release/
 
@@ -57,4 +54,3 @@ db/
 
 /dist/
 /www/static/admin/js/
-/yarn.lock

@@ -8,7 +8,7 @@
     "watch-compile": "node -e \"console.log('<npm run watch-compile> no longer need, use <npm start> command directly.');console.log();\"",
     "watch": "npm run watch-compile",
     "copy-package": "node bin/copy_package.js",
-    "build": "bash bin/build.sh",
+    "build": "sh bin/build.sh",
     "webpack": "webpack --watch",
     "webpack.build": "webpack",
     "webpack.build.production": "webpack --config=webpack.production.config.babel.js",

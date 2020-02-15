@@ -1,0 +1,11 @@
+node_modules
+/app/
+*.log
+.cache
+.git
+/dist/
+runtime/
+www/static/upload/
+output/
+output.theme/
+.vscode

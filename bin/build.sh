@@ -26,6 +26,7 @@ npm run copy-package;
 
 # 复制app
 cp -r app output;
+cp -r yarn.lock output;
 
 # 删除没用文件
 rm -rf output/app/common/runtime;
