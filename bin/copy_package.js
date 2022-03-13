@@ -6,4 +6,3 @@ data.scripts = {
   start: 'node www/production.js'
 };
 fs.writeFileSync('output/package.json', JSON.stringify(data, undefined, 4));
-fs.writeFileSync('.version', data.version);

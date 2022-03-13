@@ -9,10 +9,10 @@ RUN yarn build
 
 FROM node:12-alpine
 LABEL maintainer="xuexb <fe.xiaowu@gmail.com>"
-ENV PORT=8080
+ENV PORT=8360
 WORKDIR /root/app
 COPY --from=builder /root/app/output .
 RUN yarn install --production
 RUN yarn cache clean
-EXPOSE 8080
+EXPOSE 8360
 CMD [ "node", "www/production.js" ]
