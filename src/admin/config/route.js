@@ -1,5 +1,5 @@
 'use strict';
 
 export default [
-    [/^admin\/(.+?)$/, ':1']
+    // [/^admin\/(.+?)$/, ':1']
 ];

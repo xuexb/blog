@@ -7,27 +7,6 @@ const placeholder = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABA
 
 export default {
     /**
-     * 输出mip规范的img标签
-     *
-     * @param  {string} content 内容
-     *
-     * @return {string}
-     */
-    mip(content) {
-        return content.replace(/<img\s+(.+?)\/?>/g, '<mip-img layout="responsive" $1></mip-img>');
-    },
-
-    /**
-     * 输出amp规范的img标签
-     *
-     * @param  {string} content 内容
-     *
-     * @return {string}
-     */
-    amp(content) {
-        return content.replace(/<img\s+(.+?)\/?>/g, '<amp-img layout="responsive" $1></amp-img>');
-    },
-    /**
      * 输出主站带有占位+延迟加载的img标签
      *
      * @param  {string} content 内容

@@ -29,9 +29,6 @@ export default class extends think.controller.base {
             siteUrl = 'http://' + this.http.host;
         }
         this.assign('site_url', siteUrl);
-        // mip地址
-        this.assign('mip_site_url', this.config('mip_site_url'));
-        this.assign('amp_site_url', this.config('amp_site_url'));
 
         let {navigation, themeConfig} = this.options;
         try {

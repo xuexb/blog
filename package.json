@@ -1,7 +1,7 @@
 {
   "name": "blog",
   "description": "前端小武博客",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "scripts": {
     "start": "node www/development.js",
     "compile": "babel --presets es2015,stage-1 --plugins transform-runtime src/ --out-dir app/",
@@ -63,7 +63,7 @@
     "qrcode-react": "0.1.14",
     "rc-select": "^5.10.0",
     "react": "^0.14.9",
-    "react-bootstrap": "^0.28.3",
+    "react-bootstrap": "~0.28.3",
     "react-bootstrap-validation": "^0.1.11",
     "react-codemirror": "^0.3.0",
     "react-color": "^2.12.0",
@@ -77,16 +77,14 @@
     "stc-css-combine": "^1.0.1",
     "stc-css-compress": "^1.0.1",
     "stc-html-compress": "^1.0.1",
-    "stc-localstorage": "^1.0.3",
-    "stc-localstorage-nunjucks": "^1.0.1",
+    "stc-replace": "^1.0.5",
     "stc-resource-version": "^1.0.0",
     "stc-uglify": "^1.0.1",
     "style-loader": "^0.13.0",
     "superagent": "^5.2.1",
-    "stc-inline": "^1.1.0",
-    "stc-replace": "^1.0.5",
     "webpack": "^2.6.1"
   },
   "repository": "https://github.com/xuexb/blog",
-  "license": "MIT"
+  "license": "MIT",
+  "resolutions": { "react-bootstrap-validation/react-bootstrap": "~0.28.4" }
 }

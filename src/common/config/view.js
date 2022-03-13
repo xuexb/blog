@@ -1,6 +1,5 @@
 import {parse} from 'url';
 import buildImg from '../util/buildImg';
-import buildUrl from '../util/buildUrl';
 
 const build_query = obj => '?' +
   Object.keys(obj).map(k => encodeURIComponent(k) + '=' + encodeURIComponent(obj[k])).join('&');
@@ -18,24 +17,8 @@ export default {
       trimBlocks: true,
       lstripBlocks: true,
       prerender: function(nunjucks, env) {
-        env.addFilter('buildMipImg', content => {
-          return buildImg.mip(content || '');
-        });
-
-        env.addFilter('buildAmpImg', content => {
-          return buildImg.amp(content || '');
-        });
-
         env.addFilter('buildLazyImg', content => {
           return buildImg.lazy(content || '');
-        });
-
-        env.addFilter('buildAmpUrl', (content, prefix) => {
-          return buildUrl.amp(content, prefix);
-        });
-
-        env.addFilter('buildMipUrl', (content, prefix) => {
-          return buildUrl.mip(content, prefix);
         });
 
         env.addFilter('buildImgToWebp', (content, isWebp) => {
