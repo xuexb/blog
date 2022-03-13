@@ -9,6 +9,7 @@ var replace = require('stc-replace');
 stc.config({
     product: 'home',
     include: ['view/', 'www/static/'],
+    exclude: [/www\/static\/admin\/src\//],
     outputPath: 'output',
     tpl: {
         engine: 'nunjucks',
@@ -18,7 +19,10 @@ stc.config({
 });
 
 stc.workflow({
-    uglify: { plugin: uglify, exclude: [/static\/admin\/src/] },
+    uglify: { 
+        plugin: uglify, 
+        exclude: [/static\/admin\//] // 后台管理不压缩，因为 webpack 压缩过了
+    },
     cssCombine: {plugin: cssCombine, include: /\.css$/},
     cssCompress: {
         plugin: cssCompress

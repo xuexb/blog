@@ -26,10 +26,6 @@ export default class extends think.controller.base {
    * @return {} []
    */
   async __call() {
-
-    console.log('fsdf', this.http.controller, this.http.action);
-
-
     if(this.isAjax()) {
       return this.fail('ACTION_NOT_FOUND');
     }
