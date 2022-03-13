@@ -10,7 +10,7 @@ if(Object.freeze) {
 }
 
 let history = useRouterHistory(createHistory)({
-  basename: '/',
+  basename: '/admin/',
   queryKey: false
 });
 
