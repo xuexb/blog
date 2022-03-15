@@ -47,3 +47,18 @@ DIV+CSS 静态页面，刚注册完成
 - [ ] Jenkins + GitHub CI/CD（测试环境+生产环境）
 - [ ] 多地区部署
 - [x] Docker
+    ```bash
+    docker run \
+        --name blog-node \
+        --rm \
+        -it \
+        ghcr.io/xuexb/blog:node-latest
+
+    docker run \
+        -p 8080:8080 \
+        -it \
+        --name blog-nginx \
+        --rm \
+        --link blog-node:blog \
+        ghcr.io/xuexb/blog:nginx-latest
+    ```
