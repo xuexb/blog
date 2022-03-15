@@ -2,8 +2,7 @@
 
 基于 [Firekylin](https://github.com/firekylin/firekylin) 上扩展开发搭建，服务器运行于阿里云，域名为 [xuexb.com](https://xuexb.com/)。
 
-<img width="707" alt="image" src="https://user-images.githubusercontent.com/3872051/158301107-be2c8ba7-049b-486b-9e43-e8dc3ccd0703.png">
-
+<img width="692" alt="image" src="https://user-images.githubusercontent.com/3872051/158301648-4075c1a3-30b4-4c97-ac42-83042df5c0f4.png">
 
 ## 历史版本
 
