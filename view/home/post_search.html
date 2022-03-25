@@ -40,7 +40,7 @@
         {% for item in searchData.data %}
           <div class="item">
             <div class="title"><a href="/post/{{ item.pathname }}.html">{{ item.title | safe }}</a></div>
-            <div class="desc">{{ item.summary | buildImgToWebp(enableWebp) | buildLazyImg | safe }}</div>
+            <div class="desc">{{ item.summary | buildLazyImg | safe }}</div>
           </div>
         {% endfor %}
       </div>

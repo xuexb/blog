@@ -33,7 +33,7 @@
     </h1>
 
     <div class="entry-content">
-      {{ post.summary | buildImgToWebp(enableWebp) | buildLazyImg | safe }}
+      {{ post.summary | buildLazyImg | safe }}
       <p class="more">
           <a href="/post/{{ post.pathname }}.html">阅读全文 »</a>
       </p>

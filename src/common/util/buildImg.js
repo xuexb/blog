@@ -30,32 +30,4 @@ export default {
             ].join('');
         });
     },
-
-    /**
-     * 内容里图片链接转webp或者七牛图片压缩
-     *
-     * @param  {string}  content 内容
-     * @param  {boolean} isWebp  是否支持webp
-     *
-     * @return {string}
-     */
-    toWebp(content, isWebp) {
-        const imgstr = isWebp ? 'imageMogr2/format/webp' : 'imageslim';
-        return content.replace(/<img\s+(.*?)src="([^"]+)"/g, (all, $0, src) => {
-            return `<img src="${src}?${imgstr}" ${$0}`;
-        });
-    },
-
-    /**
-     * 图片链接转webp或者七牛图片压缩
-     *
-     * @param  {string}  url 链接
-     * @param  {boolean} isWebp  是否支持webp
-     *
-     * @return {string}
-     */
-    toWebpUrl(url, isWebp) {
-        const imgstr = isWebp ? 'imageMogr2/format/webp' : 'imageslim';
-        return `${url}?${imgstr}`;
-    }
 };

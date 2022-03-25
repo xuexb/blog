@@ -18,7 +18,7 @@
     {% if themeConfig.sidebarBackground or themeConfig.sidebarBackgroundColor %}
       #sidebar {
         {% if themeConfig.sidebarBackground %}
-        background-image: url('{{ themeConfig.sidebarBackground | buildImgToWebpUrl(enableWebp) }}');
+        background-image: url('{{ themeConfig.sidebarBackground }}');
         background-size:cover;
         {% endif %}
         {% if themeConfig.sidebarBackgroundColor %}
@@ -41,7 +41,7 @@
   <div class="wrap">
       <div class="profile">
           <a href="/">
-              <img src="{{ options.logo_url | buildImgToWebpUrl(enableWebp) }}" alt="{{ options.title }}">
+              <img src="{{ options.logo_url }}" alt="{{ options.title }}">
           </a>
           <span>{{ options.title }}</span>
       </div>
@@ -90,7 +90,7 @@
 <div id="header">
   <div class="btn-bar"><i></i></div>
   <h1><a href="/">{{ options.title }}</a></h1>
-  <a class="me" href="/post/xiaowu.html"><img src="{{ options.logo_url | buildImgToWebpUrl(enableWebp) }}" alt="{{ options.title }}"></a>
+  <a class="me" href="/post/xiaowu.html"><img src="{{ options.logo_url }}" alt="{{ options.title }}"></a>
 </div>
 <div id="sidebar-mask"></div>
 <div id="main">
