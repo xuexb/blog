@@ -50,12 +50,16 @@ DIV+CSS 静态页面，刚注册完成
 - [x] Docker
     ```bash
     docker run \
+        -d \
+        --env BLOG_ENV="`hostname`" \
         --name blog-node \
         --rm \
         -it \
         ghcr.io/xuexb/blog:node-latest
 
     docker run \
+        -d \
+        --env BLOG_ENV="`hostname`" \
         -p 8080:8080 \
         -it \
         --name blog-nginx \

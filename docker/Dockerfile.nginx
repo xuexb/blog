@@ -3,5 +3,5 @@ LABEL maintainer="xuexb <fe.xiaowu@gmail.com>"
 LABEL org.opencontainers.image.source https://github.com/xuexb/blog
 WORKDIR /etc/nginx/app
 COPY --from=xuexb/blog:node-latest /root/app/www /etc/nginx/app
-COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
+COPY docker/nginx.conf /etc/nginx/nginx.conf
 EXPOSE 8080
