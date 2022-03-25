@@ -21,6 +21,10 @@ export default {
           return buildImg.lazy(content || '');
         });
 
+        env.addFilter('buildImageslim', (content, isWebp) => {
+          return buildImg.buildImageslim(content, isWebp);
+        });
+
         env.addFilter('utc', time => (new Date(time)).toUTCString());
         env.addFilter('pagination', function(page) {
           let {pathname, query} = parse(this.ctx.http.url, true);

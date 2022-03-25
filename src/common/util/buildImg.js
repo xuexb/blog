@@ -30,4 +30,17 @@ export default {
             ].join('');
         });
     },
+
+    /**
+     * 自动七牛云压缩
+     *
+     * @param  {string}  content 内容
+     * @return {string}
+     */
+    buildImageslim(content, isWebp) {
+        const imgstr = 'imageslim';
+        return content.replace(/<img(\s+.*?)src="([^"]+)"/g, (all, $0, src) => {
+            return `<img${$0}src="${src}?${imgstr}"`;
+        });
+    },
 };

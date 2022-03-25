@@ -19,7 +19,7 @@
         </div>
         <h1 class="title">{{ post.title }}</h1>
         <div class="entry-content">
-            {{ post.content | buildLazyImg | safe }}
+            {{ post.content | buildImageslim | buildLazyImg | safe }}
         </div>
         <p>本文链接：<a href="{{ site_url }}/post/{{ post.pathname }}.html">{{ site_url }}/post/{{ post.pathnameSource }}.html</a></p>
         <p>-- <acronym title="End of File">EOF</acronym> --</p>

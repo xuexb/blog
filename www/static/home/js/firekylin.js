@@ -130,7 +130,7 @@
     }
     win.duoshuoQuery = {short_name: disqus_thread.getAttribute('data-name')};
     var s = doc.createElement('script');
-    s.src = '//static.duoshuo.com/embed.js';
+    s.src = 'https://static.duoshuo.com/embed.js';
     (doc.head || doc.body).appendChild(s);
   };
 
