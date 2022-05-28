@@ -10,6 +10,8 @@ RUN yarn build
 FROM node:12-alpine
 LABEL maintainer="xuexb <fe.xiaowu@gmail.com>"
 LABEL org.opencontainers.image.source https://github.com/xuexb/blog
+ENV LANG en_US.UTF-8
+ENV TZ Asia/Shanghai
 ENV PORT=8360
 WORKDIR /root/app
 COPY --from=builder /root/app/output .
