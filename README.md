@@ -42,11 +42,11 @@ DIV+CSS 静态页面，刚注册完成
 
 #### Node.js 版本 - 2022 - v5.x
 
-- [ ] Service Worker
-- [ ] CDN
+- [x] Service Worker
+- [x] CDN
 - [ ] WebP
 - [ ] Jenkins + GitHub CI/CD（测试环境+生产环境）
-- [ ] 多地区部署
+- [x] 多地区部署
 - [x] Docker
     ```bash
     docker run \
