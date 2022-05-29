@@ -12,5 +12,5 @@ if(think.isFile(portFile)) {
  */
 export default {
   port: port || process.env.PORT || 8360,
-  resource_reg: /^(static\/|[^\/]+\.(?!js|html|xml)\w+$)/,
+  resource_reg: /^(sw\.js|static\/|[^\/]+\.(?!js|html|xml)\w+$)/,
 };

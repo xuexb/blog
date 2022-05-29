@@ -31,3 +31,6 @@ cp -r yarn.lock output;
 rm -rf output/app/common/runtime;
 #rm -rf output/www/static/admin/js/*.map;
 find output/ -name '*.map' | xargs rm;
+
+# Service Worker
+yarn build:sw

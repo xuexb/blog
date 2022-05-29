@@ -1,7 +1,7 @@
 {
   "name": "blog",
   "description": "前端小武博客",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "scripts": {
     "start": "node www/development.js",
     "compile": "babel --presets es2015,stage-1 --plugins transform-runtime src/ --out-dir app/",
@@ -15,7 +15,8 @@
     "lint": "eslint ./src ./*.js ./www/*.js ./www/static/admin/src ./www/static/home --ignore-path .gitignore --cache -f table --ext .js,.jsx || true",
     "lint-fix": "eslint ./src ./*.js ./www/*.js ./www/static/admin/src ./www/static/home --ignore-path .gitignore -f table --ext .js,.jsx --fix || true",
     "lint-break-on-errors": "echo '\n[INFO] Running ESLint...\n[INFO] (Autofix with `npm run lint-fix`)' && eslint ./src ./*.js ./www/*.js ./www/static/admin/src ./www/static/home --ignore-path .gitignore -f table --ext .js,.jsx",
-    "check-extraneous-pkgs": "npm list --depth=0 && echo '[SUCCESS] No extraneous packages.' || (echo '[INFO] Pruning extraneous packages...\n' && npm prune)"
+    "check-extraneous-pkgs": "npm list --depth=0 && echo '[SUCCESS] No extraneous packages.' || (echo '[INFO] Pruning extraneous packages...\n' && npm prune)",
+    "build:sw": "workbox injectManifest workbox.config.js && terser output/www/sw.js  -o output/www/sw.js"
   },
   "dependencies": {
     "babel-runtime": "6.x.x",
@@ -82,9 +83,13 @@
     "stc-uglify": "^1.0.1",
     "style-loader": "^0.13.0",
     "superagent": "^5.2.1",
-    "webpack": "^2.6.1"
+    "terser": "^5.13.1",
+    "webpack": "^2.6.1",
+    "workbox-cli": "^6.5.3"
   },
   "repository": "https://github.com/xuexb/blog",
   "license": "MIT",
-  "resolutions": { "react-bootstrap-validation/react-bootstrap": "~0.28.4" }
+  "resolutions": {
+    "react-bootstrap-validation/react-bootstrap": "~0.28.4"
+  }
 }
