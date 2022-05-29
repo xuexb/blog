@@ -34,6 +34,10 @@ stc.workflow({
         }
     },
     resourceVersion: {
+        options: {
+            length: 5,
+            type: 'hash'
+        },
         plugin: resourceVersion
     },
 });
