@@ -19,6 +19,9 @@ echo 'webpack end';
 echo 'stc start ...';
 node stc.config.js;
 echo 'stc end';
+echo 'stc admin start ...';
+node stc.admin.config.js;
+echo 'stc admin end';
 
 yarn compile;
 yarn copy-package;

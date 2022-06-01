@@ -3,13 +3,13 @@ var cssCompress = require('stc-css-compress');
 var resourceVersion = require('stc-resource-version');
 var cssCombine = require('stc-css-combine');
 var htmlCompress = require('stc-html-compress');
-var uglify = require('stc-uglify');
 var replace = require('stc-replace');
+// var uglify = require("stc-uglify");
 
 stc.config({
-  product: "home",
-  include: ["view/", "www/static/"],
-  exclude: [/www\/static\/admin\//, /view\/admin\//],
+  product: "admin",
+  include: ["view/admin/", "www/static/admin/"],
+  exclude: [/www\/static\/admin\/src\//],
   outputPath: "output",
   tpl: {
     engine: "nunjucks",
@@ -19,9 +19,10 @@ stc.config({
 });
 
 stc.workflow({
-  uglify: {
-    plugin: uglify,
-  },
+//   uglify: {
+//     plugin: uglify,
+//     exclude: [/static\/admin\//], // 后台管理不压缩，因为 webpack 压缩过了
+//   },
   cssCombine: { plugin: cssCombine, include: /\.css$/ },
   cssCompress: {
     plugin: cssCompress,
@@ -35,7 +36,7 @@ stc.workflow({
   resourceVersion: {
     options: {
       length: 5,
-      type: "hash",
+      type: "query",
     },
     plugin: resourceVersion,
   },
