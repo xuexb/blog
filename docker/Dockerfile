@@ -16,6 +16,7 @@ ENV PORT=8360
 WORKDIR /root/app
 COPY --from=builder /root/app/output .
 RUN yarn install --production
-RUN yarn cache clean
+RUN yarn cache clean \
+    && rm -rf /opt/yarn-v*
 EXPOSE 8360
 CMD [ "node", "www/production.js" ]
