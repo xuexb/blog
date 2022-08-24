@@ -35,5 +35,8 @@ rm -rf output/app/common/runtime;
 #rm -rf output/www/static/admin/js/*.map;
 find output/ -name '*.map' | xargs rm;
 
+# 删除原始文件
+# find output/www/static/home -type f -regex ".*/[a-z0-9]*\.[a-z]*$" | xargs rm;
+
 # Service Worker
 yarn build:sw
