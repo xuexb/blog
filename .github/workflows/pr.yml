@@ -70,48 +70,51 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          script_stop: true
+          debug: true
           script: |
             node_container_name="${{ steps.update-env.outputs.domain }}-node"
             node_image="${{ secrets.GHCR_MIRROR }}/${{ env.IMAGE_NAME }}:node-${{ steps.meta.outputs.version }}"
             nginx_container_name="${{ steps.update-env.outputs.domain }}-nginx"
             nginx_image="${{ secrets.GHCR_MIRROR }}/${{ env.IMAGE_NAME }}:nginx-${{ steps.meta.outputs.version }}"
-            docker pull $node_image
-            docker pull $nginx_image
-            docker ps -aq --filter "name=$node_container_name" | xargs docker rm -f || echo "Delete fail"
-            docker ps -aq --filter "name=$nginx_container_name" | xargs docker rm -f || echo "Delete fail"
-            docker run \
-              --env BLOG_ENV="`hostname`" \
-              --env DB_HOST="${{ secrets.DB_HOST }}" \
-              --env DB_PORT=${{ secrets.DB_PORT }} \
-              --env DB_DATABASE=${{ secrets.DB_DATABASE }} \
-              --env DB_USER=${{ secrets.DB_USER }} \
-              --env DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
-              --env DB_PREFIX=${{ secrets.DB_PREFIX }} \
-              --name $node_container_name \
-              -d \
-              $node_image
-            docker run \
-              --env BLOG_ENV="`hostname`" \
-              -p 8080 \
-              --name $nginx_container_name \
-              --link $node_container_name:blog \
-              -d \
-              $nginx_image
-            IFS="-"
-            string=$(docker ps --filter "name=$nginx_container_name" --format "{{.Ports}}")
-            array=($string)
-            IFS=":"
-            array=(${array[0]})
-            port=${array[1]}
-            if [ "$port" == "" ]; then exit 11; fi
+            docker pull $node_image \
+              && docker pull $nginx_image \
+              && docker ps -aq --filter "name=$node_container_name" | xargs docker rm -f || echo "Delete fail" \
+              && docker ps -aq --filter "name=$nginx_container_name" | xargs docker rm -f || echo "Delete fail" \
+              && docker run \
+                --env BLOG_ENV="`hostname`" \
+                --env DB_HOST="${{ secrets.DB_HOST }}" \
+                --env DB_PORT=${{ secrets.DB_PORT }} \
+                --env DB_DATABASE=${{ secrets.DB_DATABASE }} \
+                --env DB_USER=${{ secrets.DB_USER }} \
+                --env DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
+                --env DB_PREFIX=${{ secrets.DB_PREFIX }} \
+                --name $node_container_name \
+                -d \
+                $node_image \
+              && docker run \
+                --env BLOG_ENV="`hostname`" \
+                -p 8080 \
+                --name $nginx_container_name \
+                --link $node_container_name:blog \
+                -d \
+                $nginx_image \
+              && docker ps \
+              && IFS="-" \
+              && string=$(docker ps --filter "name=$nginx_container_name" --format "{{.Ports}}") \
+              && echo $string \
+              && array=($string) \
+              && IFS=":" \
+              && array=(${array[0]}) \
+              && port=${array[1]} \
+              && echo $port \
+              && if [ "$port" == "" ]; then exit 11; fi
             server="[{\"address\":\"${{ secrets.SSH_HOST }}\",\"port\":$port}]"
             timeout=6
             dyupsdata="{\"server\":$server,\"timeout\":$timeout}"
             dyupsurl="${{ secrets.DYUPS_SERVER }}/api/${{ steps.update-env.outputs.domain }}?r=$RANDOM"
             dyups_result=""
             for((i=1;i<=5;i++)); do
-              httpcode=$(curl -sL -w '%{http_code}' -H 'x-dyups-token: ${{ secrets.DYUPS_TOKEN }}' -X POST -d "$postdata" $dyupsurl -o /dev/null)
+              httpcode=$(curl -sL --max-time 5 -w '%{http_code}' -H 'x-dyups-token: ${{ secrets.DYUPS_TOKEN }}' -X POST -d "$dyupsdata" $dyupsurl -o /dev/null)
               if [ "$httpcode" != "200" ]; then
                 echo "注册 dyups 失败，响应码：$httpcode ，继续尝试"
                 dyups_result="0"
