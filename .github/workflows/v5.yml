@@ -8,11 +8,13 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  DOMAIN: v5.xuexb.com
+  DOMAIN_PORT: 8005
 
 jobs:
   deploy-v5:
     runs-on: ubuntu-latest
-    environment: dev
+    environment: prd
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -53,3 +55,38 @@ jobs:
           file: ./docker/Dockerfile.nginx
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:nginx-${{ steps.meta.outputs.version }}
+      - name: deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script_stop: true
+          script: |
+            node_container_name="${{ env.DOMAIN }}-${{ env.DOMAIN_PORT }}-node"
+            node_image="${{ secrets.GHCR_MIRROR }}/${{ env.IMAGE_NAME }}:node-${{ steps.meta.outputs.version }}"
+            nginx_container_name="${{ env.DOMAIN }}-${{ env.DOMAIN_PORT }}-nginx"
+            nginx_image="${{ secrets.GHCR_MIRROR }}/${{ env.IMAGE_NAME }}:nginx-${{ steps.meta.outputs.version }}"
+            docker pull $node_image
+            docker pull $nginx_image
+            docker ps -aq --filter "name=$node_container_name" | xargs docker rm -f || echo "Delete fail"
+            docker ps -aq --filter "name=$nginx_container_name" | xargs docker rm -f || echo "Delete fail"
+            docker run \
+              --env BLOG_ENV="`hostname`" \
+              --env DB_HOST="${{ secrets.DB_HOST }}" \
+              --env DB_PORT=${{ secrets.DB_PORT }} \
+              --env DB_DATABASE=${{ secrets.DB_DATABASE }} \
+              --env DB_USER=${{ secrets.DB_USER }} \
+              --env DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
+              --env DB_PREFIX=${{ secrets.DB_PREFIX }} \
+              --name $node_container_name \
+              -d \
+              $node_image
+            docker run \
+              --env BLOG_ENV="`hostname`" \
+              -p ${{ env.DOMAIN_PORT }}:8080 \
+              --name $nginx_container_name \
+              --link $node_container_name:blog \
+              -d \
+              $nginx_image
