@@ -70,7 +70,10 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          debug: false
+          proxy_host: ${{ secrets.PROXY_HOST }}
+          proxy_username: ${{ secrets.PROXY_USERNAME }}
+          proxy_key: ${{ secrets.PROXY_KEY }}
+          proxy_port: ${{ secrets.PROXY_PORT }}
           script: |
             node_container_name="${{ env.DOMAIN }}-${{ env.DOMAIN_PORT }}-node"
             node_image="${{ secrets.GHCR_MIRROR }}/${{ env.IMAGE_NAME }}:node-${{ needs.build-v5.outputs.version }}"

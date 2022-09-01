@@ -6,6 +6,8 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  TAG: pr-${{ github.event.pull_request.number }}
+  DOMAIN: blog-pr-${{ github.event.pull_request.number }}.dev.xuexb.com
 
 jobs:
   build-dev:
@@ -40,17 +42,13 @@ jobs:
           flavor: |
             latest=false
           tags: |
-            type=raw,value=pr-${{ github.event.pull_request.number }}
+            type=raw,value=${{ env.TAG }}
       - name: Update Nginx Dockerfile path
         run: |
           a=xuexb/blog:node-latest
           b=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:node-${{ steps.meta.outputs.version }}
           sed -i "s?$a?$b?g" docker/Dockerfile.nginx
           cat docker/Dockerfile.nginx
-      - name: Update ENV
-        id: update-env
-        run: |
-          echo "::set-output name=domain::blog-${{ steps.meta.outputs.version }}.dev.xuexb.com"
       - name: Build Node.js Docker image
         uses: docker/build-push-action@v3
         with:
@@ -78,11 +76,14 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          debug: true
+          proxy_host: ${{ secrets.PROXY_HOST }}
+          proxy_username: ${{ secrets.PROXY_USERNAME }}
+          proxy_key: ${{ secrets.PROXY_KEY }}
+          proxy_port: ${{ secrets.PROXY_PORT }}
           script: |
-            node_container_name="blog-${{ needs.build-dev.outputs.version }}.dev.xuexb.com-node"
+            node_container_name="${{ env.DOMAIN }}-node"
             node_image="${{ secrets.GHCR_MIRROR }}/${{ env.IMAGE_NAME }}:node-${{ needs.build-dev.outputs.version }}"
-            nginx_container_name="blog-${{ needs.build-dev.outputs.version }}.dev.xuexb.com-nginx"
+            nginx_container_name="${{ env.DOMAIN }}-nginx"
             nginx_image="${{ secrets.GHCR_MIRROR }}/${{ env.IMAGE_NAME }}:nginx-${{ needs.build-dev.outputs.version }}"
             docker pull $node_image \
               && docker pull $nginx_image \
@@ -116,7 +117,7 @@ jobs:
               && if [ "$port" == "" ]; then exit 11; fi
             dyups_result=""
             for((i=1;i<=5;i++)); do
-              httpcode=$(curl -sL --max-time 5 -w '%{http_code}' -X POST -d "{\"server\":[{\"address\":\"${{ secrets.SSH_HOST }}\",\"port\":$port}],\"timeout\":6}" "https://dyups.xuexb.com/api/blog-${{ needs.build-dev.outputs.version }}.dev.xuexb.com?r=$RANDOM&token=${{ secrets.DYUPS_TOKEN }}" -o /dev/null)
+              httpcode=$(curl -sL --max-time 5 -w '%{http_code}' -X POST -d "{\"server\":[{\"address\":\"${{ secrets.SSH_HOST }}\",\"port\":$port}],\"timeout\":6}" "https://dyups.xuexb.com/api/${{ env.DOMAIN }}?r=$RANDOM&token=${{ secrets.DYUPS_TOKEN }}" -o /dev/null)
               if [ "$httpcode" != "200" ]; then
                 echo "注册 dyups 失败，响应码：$httpcode ，继续尝试"
                 dyups_result="0"
@@ -143,5 +144,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `**Welcome**, The deployment is successful, please visit <https://blog-${{ needs.build-dev.outputs.version }}.dev.xuexb.com> .✨`
+              body: `**Welcome**, The deployment is successful, please visit <https://${{ env.DOMAIN }}> .✨`
             })
