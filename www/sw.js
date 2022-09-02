@@ -18,6 +18,12 @@ workbox.core.setCacheNameDetails({
 workbox.core.skipWaiting();
 workbox.core.clientsClaim();
 
+// 百度统计.js缓存7天
+registerRoute(
+  ({ url }) => url.origin === "https://hm.baidu.com" && url.pathname === "/hm.js",
+  getRouteHandle(getCacheFirstHandle({ maxAgeSeconds: 24 * 60 * 60 * 7 }))
+);
+
 // `/post/*.html` 做1天缓存
 registerRoute(
   ({ url, sameOrigin }) =>
