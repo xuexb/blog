@@ -45,7 +45,7 @@ DIV+CSS 静态页面，刚注册完成
 - [x] Service Worker
 - [x] CDN
 - [ ] WebP
-- [ ] Jenkins + GitHub CI/CD（测试环境+生产环境）
+- [x] GitHub Actions CI/CD（测试环境+生产环境）
 - [x] 多地区部署
 - [x] Docker
     ```bash
